@@ -17,6 +17,6 @@ class MovieController extends AbstractController
     public function search(MovieRepository $movieRepository)
     {
         $movies = $movieRepository->findAll();
-        return $this->json($movies);
+        return $this->json(['movies' => $movies]);
     }
 }
