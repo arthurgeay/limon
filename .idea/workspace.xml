@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="" />
+    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/limon.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/limon.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,10 +55,16 @@
       <path value="$PROJECT_DIR$/vendor/symfony/config" />
       <path value="$PROJECT_DIR$/vendor/symfony/http-foundation" />
       <path value="$PROJECT_DIR$/vendor/symfony/var-exporter" />
+      <path value="$PROJECT_DIR$/vendor/symfony/maker-bundle" />
+      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/http-client" />
+      <path value="$PROJECT_DIR$/vendor/sensiolabs/security-checker" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1252" />
+    <option name="x" value="1242" />
     <option name="y" value="23" />
     <option name="width" value="1308" />
     <option name="height" value="1334" />
@@ -109,12 +118,12 @@
       <option name="presentableId" value="Default" />
       <updated>1589806867623</updated>
       <workItem from="1589806869078" duration="183000" />
-      <workItem from="1589807071937" duration="273000" />
+      <workItem from="1589807071937" duration="534000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="456000" />
+    <option name="totallyTimeSpent" value="717000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1252" y="23" width="1308" height="1334" extended-state="0" />
