@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MovieRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -14,53 +15,63 @@ class Movie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("movie")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("movie")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("movie")
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("movie")
      */
     private $poster_img;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("movie")
      */
     private $hero_img;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("movie")
      */
     private $price;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("movie")
      */
     private $release_date;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("movie")
      */
     private $download_url;
 
     /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("movie")
      */
     private $productor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("movie")
      */
     private $category;
 
