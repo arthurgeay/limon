@@ -40,13 +40,19 @@ class User
     private $birthday;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Review::class, mappedBy="user")
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="user")
      */
     private $reviews;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Rating::class, mappedBy="user")
+     */
+    private $ratings;
 
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
+        $this->ratings = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,7 +120,7 @@ class User
     {
         if (!$this->reviews->contains($review)) {
             $this->reviews[] = $review;
-            $review->addUser($this);
+            $review->setUser($this);
         }
 
         return $this;
@@ -124,7 +130,41 @@ class User
     {
         if ($this->reviews->contains($review)) {
             $this->reviews->removeElement($review);
-            $review->removeUser($this);
+            // set the owning side to null (unless already changed)
+            if ($review->getUser() === $this) {
+                $review->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Rating[]
+     */
+    public function getRatings(): Collection
+    {
+        return $this->ratings;
+    }
+
+    public function addRating(Rating $rating): self
+    {
+        if (!$this->ratings->contains($rating)) {
+            $this->ratings[] = $rating;
+            $rating->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRating(Rating $rating): self
+    {
+        if ($this->ratings->contains($rating)) {
+            $this->ratings->removeElement($rating);
+            // set the owning side to null (unless already changed)
+            if ($rating->getUser() === $this) {
+                $rating->setUser(null);
+            }
         }
 
         return $this;
