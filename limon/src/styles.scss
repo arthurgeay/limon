@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Mazzard';
+    font-display: swap;
+    src: url('assets/font/MazzardM-Medium.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Mazzard';
+    font-display: swap;
+    src: url('assets/font/MazzardM-Bold.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+:root{
+    font-family: 'Mazzard', sans-serif;
+    background-color: var(--background);
+    color: var(--white);
+    --acid-green: #A7E232;
+    --rind-green: #28A601;
+    --background: #1F1F1F;
+    --dark-elements:#3E3E3E;
+    --white: #FFFFFF;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
