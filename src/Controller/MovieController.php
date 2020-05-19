@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,7 +29,7 @@ class MovieController extends AbstractController
         $pagination = $paginator->paginate($movies, $page, 10);
 
         if(!$query || count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé'], 200);
+            return $this->json(['status' => 'Aucun film trouvé'], 404);
         }
 
         return $this->json([
@@ -37,5 +38,16 @@ class MovieController extends AbstractController
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
             ], 200, [], ['groups' => ['movie']]);
+    }
+
+    /**
+     * @Route("/{id}", name="show", requirements={"id"="\d+"}, methods={"GET"})
+     */
+    public function show(Movie $movie)
+    {
+        if(!$movie) {
+            return $this->json(['status' => 'Aucun film trouvé'], 404);
+        }
+        return $this->json($movie, 200, [], ['groups' => ['movie']]);
     }
 }

@@ -30,18 +30,18 @@ class MovieRepository extends ServiceEntityRepository
 
         // Search by name or category
         switch($searchBy) {
-            case 'name':
-                $result
-                    ->andWhere('m.title LIKE :val')
-                    ->setParameter('val', '%'.$query.'%')
-                ;
-                break;
             case 'category':
                 $result
                     ->innerJoin('m.category', 'c')
                     ->addSelect('c')
                     ->andWhere('c.name = :val')
                     ->setParameter('val', $query)
+                ;
+                break;
+            default:
+                $result
+                    ->andWhere('m.title LIKE :val')
+                    ->setParameter('val', '%'.$query.'%')
                 ;
                 break;
         }
