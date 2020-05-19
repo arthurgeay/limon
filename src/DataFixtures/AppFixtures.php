@@ -16,13 +16,13 @@ class AppFixtures extends Fixture
         $faker = Factory::create('fr_FR');
 
         $actionCategory = new Category();
-        $actionCategory->setName('ABC Studio');
+        $actionCategory->setName('Action');
 
         $comedyCategory = new Category();
-        $comedyCategory->setName('EPIC');
+        $comedyCategory->setName('Comédie');
 
         $horrorCategory = new Category();
-        $horrorCategory->setName('WAHOU');
+        $horrorCategory->setName('Horreur');
 
 
         $abcProd = new Productor();
@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
         $categories = [$actionCategory, $comedyCategory, $horrorCategory];
         $productors = [$abcProd, $epicProd, $wahouProd];
 
-        for($i = 0; $i < 10; $i++) {
+        for($i = 0; $i < 40; $i++) {
 
             $movie = new Movie();
             $movie->setTitle($faker->name);

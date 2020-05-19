@@ -57,7 +57,6 @@ class Movie
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("movie")
      */
     private $download_url;
 

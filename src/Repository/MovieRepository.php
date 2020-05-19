@@ -19,6 +19,60 @@ class MovieRepository extends ServiceEntityRepository
         parent::__construct($registry, Movie::class);
     }
 
+    /**
+     * @param $query
+     * @param $searchBy
+     * @param $orderBy
+     * @return \Doctrine\ORM\QueryBuilder
+     */
+    public function findByNameOrCategoryAndFilters($query, $searchBy, $orderBy) {
+        $result = $this->createQueryBuilder('m');
+
+        // Search by name or category
+        switch($searchBy) {
+            case 'name':
+                $result
+                    ->andWhere('m.title LIKE :val')
+                    ->setParameter('val', '%'.$query.'%')
+                ;
+                break;
+            case 'category':
+                $result
+                    ->innerJoin('m.category', 'c')
+                    ->addSelect('c')
+                    ->andWhere('c.name = :val')
+                    ->setParameter('val', $query)
+                ;
+                break;
+        }
+
+        // Orderby id, date or price
+        switch($orderBy) {
+            case 'desc':
+                $result
+                    ->orderBy('m.id', $orderBy);
+                break;
+            case 'date-asc':
+                $result
+                    ->orderBy('m.release_date', 'ASC');
+                break;
+            case 'date-desc':
+                $result
+                    ->orderBy('m.release_date', 'DESC');
+                break;
+            case 'price-asc':
+                $result
+                    ->orderBy('m.price', 'ASC');
+                break;
+            case 'price-desc':
+                $result
+                    ->orderBy('m.price', 'DESC');
+        }
+
+        return $result;
+
+    }
+
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */
