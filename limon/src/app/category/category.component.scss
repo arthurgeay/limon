@@ -1,0 +1,31 @@
+.cat{
+    padding: 1rem;
+    @media (min-width:665px) {
+        padding-left: 4rem;
+    }
+    &-select{
+        margin-top: 1rem;
+        font-weight: normal;
+        font-size: .8rem;
+    }
+}
+.category {
+    display: flex;
+    overflow-x: scroll;
+    &-item {
+        background-color: var(--rind-green);
+        border-radius: 5px;
+        padding: .4rem .5rem;
+        margin-right: 1rem;
+        font-size: .8rem;
+        width: max-content;
+        white-space: nowrap;
+    }
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.opacity {
+    opacity: .4;
+}
