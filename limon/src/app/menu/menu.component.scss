@@ -130,9 +130,6 @@ header{
 
 }
 
-.burger-menu{
-    display: none;
-}
 
 @media (max-width: 1080px) {
     header{
@@ -153,20 +150,49 @@ header{
 @media (max-width: 665px) {
     header {
         background-color: var(--rind-green);
+        padding: 1.5rem 1.4rem;
+        align-items: center;
     }
     .burger-menu{
         display: block;
+        margin-left: .8rem;
         .slice {
             display: block;
             width: 2rem;
-            height: .3rem;
+            height: .25rem;
             background-color: var(--white);
-            margin: .3rem 0;
+            margin: .35rem 0;
         }
     }
-    .logo, .nav-history, .nav-list, .nav-watchlist, .search {
-        display: none!important;
+    .logo-text {
+        color: var(--acid-green);
+        font-size: 2rem;
+        font-weight: bold;
     }
-    
-
+    .nav > div {
+        margin: 0 .5rem;
+    }
+    .nav-search img{
+            width: 1.2rem;
+            height: 1.2rem;
+    }
+    nav {
+        background-color: var(--acid-green);
+        display: flex;
+        flex-direction: column;
+        padding: .5rem 0;
+        transition: transform .3s ease-out;
+        position: relative;
+        z-index: -1;
+        a {
+            display: block;
+            color: var(--background);
+            font-size: 1.2rem;
+            padding: 1rem 2rem;
+            &:hover {
+                background-color: var(--rind-green);
+            }
+        }
+    }
+  
 }

@@ -1,23 +1,26 @@
 <header>
-    <div class="burger-menu">
+    <div class="burger-menu" *ngIf="isMobile" (click)="onAppear()">
         <span class="slice"></span>
         <span class="slice"></span>
         <span class="slice"></span>
     </div>
-    <section class="logo">
+    <div *ngIf="isMobile">
+        <p class="logo-text">Limon</p>
+    </div>
+    
+    <section class="logo" *ngIf="!isMobile">
         <div class="logo-container">
             <img src="../../assets/logo-transparent.png" alt="logo">
         </div>
-        
     </section>
-    <section class="search">
+    <section class="search" *ngIf="!isMobile">
         <div class="search-bar">
             <input type="text" placeholder="Rechercher un film" aria-label="rechercher un film" required>
             <button id="search"><img src="../../assets/icons/search.png" alt="rechercher" aria-label="Rechercher"></button>
         </div>
     </section>
     <section class="nav">
-        <div>
+        <div *ngIf="!isMobile">
             <div class="nav-list">
                 <a href="">catalogue</a>
             </div>
@@ -27,15 +30,15 @@
                 <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="profil-pic">
             </div>
         </div>
-        <div>
-            <div class="nav-watchlist">
+        <div *ngIf="!isMobile">
+            <div class="nav-watchlist" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="86.589" height="132.214" viewBox="0 0 86.589 132.214">
                     <path id="Tracé_288" data-name="Tracé 288" class="cls-1" d="M166.6,0H96.668a8.335,8.335,0,0,0-8.326,8.326V127.219a5,5,0,0,0,7.621,4.251l35.683-22.03,35.678,21.87a5,5,0,0,0,7.607-4.258V8.326A8.335,8.335,0,0,0,166.6,0ZM164.94,118.128,134.249,99.314a5,5,0,0,0-5.237.008L98.333,118.263V9.991H164.94Z" transform="translate(-88.342)"/>
                 </svg>
             </div>
         </div>
-        <div>
-            <div class="nav-history">
+        <div *ngIf="!isMobile">
+            <div class="nav-history" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="101.503" height="87.002" viewBox="0 0 101.503 87.002">
                     <g id="Groupe_538" data-name="Groupe 538" transform="translate(-621.392 3746.521)">
                       <path id="Tracé_290" data-name="Tracé 290" class="cls-1" d="M234.667,138.667v29L259.492,182.4l4.176-7.047-20.3-12.035V138.667Z" transform="translate(437.476 -3864.665)"/>
@@ -44,5 +47,15 @@
                   </svg>
             </div>
         </div>
+        <div *ngIf="isMobile">
+            <div class="nav-search" >
+                <img src="../../assets/icons/search.png" alt="Rechercher">
+            </div>
+        </div>
     </section>
 </header>
+<nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
+    <a href="/home">Historique</a>
+    <a href="#">Watchlist</a>
+    <a href="#">Catalogue</a>
+</nav>
