@@ -1,1 +1,23 @@
 
+<h2 class="phrase-res">Résultats de votre recherche</h2>
+<section id="sorting">
+    <button (click)="onAlph()" class="sort">
+        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isAlph">
+        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isAlph">
+        <p>A-Z</p>
+    </button>
+    <button (click)="onPrice()"class="sort">
+        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isPrice">
+        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isPrice">
+        <p>Prix</p>
+    </button>
+    <button (click)="onDate()" class="sort">
+        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isDate">
+        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isDate">
+        <p>Date</p>
+    </button>
+</section>
+
+<section id="results">
+
+</section>

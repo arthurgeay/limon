@@ -1,0 +1,38 @@
+.phrase-res {
+    font-size: 1rem;
+    margin-left: 1rem;
+    margin-top: 1rem;
+    @media (min-width:665px) {
+        margin-left: 4rem;
+    }
+}
+
+#sorting {
+    display: flex;
+    justify-content: center;
+    @media (min-width:665px) {
+        justify-content: flex-end;
+        margin-right: 2rem;
+    }
+}
+.sort {
+    border-radius: 25px;
+    background: var(--acid-green);
+    width: 4.5rem;
+    height: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem;
+    img {
+        width: .7rem;
+        margin-right: .5rem;
+    }
+    p{
+        font-size: .8rem;    
+    }
+}
+
+#results {
+    display: grid;
+}
