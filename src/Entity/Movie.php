@@ -78,6 +78,7 @@ class Movie
 
     /**
      * @ORM\OneToMany(targetEntity=Review::class, mappedBy="movie")
+     * @Groups("movie")
      */
     private $reviews;
 

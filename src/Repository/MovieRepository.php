@@ -73,6 +73,28 @@ class MovieRepository extends ServiceEntityRepository
 
     }
 
+    /**
+     * @param $movieId
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
+    public function findWithRatingsAndReviews($movieId)
+    {
+        return $this->createQueryBuilder('m')
+            ->andWhere('m.id = :id')
+            ->setParameter('id', $movieId)
+            ->innerJoin('m.ratings', 'ra')
+            ->addSelect('AVG(ra.score) AS avg_score')
+            ->innerJoin('m.productor', 'p')
+            ->addSelect('p')
+            ->innerJoin('m.category', 'c')
+            ->addSelect('c')
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+
+    }
+
     // /**
     //  * @return Movie[] Returns an array of Movie objects
     //  */

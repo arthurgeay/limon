@@ -5,6 +5,9 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Movie;
 use App\Entity\Productor;
+use App\Entity\Rating;
+use App\Entity\Review;
+use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -14,7 +17,9 @@ class AppFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $faker = Factory::create('fr_FR');
+        $movies = [];
 
+        // Categories
         $actionCategory = new Category();
         $actionCategory->setName('Action');
 
@@ -24,7 +29,7 @@ class AppFixtures extends Fixture
         $horrorCategory = new Category();
         $horrorCategory->setName('Horreur');
 
-
+        // Productors
         $abcProd = new Productor();
         $abcProd->setName('ABC Studio');
 
@@ -45,6 +50,8 @@ class AppFixtures extends Fixture
         $categories = [$actionCategory, $comedyCategory, $horrorCategory];
         $productors = [$abcProd, $epicProd, $wahouProd];
 
+
+        // Movies
         for($i = 0; $i < 40; $i++) {
 
             $movie = new Movie();
@@ -59,7 +66,41 @@ class AppFixtures extends Fixture
             $movie->setCategory($categories[array_rand($categories, 1)]);
 
             $manager->persist($movie);
+            $movies[] = $movie;
         }
+
+        // Users
+        for($i = 0; $i < 15; $i++) {
+            $user = new User();
+            $user->setEmail($faker->email);
+            $user->setPassword($faker->password);
+
+            if($faker->boolean(85)) {
+                $review = new Review();
+                $review->setContent($faker->text);
+                $review->setMovie($movies[array_rand($movies, 1)]);
+                $review->setUser($user);
+                $review->setCreatedAt(new \DateTime());
+                $review->setUpdatedAt(new \DateTime());
+                $manager->persist($review);
+            }
+
+            if($faker->boolean(95)) {
+                $rating = new Rating();
+                $rating->setScore($faker->numberBetween(1, 5));
+                $rating->setUser($user);
+                $rating->setMovie($movies[array_rand($movies, 1)]);
+                $rating->setCreatedAt(new \DateTime());
+                $rating->setUpdatedAt(new \DateTime());
+
+                $manager->persist($rating);
+            }
+
+            $manager->persist($user);
+        }
+
+
+        // Reviews
 
 
         $manager->flush();

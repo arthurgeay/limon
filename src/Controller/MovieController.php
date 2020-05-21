@@ -42,12 +42,16 @@ class MovieController extends AbstractController
 
     /**
      * @Route("/{id}", name="show", requirements={"id"="\d+"}, methods={"GET"})
+     * @throws \Doctrine\ORM\NonUniqueResultException
      */
-    public function show(Movie $movie)
+    public function show($id, MovieRepository $movieRepository)
     {
-        if(!$movie) {
+        $movie = $movieRepository->findWithRatingsAndReviews($id);
+
+        if(!$movie || $movie[0] == null) {
             return $this->json(['status' => 'Aucun film trouvé'], 404);
         }
+
         return $this->json($movie, 200, [], ['groups' => ['movie']]);
     }
 }
