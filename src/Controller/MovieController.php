@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/movie", name="movie_")
+ * @Route("/api/movie", name="movie_")
  */
 class MovieController extends AbstractController
 {
