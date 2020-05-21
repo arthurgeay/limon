@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { FilmResultComponent } from './film-result/film-result.component';
 import { CategoryComponent } from './category/category.component';
 import { FilmCardComponent } from './film-card/film-card.component';
+import { DetailComponent } from './detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { FilmCardComponent } from './film-card/film-card.component';
     MenuComponent,
     FilmResultComponent,
     CategoryComponent,
-    FilmCardComponent
+    FilmCardComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
