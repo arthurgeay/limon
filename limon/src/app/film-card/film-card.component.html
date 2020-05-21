@@ -1,4 +1,4 @@
-<div class="result" routerLink="/detail" routerLinkActive="active">
+<div class="result" [routerLink]="['/detail', card.id]" routerLinkActive="active">
     <img src="{{ card.poster }}" alt="poster" class="result-poster">
     <div class="result-infos">
         <h3 class="result-infos-title">{{ card.title }}</h3>

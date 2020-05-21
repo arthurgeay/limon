@@ -7,7 +7,7 @@ import { DetailComponent } from './detail/detail.component';
 const routes: Routes = [
   {path: '', component: FilmResultComponent },
   {path: 'search', component: FilmResultComponent },
-  {path: 'detail', component: DetailComponent },
+  {path: 'detail/:id', component: DetailComponent },
   {path: '**', component: FilmResultComponent }
 ];
 

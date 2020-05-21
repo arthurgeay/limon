@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-detail',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailComponent implements OnInit {
 
-  constructor() { }
+  public title: string;
+  public prod: string;
+  public date: string;
+  public description: string;
+  public price: string;
+  
+  constructor(private movieService:MovieService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    const id = this.route.snapshot.params['id'];
+    this.title = this.movieService.getMovieById(+id).title;
   }
 
 }
