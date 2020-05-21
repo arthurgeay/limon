@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MobileService } from '../mobile.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,15 +10,12 @@ export class MenuComponent implements OnInit {
 
   public isMobile = false;
   public isMenu = false;
-  constructor() { }
+  constructor(private mobileService:MobileService) { }
 
   ngOnInit(): void {
-    this.isMobile = this.getIsMobile();
-    window.onresize = () => this.isMobile = window.innerWidth <= 665;
+    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service
   }
-  getIsMobile(): boolean {
-    return(document.documentElement.clientWidth < 665 ? true : false);
-  }
+
   onAppear() {
     this.isMenu = !this.isMenu;
   }

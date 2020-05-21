@@ -1,11 +1,12 @@
-<section>
+<section class="detail">
     <div>
         <h1>{{ title }}</h1>
-        <b></b>
-        <p></p>
-        <p></p><h2></h2>
-        <button></button>
-        <button></button>
-        <button></button>
+        <b>{{  prod }} - {{ date }}</b>
+        <p>{{ description }}</p>
+        <p>Prix</p><h2>{{ price }}</h2>
+        <button>Ajouter à la watchlist</button>
+        <button>Acheter</button>
+        <button>Lecture</button>
     </div>
+    <img src="{{ hero }}" alt="" class="detail-hero" *ngIf="isMobile">
 </section>
