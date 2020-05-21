@@ -1,10 +1,12 @@
 <section class="movie">
-    <img src="{{ hero }}" alt="" class="movie-hero" *ngIf="!isMobile">
-    <img src="{{ poster }}" alt="" class="movie-poster" *ngIf="isMobile">
+    <div class="movie-img">
+        <img src="{{ hero }}" alt="" class="movie-hero" *ngIf="!isMobile">
+        <img src="{{ poster }}" alt="" class="movie-poster" *ngIf="isMobile">
+    </div>
     <div class="detail">
         <h1 class="detail-title">{{ title }}</h1>
         <div class="detail-line detail-subinfos">
-            <b class="detail-prod">{{ prod }} - {{ date }}</b>
+            <b class="detail-prod">{{ prod }} <span *ngIf="date !== ''">-</span> {{ date }}</b>
             <button class="detail-category">{{ category }}</button>
         </div>
         <p class="detail-desc">{{ description }}</p>
@@ -12,8 +14,8 @@
                 <p>Prix</p><h2 class="detail-pricing">{{ price }}</h2>
         </div>
         <div class="detail-line">
-            <button class="detail-buy" *ngIf="price !== ''">Acheter</button>
-            <button class="detail-play"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
+            <button class="detail-buy" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon"> Acheter</button>
+            <button class="detail-play"> <img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
         </div>
     </div>
     <button class="movie-watch" (click)="onWatch()">

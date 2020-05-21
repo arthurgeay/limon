@@ -57,7 +57,7 @@
     </section>
 </header>
 <nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
-    <a routerLink="">Historique</a>
-    <a routerLink="">Watchlist</a>
-    <a routerLink="">Catalogue</a>
+    <a routerLink="" (click)="onAppear()">Catalogue</a>
+    <a routerLink="" (click)="onAppear()">Historique</a>
+    <a routerLink="" (click)="onAppear()">Watchlist</a>
 </nav>
