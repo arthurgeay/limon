@@ -5,6 +5,9 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager;
+use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -20,7 +23,7 @@ class SecurityController extends AbstractController
     /**
      * @Route("/register", name="register", methods={"POST"})
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $entityManager, ValidatorInterface $validator)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $entityManager, ValidatorInterface $validator, JWTTokenManagerInterface $JWT)
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
@@ -44,7 +47,9 @@ class SecurityController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
+        $token = $JWT->create($user); // Generate token
 
-        return $this->json(['status' => 'User successfully registered']);
+
+        return $this->json(['status' => 'User successfully registered', 'token' => $token]);
     }
 }
