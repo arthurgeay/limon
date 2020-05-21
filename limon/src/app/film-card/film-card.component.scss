@@ -1,5 +1,7 @@
 .result {
     width: 7.5rem;
+    outline: none;
+    cursor: pointer;
     @media (min-width: 1080px) {
         width: 12rem;
     }

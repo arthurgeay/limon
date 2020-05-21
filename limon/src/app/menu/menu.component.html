@@ -4,11 +4,11 @@
         <span class="slice"></span>
         <span class="slice"></span>
     </div>
-    <div *ngIf="isMobile">
+    <div *ngIf="isMobile" routerLink="/">
         <h1 class="logo-text">Limon</h1>
     </div>
     
-    <section class="logo" *ngIf="!isMobile">
+    <section class="logo" *ngIf="!isMobile" routerLink="/">
         <div class="logo-container">
             <img src="../../assets/logo-transparent.png" alt="logo">
         </div>
