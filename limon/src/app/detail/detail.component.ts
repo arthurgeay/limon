@@ -9,12 +9,15 @@ import { MobileService } from '../mobile.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
-  public isMobileD = false;
+  public isMobile = false;
+  public isMark = false;
   public title: string;
   public prod: string;
+  public category: string;
   public date: string;
   public description: string;
   public price: string;
+  public poster: string;
   public hero: string;
   
   constructor(private movieService:MovieService,
@@ -26,15 +29,21 @@ export class DetailComponent implements OnInit {
     // get information from service
     this.title = this.movieService.getMovieById(+id).title;
     this.prod = this.movieService.getMovieById(+id).prod;
+    this.category = this.movieService.getMovieById(+id).category;
     this.date = this.movieService.getMovieById(+id).date;
     this.description = this.movieService.getMovieById(+id).description;
     this.price = this.movieService.getMovieById(+id).price;
+    this.poster = this.movieService.getMovieById(+id).poster;
     this.hero = this.movieService.getMovieById(+id).hero;
 
-    this.isMobileD = this.mobileService.getIsMobile(); //Detect if mobile device at start
+    this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
   }
+  onWatch() {
+    return(this.isMark = !this.isMark)
+  }
+
   @HostListener('window:resize', ['$event'])
   onResize() {
-    this.isMobileD = this.mobileService.getIsMobile(); //detect changes of viewport
+    this.isMobile = this.mobileService.getIsMobile(); //detect changes of viewport
   }
 }

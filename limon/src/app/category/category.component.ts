@@ -7,7 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
   public isCatChoose = false;
-  public categories = ['Animation','Aventure','Comédie','Enquêtes','Fantaisie','Guerre','Historique','Horreur','Polar','Science Fiction','Vie Quotidienne'];
+  public categories = [
+    'Animation',
+    'Aventure',
+    'Comédie',
+    'Enquêtes',
+    'Fantaisie',
+    'Guerre',
+    'Historique',
+    'Horreur',
+    'Polar',
+    'Science Fiction',
+    'Super-Héros',
+    'Vie Quotidienne'];
   constructor() { }
 
   ngOnInit(): void {

@@ -1,12 +1,28 @@
-<section class="detail">
-    <div>
-        <h1>{{ title }}</h1>
-        <b>{{  prod }} - {{ date }}</b>
-        <p>{{ description }}</p>
-        <p>Prix</p><h2>{{ price }}</h2>
-        <button>Ajouter à la watchlist</button>
-        <button>Acheter</button>
-        <button>Lecture</button>
+<section class="movie">
+    <img src="{{ hero }}" alt="" class="movie-hero" *ngIf="!isMobile">
+    <img src="{{ poster }}" alt="" class="movie-poster" *ngIf="isMobile">
+    <div class="detail">
+        <h1 class="detail-title">{{ title }}</h1>
+        <div class="detail-line detail-subinfos">
+            <b class="detail-prod">{{ prod }} - {{ date }}</b>
+            <button class="detail-category">{{ category }}</button>
+        </div>
+        <p class="detail-desc">{{ description }}</p>
+        <div class="detail-line detail-pric" *ngIf="price !== ''">
+                <p>Prix</p><h2 class="detail-pricing">{{ price }}</h2>
+        </div>
+        <div class="detail-line">
+            <button class="detail-buy" *ngIf="price !== ''">Acheter</button>
+            <button class="detail-play"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
+        </div>
     </div>
-    <img src="{{ hero }}" alt="" class="detail-hero" *ngIf="isMobileD">
+    <button class="movie-watch" (click)="onWatch()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="86.589" height="132.214" viewBox="0 0 86.589 132.214" *ngIf="!isMark">
+            <path  data-name="Bookmark" d="M166.6,0H96.668a8.335,8.335,0,0,0-8.326,8.326V127.219a5,5,0,0,0,7.621,4.251l35.683-22.03,35.678,21.87a5,5,0,0,0,7.607-4.258V8.326A8.335,8.335,0,0,0,166.6,0ZM164.94,118.128,134.249,99.314a5,5,0,0,0-5.237.008L98.333,118.263V9.991H164.94Z" transform="translate(-88.342)"/>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="173.791" height="265.364" viewBox="0 0 173.791 265.364" *ngIf="isMark">
+            <path d="M5.144,264.094A10.026,10.026,0,0,1,0,255.338V16.71A16.729,16.729,0,0,1,16.71,0h140.37a16.729,16.729,0,0,1,16.71,16.71V255a10.026,10.026,0,0,1-15.267,8.546l-71.608-43.9L15.3,263.87a10.033,10.033,0,0,1-10.153.224Z"/>
+        </svg>
+    </button>
 </section>
+

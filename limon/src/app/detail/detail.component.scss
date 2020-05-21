@@ -1,12 +1,99 @@
-.detail {
+.movie {
+    height: 37rem;
     position: relative;
-
-    &-hero{
+    &-hero, &-poster{
         width: 100%;
-        object-fit: contain;
+        max-height: 37rem;
+        object-fit: cover;
         position: absolute;
         top: 0;
         left: 0;
+        z-index: -2;
+    }
+    &-watch{
+        background-color: var(--rind-green);
+        height: 3rem;
+        width: 3rem;
+        border-radius: 50%;
+        position: absolute;
+        top: 2rem;
+        right: 1rem;
+        svg{
+            position: relative;
+            top: .1rem;
+            fill: var(--white);
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+    }
+}
+
+.detail {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 0 2rem;
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        background: linear-gradient(transparent 0%,rgba(31, 31, 31, 0.835) 30% ,#1F1F1F 100%);
+        height: 125%;
+        width: 100%;
         z-index: -1;
+    }
+    &-line {
+        display: flex;
+        align-items: center;
+    }
+    &-title{
+        font-size: 2rem;
+    }
+    &-subinfos{ 
+        margin: 1rem 0;
+        justify-content: space-between;
+    }
+    &-prod{
+        opacity: .6;
+        font-size: .8rem;
+    }
+    &-category {
+        border: 1px solid var(--white);
+        border-radius: 5px;
+        background-color: transparent;
+        padding: .3rem .5rem;
+        font-size: .7rem;
+    }
+    &-desc {
+        font-size: .8rem;
+        margin-bottom: 1rem;
+    }
+    &-pric {
+        align-items: flex-end;
+        margin: 1rem 0;
+        &ing {
+            color: var(--acid-green);
+            font-size: 1.4rem;
+            margin-left: .5rem;
+        }
+    }
+    
+
+    &-buy, &-play {
+        border-radius: 5px;
+        padding: .3rem .5rem;
+    }
+    &-buy{
+        background-color: var(--white);
+        color: var(--rind-green);
+        margin-right: 1rem;
+    }
+    &-play {
+        background-color: var(--rind-green);
+    }
+    &-icon {
+        width: .7rem;
     }
 }

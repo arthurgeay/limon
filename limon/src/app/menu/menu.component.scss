@@ -4,6 +4,9 @@ header{
     justify-content: space-between;
 }
 
+.proper-touch {
+    outline: none;
+}
 
 .logo {
     width: 16rem;
@@ -11,7 +14,6 @@ header{
     justify-content: center;
     position: relative;
     top: -.2rem;
-    outline: none;
     &-container {
         max-width: 10rem;
     }
@@ -175,9 +177,18 @@ header{
     .nav > div {
         margin: 0 .5rem;
     }
-    .nav-search img{
-            width: 1.2rem;
-            height: 1.2rem;
+    .nav-search {
+        &:hover {
+            background-color: var(--white);
+            svg{
+                fill: var(--rind-green);
+            }
+        }
+        svg{
+                width: 1.2rem;
+                height: 1.2rem;
+                fill: var(--white);
+        }
     }
     nav {
         background-color: var(--acid-green);

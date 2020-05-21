@@ -10,9 +10,10 @@ export class MovieService {
       poster:'../../assets/films/1917-poster.jpg',
       title: '1917',
       prod:'Dreamworks SKG',
+      category: 'Guerre',
       date: '2019',
       price: '',
-      description: 'Le 6 avril 1917, la Première Guerre mondiale fait rage sur le front Ouest. L\'armée allemande s\'est retirée d\'un secteur du front occidental dans le Nord de la France. La reconnaissance aérienne a repéré que les Allemands ne battent pas en retraite mais ont effectué un retrait tactique sur la ligne Hindenburg, où ils attendent les Britanniques. Deux jeunes soldats britanniques, les caporaux suppléants Will Schofield et Tom Blake, sont chargés par le général Erinmore d\'une mission vraisemblablement impossible : les lignes de communication étant coupées, ils vont devoir traverser seuls le no man\'s land et les lignes ennemies pour délivrer un message au deuxième bataillon du régiment Devonshire, stationné aux environs d\'Écoust-Saint-Mein. Ce message, annulant leur attaque planifiée, doit permettre de sauver du piège tendu par l\'armée allemande 1 600 soldats britanniques, parmi lesquels se trouve le lieutenant Joseph Blake, frère de Blake',
+      description: 'Le 6 avril 1917, la Première Guerre mondiale fait rage sur le front Ouest. L\'armée allemande s\'est retirée d\'un secteur du front occidental dans le Nord de la France. La reconnaissance aérienne a repéré que les Allemands ne battent pas en retraite mais ont effectué un retrait tactique sur la ligne Hindenburg, où ils attendent les Britanniques.',
       hero: '../../assets/films/1917-hero.jpg'
     },
     {
@@ -20,9 +21,10 @@ export class MovieService {
       poster:'../../assets/films/batman-poster.jpg',
       title: 'The Dark Knights: Le chevalier noir',
       prod:'Warner Bros',
+      category: 'Action',
       date: '',
       price: '4.40 €',
-      description: '',
+      description: 'Batman est plus que jamais déterminé à éradiquer le crime organisé qui sème la terreur en ville. Epaulé par le lieutenant Jim Gordon et par le procureur de Gotham City, Harvey Dent, Batman voit son champ d\'action s\'élargir. ',
       hero: '../../assets/films/batman-hero.jpg'
     },
     {
@@ -30,9 +32,10 @@ export class MovieService {
       poster:'../../assets/films/avengers-poster.jpg',
       title: 'Avengers: Endgame',
       prod:'Marvel Cinematic Universe',
-      date: '',
+      category: 'Super-Héros',
+      date: '2019',
       price: '',
-      description: '',
+      description: 'Le Titan Thanos, ayant réussi à s\'approprier les six Pierres d\'Infinité et à les réunir sur le Gantelet doré, a pu réaliser son objectif de pulvériser la moitié de la population de l\'Univers. Cinq ans plus tard, Scott Lang, alias Ant-Man, parvient à s\'échapper de la dimension subatomique où il était coincé.',
       hero: '../../assets/films/avengers-hero.jpg'
     },
     {
@@ -40,9 +43,10 @@ export class MovieService {
       poster:'../../assets/films/godzilla-poster.jpg',
       title: 'Godzilla',
       prod:'Warner Bros',
-      date: '',
+      category: 'Science-Fiction',
+      date: '2014',
       price: '4.20 €',
-      description: '',
+      description: 'Le physicien nucléaire Joseph Brody enquête sur de mystérieux phénomènes qui ont lieu au Japon. Refusant de s\'en tenir à la version officielle qui évoque un tremblement de terre, le scientifique revient sur les lieux du drame accompagné par son fils Ford, soldat dans la Navy. Ils découvrent que les incidents ne sont pas liés à une catastrophe naturelle, mais à des monstres réveillés par des essais nucléaires dans le Pacifique au lendemain de la Seconde Guerre mondiale.',
       hero: '../../assets/films/godzilla-hero.jpeg'
     },
     {
@@ -50,6 +54,7 @@ export class MovieService {
       poster:'../../assets/films/1917-poster.jpg',
       title: '1917',
       prod:'Universal Studios',
+      category: '',
       date: '',
       price: '',
       description: '',
@@ -60,6 +65,7 @@ export class MovieService {
       poster:'../../assets/films/batman-poster.jpg',
       title: 'The Dark Knights: Le chevalier noir',
       prod:'Warner Bros',
+      category: '',
       date: '',
       price: '3.40 €',
       description: '',
@@ -70,6 +76,7 @@ export class MovieService {
       poster:'../../assets/films/avengers-poster.jpg',
       title: 'Avengers: Endgame',
       prod:'Marvel Cinematic Universe',
+      category: '',
       date: '',
       price: '',
       description: '',
@@ -80,6 +87,7 @@ export class MovieService {
       poster:'../../assets/films/godzilla-poster.jpg',
       title: 'Godzilla',
       prod:'Warner Bros',
+      category: '',
       date: '',
       price: '',
       description: '',

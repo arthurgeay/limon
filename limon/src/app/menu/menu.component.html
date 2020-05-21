@@ -4,11 +4,11 @@
         <span class="slice"></span>
         <span class="slice"></span>
     </div>
-    <div *ngIf="isMobile" routerLink="/">
+    <div *ngIf="isMobile" routerLink="/" class="proper-touch">
         <h1 class="logo-text">Limon</h1>
     </div>
     
-    <section class="logo" *ngIf="!isMobile" routerLink="/">
+    <section class="logo proper-touch" *ngIf="!isMobile" routerLink="/">
         <div class="logo-container">
             <img src="../../assets/logo-transparent.png" alt="logo">
         </div>
@@ -40,22 +40,24 @@
         <div *ngIf="!isMobile">
             <div class="nav-history" >
                 <svg xmlns="http://www.w3.org/2000/svg" width="101.503" height="87.002" viewBox="0 0 101.503 87.002">
-                    <g id="Groupe_538" data-name="Groupe 538" transform="translate(-621.392 3746.521)">
-                      <path id="Tracé_290" data-name="Tracé 290" class="cls-1" d="M234.667,138.667v29L259.492,182.4l4.176-7.047-20.3-12.035V138.667Z" transform="translate(437.476 -3864.665)"/>
-                      <path id="Tracé_291" data-name="Tracé 291" class="cls-1" d="M57.977,32A43.468,43.468,0,0,0,14.5,75.5H0L18.826,94.327l.338.7L38.668,75.5h-14.5A33.913,33.913,0,1,1,34.1,99.4l-6.839,6.839A43.49,43.49,0,1,0,57.977,32Z" transform="translate(621.392 -3778.521)"/>
+                    <g data-name="history" transform="translate(-621.392 3746.521)">
+                      <path data-name="out"  d="M234.667,138.667v29L259.492,182.4l4.176-7.047-20.3-12.035V138.667Z" transform="translate(437.476 -3864.665)"/>
+                      <path data-name="in"  d="M57.977,32A43.468,43.468,0,0,0,14.5,75.5H0L18.826,94.327l.338.7L38.668,75.5h-14.5A33.913,33.913,0,1,1,34.1,99.4l-6.839,6.839A43.49,43.49,0,1,0,57.977,32Z" transform="translate(621.392 -3778.521)"/>
                     </g>
                   </svg>
             </div>
         </div>
-        <div *ngIf="isMobile">
-            <div class="nav-search" >
-                <img src="../../assets/icons/search.png" alt="Rechercher">
+        <div *ngIf="isMobile" routerLink="/search" class="proper-touch">
+            <div class="nav-search">
+                <svg xmlns="http://www.w3.org/2000/svg" width="408.649" height="423.27" viewBox="0 0 408.649 423.27">
+                    <path d="M403.419,385.532,302.681,280.758A170.345,170.345,0,0,0,342.774,170.9c0-94.23-76.665-170.9-170.9-170.9S.984,76.665.984,170.9s76.665,170.9,170.9,170.9a169.065,169.065,0,0,0,97.908-30.925l101.5,105.569a22.289,22.289,0,1,0,32.128-30.9ZM171.879,44.581A126.314,126.314,0,1,1,45.565,170.9,126.455,126.455,0,0,1,171.879,44.581Z" transform="translate(-0.984)"/>
+                </svg>
             </div>
         </div>
     </section>
 </header>
 <nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
-    <a href="/home">Historique</a>
-    <a href="#">Watchlist</a>
-    <a href="#">Catalogue</a>
+    <a routerLink="">Historique</a>
+    <a routerLink="">Watchlist</a>
+    <a routerLink="">Catalogue</a>
 </nav>
