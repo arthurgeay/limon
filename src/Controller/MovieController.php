@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,6 +17,7 @@ class MovieController extends AbstractController
 {
     /**
      * @Route("/search", name="search", methods={"GET"})
+     *
      */
     public function search(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
@@ -46,6 +48,7 @@ class MovieController extends AbstractController
      */
     public function show($id, MovieRepository $movieRepository)
     {
+
         $movie = $movieRepository->findWithRatingsAndReviews($id);
 
         if(!$movie || $movie[0] == null) {
