@@ -92,6 +92,17 @@ export class MovieService {
       price: 'Gratuit',
       description: '',
       hero: '../../assets/films/godzilla-hero.jpeg'
+    },
+    {
+      id: 9,
+      poster:'',
+      title: 'L\'homme-araignée',
+      prod:'',
+      category: '',
+      date: '2014',
+      price: 'Gratuit',
+      description: '',
+      hero: '../../assets/films/godzilla-hero.jpeg'
     }
   ]
   constructor() { }

@@ -10,6 +10,7 @@ import { FilmCardComponent } from './film-card/film-card.component';
 import { DetailComponent } from './detail/detail.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ProfilComponent } from './profil/profil.component';
     FilmCardComponent,
     DetailComponent,
     ConnexionComponent,
-    ProfilComponent
+    ProfilComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

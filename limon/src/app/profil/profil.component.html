@@ -1,6 +1,6 @@
 <section class="profil">
     <section class="profil-main">
-        <img src="../../assets/profil-membres/pointing-man.jpg" alt="Photo de profil" class="profil-main-pic">
+        <img src="{{ '../../assets/profil-membres/pointing-man.jpg' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
             <h1 *ngIf="!isEdit">Arthur Geay</h1>
             <input type="text" class="input-name" value="Arthur Geay" *ngIf="isEdit">
@@ -9,7 +9,7 @@
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
             <a (click)="onEdit();onOpenSettings()">Modifier les informations</a>
-            <a>Supprimer le compte</a>
+            <a (click)="onOpenSettings()">Supprimer le compte</a>
         </div>
     </section>
     <section class="profil-sup">

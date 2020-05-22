@@ -26,7 +26,7 @@ $mobile: 665px;
         }
         &::after {
             @media (min-width: $mobile) {
-                background: linear-gradient(transparent 0%,rgba(31, 31, 31, 0.424) 80% ,#1F1F1F 100%);
+                background: linear-gradient(#1F1F1F 0%, rgba(31, 31, 31, 0.616) 10%, transparent,rgba(31, 31, 31, 0.424) 80% ,#1F1F1F 100%);
             }
         }
     }

@@ -1,0 +1,72 @@
+$mobile: 655px;
+
+.admin {
+    padding: 0 4rem;
+    h1 {
+        font-size: 1.7rem;
+        margin: 2rem 0;
+    }
+}
+.global, .week {
+    border-radius: 15px;
+    padding: 1rem;
+    margin: 1rem 0;
+    h2 {
+        margin-bottom: 2rem;
+    }
+}
+
+.global{
+    background-color: var(--rind-green);
+}
+.week {
+    background-color: var(--acid-green);
+    color: var(--background);
+    width: 50vw;
+}
+.nb-section, .other, .manage {
+    display: flex;
+}
+.nb-section {
+    justify-content: space-around;
+}
+.nb-container {
+    &-title{
+        margin-bottom: 1rem;
+    }
+    &-content {
+        font-size: 3rem;
+    }
+}
+
+.manage {
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    margin-left: 2rem;
+    button{
+        margin-top: .5rem;
+        margin-bottom: 1rem;
+        border-radius: 5px;
+        padding: .5rem;
+    }
+    &-member {
+        background-color: var(--rind-green);
+    }
+    &-movie {
+        background-color: var(--acid-green);
+        color: var(--background);
+    }
+}
+
+@media (max-width:$mobile) {
+    .other, .nb-section {
+        flex-direction: column;
+    }
+    .manage {
+        margin-left: 0;
+    }    
+    .nb-container-content {
+        font-size: 2.5rem;
+    }
+}

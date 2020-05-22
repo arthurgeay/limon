@@ -4,6 +4,7 @@ import { FilmResultComponent } from './film-result/film-result.component';
 import { DetailComponent } from './detail/detail.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
+import { AdminComponent } from './admin/admin.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'login', component: ConnexionComponent },
   {path: 'signin', component: ConnexionComponent },
   {path: 'profil', component: ProfilComponent },
+  {path: 'admin', component: AdminComponent },
   {path: 'detail/:id', component: DetailComponent },
   {path: '**', component: FilmResultComponent }
 ];

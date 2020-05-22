@@ -1,5 +1,5 @@
 <div class="result" [routerLink]="['/detail', card.id]">
-    <img src="{{ card.poster }}" alt="poster" class="result-poster">
+    <img src="{{ card.poster || '../../assets/poster-notfound.png' }}" alt="poster" class="result-poster">
     <div class="result-infos">
         <h3 class="result-infos-title">{{ card.title }}</h3>
         <div class="sub">
