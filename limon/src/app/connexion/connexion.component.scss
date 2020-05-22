@@ -1,0 +1,64 @@
+.connect {
+    height: calc(100vh - 11rem);
+    position: relative;
+    &-return {
+        background-color: transparent;
+        color: var(--rind-green);
+        border: 2px solid var(--rind-green);
+        padding: .5rem 1rem;
+        border-radius: 8px;
+        position: absolute;
+        top: 4rem;
+        left: 6rem;
+    }
+    form{
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    &-title {
+        font-size: 2.5rem;
+        &::after {
+            content: '';
+            display: block;
+            background-color: var(--acid-green);
+            height: .5rem;
+            width: 100%;
+        }
+    }
+    &-inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 2rem 0;
+        width: 100%;
+    }
+    &-id, &-pass, &-birth, &-user{
+        width: 65%;
+        max-width: 20rem;
+        height: 2.4rem;
+        margin: 1rem 0 .5rem 0;
+        @media (min-width: 665px){
+            height: 2.7rem;
+        }
+    }
+    &-link {
+        display: flex;
+        flex-direction: column;
+    }
+    &-other {
+        font-size: .7rem;
+        margin-bottom: .5rem;
+        font-weight: normal;
+    }
+    &-button {
+        background-color: var(--acid-green);
+        padding: .5rem 1rem;
+        border-radius: 5px;
+        color: var(--background);
+        font-size: 1.2rem;
+    }
+}

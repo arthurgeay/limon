@@ -38,11 +38,15 @@ a {
 }
 
 input {
-    border: none;
+    background-color: var(--dark-elements);
+    color: var(--white);
+    padding: .5rem .8rem;
+    font-size: .9rem;
     outline: none;
+    border: none;
     border-radius: 5px;
-    transition: border-bottom .2s;
     border-bottom: 1px solid var(--background);
+    transition: border-bottom .2s;
 }
 
 input:focus {
@@ -58,7 +62,7 @@ button {
     user-select: none;
     color: var(--white);
     font-weight:bold;
-
+    cursor: pointer;
 }
 
 button:active {

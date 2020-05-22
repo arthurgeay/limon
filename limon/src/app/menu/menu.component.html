@@ -4,9 +4,9 @@
         <span class="slice"></span>
         <span class="slice"></span>
     </div>
-    <div *ngIf="isMobile" routerLink="/" class="proper-touch">
+    <!-- <div *ngIf="isMobile" routerLink="/" class="proper-touch">
         <h1 class="logo-text">Limon</h1>
-    </div>
+    </div> -->
     
     <section class="logo proper-touch" *ngIf="!isMobile" routerLink="/">
         <div class="logo-container">
@@ -17,7 +17,9 @@
         <div class="search-bar">
             <div class="search-bar-container">
                 <input type="text" placeholder="Rechercher un film" aria-label="rechercher un film" required>
-                <img src="../../assets/icons/cancel-icon.png" alt="Annuler la saisie" class="search-cancel">
+                <button class="search-cancel">
+                    <img src="../../assets/icons/cancel-icon.png" alt="Annuler la saisie">
+                </button>
             </div>
             <button id="search"><img src="../../assets/icons/search.png" alt="rechercher" aria-label="Rechercher"></button>
         </div>

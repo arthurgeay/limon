@@ -1,1 +1,18 @@
-<p>connexion works!</p>
+<section class="connect">
+    <form>
+        <button class="connect-return" routerLink="/">Revenir à l'accueil</button>
+        <h1 class="connect-title">{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
+        <div class="connect-inputs">
+            <input type="text" placeholder="Nom d'utilisateur" aria-label="Entrer un nom d'utilisateur" class="connect-user" *ngIf="!isLogin">
+            <input type="date" aria-label="Entrer votre date de naissance" class="connect-birth" *ngIf="!isLogin">
+            <input type="mail" placeholder="identifiant" aria-label="Entrer un identifiant" class="connect-id">
+            <input type="password" placeholder="mot de passe" aria-label="Entrer un mot de passe" class="connect-pass">
+            
+        </div>
+        <div class="connect-link">
+            <a routerLink="{{ isLogin ? '/signin' : '/login' }}" class="connect-other" type="submit">{{ isLogin ? 'Vous n\'avez pas de compte ? Inscrivez-vous !' : 'Vous avez déjà un compte ?' }}</a>
+            <button class="connect-button" type="submit">{{ isLogin ? 'Se Connecter' : 'S\'Inscrire' }}</button>
+        </div>
+    </form>
+</section>
+

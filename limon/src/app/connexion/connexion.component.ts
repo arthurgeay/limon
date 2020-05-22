@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-connexion',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConnexionComponent implements OnInit {
 
-  constructor() { }
+  public isLogin = false;
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
+    const route = this.route.snapshot.routeConfig.path;
+    this.isLogin = route === 'login' ? true : false;
   }
 
 }
