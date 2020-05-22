@@ -29,7 +29,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=180, unique=true)
      * @Groups("movie")
      * @Assert\Email(message="Veuillez renseigner une adresse e-mail valide")
-     * @Assert\NotBlank(message="Ce champ est requis")
+     * @Assert\NotBlank(message="Le champ email est requis")
      */
     private $email;
 
@@ -40,6 +40,7 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Le champ nom complet est requis")
      * @Groups("movie")
      */
     private $fullname;

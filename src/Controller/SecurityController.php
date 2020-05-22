@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Faker\Provider\cs_CZ\DateTime;
 use Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -28,10 +29,14 @@ class SecurityController extends AbstractController
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
+        $birthday = $request->request->get('birthday');
+        $fullname = $request->request->get('fullname');
 
         $user = new User();
         $user->setEmail($email);
         $user->setPassword($encoder->encodePassword($user, $password));
+        $user->setBirthday(new \DateTime($birthday));
+        $user->setFullname($fullname);
 
         $errors = $validator->validate($user);
 
