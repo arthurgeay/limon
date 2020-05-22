@@ -67,6 +67,9 @@ $mobile: 665px;
             @media (min-width: $mobile){
                 margin: 2rem 4rem 2rem 0;
             }
+            h2 {
+                margin-bottom: 1rem;
+            }
         }
         .sup-deconnect {
             align-self: flex-end;
@@ -106,5 +109,19 @@ $mobile: 665px;
             justify-content: space-around;
             margin-top: 4rem;
         }
+    }
+}
+
+
+// Modificaiton
+.input-name, .profil input {
+    background-color: var(--rind-green);
+}
+.input-name {
+    max-width: 9rem;
+    font-size: 6vw;
+    @media (min-width: $mobile) {
+        font-size: 3rem;
+        max-width: 20rem;
     }
 }

@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProfilComponent implements OnInit {
 
   public isSettings = false;
+  public isEdit = false;
   constructor() { }
 
   ngOnInit(): void {
@@ -15,6 +16,10 @@ export class ProfilComponent implements OnInit {
 
   onOpenSettings() {
     this.isSettings = !this.isSettings;
+  }
+
+  onEdit() {
+    this.isEdit = !this.isEdit;
   }
 
 }

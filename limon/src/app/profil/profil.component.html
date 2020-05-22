@@ -2,37 +2,43 @@
     <section class="profil-main">
         <img src="../../assets/profil-membres/pointing-man.jpg" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
-            <h1>Arthur Geay</h1>
+            <h1 *ngIf="!isEdit">Arthur Geay</h1>
+            <input type="text" class="input-name" value="Arthur Geay" *ngIf="isEdit">
             <div><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
         </div>
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
-            <a>Modifier les informations</a>
+            <a (click)="onEdit();onOpenSettings()">Modifier les informations</a>
             <a>Supprimer le compte</a>
         </div>
     </section>
     <section class="profil-sup">
         <div>
             <h2>Adresse mail</h2>
-            <p>arthur.geay@gmail.com</p>
+            <p *ngIf="!isEdit">arthur.geay@gmail.com</p>
+            <input type="text" value="arthur.geay@gmail.com" *ngIf="isEdit">
         </div>
         <div>
             <h2>Date de naissance</h2>
-            <p>25 Mars 1999</p>
+            <p *ngIf="!isEdit">25 Mars 1999</p>
+            <input type="text" value="25 Mars 1999" *ngIf="isEdit">
         </div>
         <div class="sup-deconnect">
             <button class="deconnect" routerLink="/">Se déconnecter</button>
         </div>
     </section>
     <section class="profil-access">
-        <button routerLink="/">
+        <button routerLink="/" *ngIf="!isEdit">
             <img src="../../assets/icons/history-icon.png" alt=""> Consulter l'historique
         </button>
-        <button routerLink="/">
+        <button routerLink="/" *ngIf="!isEdit">
             <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
         </button>
-        <button routerLink="/">
+        <button routerLink="/" *ngIf="!isEdit">
             <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
+        </button>
+        <button *ngIf="isEdit" (click)="onEdit()">
+            Enregistrer les modifications
         </button>
     </section>
 </section>
