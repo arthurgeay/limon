@@ -8,8 +8,12 @@
         padding: .5rem 1rem;
         border-radius: 8px;
         position: absolute;
-        top: 4rem;
-        left: 6rem;
+        bottom: 3rem;
+        @media (min-width: 665px) {
+            top: 4rem;
+            bottom: initial;
+            left: 6rem;
+        }
     }
     form{
         height: 100%;
