@@ -1,0 +1,38 @@
+<section class="profil">
+    <section class="profil-main">
+        <img src="../../assets/profil-membres/pointing-man.jpg" alt="Photo de profil" class="profil-main-pic">
+        <div class="profil-main-infos">
+            <h1>Arthur Geay</h1>
+            <div><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
+        </div>
+        <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
+        <div *ngIf="isSettings" class="profil-main-popup">
+            <a>Modifier les informations</a>
+            <a>Supprimer le compte</a>
+        </div>
+    </section>
+    <section class="profil-sup">
+        <div>
+            <h2>Adresse mail</h2>
+            <p>arthur.geay@gmail.com</p>
+        </div>
+        <div>
+            <h2>Date de naissance</h2>
+            <p>25 Mars 1999</p>
+        </div>
+        <div>
+            <button class="deconnect">Se déconnecter</button>
+        </div>
+    </section>
+    <section class="profil-access">
+        <button>
+            <img src="../../assets/icons/history-icon.png" alt=""> Consulter l'historique
+        </button>
+        <button>
+            <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
+        </button>
+        <button>
+            <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
+        </button>
+    </section>
+</section>

@@ -1,0 +1,84 @@
+$mobile: 665px;
+
+.profil {
+    margin: 3rem;
+    height: calc(100vh - 12rem);
+    position: relative;
+    &-main, &-sup, &-access {
+        display: flex;
+    }
+    &-main{
+        &-pic{
+            width: 30vw;
+            height: 30vw;
+            max-width: 15rem;
+            max-height: 15rem;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+        &-infos{
+            margin: 0 1rem;
+            h1{
+                font-size: 6vw;
+            }
+            div {
+                margin: 1rem 0;
+                color: var(--acid-green);
+                display: flex;
+                align-items: center;
+            }
+        }
+        &-badge {
+            width: 1rem;
+            height: 1rem;
+            margin-right: .5rem;
+        }
+        &-settings{
+            width: 1rem;
+            height: 1rem;
+            position: absolute;
+            top: -1.5rem;
+            right: -1rem;
+        }
+        &-popup {
+            background-color: var(--rind-green);
+            position: absolute;
+            top: 0;
+            right: -.5rem;
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    &-sup {
+        div{
+            margin: 1rem 0;
+        }
+        .deconnect {
+            background-color: transparent;
+            color: var(--rind-green);
+        }
+        @media (max-width: $mobile){
+            flex-direction: column;
+        }
+    }
+    &-access {
+        button{
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            border-radius: 10px;
+            padding: .7rem 1rem;
+            margin: .5rem 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        img{
+            height: 1rem;
+            margin-right: .5rem;
+        }
+        @media (max-width: $mobile){
+            flex-direction: column;
+        }
+    }
+}

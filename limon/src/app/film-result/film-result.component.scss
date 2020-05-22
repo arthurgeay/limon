@@ -1,8 +1,11 @@
+$mobile: 665px;
+$tablet: 1080px;
+
 .phrase-res {
     font-size: 1rem;
     margin-left: 1rem;
     margin-top: 1rem;
-    @media (min-width:665px) {
+    @media (min-width:$mobile) {
         margin-left: 4rem;
         font-size: 1.7rem;
     }
@@ -11,7 +14,7 @@
 #sorting {
     display: flex;
     justify-content: center;
-    @media (min-width:665px) {
+    @media (min-width:$mobile) {
         justify-content: flex-end;
         margin-right: 2rem;
     }
@@ -28,14 +31,14 @@
     img {
         width: .7rem;
         margin-right: .5rem;
-        @media (min-width:665px) {
+        @media (min-width:$mobile) {
             width: .9rem;
         }
     }
     p{
         font-size: .85em;    
     }
-    @media (min-width:665px) {
+    @media (min-width:$mobile) {
         font-size: 1.2rem;
         width: 5rem;
         height: 2rem;
@@ -45,10 +48,10 @@
 #results {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    @media (min-width: 1080px) {
+    @media (min-width: $tablet) {
         grid-template-columns: repeat(auto-fit, 13rem);
     }
-    @media (min-width: 665px) {
+    @media (min-width: $mobile) {
         padding: 0 3rem;
     }
     gap: 2rem 1rem;

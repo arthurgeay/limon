@@ -1,3 +1,5 @@
+$mobile: 665px;
+
 .connect {
     height: calc(100vh - 11rem);
     position: relative;
@@ -9,7 +11,7 @@
         border-radius: 8px;
         position: absolute;
         bottom: 3rem;
-        @media (min-width: 665px) {
+        @media (min-width: $mobile) {
             top: 4rem;
             bottom: initial;
             left: 6rem;
@@ -45,7 +47,7 @@
         max-width: 20rem;
         height: 2.4rem;
         margin: 1rem 0 .5rem 0;
-        @media (min-width: 665px){
+        @media (min-width: $mobile){
             height: 2.7rem;
         }
     }

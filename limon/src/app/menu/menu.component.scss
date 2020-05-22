@@ -1,3 +1,7 @@
+$mobile: 665px;
+$tablet: 1080px;
+
+
 header{
     padding: 2rem 1.4rem;
     display: flex;
@@ -85,6 +89,7 @@ header{
         justify-content: center;
         align-items: center;
         border: 1.5px solid var(--white);
+        cursor: pointer;
     }
     &-list {
         border-color: transparent!important;
@@ -150,7 +155,7 @@ header{
 }
 
 
-@media (max-width: 1080px) {
+@media (max-width: $tablet) {
     header{
         flex-wrap: wrap;
     }
@@ -166,7 +171,7 @@ header{
     }
 }
 
-@media (max-width: 665px) {
+@media (max-width: $mobile) {
     header {
         background-color: var(--rind-green);
         padding: 1.5rem 1.4rem;

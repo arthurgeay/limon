@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { FilmResultComponent } from './film-result/film-result.component';
 import { DetailComponent } from './detail/detail.component';
 import { ConnexionComponent } from './connexion/connexion.component';
+import { ProfilComponent } from './profil/profil.component';
 
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
   {path: 'search', component: FilmResultComponent },
   {path: 'login', component: ConnexionComponent },
   {path: 'signin', component: ConnexionComponent },
+  {path: 'profil', component: ProfilComponent },
   {path: 'detail/:id', component: DetailComponent },
   {path: '**', component: FilmResultComponent }
 ];
