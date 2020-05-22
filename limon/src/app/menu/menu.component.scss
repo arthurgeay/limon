@@ -31,6 +31,11 @@ header{
         width: 80%;
         display: flex;
         align-items: center;
+        &-container{
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
         input {
             background-color: var(--dark-elements);
             color: var(--white);
@@ -38,8 +43,14 @@ header{
             min-width: 16rem;
             height: 34px;
             padding: .5rem .8rem;
-            font-size: 1rem;
+            font-size: .9rem;
         }
+    }
+    &-cancel{
+        position: absolute;
+        right: 1rem;
+        width: .8rem;
+        height: .8rem;
     }
     #search {
         background-color: var(--dark-elements);

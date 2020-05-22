@@ -86,10 +86,10 @@ export class MovieService {
       id: 8,
       poster:'../../assets/films/godzilla-poster.jpg',
       title: 'Godzilla',
-      prod:'Warner Bros',
+      prod:'',
       category: '',
-      date: '',
-      price: '',
+      date: '2014',
+      price: 'Gratuit',
       description: '',
       hero: '../../assets/films/godzilla-hero.jpeg'
     }

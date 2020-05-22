@@ -7,14 +7,14 @@
         <h1 class="detail-title">{{ title }}</h1>
         <div class="detail-line detail-subinfos">
             <b class="detail-prod">{{ prod }} <span *ngIf="date !== ''">-</span> {{ date }}</b>
-            <button class="detail-category">{{ category }}</button>
+            <button class="detail-category" *ngIf="category !== ''">{{ category }}</button>
         </div>
-        <p class="detail-desc">{{ description }}</p>
+        <p class="detail-desc">{{ description || 'Aucun synopsis disponible' }}</p>
         <div class="detail-line detail-pric" *ngIf="price !== ''">
                 <p>Prix</p><h2 class="detail-pricing">{{ price }}</h2>
         </div>
         <div class="detail-line">
-            <button class="detail-buy" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon"> Acheter</button>
+            <button class="detail-buy" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ price==='0.00 €'||price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
             <button class="detail-play"> <img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
         </div>
     </div>

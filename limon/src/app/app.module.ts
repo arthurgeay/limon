@@ -8,6 +8,7 @@ import { FilmResultComponent } from './film-result/film-result.component';
 import { CategoryComponent } from './category/category.component';
 import { FilmCardComponent } from './film-card/film-card.component';
 import { DetailComponent } from './detail/detail.component';
+import { ConnexionComponent } from './connexion/connexion.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { DetailComponent } from './detail/detail.component';
     FilmResultComponent,
     CategoryComponent,
     FilmCardComponent,
-    DetailComponent
+    DetailComponent,
+    ConnexionComponent
   ],
   imports: [
     BrowserModule,
