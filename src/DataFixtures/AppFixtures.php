@@ -80,6 +80,8 @@ class AppFixtures extends Fixture
             $user = new User();
             $user->setEmail($faker->email);
             $user->setPassword($this->encoder->encodePassword($user, $faker->password));
+            $user->setFullname($faker->name);
+            $user->setBirthday($faker->dateTime);
 
             if($faker->boolean(85)) {
                 $review = new Review();
