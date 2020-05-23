@@ -23,13 +23,14 @@
     </section>
     <section class="nav">
         <div *ngIf="!isMobile">
-            <div class="nav-list" routerLink="/search">
-                <a>catalogue</a>
+            <div class="nav-list" tabindex="0">
+                <a routerLink="/search" tabindex="-1">catalogue</a>
             </div>
         </div>
         <div>
             <div class="nav-profil" routerLink="/profil">
-                <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="profil-pic">
+                <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="nav-profil-pic">
+                <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge">
             </div>
         </div>
         <div *ngIf="!isMobile">
