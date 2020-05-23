@@ -39,7 +39,7 @@ a {
     cursor: pointer;
 }
 
-input {
+input, textarea, select {
     background-color: var(--dark-elements);
     color: var(--white);
     padding: .5rem .8rem;
@@ -51,7 +51,7 @@ input {
     transition: border-bottom .2s;
 }
 
-input:focus {
+input:focus, textarea:focus, select:focus {
     border-bottom: 1px solid var(--acid-green);
 }
 

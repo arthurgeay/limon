@@ -1,0 +1,31 @@
+<section class="edit">
+    <form>
+        <h1>{{ isEdit ? 'Editer un film' : 'Ajouter un film'}}</h1>
+        <div class="edit-cont"><label for="title">Nom du film</label>
+        <input type="text" id="title"></div>
+
+        <div class="edit-cont"><label for="year">Année de production</label>
+        <input type="text" id="year"></div>
+
+        <div class="edit-cont"><label for="price">Prix</label>
+        <input type="text" id="price"></div>
+
+        <div class="edit-cont"><label for="prod">Société de production</label>
+        <input type="text" id="prod"></div>
+
+        <div class="edit-cont"><label for="img">Image du film</label>
+        <input type="text" id="img"></div>
+
+        <div class="edit-cont"><label for="category">Catégories</label>
+        <select id="category"></select></div>
+
+        <div class="edit-cont"><label for="desc">Description du film</label>
+        <textarea name="" id="desc" class="edit-description" maxlength="500"></textarea></div>
+
+        <div class="edit-buttons">
+            <button class="edit-cancel" routerLink="/">Annuler</button>
+            <button class="edit-submit" type="submit">{{ isEdit ? 'Enregister les modifications' : 'Publier le film'}}</button>
+        </div>
+    </form>
+    <button class="edit-delete">Supprimer le film</button>
+</section>

@@ -15,6 +15,7 @@ import { PlaylistComponent } from './playlist/playlist.component';
 import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberComponent } from './member/member.component';
+import { EditFilmComponent } from './edit-film/edit-film.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { MemberComponent } from './member/member.component';
     PlaylistComponent,
     PlaylistItemComponent,
     MemberListComponent,
-    MemberComponent
+    MemberComponent,
+    EditFilmComponent
   ],
   imports: [
     BrowserModule,
