@@ -42,7 +42,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
      * @return mixed
      * @throws NonUniqueResultException
      */
-    public function findByEmail($email) {
+    public function findEmailAndSubscription($email) {
        return $this->createQueryBuilder('u')
            ->andWhere('u.email = :email')
            ->setParameter('email', $email)

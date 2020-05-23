@@ -26,7 +26,7 @@ class UserController extends AbstractController
      */
     public function show(UserRepository $userRepository)
     {
-        $user = $userRepository->findByEmail($this->getUser()->getUsername());
+        $user = $userRepository->findEmailAndSubscription($this->getUser()->getUsername());
 
         return $this->json($user, 200, [], ['groups' => ['profile']]);
     }

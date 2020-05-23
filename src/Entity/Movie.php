@@ -87,10 +87,16 @@ class Movie
      */
     private $ratings;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Purchase::class, mappedBy="movie")
+     */
+    private $purchases;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->purchases = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -262,6 +268,37 @@ class Movie
             // set the owning side to null (unless already changed)
             if ($rating->getMovie() === $this) {
                 $rating->setMovie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Purchase[]
+     */
+    public function getPurchases(): Collection
+    {
+        return $this->purchases;
+    }
+
+    public function addPurchase(Purchase $purchase): self
+    {
+        if (!$this->purchases->contains($purchase)) {
+            $this->purchases[] = $purchase;
+            $purchase->setMovie($this);
+        }
+
+        return $this;
+    }
+
+    public function removePurchase(Purchase $purchase): self
+    {
+        if ($this->purchases->contains($purchase)) {
+            $this->purchases->removeElement($purchase);
+            // set the owning side to null (unless already changed)
+            if ($purchase->getMovie() === $this) {
+                $purchase->setMovie(null);
             }
         }
 
