@@ -1,0 +1,40 @@
+.member {
+    width: 13rem;
+    height: 13rem;
+    position: relative;
+    background-color: white;
+    border-radius: .5rem;
+    &-bg{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: .5rem;
+        filter: opacity(60%);
+    }
+    &-name{
+        color: var(--background);
+        font-size: 1.4rem;
+        font-weight: bold;
+        position: absolute;
+        bottom: .5rem;
+        left: .5rem;
+    }
+    &-delete {
+        position: absolute;
+        top: .7rem;
+        right: .7rem;
+        background-color: red;
+        width: 2rem;
+        height: 2rem;
+        border-radius: 5px;
+        img{
+            width: 45%;
+            height: 50%;
+            margin-top: .2rem;
+        }
+        &:hover,
+        &:focus{
+            transform: scale(.95);
+        }
+    }
+}

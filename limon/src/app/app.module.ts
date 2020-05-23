@@ -13,6 +13,8 @@ import { ProfilComponent } from './profil/profil.component';
 import { AdminComponent } from './admin/admin.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
+import { MemberListComponent } from './member-list/member-list.component';
+import { MemberComponent } from './member/member.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
     ProfilComponent,
     AdminComponent,
     PlaylistComponent,
-    PlaylistItemComponent
+    PlaylistItemComponent,
+    MemberListComponent,
+    MemberComponent
   ],
   imports: [
     BrowserModule,
