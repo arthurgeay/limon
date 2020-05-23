@@ -11,6 +11,8 @@ import { DetailComponent } from './detail/detail.component';
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ProfilComponent } from './profil/profil.component';
 import { AdminComponent } from './admin/admin.component';
+import { PlaylistComponent } from './playlist/playlist.component';
+import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,9 @@ import { AdminComponent } from './admin/admin.component';
     DetailComponent,
     ConnexionComponent,
     ProfilComponent,
-    AdminComponent
+    AdminComponent,
+    PlaylistComponent,
+    PlaylistItemComponent
   ],
   imports: [
     BrowserModule,
