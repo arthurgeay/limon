@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\MovieWatchRepository;
+use App\Repository\PurchaseRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
@@ -26,7 +27,7 @@ class UserController extends AbstractController
      */
     public function show(UserRepository $userRepository)
     {
-        $user = $userRepository->findEmailAndSubscription($this->getUser()->getUsername());
+        $user = $userRepository->findEmailAndSubscription($this->getUser( )->getUsername());
 
         return $this->json($user, 200, [], ['groups' => ['profile']]);
     }
@@ -45,9 +46,30 @@ class UserController extends AbstractController
 
         return $this->json([
             'current_page' => $pagination->getCurrentPageNumber(),
-            'movies' => $pagination,
+            'movies-watched' => $pagination,
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
         ], 200, [], ['groups' => ['history.watched']]);
+    }
+
+    /**
+     * @Route("/movies-purchased", name="movies_purchased", methods={"GET"})
+     */
+    public function historyMoviePurchased(Request $request, PurchaseRepository $purchaseRepository, PaginatorInterface $paginator)
+    {
+        $page = $request->query->getInt('page', 1);
+        $moviesPurchased = $purchaseRepository->all($this->getUser());
+        $pagination = $paginator->paginate($moviesPurchased, $page, 10);
+
+        if(count($pagination) == 0) {
+            return $this->json(['status' => 'Aucun film trouvé'], 404);
+        }
+
+        return $this->json([
+            'current_page' => $pagination->getCurrentPageNumber(),
+            'movies-purchased' => $pagination,
+            'items_per_page' => $pagination->getItemNumberPerPage(),
+            'total_item_count' => $pagination->getTotalItemCount()
+        ], 200, [], ['groups' => ['history.purchased']]);
     }
 }

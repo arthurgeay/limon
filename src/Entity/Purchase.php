@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PurchaseRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=PurchaseRepository::class)
@@ -14,11 +15,13 @@ class Purchase
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("history.purchased")
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("history.purchased")
      */
     private $date;
 
@@ -31,6 +34,7 @@ class Purchase
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="purchases")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("history.purchased")
      */
     private $movie;
 

@@ -83,7 +83,7 @@ class AppFixtures extends Fixture
             $user = new User();
             if($i == 0) {
                 $user->setEmail('arthur.geay@ynov.com');
-                $user->setPassword('limon');
+                $user->setPassword($this->encoder->encodePassword($user, 'limon'));
                 $user->setFullname('Arthur Geay');
                 $user->setBirthday(new \DateTime('1997-09-01'));
             } else {

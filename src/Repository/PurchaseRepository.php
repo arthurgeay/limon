@@ -19,6 +19,18 @@ class PurchaseRepository extends ServiceEntityRepository
         parent::__construct($registry, Purchase::class);
     }
 
+    public function all($user)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->innerJoin('p.movie', 'm')
+            ->addSelect('m')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Purchase[] Returns an array of Purchase objects
     //  */

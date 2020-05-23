@@ -17,62 +17,63 @@ class Movie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $poster_img;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $hero_img;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $release_date;
 
     /**
      * @ORM\Column(type="text")
+     * @Groups("history.purchased")
      */
     private $download_url;
 
     /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $productor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched"})
+     * @Groups({"movie", "history.watched", "history.purchased"})
      */
     private $category;
 
