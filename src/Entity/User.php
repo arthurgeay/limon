@@ -71,6 +71,11 @@ class User implements UserInterface
      */
     private $movieWatches;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Subscription::class, mappedBy="user", cascade={"persist", "remove"})
+     */
+    private $subscription;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
@@ -268,6 +273,23 @@ class User implements UserInterface
             if ($movieWatch->getUser() === $this) {
                 $movieWatch->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    public function getSubscription(): ?Subscription
+    {
+        return $this->subscription;
+    }
+
+    public function setSubscription(Subscription $subscription): self
+    {
+        $this->subscription = $subscription;
+
+        // set the owning side of the relation if necessary
+        if ($subscription->getUser() !== $this) {
+            $subscription->setUser($this);
         }
 
         return $this;
