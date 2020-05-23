@@ -17,43 +17,43 @@ class Movie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $poster_img;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $hero_img;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $release_date;
 
@@ -65,14 +65,14 @@ class Movie
     /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $productor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups("movie")
+     * @Groups({"movie", "history.watched"})
      */
     private $category;
 

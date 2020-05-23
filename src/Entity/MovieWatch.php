@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\MovieWatchRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=MovieWatchRepository::class)
@@ -14,11 +15,13 @@ class MovieWatch
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("history.watched")
      */
     private $id;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("history.watched")
      */
     private $date;
 
@@ -31,6 +34,7 @@ class MovieWatch
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("history.watched")
      */
     private $movie;
 

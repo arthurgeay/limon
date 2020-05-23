@@ -19,6 +19,22 @@ class MovieWatchRepository extends ServiceEntityRepository
         parent::__construct($registry, MovieWatch::class);
     }
 
+    public function findByHistory($user)
+    {
+        return $this->createQueryBuilder('mv')
+            ->andWhere('mv.user = :user')
+            ->setParameter('user', $user)
+            ->innerJoin('mv.movie', 'm')
+            ->addSelect('m')
+            ->innerJoin('m.productor', 'p')
+            ->addSelect('p')
+            ->innerJoin('m.category', 'c')
+            ->addSelect('c')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return MovieWatch[] Returns an array of MovieWatch objects
     //  */

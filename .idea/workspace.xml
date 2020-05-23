@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/Subscription.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Subscription.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Category.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Category.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Movie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/MovieWatch.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/MovieWatch.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Productor.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Productor.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Repository/MovieWatchRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MovieWatchRepository.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -153,7 +154,7 @@
       <workItem from="1590066588115" duration="16298000" />
       <workItem from="1590144004722" duration="6746000" />
       <workItem from="1590242267944" duration="39000" />
-      <workItem from="1590242333004" duration="5571000" />
+      <workItem from="1590242333004" duration="8359000" />
     </task>
     <servers />
   </component>
