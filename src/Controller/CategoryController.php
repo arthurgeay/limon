@@ -12,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class CategoryController extends AbstractController
 {
     /**
-     * @Route("/all", name="all")
+     * @Route("/all", name="all", methods={"GET"})
      */
     public function show(CategoryRepository $categoryRepository)
     {

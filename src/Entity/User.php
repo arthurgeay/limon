@@ -21,13 +21,13 @@ class User implements UserInterface
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups("movie")
+     * @Groups({"movie", "profile"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Groups("movie")
+     * @Groups({"movie", "profile"})
      * @Assert\Email(message="Veuillez renseigner une adresse e-mail valide")
      * @Assert\NotBlank(message="Le champ email est requis")
      */
@@ -41,12 +41,13 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le champ nom complet est requis")
-     * @Groups("movie")
+     * @Groups({"movie", "profile"})
      */
     private $fullname;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("profile")
      */
     private $birthday;
 
@@ -73,6 +74,7 @@ class User implements UserInterface
 
     /**
      * @ORM\OneToOne(targetEntity=Subscription::class, mappedBy="user", cascade={"persist", "remove"})
+     * @Groups("profile")
      */
     private $subscription;
 

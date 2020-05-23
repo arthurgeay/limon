@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SubscriptionRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=SubscriptionRepository::class)
@@ -14,26 +15,31 @@ class Subscription
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("profile")
      */
     private $id;
 
     /**
      * @ORM\Column(type="float")
+     * @Groups("profile")
      */
     private $price;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("profile")
      */
     private $end_date;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("profile")
      */
     private $activate;
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("profile")
      */
     private $date_subscription;
 
