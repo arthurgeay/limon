@@ -9,6 +9,7 @@ import { MobileService } from '../mobile.service';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  public isAuth = true;
   public isMobile = false;
   public isMark = false;
   public title: string;

@@ -18,6 +18,7 @@
     </button>
 </section>
 
-<section id="results">
+<section id="results" *ngIf="!isEmpty">
     <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
 </section>
+<p class="empty" *ngIf="isEmpty">Auncun résultat</p>

@@ -111,7 +111,7 @@ $mobile: 665px;
             margin-left: .5rem;
         }
     }
-    &-buy, &-play {
+    &-buy, &-play, &-subscribe {
         border-radius: 5px;
         padding: .3rem .5rem;
         font-size: 1em;
@@ -121,7 +121,7 @@ $mobile: 665px;
         color: var(--rind-green);
         margin-right: 1rem;
     }
-    &-play {
+    &-play,&-subscribe {
         background-color: var(--rind-green);
     }
     &-icon {

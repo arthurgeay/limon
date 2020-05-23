@@ -16,16 +16,39 @@ $mobile: 665px;
         height: 10rem;
         max-width: 8rem;
         margin-right: .5rem;
+        position: relative;
+                    
         @media (max-width: $mobile) {
             grid-row: span 2;
             grid-column: 1;
             height: 100%;
+        }
+        &::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            background: url('../../assets/icons/play-icon.png') no-repeat center center;
+            background-size: 30px;
+            left: -.5rem;
+            width: 100%;
+            transition: transform .2s;
+        }
+        &:hover::after,
+        &:focus::after {
+            transform: scale(.85);
+        }
+        &:hover img,
+        &:focus img {
+            border: 2px solid var(--acid-green);
         }
         img {
             border-radius: 5px;
             height: 100%;
             max-width: 100%;
             object-fit: cover;
+            filter: opacity(80%);
+            transition: border .2s;
         }
     }
     &-command {

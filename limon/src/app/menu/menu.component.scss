@@ -92,6 +92,15 @@ header{
         border: 1.5px solid var(--white);
         cursor: pointer;
     }
+    &-subscribe{
+        border-radius: 5px;
+        padding: .3rem .5rem;
+        font-size: 1em;
+        background-image: linear-gradient(var(--rind-green), var(--rind-green)), linear-gradient(var(--acid-green), var(--acid-green));
+        background-origin: border-box;
+        background-clip: padding-box ,border-box;
+        border: 5px solid transparent;
+    }
     &-list {
         border-color: transparent!important;
         margin-right: 1.5rem;
@@ -240,6 +249,21 @@ header{
             &:hover,
             &:focus {
                 background-color: var(--rind-green);
+            }
+            &.subscribe{
+                color: var(--white);
+                position: relative;
+                &::after{
+                    content: '';
+                    background-color: var(--rind-green);
+                    position: absolute;
+                    bottom: .7rem;
+                    left: 1.5rem;
+                    width: 6rem;
+                    height: 2rem;
+                    z-index: -1;
+                    border-radius: 5px;
+                }
             }
         }
     }

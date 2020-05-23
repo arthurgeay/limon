@@ -8,6 +8,7 @@ import { MovieService } from '../movie.service';
 })
 export class FilmResultComponent implements OnInit {
 
+  public isEmpty: boolean = false;
   public isAlph = false;
   public isPrice = false;
   public isDate = false;

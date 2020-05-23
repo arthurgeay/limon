@@ -12,6 +12,7 @@ export class PlaylistComponent implements OnInit {
   isWatch: boolean;
   isPurchase: boolean;
   catalog: any[];
+  isEmpty: boolean = false;
 
   constructor(private route:ActivatedRoute,
     private movieService:MovieService) { }

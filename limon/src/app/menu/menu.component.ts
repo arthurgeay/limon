@@ -7,21 +7,20 @@ import { MobileService } from '../mobile.service';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-
+  isAuth:boolean = true;
   public isMobile = false;
   public isMenu = false;
   constructor(private mobileService:MobileService) { }
 
   ngOnInit(): void {
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service
-    // window.onresize = () => this.isMobile = window.innerWidth <= 665; //detection du resize et passage à true selon la condition
   }
 
   onAppear() {
     this.isMenu = !this.isMenu;
   }
   onMenuOpen(){
-    return(this.isMenu ? 'translateY(0rem)' : 'translateY(-12rem)')
+    return(this.isMenu ? 'translateY(0rem)' : 'translateY(-15rem)')
   }
 
   @HostListener('window:resize', ['$event'])
