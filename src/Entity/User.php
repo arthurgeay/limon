@@ -66,10 +66,16 @@ class User implements UserInterface
      */
     private $password;
 
+    /**
+     * @ORM\OneToMany(targetEntity=MovieWatch::class, mappedBy="user")
+     */
+    private $movieWatches;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->ratings = new ArrayCollection();
+        $this->movieWatches = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -230,6 +236,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($rating->getUser() === $this) {
                 $rating->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MovieWatch[]
+     */
+    public function getMovieWatches(): Collection
+    {
+        return $this->movieWatches;
+    }
+
+    public function addMovieWatch(MovieWatch $movieWatch): self
+    {
+        if (!$this->movieWatches->contains($movieWatch)) {
+            $this->movieWatches[] = $movieWatch;
+            $movieWatch->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMovieWatch(MovieWatch $movieWatch): self
+    {
+        if ($this->movieWatches->contains($movieWatch)) {
+            $this->movieWatches->removeElement($movieWatch);
+            // set the owning side to null (unless already changed)
+            if ($movieWatch->getUser() === $this) {
+                $movieWatch->setUser(null);
             }
         }
 
