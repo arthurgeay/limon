@@ -108,7 +108,8 @@ header{
             transition: width .3s, background-color 0s;
             
         }
-        &:hover::before {
+        &:hover::before,
+        &:focus::before {
             width: 2rem;
             background-color: var(--acid-green);
         }
@@ -117,7 +118,7 @@ header{
         border: none!important;
         box-shadow: 0 0 0 2px var(--rind-green);
         transition: box-shadow .4s;
-        &:hover {
+        &:hover,&:focus {
             box-shadow: 0 0 0 4px var(--rind-green);
         }
         img {
@@ -146,7 +147,8 @@ header{
         right: .1rem;
     }
 
-    &-watchlist:hover, &-history:hover {
+    &-watchlist:hover, &-history:hover,
+    &-watchlist:focus, &-history:focus {
         background-color: var(--white);
         path {
             fill: var(--background);
@@ -200,7 +202,8 @@ header{
         margin: 0 .5rem;
     }
     .nav-search {
-        &:hover {
+        &:hover,
+        &:focus {
             background-color: var(--white);
             svg{
                 fill: var(--rind-green);
@@ -226,7 +229,8 @@ header{
             color: var(--background);
             font-size: 1.2rem;
             padding: 1rem 2rem;
-            &:hover {
+            &:hover,
+            &:focus {
                 background-color: var(--rind-green);
             }
         }

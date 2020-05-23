@@ -29,6 +29,7 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    outline: none;
 }
 
 a {
@@ -66,8 +67,10 @@ button {
     cursor: pointer;
 }
 
-button:active {
+button:active,
+button:focus {
     transform: scale(0.96);
+    box-shadow: red;
 }
 
 img {

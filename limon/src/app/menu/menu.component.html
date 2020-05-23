@@ -4,11 +4,8 @@
         <span class="slice"></span>
         <span class="slice"></span>
     </div>
-    <!-- <div *ngIf="isMobile" routerLink="/" class="proper-touch">
-        <h1 class="logo-text">Limon</h1>
-    </div> -->
     
-    <section class="logo proper-touch" *ngIf="!isMobile" routerLink="/">
+    <section class="logo proper-touch" *ngIf="!isMobile" routerLink="/" tabindex="-1">
         <div class="logo-container">
             <img src="../../assets/logo.png" alt="logo">
         </div>
@@ -26,8 +23,8 @@
     </section>
     <section class="nav">
         <div *ngIf="!isMobile">
-            <div class="nav-list">
-                <a routerLink="/search">catalogue</a>
+            <div class="nav-list" routerLink="/search">
+                <a>catalogue</a>
             </div>
         </div>
         <div>
