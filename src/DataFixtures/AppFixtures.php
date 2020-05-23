@@ -6,6 +6,7 @@ use App\Entity\Category;
 use App\Entity\Movie;
 use App\Entity\MovieWatch;
 use App\Entity\Productor;
+use App\Entity\Purchase;
 use App\Entity\Rating;
 use App\Entity\Review;
 use App\Entity\Subscription;
@@ -80,10 +81,17 @@ class AppFixtures extends Fixture
         // Users
         for($i = 0; $i < 15; $i++) {
             $user = new User();
-            $user->setEmail($faker->email);
-            $user->setPassword($this->encoder->encodePassword($user, $faker->password));
-            $user->setFullname($faker->name);
-            $user->setBirthday($faker->dateTime);
+            if($i == 0) {
+                $user->setEmail('arthur.geay@ynov.com');
+                $user->setPassword('limon');
+                $user->setFullname('Arthur Geay');
+                $user->setBirthday(new \DateTime('1997-09-01'));
+            } else {
+                $user->setEmail($faker->email);
+                $user->setPassword($this->encoder->encodePassword($user, $faker->password));
+                $user->setFullname($faker->name);
+                $user->setBirthday($faker->dateTime);
+            }
 
             if($faker->boolean(95)) {
                 for($j = 0; $j < 3; $j++) {
@@ -92,6 +100,15 @@ class AppFixtures extends Fixture
                     $movieWatch->setMovie($movies[array_rand($movies, 1)]);
                     $movieWatch->setUser($user);
                     $manager->persist($movieWatch);
+
+                    $rating = new Rating();
+                    $rating->setScore($faker->numberBetween(1, 5));
+                    $rating->setUser($user);
+                    $rating->setMovie($movies[array_rand($movies, 1)]);
+                    $rating->setCreatedAt(new \DateTime());
+                    $rating->setUpdatedAt(new \DateTime());
+
+                    $manager->persist($rating);
                 }
             }
 
@@ -106,6 +123,14 @@ class AppFixtures extends Fixture
                 $subscription->setUser($user);
 
                 $manager->persist($subscription);
+
+                $purchasedMovie = new Purchase();
+                $purchasedMovie->setMovie($movies[array_rand($movies, 1)]);
+                $purchasedMovie->setDate(new \DateTime());
+                $purchasedMovie->setUser($user);
+
+                $manager->persist($purchasedMovie);
+
             }
 
             if($faker->boolean(85)) {
@@ -116,17 +141,6 @@ class AppFixtures extends Fixture
                 $review->setCreatedAt(new \DateTime());
                 $review->setUpdatedAt(new \DateTime());
                 $manager->persist($review);
-            }
-
-            if($faker->boolean(95)) {
-                $rating = new Rating();
-                $rating->setScore($faker->numberBetween(1, 5));
-                $rating->setUser($user);
-                $rating->setMovie($movies[array_rand($movies, 1)]);
-                $rating->setCreatedAt(new \DateTime());
-                $rating->setUpdatedAt(new \DateTime());
-
-                $manager->persist($rating);
             }
 
             $manager->persist($user);
