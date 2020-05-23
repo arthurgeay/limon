@@ -8,6 +8,7 @@ use App\Entity\MovieWatch;
 use App\Entity\Productor;
 use App\Entity\Rating;
 use App\Entity\Review;
+use App\Entity\Subscription;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -92,7 +93,19 @@ class AppFixtures extends Fixture
                     $movieWatch->setUser($user);
                     $manager->persist($movieWatch);
                 }
+            }
 
+            if($faker->boolean(50)) {
+                $subscription = new Subscription();
+                $subscription->setActivate(true);
+                $subscription->setDateSubscription(new \DateTime());
+                $date = new \DateTime();
+                $date->modify('+1 month');
+                $subscription->setEndDate($date);
+                $subscription->setPrice(5.0);
+                $subscription->setUser($user);
+
+                $manager->persist($subscription);
             }
 
             if($faker->boolean(85)) {
