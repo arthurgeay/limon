@@ -1,6 +1,6 @@
 <section class="playlist">
     <h1>{{ isHistory ? 'Historique' : isWatch ? 'Watchlist' : 'Achats' }}</h1>
     <section class="list">
-        <app-playlist-item *ngFor="let item of catalog" [item]="item"></app-playlist-item>
+        <app-playlist-item *ngFor="let item of catalog" [item]="item" [isHistory]="isHistory" [isPurchase]="isPurchase" [isWatch]="isWatch"></app-playlist-item>
     </section>
 </section>

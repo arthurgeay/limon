@@ -1,1 +1,17 @@
-<p>playlist-item works!</p>
+<section class="item">
+    <div class="item-img">
+        <img src="{{ item.poster }}" alt="poster">
+    </div>
+    <div class="infos">
+        <h2 class="infos-title">{{ item.title }}</h2>
+        <b class="infos-prod">{{ item.prod}} <span *ngIf="item.date !== ''">-</span> {{ item.date }}</b>
+        <button class="infos-category">{{ item.category }}</button>
+    </div>
+    <div class="item-command">
+        <p class="item-command-date" *ngIf="isHistory">20:32 - 23 Mars</p>
+        <button class="item-command-bill" *ngIf="isPurchase"><img src="../../assets/icons/facture-icon.png" alt="">Facture</button>
+        <button class="item-command-delete" *ngIf="isWatch"><img src="../../assets/icons/bin-icon.png" alt="">Supprimer</button>
+        <button *ngIf="isHistory || isWatch"><img src="../../assets/icons/achat-icon.png" alt="">Acheter</button>
+        <button *ngIf="isHistory || isPurchase || isWatch"><img src="../../assets/icons/download-icon.png" alt="">Télécharger</button>
+    </div>
+</section>

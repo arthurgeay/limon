@@ -1,0 +1,90 @@
+$mobile: 665px;
+
+.item {
+    display: grid;
+    grid-template: 50% 50% / 50% 50%;
+    max-height: 14rem;
+    background-color: var(--dark-elements);
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 15px;
+    @media (min-width: $mobile) {
+        grid-template: none / 9rem 1fr 10rem;
+        margin: 2rem 0;
+    }
+    &-img {
+        height: 10rem;
+        max-width: 8rem;
+        margin-right: .5rem;
+        @media (max-width: $mobile) {
+            grid-row: span 2;
+            grid-column: 1;
+            height: 100%;
+        }
+        img {
+            border-radius: 5px;
+            height: 100%;
+            max-width: 100%;
+            object-fit: cover;
+        }
+    }
+    &-command {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-right: .5rem;
+        &-date {
+            font-size: .6rem;
+            align-self: flex-end;
+        }
+        button {
+            background-color: var(--rind-green);
+            padding: .5rem;
+            border-radius: 4px;
+            margin-top: .5rem;
+            img{
+                height: 1rem;
+                margin-right: .5rem;
+                @media (max-width: $mobile) {
+                    height: .7rem;
+                }
+            }
+            @media (max-width: $mobile) {
+                font-size: .6rem;
+            }
+        }
+        &-bill {
+            background-color: var(--acid-green)!important;
+            color: var(--dark-elements);
+        }
+        &-delete {
+            background-color: red!important;
+        }
+    }
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    @media (min-width: $mobile) {
+        font-size: 1.5rem;
+    }
+    &-title {
+        font-size: 1em;
+    }
+    &-prod {
+        font-size: .65em;
+        opacity: .4;
+        margin-bottom: .5rem;
+    }
+    &-category {
+        background-color: var(--rind-green);
+        font-size: .6em;
+        border-radius: 3px;
+        padding: 0 .3rem;
+        @media (min-width: $mobile) {
+            padding: .3rem .5rem;
+        }
+    }
+}

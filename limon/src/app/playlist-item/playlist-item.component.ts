@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { PlaylistComponent } from '../playlist/playlist.component';
 
 @Component({
   selector: 'app-playlist-item',
@@ -8,10 +9,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class PlaylistItemComponent implements OnInit {
 
   @Input() item: any;
+  @Input() isHistory: boolean;
+  @Input() isWatch: boolean;
+  @Input() isPurchase: boolean;
 
-  constructor() { }
+  constructor(private playlistComponent:PlaylistComponent) { }
 
   ngOnInit(): void {
+
   }
 
 }
