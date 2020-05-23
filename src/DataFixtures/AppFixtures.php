@@ -4,6 +4,7 @@ namespace App\DataFixtures;
 
 use App\Entity\Category;
 use App\Entity\Movie;
+use App\Entity\MovieWatch;
 use App\Entity\Productor;
 use App\Entity\Rating;
 use App\Entity\Review;
@@ -82,6 +83,17 @@ class AppFixtures extends Fixture
             $user->setPassword($this->encoder->encodePassword($user, $faker->password));
             $user->setFullname($faker->name);
             $user->setBirthday($faker->dateTime);
+
+            if($faker->boolean(95)) {
+                for($j = 0; $j < 3; $j++) {
+                    $movieWatch = new MovieWatch();
+                    $movieWatch->setDate(new \DateTime());
+                    $movieWatch->setMovie($movies[array_rand($movies, 1)]);
+                    $movieWatch->setUser($user);
+                    $manager->persist($movieWatch);
+                }
+
+            }
 
             if($faker->boolean(85)) {
                 $review = new Review();
