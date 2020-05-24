@@ -15,6 +15,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/user", name="user_")
@@ -37,12 +38,23 @@ class UserController extends AbstractController
      * @Route("/", name="edit", methods={"PUT"})
      * @throws \Exception
      */
-    public function editProfile(Request $request, EntityManagerInterface $entityManager)
+    public function editProfile(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator)
     {
         $user = $this->getUser();
         $user->setEmail($request->request->get('email'));
         $user->setFullname($request->request->get('fullname'));
         $user->setBirthday(new \DateTime(strval($request->request->get('birthday'))));
+
+        $errors = $validator->validate($user);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
 
         $entityManager->flush();
 
