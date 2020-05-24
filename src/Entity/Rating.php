@@ -6,7 +6,6 @@ use App\Repository\RatingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
-
 /**
  * @ORM\Entity(repositoryClass=RatingRepository::class)
  */

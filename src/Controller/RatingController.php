@@ -9,6 +9,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/rating", name="rating_")
@@ -19,7 +20,7 @@ class RatingController extends AbstractController
     /**
      * @Route("/{id}", methods={"POST"})
      */
-    public function rateAMovie(Movie $movie, Request $request, EntityManagerInterface $em)
+    public function rateAMovie(Movie $movie, Request $request, EntityManagerInterface $em, ValidatorInterface $validator)
     {
         $score = $request->request->getInt('score');
 
@@ -31,6 +32,7 @@ class RatingController extends AbstractController
         $rating->setMovie($movie);
         $rating->setScore($score);
         $rating->setUser($this->getUser());
+
 
         $em->persist($rating);
         $em->flush();
