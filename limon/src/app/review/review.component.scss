@@ -1,0 +1,64 @@
+$mobile: 665px;
+
+.review {
+    background-color: var(--dark-elements);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 15px;
+    &-upper{
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+    }
+    &-user {
+        display: flex;
+        img{
+            width: 4rem;
+            height: 4rem;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: .5rem;
+        }
+        &-infos{
+            display: flex;
+            flex-direction: column;
+            &-date{
+                font-size: .8rem;
+                opacity: .7;
+            }
+        }
+    }
+    &-button {
+        button{
+            border-radius: 5px;
+            padding: .4rem;
+            width: 1.7rem; 
+            margin: 0 0 .5rem 1rem;
+            @media (min-width: $mobile) {
+                width: 2rem;   
+            }
+            img{
+                height: .85rem;
+                @media (min-width: $mobile) {
+                    height: 1rem; 
+                }
+            }
+        }
+        &-edit{
+            background-color: var(--rind-green);
+        }
+        &-delete {
+            background-color: red;
+        }
+    }
+    &-lower{
+        display: grid;
+        flex-direction: column;
+    }
+    &-modified {
+        margin-top: .5rem;
+        opacity: .4;
+        font-size: .8rem;
+        font-weight: normal;
+    }
+}

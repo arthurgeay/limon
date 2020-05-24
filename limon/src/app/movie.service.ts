@@ -14,7 +14,27 @@ export class MovieService {
       date: '2019',
       price: '',
       description: 'Le 6 avril 1917, la Première Guerre mondiale fait rage sur le front Ouest. L\'armée allemande s\'est retirée d\'un secteur du front occidental dans le Nord de la France. La reconnaissance aérienne a repéré que les Allemands ne battent pas en retraite mais ont effectué un retrait tactique sur la ligne Hindenburg, où ils attendent les Britanniques.',
-      hero: '../../assets/films/1917-hero.jpg'
+      hero: '../../assets/films/1917-hero.jpg',
+      review: [
+        {
+          name: 'Jean-Raoul',
+          pic: '../assets/profil-membres/stray-man.jpg',
+          date: '12 Mars 2020 - 20:35',
+          content: 'Ce film a marqué mon esprit par sa franchise et son réalisme concernant les afres de la guerre, cependant le film possède quelque défauts du faits de son objectif principale qui est le divertissement, très bon film je recommande chaudement.'
+        },
+        {
+          name: 'Corentin',
+          pic: '../assets/profil-membres/suit-man.jpg',
+          date: '10 Avril 2020 - 12:02',
+          content: 'Sa manque de bagarre'
+        },
+        {
+          name: 'Netflux',
+          pic: '../assets/profil-membres/vegetable-man.jpg',
+          date: '22 Mai 2020 - 14:25',
+          content: 'Étant un passionné de cinéma, je trouve la réalisation incroyable, même époustouflant, un film comme celui-ci n\'a pas été vu depuis des lustres, 5/5 j\'applaudit toute l\'équipe pour ce travail magnifiquement bien réalisé !👏'
+        }
+      ]
     },
     {
       id: 2,

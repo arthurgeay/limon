@@ -16,6 +16,8 @@ import { PlaylistItemComponent } from './playlist-item/playlist-item.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { MemberComponent } from './member/member.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
+import { ReviewComponent } from './review/review.component';
+import { WriteReviewComponent } from './write-review/write-review.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { EditFilmComponent } from './edit-film/edit-film.component';
     PlaylistItemComponent,
     MemberListComponent,
     MemberComponent,
-    EditFilmComponent
+    EditFilmComponent,
+    ReviewComponent,
+    WriteReviewComponent
   ],
   imports: [
     BrowserModule,

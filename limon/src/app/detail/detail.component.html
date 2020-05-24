@@ -28,4 +28,13 @@
         </svg>
     </button>
 </section>
-
+<section class="community">
+    <section class="avis">
+        <h1>Avis</h1>
+        <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+    </section>
+    <div class="wrap-func">
+        <section class="note">Note</section>
+        <section class="write">Input</section>
+    </div>
+</section>
