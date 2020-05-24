@@ -49,7 +49,17 @@ class UserController extends AbstractController
         return $this->json(['status' => 'Profil mis à jour'], 200);
     }
 
+    /**
+     * @Route("/", name="delete", methods={"DELETE"})
+     */
+    public function deleteAccount(EntityManagerInterface $em)
+    {
+        $user = $this->getUser();
+        $em->remove($user);
+        $em->flush();
 
+        return $this->json(['status' => 'Compte utilisateur supprimé']);
+    }
 
     /**
      * @Route("/movies-watched", name="movies_watched", methods={"GET"})
