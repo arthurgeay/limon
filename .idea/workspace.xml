@@ -108,6 +108,7 @@
       <path value="$PROJECT_DIR$/vendor/namshi/jose" />
       <path value="$PROJECT_DIR$/vendor/lcobucci/jwt" />
       <path value="$PROJECT_DIR$/vendor/symfony/validator" />
+      <path value="$PROJECT_DIR$/vendor/symfony/expression-language" />
     </include_path>
   </component>
   <component name="ProjectId" id="1cJMVLbafAr12woCXKbwwNLDEgT" />
@@ -150,7 +151,7 @@
       <workItem from="1590144004722" duration="6746000" />
       <workItem from="1590242267944" duration="39000" />
       <workItem from="1590242333004" duration="14042000" />
-      <workItem from="1590328063943" duration="4417000" />
+      <workItem from="1590328063943" duration="5597000" />
     </task>
     <servers />
   </component>
