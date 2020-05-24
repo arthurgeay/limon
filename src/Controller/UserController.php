@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Repository\MovieWatchRepository;
 use App\Repository\PurchaseRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
@@ -31,6 +32,24 @@ class UserController extends AbstractController
 
         return $this->json($user, 200, [], ['groups' => ['profile']]);
     }
+
+    /**
+     * @Route("/", name="edit", methods={"PUT"})
+     * @throws \Exception
+     */
+    public function editProfile(Request $request, EntityManagerInterface $entityManager)
+    {
+        $user = $this->getUser();
+        $user->setEmail($request->request->get('email'));
+        $user->setFullname($request->request->get('fullname'));
+        $user->setBirthday(new \DateTime(strval($request->request->get('birthday'))));
+
+        $entityManager->flush();
+
+        return $this->json(['status' => 'Profil mis à jour'], 200);
+    }
+
+
 
     /**
      * @Route("/movies-watched", name="movies_watched", methods={"GET"})
