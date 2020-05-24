@@ -54,6 +54,9 @@ $mobile: 665px;
     &-lower{
         display: grid;
         flex-direction: column;
+        p{
+            font-size: .8rem;
+        }
     }
     &-modified {
         margin-top: .5rem;
