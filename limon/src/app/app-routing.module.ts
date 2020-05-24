@@ -10,12 +10,15 @@ import { MemberListComponent } from './member-list/member-list.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
+import { DoneComponent } from './done/done.component';
 
 
 const routes: Routes = [
   {path: '', component: FilmResultComponent },
   {path: 'search', component: FilmResultComponent },
   {path: 'detail/:id', component: DetailComponent },
+  {path: 'complete', component: DoneComponent },
+  {path: 'subscribed', component: DoneComponent },
   {path: 'login', component: ConnexionComponent },
   {path: 'signin', component: ConnexionComponent },
   {path: 'profil', component: ProfilComponent },

@@ -14,7 +14,7 @@
                 <p>Prix</p><h2 class="detail-pricing">{{ price }}</h2>
         </div>
         <div class="detail-line">
-            <button class="detail-buy" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ price==='0.00 €'||price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
+            <button routerLink="/complete" class="detail-buy" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ price==='0.00 €'||price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
             <button class="detail-play" *ngIf="isAuth"> <img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-subscribe" *ngIf="!isAuth">S'abonner</button>
         </div>

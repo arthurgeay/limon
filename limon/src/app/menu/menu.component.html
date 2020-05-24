@@ -23,7 +23,7 @@
     </section>
     <section class="nav">
         <div *ngIf="!isMobile && !isAuth" >
-            <button class="nav-subscribe">S'abonner</button>
+            <button routerLink="/subscribed" class="nav-subscribe">S'abonner</button>
         </div>
         <div *ngIf="!isMobile">
             <div class="nav-list" tabindex="0">
@@ -66,5 +66,5 @@
     <a routerLink="/search" (click)="onAppear()">Catalogue</a>
     <a routerLink="/history" (click)="onAppear()">Historique</a>
     <a routerLink="/watchlist" (click)="onAppear()">Watchlist</a>
-    <a routerLink="" (click)="onAppear()" class="subscribe" *ngIf="!isAuth">S'abonner</a>
+    <a routerLink="/subscribed" (click)="onAppear()" class="subscribe" *ngIf="!isAuth">S'abonner</a>
 </nav>

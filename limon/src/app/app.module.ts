@@ -21,6 +21,7 @@ import { WriteReviewComponent } from './write-review/write-review.component';
 import { NoteComponent } from './note/note.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
+import { DoneComponent } from './done/done.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AgreementComponent } from './agreement/agreement.component';
     WriteReviewComponent,
     NoteComponent,
     SubscribeComponent,
-    AgreementComponent
+    AgreementComponent,
+    DoneComponent
   ],
   imports: [
     BrowserModule,

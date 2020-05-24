@@ -1,0 +1,76 @@
+:host {
+    display: flex;
+    justify-content: center;
+}
+.payment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5vw;
+    height: calc(100vh - 11rem);
+    max-width: 40rem;
+    position: relative;
+    @media (max-width: 665px){ 
+        margin-top: 3rem;
+    }
+    &-title{
+        font-size: 2rem;
+        position: relative;
+        margin-top: 3rem;
+        margin-bottom: 4rem;
+        color: var(--rind-green);
+        position: relative;
+        &::after {
+            content: '';
+            background-image: url('../../assets/icons/valid.svg');
+            background-repeat: no-repeat;
+            background-size: 30px;
+            position: absolute;
+            display: inline-block;
+            right: -4rem;
+            @media (max-width: 665px){ 
+                top: 3rem;
+                right: 40%;
+            }
+            width: 2rem;
+            height: 2rem;
+        }
+
+    }
+    &-text {
+        margin-bottom: 2rem;
+        text-align: center;
+        font-size: 1.2rem;
+    }
+    &-valid {
+        background-color: var(--rind-green);
+        padding: .7rem 1rem;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        margin: .5rem;
+    }
+}
+
+.deco1, .deco2{
+    position: absolute;
+    width: 5rem;
+    height: 5rem;
+    z-index: -99;
+}
+
+.deco1 {
+    top: 2rem;
+    left: 0;
+    transform: rotate(-40deg);
+}
+
+.deco2 {
+    bottom: 2rem;
+    right: 1rem;
+    transform: rotate(230deg);
+}
+
+.important {
+    color: var(--acid-green);
+}
