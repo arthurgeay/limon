@@ -1,1 +1,16 @@
-<p>note works!</p>
+<section class="note">
+    <div>
+        <p>Notez ce film !</p>
+        <div class="note-select">
+            <div class="note-select-item"><img src="../../assets/note.png" alt="1 point"></div>
+            <div class="note-select-item"><img src="../../assets/note.png" alt="2 points"></div>
+            <div class="note-select-item" [style.className]="onTouch(3)"><img src="../../assets/note.png" alt="3 points"></div>
+            <div class="note-select-item"><img src="../../assets/note.png" alt="4 points"></div>
+            <div class="note-select-item"><img src="../../assets/note.png" alt="5 points"></div>
+        </div>
+    </div>
+    <div class="note-medium">
+        <p class="note-medium-label">Note moyenne</p>
+        <b class="note-medium-main"><span class="colored">{{note}}</span>/5</b>
+    </div>
+</section>

@@ -131,7 +131,7 @@ $mobile: 665px;
 }
 
 .community{
-    margin: 4rem 0;
+    margin: 4rem;
     display: grid;
     @media (max-width: $mobile) {
         flex-direction: column;
@@ -145,6 +145,9 @@ $mobile: 665px;
         h1{
             font-size: 2rem;
             color: var(--acid-green);
+        }
+        @media (min-width: $mobile) {
+            margin-right: 4rem; 
         }
     }
     .wrapfunc{

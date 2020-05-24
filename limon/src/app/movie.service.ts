@@ -15,6 +15,7 @@ export class MovieService {
       price: '',
       description: 'Le 6 avril 1917, la Première Guerre mondiale fait rage sur le front Ouest. L\'armée allemande s\'est retirée d\'un secteur du front occidental dans le Nord de la France. La reconnaissance aérienne a repéré que les Allemands ne battent pas en retraite mais ont effectué un retrait tactique sur la ligne Hindenburg, où ils attendent les Britanniques.',
       hero: '../../assets/films/1917-hero.jpg',
+      note: '5',
       review: [
         {
           name: 'Jean-Raoul',

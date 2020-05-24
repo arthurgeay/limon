@@ -1,0 +1,43 @@
+.note {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    &-label {
+
+    }
+    &-select {
+        display: flex;
+        margin-top: 1rem;
+        &-item{
+            margin: 0 .2rem;
+            transition: opacity .2s, transform .2s;
+            img{
+                width: 2.5rem;
+                height: 2.5rem;
+            }
+            &:hover ~ .note-select-item {
+                opacity: .7;
+            }
+            &:active {
+                transform: rotate(180deg) scale(1.02);
+                transform-origin: center;
+            }
+        }
+        
+    }
+
+    &-medium {
+        &-label {
+            font-size: .6rem;
+        }
+        &-main {
+            font-size: 4rem;
+            .colored{
+                color: var(--acid-green);
+            }
+        }
+    }
+}
+
+

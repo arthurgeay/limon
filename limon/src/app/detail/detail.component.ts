@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
   public poster: string;
   public hero: string;
   public reviews: any[];
+  note: string;
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
@@ -37,6 +38,7 @@ export class DetailComponent implements OnInit {
     this.price = this.movieService.getMovieById(+id).price;
     this.poster = this.movieService.getMovieById(+id).poster;
     this.hero = this.movieService.getMovieById(+id).hero;
+    this.note = this.movieService.getMovieById(+id).note;
     this.reviews = this.movieService.getMovieById(+id).review;
 
     this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
