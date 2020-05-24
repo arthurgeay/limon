@@ -1,0 +1,17 @@
+h1 {
+    font-size: 3rem;
+}
+h2, h3 {
+    color: var(--acid-green);
+    margin: 2.5rem 0 1rem 0;
+}
+
+.agreement, .privacy{
+    padding: 0 5vw;
+    @media (min-width: 665px){padding: 0 10vw;}
+    margin-top: 4rem;
+}
+
+p{
+    margin-bottom: 1rem;
+}

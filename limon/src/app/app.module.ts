@@ -19,6 +19,8 @@ import { EditFilmComponent } from './edit-film/edit-film.component';
 import { ReviewComponent } from './review/review.component';
 import { WriteReviewComponent } from './write-review/write-review.component';
 import { NoteComponent } from './note/note.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
+import { AgreementComponent } from './agreement/agreement.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { NoteComponent } from './note/note.component';
     EditFilmComponent,
     ReviewComponent,
     WriteReviewComponent,
-    NoteComponent
+    NoteComponent,
+    SubscribeComponent,
+    AgreementComponent
   ],
   imports: [
     BrowserModule,

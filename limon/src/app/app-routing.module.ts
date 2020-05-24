@@ -8,6 +8,8 @@ import { AdminComponent } from './admin/admin.component';
 import { PlaylistComponent } from './playlist/playlist.component';
 import { MemberListComponent } from './member-list/member-list.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
+import { SubscribeComponent } from './subscribe/subscribe.component';
+import { AgreementComponent } from './agreement/agreement.component';
 
 
 const routes: Routes = [
@@ -22,8 +24,11 @@ const routes: Routes = [
   {path: 'history', component: PlaylistComponent },
   {path: 'purchase', component: PlaylistComponent },
   {path: 'watchlist', component: PlaylistComponent },
+  {path: 'subscription', component: SubscribeComponent },
   {path: 'members', component: MemberListComponent },
   {path: 'user/:id', component: DetailComponent },
+  {path: 'agreement', component: AgreementComponent },
+  {path: 'privacy', component: AgreementComponent },
   {path: '**', component: FilmResultComponent }
 ];
 
