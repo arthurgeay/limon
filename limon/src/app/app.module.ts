@@ -23,6 +23,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
 import { DoneComponent } from './done/done.component';
 import { RgpdComponent } from './rgpd/rgpd.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { RgpdComponent } from './rgpd/rgpd.component';
     SubscribeComponent,
     AgreementComponent,
     DoneComponent,
-    RgpdComponent
+    RgpdComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

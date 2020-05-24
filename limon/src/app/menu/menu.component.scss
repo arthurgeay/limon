@@ -101,6 +101,7 @@ header{
         &:focus {
             background-image: linear-gradient(-23deg, var(--acid-green) 49%, var(--rind-green) 50%);
         }
+
     }
     &-list {
         border-color: transparent!important;
@@ -283,6 +284,9 @@ header{
                     height: 2rem;
                     z-index: -1;
                     border-radius: 5px;
+                }
+                &.s2::after{
+                    width: 6.5rem;
                 }
             }
         }
