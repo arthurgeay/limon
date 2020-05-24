@@ -20,7 +20,7 @@ class ReviewController extends AbstractController
      * @Route("/{id}", name="add", methods={"POST"})
      * @IsGranted("ROLE_USER")
      */
-    public function addReview(Movie $movie, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
+    public function add(Movie $movie, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
     {
         $message = $request->request->get('message') ?? '';
 
@@ -44,5 +44,37 @@ class ReviewController extends AbstractController
         $em->flush();
 
         return $this->json(['status' => 'Votre avis pour le film '. $movie->getTitle() . ' a bien été enregistré'], 200);
+    }
+
+    /**
+     * @Route("/{id}", name="add", methods={"PUT"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function edit(Review $review, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
+    {
+        if($review->getUser() != $this->getUser()) {
+            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet avis.'], 401);
+        }
+
+        $message = $request->request->get('message') ?? '';
+
+        $review = $review->setContent($message);
+
+        $errors = $validator->validate($review);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
+
+        $em->flush();
+
+        return $this->json(['status' => 'Avis mis à jour'], 200);
+
+
     }
 }
