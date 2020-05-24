@@ -8,6 +8,7 @@ import { MobileService } from '../mobile.service';
 })
 export class MenuComponent implements OnInit {
   isAuth:boolean = true;
+  isSub:boolean = true;
   public isMobile = false;
   public isMenu = false;
   constructor(private mobileService:MobileService) { }

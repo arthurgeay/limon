@@ -22,6 +22,7 @@ import { NoteComponent } from './note/note.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
 import { DoneComponent } from './done/done.component';
+import { RgpdComponent } from './rgpd/rgpd.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { DoneComponent } from './done/done.component';
     NoteComponent,
     SubscribeComponent,
     AgreementComponent,
-    DoneComponent
+    DoneComponent,
+    RgpdComponent
   ],
   imports: [
     BrowserModule,

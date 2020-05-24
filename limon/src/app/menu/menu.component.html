@@ -22,7 +22,7 @@
         </div>
     </section>
     <section class="nav">
-        <div *ngIf="!isMobile && !isAuth" >
+        <div *ngIf="!isMobile && isAuth && !isSub">
             <button routerLink="/subscribed" class="nav-subscribe">S'abonner</button>
         </div>
         <div *ngIf="!isMobile">
@@ -30,20 +30,20 @@
                 <a routerLink="/search" tabindex="-1">catalogue</a>
             </div>
         </div>
-        <div>
+        <div *ngIf="isAuth">
             <div class="nav-profil" routerLink="/profil">
                 <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="nav-profil-pic">
-                <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge">
+                <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge" *ngIf="isSub">
             </div>
         </div>
-        <div *ngIf="!isMobile">
+        <div *ngIf="!isMobile && isAuth">
             <div class="nav-watchlist" routerLink="/watchlist">
                 <svg xmlns="http://www.w3.org/2000/svg" width="86.589" height="132.214" viewBox="0 0 86.589 132.214">
                     <path d="M166.6,0H96.668a8.335,8.335,0,0,0-8.326,8.326V127.219a5,5,0,0,0,7.621,4.251l35.683-22.03,35.678,21.87a5,5,0,0,0,7.607-4.258V8.326A8.335,8.335,0,0,0,166.6,0ZM164.94,118.128,134.249,99.314a5,5,0,0,0-5.237.008L98.333,118.263V9.991H164.94Z" transform="translate(-88.342)"/>
                 </svg>
             </div>
         </div>
-        <div *ngIf="!isMobile">
+        <div *ngIf="!isMobile && isAuth">
             <div class="nav-history" routerLink="/history">
                 <svg xmlns="http://www.w3.org/2000/svg" width="101.503" height="87.002" viewBox="0 0 101.503 87.002">
                     <g data-name="history" transform="translate(-621.392 3746.521)">
@@ -53,11 +53,21 @@
                   </svg>
             </div>
         </div>
-        <div *ngIf="isMobile" routerLink="/search" class="proper-touch">
+        <div *ngIf="isMobile  && isAuth" routerLink="/search" class="proper-touch">
             <div class="nav-search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="408.649" height="423.27" viewBox="0 0 408.649 423.27">
                     <path d="M403.419,385.532,302.681,280.758A170.345,170.345,0,0,0,342.774,170.9c0-94.23-76.665-170.9-170.9-170.9S.984,76.665.984,170.9s76.665,170.9,170.9,170.9a169.065,169.065,0,0,0,97.908-30.925l101.5,105.569a22.289,22.289,0,1,0,32.128-30.9ZM171.879,44.581A126.314,126.314,0,1,1,45.565,170.9,126.455,126.455,0,0,1,171.879,44.581Z" transform="translate(-0.984)"/>
                 </svg>
+            </div>
+        </div>
+        <div *ngIf="!isMobile && !isAuth">
+            <div class="nav-connect">
+                <button>Connexion</button>
+            </div>
+        </div>
+        <div *ngIf="!isMobile && !isAuth">
+            <div class="nav-sign">
+                <button>Inscription</button>
             </div>
         </div>
     </section>
