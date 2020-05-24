@@ -62,7 +62,6 @@ class AppFixtures extends Fixture
 
         // Movies
         for($i = 0; $i < 40; $i++) {
-
             $movie = new Movie();
             $movie->setTitle($faker->name);
             $movie->setSynopsis($faker->realText());
@@ -113,6 +112,7 @@ class AppFixtures extends Fixture
             }
 
             if($faker->boolean(50)) {
+                // Subscription
                 $subscription = new Subscription();
                 $subscription->setActivate(true);
                 $subscription->setDateSubscription(new \DateTime());
@@ -124,6 +124,7 @@ class AppFixtures extends Fixture
 
                 $manager->persist($subscription);
 
+                // Purchase
                 $purchasedMovie = new Purchase();
                 $purchasedMovie->setMovie($movies[array_rand($movies, 1)]);
                 $purchasedMovie->setDate(new \DateTime());
@@ -133,6 +134,7 @@ class AppFixtures extends Fixture
 
             }
 
+            // Review
             if($faker->boolean(85)) {
                 $review = new Review();
                 $review->setContent($faker->text);
@@ -146,8 +148,14 @@ class AppFixtures extends Fixture
             $manager->persist($user);
         }
 
+        $user = new User();
+        $user->setEmail('jeremie.delecrin@ynov.com');
+        $user->setPassword($this->encoder->encodePassword($user, 'limon'));
+        $user->setFullname('Jérémie Delécrin');
+        $user->setBirthday(new \DateTime());
+        $user->setRoles(['ROLE_ADMIN']);
+        $manager->persist($user);
 
-        // Reviews
 
 
         $manager->flush();
