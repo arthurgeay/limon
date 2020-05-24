@@ -1,0 +1,53 @@
+.rgpd {
+    position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+	background-color: var(--dark-elements);
+	width: 30vw;
+	min-width: 300px;
+	padding: 1.5rem;
+    z-index: 99;
+    border-radius: 5px;
+    &-text{
+        display: flex;
+    }
+    &-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        margin-top: 1.5rem;
+        @media (max-width: 665px) {
+            flex-wrap: wrap;
+        }
+    }
+    &-link {
+        color: var(--acid-green);
+        @media (max-width: 665px) {
+         flex-basis: 100%;
+         margin-bottom: .5rem;
+        }
+        &:hover,
+        &:focus {
+            text-decoration: underline;
+        }
+    }
+    & button {
+        padding: .5rem 1rem; 
+        margin-left: 1rem;
+        color: var(--white);
+        border-radius: 5px;
+        transition-duration: .2s;
+        height: 100%;
+        &:active {
+            transform: scale(.95);
+        }
+    }
+    &-denied {
+        border: 2px solid var(--white);
+        background-color: transparent;
+    }
+    &-valid {
+        background-color: var(--rind-green);
+        border: 2px solid var(--rind-green);
+    }
+}
