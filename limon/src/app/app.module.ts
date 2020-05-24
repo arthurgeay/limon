@@ -18,6 +18,7 @@ import { MemberComponent } from './member/member.component';
 import { EditFilmComponent } from './edit-film/edit-film.component';
 import { ReviewComponent } from './review/review.component';
 import { WriteReviewComponent } from './write-review/write-review.component';
+import { NoteComponent } from './note/note.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { WriteReviewComponent } from './write-review/write-review.component';
     MemberComponent,
     EditFilmComponent,
     ReviewComponent,
-    WriteReviewComponent
+    WriteReviewComponent,
+    NoteComponent
   ],
   imports: [
     BrowserModule,
