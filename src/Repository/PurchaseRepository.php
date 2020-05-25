@@ -31,6 +31,18 @@ class PurchaseRepository extends ServiceEntityRepository
             ;
     }
 
+    public function isAlreadyBuy($movie, $user)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.movie = :movie')
+            ->setParameter('movie', $movie)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
     // /**
     //  * @return Purchase[] Returns an array of Purchase objects
     //  */
