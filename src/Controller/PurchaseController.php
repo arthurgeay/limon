@@ -5,6 +5,8 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Entity\Purchase;
 use App\Repository\PurchaseRepository;
+use App\Services\HTMLPDF;
+use App\Services\Mail;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -17,7 +19,7 @@ class PurchaseController extends AbstractController
     /**
      * @Route("/{id}", name="movie", methods={"GET"})
      */
-    public function buy(Movie $movie, PurchaseRepository $purchaseRepository, EntityManagerInterface $em)
+    public function buy(Movie $movie, PurchaseRepository $purchaseRepository, EntityManagerInterface $em, HTMLPDF $HTMLPDF, Mail $mail)
     {
         $isAlreadyPurchase = $purchaseRepository->isAlreadyBuy($movie, $this->getUser());
 
@@ -33,6 +35,26 @@ class PurchaseController extends AbstractController
         $em->persist($purchase);
         $em->flush();
 
+        // Generate PDF
+        $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
+        $template = $this->render('purchase/invoice.html.twig', [
+            'purchase' => $purchase,
+        ]);
+        $invoice = $HTMLPDF->generatePdf($template, 'invoice', 'S');
+
+        // Envoi du mail
+        $mail->sendMail(
+            'Achat du film '.$purchase->getMovie()->getTitle(),
+            $purchase->getUser()->getUsername(),
+            'emails/invoice-purchase.html.twig',
+            ['purchase' => $purchase],
+            ['file' => $invoice, 'filename' => 'facture-limon.pdf', 'content-type' => 'application/pdf']
+        );
+
         return $this->json(['status' => 'Film acheté', 'url_download' => $purchase->getMovie()->getDownloadUrl()]);
     }
+
+
+
+    // ROUTE POUR DOWNLOAD Facture achat
 }
