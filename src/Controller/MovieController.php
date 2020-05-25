@@ -4,10 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
+use App\Repository\PurchaseRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -56,5 +59,23 @@ class MovieController extends AbstractController
         }
 
         return $this->json($movie, 200, [], ['groups' => ['movie']]);
+    }
+
+    /**
+     * @Route("/download/{id}", name="download", methods={"GET"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function download($id, PurchaseRepository $purchaseRepository, KernelInterface $kernel)
+    {
+        $purchased = $purchaseRepository->findOneBy(['movie' => $id ]);
+
+        if($this->getUser()->getSubscription() || !$purchased) {
+            return $this->json(['status' => 'Vous ne pouvez pas télécharger ce film'], 401);
+        }
+
+        $file = new File($kernel->getProjectDir() . '/public/movies/movie.mp4');
+
+        return $this->file($file);
+
     }
 }
