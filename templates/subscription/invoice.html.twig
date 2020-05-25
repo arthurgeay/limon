@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture Limon{% endblock %}
+
+{% block body %}
+<style>
+    table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td {
+        padding: 15px;
+        border: 1px solid grey;
+    }
+
+    tr:first-child, tr:last-child {
+        background: rgb(238, 238, 238);
+    }
+</style>
+    <h1>Facture abonnement Limon</h1>
+    <p>Date de paiement : <strong>{{ subscription.dateSubscription|date("d/m/Y") }}</strong></p>
+
+    <h2>Informations client :</h2>
+    <p>{{ subscription.user.fullname }}</p>
+
+    <table>
+        <tr>
+            <td>Désignation</td>
+            <td>Sous-total</td>
+        </tr>
+        <tr>
+            <td>Abonnement offre Limon 1 mois</td>
+            <td>{{ subscription.price }} €</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{ subscription.price }} €</td>
+        </tr>
+    </table>
+{% endblock %}

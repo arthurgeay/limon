@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture abonnement Limon{% endblock %}
+
+{% block body %}
+    <h1>Facture abonnement Limon</h1>
+    <p>Bonjour {{ subscription.user.fullname }}, <br />
+    Toute l'équipe de Limon vous remercie pour votre abonnement.
+    </p>
+    <p>Vous trouverez en pièce jointe de ce mail la facture correspondante à votre abonnement.</p>
+    <p>A bientôt sur Limon !</p>
+{% endblock %}
