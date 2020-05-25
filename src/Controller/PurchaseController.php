@@ -10,6 +10,9 @@ use App\Services\Mail;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpKernel\Kernel;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -44,7 +47,7 @@ class PurchaseController extends AbstractController
         ]);
         $invoice = $HTMLPDF->generatePdf($template, 'invoice', 'S');
 
-        // Envoi du mail
+        // Send mail
         $mail->sendMail(
             'Achat du film '.$purchase->getMovie()->getTitle(),
             $purchase->getUser()->getUsername(),
@@ -56,7 +59,25 @@ class PurchaseController extends AbstractController
         return $this->json(['status' => 'Film acheté', 'url_download' => $purchase->getMovie()->getDownloadUrl()]);
     }
 
+    /**
+     * @Route("/invoice/{id}", name="invoice", methods={"GET"})
+     */
+    public function downloadInvoice(Purchase $purchase, HTMLPDF $HTMLPDF)
+    {
+        if($purchase->getUser()->getUsername() != $this->getUser()->getUsername()) {
+            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
+        }
+
+        // Generate PDF
+        $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
+        $template = $this->render('purchase/invoice.html.twig', [
+            'purchase' => $purchase,
+        ]);
+        $invoice = $HTMLPDF->generatePdf($template, 'invoice');
+
+        return $invoice;
+
+    }
 
 
-    // ROUTE POUR DOWNLOAD Facture achat
 }
