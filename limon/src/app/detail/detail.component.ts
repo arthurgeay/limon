@@ -21,6 +21,7 @@ export class DetailComponent implements OnInit {
   public poster: string;
   public hero: string;
   public reviews: any[];
+  public isCheck = false;
   note: string;
   
   constructor(private movieService:MovieService,
@@ -53,26 +54,8 @@ export class DetailComponent implements OnInit {
     this.isMobile = this.mobileService.getIsMobile(); //detect changes of viewport
   }
 
-
-  // Stripe
-  pay() {    
- 
-    var handler = (<any>window).StripeCheckout.configure({
-      key: 'pk_test_DeZzMPNpBYMz6rr8P0noCD2n00RXOc7lTx',
-      locale: 'auto',
-      token: ()=> { this.redirecTo() }
-    });
- 
-    handler.open({
-      name: 'Limon',
-      description: 'Paiement sécurisé avec Stripe',
-      amount: this.price
-    });
- 
-  }
-
-  redirecTo() {
-    this.router.navigate(['complete']);
+  buy() {
+    this.isCheck = !this.isCheck ;
   }
 
 }

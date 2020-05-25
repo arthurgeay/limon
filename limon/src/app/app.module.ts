@@ -25,6 +25,7 @@ import { DoneComponent } from './done/done.component';
 import { RgpdComponent } from './rgpd/rgpd.component';
 import { FooterComponent } from './footer/footer.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
     DoneComponent,
     RgpdComponent,
     FooterComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    CheckoutComponent
   ],
   imports: [
     BrowserModule,

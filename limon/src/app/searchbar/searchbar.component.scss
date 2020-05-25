@@ -1,6 +1,9 @@
 $mobile: 665px;
 $tablet: 1080px;
 
+:host{
+    flex-grow: 1;
+}
 
 .search {
     display: flex;
