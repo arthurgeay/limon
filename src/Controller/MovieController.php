@@ -62,7 +62,7 @@ class MovieController extends AbstractController
     }
 
     /**
-     * @Route("/download/{id}", name="download", methods={"GET"})
+     * @Route("/{id}/download", name="download", methods={"GET"})
      * @IsGranted("ROLE_USER")
      */
     public function download($id, PurchaseRepository $purchaseRepository, KernelInterface $kernel)
