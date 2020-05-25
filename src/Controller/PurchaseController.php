@@ -8,11 +8,13 @@ use App\Repository\PurchaseRepository;
 use App\Services\HTMLPDF;
 use App\Services\Mail;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * @Route("/api/purchase", name="purchase_")
+ * @IsGranted("ROLE_USER")
  */
 class PurchaseController extends AbstractController
 {
