@@ -16,6 +16,7 @@ $tablet: 1080px;
         }
     }
     &-infos {
+        margin-top: .5rem;
         &-title {
             font-size: .8em;
             @media (min-width: $tablet) {

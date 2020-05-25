@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { MobileService } from '../mobile.service';
 
@@ -25,7 +25,8 @@ export class DetailComponent implements OnInit {
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];  // get id from url
@@ -51,4 +52,27 @@ export class DetailComponent implements OnInit {
   onResize() {
     this.isMobile = this.mobileService.getIsMobile(); //detect changes of viewport
   }
+
+
+  // Stripe
+  pay() {    
+ 
+    var handler = (<any>window).StripeCheckout.configure({
+      key: 'pk_test_DeZzMPNpBYMz6rr8P0noCD2n00RXOc7lTx',
+      locale: 'auto',
+      token: ()=> { this.redirecTo() }
+    });
+ 
+    handler.open({
+      name: 'Limon',
+      description: 'Paiement sécurisé avec Stripe',
+      amount: this.price
+    });
+ 
+  }
+
+  redirecTo() {
+    this.router.navigate(['complete']);
+  }
+
 }

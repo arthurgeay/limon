@@ -1,6 +1,6 @@
 <section class="item">
     <div class="item-img">
-        <img src="{{ item.poster }}" alt="poster">
+        <img src="{{ item.poster !== '' ? item.poster : 'assets/poster-notfound.png' }}" alt="poster">
     </div>
     <div class="infos">
         <h2 class="infos-title">{{ item.title }}</h2>

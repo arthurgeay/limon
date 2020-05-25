@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MobileService } from '../mobile.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -14,7 +15,7 @@ export class MenuComponent implements OnInit {
   constructor(private mobileService:MobileService) { }
 
   ngOnInit(): void {
-    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service
+    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
   }
 
   onAppear() {

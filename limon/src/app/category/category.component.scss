@@ -1,9 +1,10 @@
 $mobile: 665px;
 
 .cat{
-    padding: 1rem;
-    @media (min-width: $mobile) {
-        padding-left: 4rem;
+    padding-left: 4rem;
+    margin-top: 4rem;
+    @media (max-width: $mobile) {
+        padding: 1rem;
     }
     &-select{
         margin-bottom: 1rem;
