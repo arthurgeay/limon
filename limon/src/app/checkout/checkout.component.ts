@@ -9,10 +9,11 @@ declare var Stripe;//: stripe.StripeStatic;
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+
+  @Input() public amount:number;
   @Input() public isCheck: boolean;
   @Output() public isCheckChange = new EventEmitter<boolean>();
   @ViewChild('cardElement', {static: false}) cardElement: ElementRef;
-  amount = 5;
   stripe;
   card;
   cardErrors;

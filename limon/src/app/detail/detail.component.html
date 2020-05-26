@@ -11,7 +11,7 @@
         </div>
         <p class="detail-desc">{{ description || 'Aucun synopsis disponible' }}</p>
         <div class="detail-line detail-pric" *ngIf="price !== ''">
-                <p>Prix</p><h2 class="detail-pricing">{{ price }}</h2>
+                <p>Prix</p><h2 class="detail-pricing">{{ price }} €</h2>
         </div>
         <div class="detail-line">
             <button class="detail-buy" (click)="buy()" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ price==='0.00 €'||price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
@@ -28,7 +28,7 @@
         </svg>
     </button>
 </section>
-<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck"></app-checkout>
+<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="price"></app-checkout>
 <section class="community">
     <section class="avis">
         <h1>Avis</h1>

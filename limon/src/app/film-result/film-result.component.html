@@ -23,4 +23,4 @@
     <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
 </section>
 <p class="empty" *ngIf="isEmpty">Auncun résultat</p>
-<app-rgpd></app-rgpd>
+<app-rgpd *ngIf="isRGPD" [(isRGPD)]="isRGPD"></app-rgpd>

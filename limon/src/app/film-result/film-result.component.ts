@@ -14,12 +14,14 @@ export class FilmResultComponent implements OnInit {
   public isPrice = false;
   public isDate = false;
   public catalog: any[];
-  isMobile: boolean;
+  public isMobile: boolean;
+  public isRGPD:boolean;
 
   constructor(private movieService: MovieService,
     private mobileService:MobileService) { }
 
   ngOnInit(): void {
+    this.isRGPD = true;
     this.catalog = this.movieService.catalog;
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
   }

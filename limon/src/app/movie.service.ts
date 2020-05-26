@@ -44,7 +44,7 @@ export class MovieService {
       prod:'Warner Bros',
       category: 'Action',
       date: '',
-      price: '4.40 €',
+      price: '4.40',
       description: 'Batman est plus que jamais déterminé à éradiquer le crime organisé qui sème la terreur en ville. Epaulé par le lieutenant Jim Gordon et par le procureur de Gotham City, Harvey Dent, Batman voit son champ d\'action s\'élargir. ',
       hero: '../../assets/films/batman-hero.jpg'
     },
@@ -66,7 +66,7 @@ export class MovieService {
       prod:'Warner Bros',
       category: 'Science-Fiction',
       date: '2014',
-      price: '4.20 €',
+      price: '4.20',
       description: 'Le physicien nucléaire Joseph Brody enquête sur de mystérieux phénomènes qui ont lieu au Japon. Refusant de s\'en tenir à la version officielle qui évoque un tremblement de terre, le scientifique revient sur les lieux du drame accompagné par son fils Ford, soldat dans la Navy. Ils découvrent que les incidents ne sont pas liés à une catastrophe naturelle, mais à des monstres réveillés par des essais nucléaires dans le Pacifique au lendemain de la Seconde Guerre mondiale.',
       hero: '../../assets/films/godzilla-hero.jpeg'
     },
@@ -88,7 +88,7 @@ export class MovieService {
       prod:'Warner Bros',
       category: '',
       date: '',
-      price: '3.40 €',
+      price: '3.40',
       description: '',
       hero: '../../assets/films/batman-hero.jpg'
     },

@@ -28,13 +28,13 @@
         </div>
     </section>
     <section class="profil-access">
-        <button routerLink="/" *ngIf="!isEdit">
+        <button routerLink="/history" *ngIf="!isEdit">
             <img src="../../assets/icons/history-icon.png" alt=""> Consulter l'historique
         </button>
-        <button routerLink="/" *ngIf="!isEdit">
+        <button routerLink="/watchlist" *ngIf="!isEdit">
             <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
         </button>
-        <button routerLink="/" *ngIf="!isEdit">
+        <button routerLink="/purchase" *ngIf="!isEdit">
             <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
         </button>
         <button *ngIf="isEdit" (click)="onEdit()">
