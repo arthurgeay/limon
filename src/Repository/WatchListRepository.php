@@ -19,6 +19,23 @@ class WatchListRepository extends ServiceEntityRepository
         parent::__construct($registry, WatchList::class);
     }
 
+    public function getAllMoviesByUser($user)
+    {
+        return $this->createQueryBuilder('w')
+            ->innerJoin('w.movie', 'm')
+            ->addSelect('m')
+            ->innerJoin('m.productor', 'p')
+            ->addSelect('p')
+            ->innerJoin('m.category', 'c')
+            ->addSelect('c')
+            ->andWhere('w.user = :user')
+            ->setParameter('user', $user)
+            ->orderBy('w.id', 'DESC')
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return WatchList[] Returns an array of WatchList objects
     //  */

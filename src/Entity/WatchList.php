@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\WatchListRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=WatchListRepository::class)
@@ -20,6 +21,7 @@ class WatchList
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class)
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("watchlist")
      */
     private $movie;
 
