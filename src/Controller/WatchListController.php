@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
 use App\Entity\WatchList;
 use App\Repository\MovieRepository;
 use App\Repository\WatchListRepository;
@@ -43,7 +44,7 @@ class WatchListController extends AbstractController
             return $this->json(['status' => 'Ce film n\'existe pas.'], 404);
         }
 
-        $movieAlreadyAdd = $watchListRepository->hasMovieAlreadyAdd($movie, $this->getUser());
+        $movieAlreadyAdd = $watchListRepository->findByMovieAndUser($movie, $this->getUser());
 
         if($movieAlreadyAdd) {
             return $this->json(['status' => $movie->getTitle(). ' est déjà présent dans la watchlist'], 403);
@@ -56,5 +57,22 @@ class WatchListController extends AbstractController
         $em->flush();
 
         return $this->json(['status' => 'Film ajouté', 'newItem' => $watchList], 200, [], ['groups' => ['watchlist']]);
+    }
+
+    /**
+     * @Route("/{id}", name="delete", methods={"DELETE"})
+     */
+    public function delete(Movie $movie, WatchListRepository $watchListRepository, EntityManagerInterface $em)
+    {
+        $movie = $watchListRepository->findByMovieAndUser($movie, $this->getUser());
+
+        if(!$movie) {
+            return $this->json(['status' => 'Ce film n\'existe pas dans votre watchlist'], 404);
+        }
+
+        $em->remove($movie);
+        $em->flush();
+
+        return $this->json(['status' => 'Film supprimé'], 200);
     }
 }

@@ -36,7 +36,7 @@ class WatchListRepository extends ServiceEntityRepository
             ;
     }
 
-    public function hasMovieAlreadyAdd($movieId, $user)
+    public function findByMovieAndUser($movieId, $user)
     {
         return $this->createQueryBuilder('w')
             ->andWhere('w.movie = :movieId')
@@ -44,7 +44,7 @@ class WatchListRepository extends ServiceEntityRepository
             ->andWhere('w.user = :user')
             ->setParameter('user', $user)
             ->getQuery()
-            ->getResult()
+            ->getOneOrNullResult()
             ;
     }
 
