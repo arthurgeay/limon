@@ -11,6 +11,7 @@ use App\Entity\Rating;
 use App\Entity\Review;
 use App\Entity\Subscription;
 use App\Entity\User;
+use App\Entity\WatchList;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Faker\Factory;
@@ -108,6 +109,12 @@ class AppFixtures extends Fixture
                     $rating->setUpdatedAt(new \DateTime());
 
                     $manager->persist($rating);
+
+                    $watchList = new WatchList();
+                    $watchList->setUser($user);
+                    $watchList->setMovie($movies[array_rand($movies, 1)]);
+
+                    $manager->persist($watchList);
                 }
             }
 
