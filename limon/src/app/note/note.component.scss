@@ -15,17 +15,32 @@ $mobile: 665px;
         &-item{
             margin: 0 .2rem;
             transition: opacity .2s, transform .2s;
+            position: relative;
+            display: block;
+            width: 2.5rem;
+            height: 2.5rem;
             img{
                 width: 2.5rem;
                 height: 2.5rem;
+                display: block;
             }
             &:hover ~ .note-select-item {
-                opacity: .7;
+                opacity: .7!important;
             }
             &:active {
-                transform: rotate(180deg) scale(1.02);
-                transform-origin: center;
+                transform: scale(1.02) rotate(90deg);
+                transform-origin: 1.28rem 1.24rem;
             }
+        }
+        input{
+            height: 0;
+            width: 0;
+        }
+        input:checked ~ label {
+            opacity: .7;
+        }
+        input:checked + label {
+            opacity: 1;
         }
         
     }

@@ -7,14 +7,11 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class NoteComponent implements OnInit {
   @Input() note:string;
+
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  onTouch(nb:number){
-
-    return(`.note-select-item:nth-child(-n+${nb})`)
-  }
 
 }

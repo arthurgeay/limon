@@ -5,7 +5,7 @@
     <h2 class="subscribe-text imp">L'offre <span class="important">premium</span> est au prix de <span class="important">5€</span> par mois</h2>
     <div class="subscribe-button">
         <button routerLink="/" class="subscribe-button-back">Revenir sur le site</button>
-        <button class="subscribe-button-proceed" (click)="buy(5)" >S'abonner</button>
+        <button class="subscribe-button-proceed" (click)="buy()" >S'abonner</button>
     </div>
 </section>
 <app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="amount"></app-checkout>
