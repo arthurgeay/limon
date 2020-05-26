@@ -36,6 +36,19 @@ class WatchListRepository extends ServiceEntityRepository
             ;
     }
 
+    public function hasMovieAlreadyAdd($movieId, $user)
+    {
+        return $this->createQueryBuilder('w')
+            ->andWhere('w.movie = :movieId')
+            ->setParameter('movieId', $movieId)
+            ->andWhere('w.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
+
     // /**
     //  * @return WatchList[] Returns an array of WatchList objects
     //  */
