@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Movie;
 use App\Entity\Rating;
+use App\Repository\RatingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +21,7 @@ class RatingController extends AbstractController
     /**
      * @Route("/{id}", methods={"POST"})
      */
-    public function rateAMovie(Movie $movie, Request $request, EntityManagerInterface $em, ValidatorInterface $validator)
+    public function rateAMovie(Movie $movie, Request $request, RatingRepository $ratingRepository, EntityManagerInterface $em, ValidatorInterface $validator)
     {
         $score = $request->request->getInt('score');
 
@@ -37,6 +38,8 @@ class RatingController extends AbstractController
         $em->persist($rating);
         $em->flush();
 
-        return $this->json(['status' => 'Note ajouté pour le film ' . $movie->getTitle()], 200);
+        $avg = $ratingRepository->getAvg($movie);
+
+        return $this->json(['status' => 'Note ajouté pour le film ' . $movie->getTitle(), 'avg' => $avg], 200);
     }
 }
