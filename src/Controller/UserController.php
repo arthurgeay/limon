@@ -58,7 +58,7 @@ class UserController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->json(['status' => 'Profil mis à jour'], 200);
+        return $this->json(['status' => 'Profil mis à jour', 'editItem' => $user], 200, [], ['groups' => ['profile']]);
     }
 
     /**
