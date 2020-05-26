@@ -83,12 +83,18 @@ class User implements UserInterface
      */
     private $purchases;
 
+    /**
+     * @ORM\OneToMany(targetEntity=WatchList::class, mappedBy="user")
+     */
+    private $watchLists;
+
     public function __construct()
     {
         $this->reviews = new ArrayCollection();
         $this->ratings = new ArrayCollection();
         $this->movieWatches = new ArrayCollection();
         $this->purchases = new ArrayCollection();
+        $this->watchLists = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -328,6 +334,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($purchase->getUser() === $this) {
                 $purchase->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|WatchList[]
+     */
+    public function getWatchLists(): Collection
+    {
+        return $this->watchLists;
+    }
+
+    public function addWatchList(WatchList $watchList): self
+    {
+        if (!$this->watchLists->contains($watchList)) {
+            $this->watchLists[] = $watchList;
+            $watchList->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeWatchList(WatchList $watchList): self
+    {
+        if ($this->watchLists->contains($watchList)) {
+            $this->watchLists->removeElement($watchList);
+            // set the owning side to null (unless already changed)
+            if ($watchList->getUser() === $this) {
+                $watchList->setUser(null);
             }
         }
 
