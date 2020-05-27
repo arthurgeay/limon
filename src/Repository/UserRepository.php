@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\User;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\Query\ResultSetMapping;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Security\Core\Exception\UnsupportedUserException;
 use Symfony\Component\Security\Core\User\PasswordUpgraderInterface;
@@ -51,6 +52,25 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
            ->getQuery()
            ->getOneOrNullResult()
            ;
+    }
+
+    public function getStats()
+    {
+        $conn = $this->getEntityManager()->getConnection();
+
+        $sql = '
+            SELECT COUNT(user.id) AS total_number_user, 
+            (SELECT COUNT(purchase.id) FROM purchase) AS total_number_sales, 
+            (SELECT SUM(movie.price) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id) AS sum_sales,
+            (SELECT COUNT(purchase.id) FROM purchase WHERE purchase.date BETWEEN adddate(now(),-7) AND NOW() ) AS total_sales_on_7day,
+            (SELECT SUM(movie.price) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id WHERE purchase.date BETWEEN adddate(now(),-7) AND NOW()) AS sum_sales_on_7day
+            FROM user
+        ';
+
+        $stmt = $conn->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetch();
+
     }
 
     // /**
