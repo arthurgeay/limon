@@ -26,6 +26,7 @@ class PurchaseRepository extends ServiceEntityRepository
             ->setParameter('user', $user)
             ->innerJoin('p.movie', 'm')
             ->addSelect('m')
+            ->orderBy('p.date', 'DESC')
             ->getQuery()
             ->getResult()
             ;
