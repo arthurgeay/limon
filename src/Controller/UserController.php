@@ -12,6 +12,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -63,10 +64,21 @@ class UserController extends AbstractController
 
     /**
      * @Route("/", name="delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
-    public function deleteAccount(EntityManagerInterface $em)
+    public function deleteAccount(Request $request, EntityManagerInterface $em, UserRepository $userRepository)
     {
         $user = $this->getUser();
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            $userId = $request->query->getInt('userId');
+            $user = $userRepository->find($userId);
+
+            if(!$user) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
+
         $em->remove($user);
         $em->flush();
 
