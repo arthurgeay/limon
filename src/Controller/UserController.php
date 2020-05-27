@@ -38,10 +38,21 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="edit", methods={"PUT"})
      * @throws \Exception
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
-    public function editProfile(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator)
+    public function editProfile(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator, UserRepository $userRepository)
     {
         $user = $this->getUser();
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            $userId = $request->query->getInt('userId');
+            $user = $userRepository->find($userId);
+
+            if(!$user) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
+
         $user->setEmail($request->request->get('email'));
         $user->setFullname($request->request->get('fullname'));
         $user->setBirthday(new \DateTime(strval($request->request->get('birthday'))));
