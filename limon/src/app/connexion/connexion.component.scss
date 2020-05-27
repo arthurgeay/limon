@@ -10,7 +10,7 @@ $mobile: 665px;
         padding: .5rem 1rem;
         border-radius: 8px;
         position: absolute;
-        bottom: 3rem;
+        bottom: -2rem;
         @media (min-width: $mobile) {
             top: 4rem;
             bottom: initial;
@@ -41,14 +41,42 @@ $mobile: 665px;
         align-items: center;
         margin: 2rem 0;
         width: 100%;
+        .input-row {
+            display: flex;
+            justify-content: space-between;
+            width: 65%;
+            max-width: 25rem;
+            .input-cont {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                @media (max-width: $mobile) {
+                    width: 100%;
+                }
+            }
+            @media (max-width: $mobile) {
+                flex-direction: column;
+            }
+        }
+        .input-cont {
+            width: 65%;
+            max-width: 25rem;
+            margin-top: 1rem;
+        }
     }
     &-id, &-pass, &-birth, &-user{
-        width: 65%;
-        max-width: 20rem;
+        width: 100%;
         height: 2.4rem;
-        margin: 1rem 0 .5rem 0;
+        margin: .4rem 0 .5rem 0;
         @media (min-width: $mobile){
             height: 2.7rem;
+        }
+    }
+    &-birth, &-user{
+        width: 50%;
+        min-width: 10rem;
+        @media (max-width: $mobile) {
+            width: 100%;
         }
     }
     &-link {
@@ -67,4 +95,8 @@ $mobile: 665px;
         color: var(--background);
         font-size: 1.2rem;
     }
+}
+
+label {
+    align-items: flex-start;
 }

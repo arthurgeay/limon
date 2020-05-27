@@ -23,7 +23,7 @@
             <p *ngIf="!isEdit">25 Mars 1999</p>
             <input type="text" value="25 Mars 1999" *ngIf="isEdit">
         </div>
-        <div class="sup-deconnect">
+        <div class="sup-deconnect" *ngIf="!isEdit">
             <button class="deconnect" routerLink="/">Se déconnecter</button>
         </div>
     </section>
@@ -34,7 +34,7 @@
         <button routerLink="/watchlist" *ngIf="!isEdit">
             <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
         </button>
-        <button routerLink="/purchase" *ngIf="!isEdit">
+        <button routerLink="/purchase">
             <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
         </button>
         <button *ngIf="isEdit" (click)="onEdit()">
