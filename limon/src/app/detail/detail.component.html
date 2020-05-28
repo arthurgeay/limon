@@ -33,6 +33,7 @@
     <section class="avis">
         <h1>Avis</h1>
         <app-review *ngFor="let review of reviews" [review]="review"></app-review>
+        <p *ngIf="!reviews" class="community-empty">Soyez le premier à donner votre avis sur le film 😄</p>
     </section>
     <div class="wrap-func">
         <section class="note"><app-note [note]="note"></app-note></section>

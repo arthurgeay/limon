@@ -1,6 +1,10 @@
 :host {
     display: flex;
     justify-content: center;
+    height: calc(100vh - 11rem);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .payment {
     display: flex;
@@ -8,7 +12,7 @@
     justify-content: center;
     align-items: center;
     padding: 0 5vw;
-    height: calc(100vh - 11rem);
+
     max-width: 40rem;
     position: relative;
     @media (max-width: 665px){ 
@@ -60,13 +64,13 @@
 }
 
 .deco1 {
-    top: 2rem;
+    top: 0;
     left: 0;
     transform: rotate(-40deg);
 }
 
 .deco2 {
-    bottom: 2rem;
+    bottom: 0;
     right: 1rem;
     transform: rotate(230deg);
 }

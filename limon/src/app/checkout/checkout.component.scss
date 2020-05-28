@@ -25,6 +25,10 @@
   position: relative;
   background-color: var(--background);
   padding: .5rem;
+  @media (min-width: 2400px) {
+    font-size: 1.5rem;
+    max-width: 40rem;
+  }
   &-logo {
     height: 2rem;
     margin-top: 1rem;
@@ -63,16 +67,16 @@
     .checkout-pr{
       margin: .5rem 0;
       span{
-        font-size: 1.2rem;
+        font-size: 1.2em;
       }
     }
   }
   &-pr {
-    font-size: 1rem;
+    font-size: 1em;
     color: rgb(182, 182, 182);
     font-weight: bold;
     span {
-      font-size: 1.4rem;
+      font-size: 1.4em;
       font-weight: bold;
       color: var(--white);
       font-weight: normal;
@@ -87,13 +91,13 @@
     border: 2px solid var(--white);
     padding: .5rem .7rem;
     border-radius: 5px;
-    font-size: 1.1rem;
+    font-size: 1.1em;
     cursor: pointer;
   }
   &-error {
     margin-bottom: 1rem;
     color: red;
-    font-size: 1.2rem;
+    font-size: 1.2em;
   }
 }
 
@@ -103,7 +107,7 @@
   border-radius: 5px;
   height: 100%;
   min-width: 7rem;
-  font-size: 1.2rem;
+  font-size: 1.2em;
   margin-left: 1rem;
   margin-top: 0.5rem;
 }
@@ -121,6 +125,7 @@ input,
   background-color: var(--dark-elements);
   border: none;
   border-radius: 4px;
+  font-size: 1em;
 }
 
 input:focus,

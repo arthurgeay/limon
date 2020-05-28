@@ -54,9 +54,9 @@ export class CheckoutComponent implements OnInit {
       const cardErrors = error.message;
     } else {
       this.loading = true;
-      // this.router.navigate(['complete'])
       setTimeout(() => {
         this.loading = false;  
+        this.router.navigate(['complete'])
       }, 2000);
       
     }

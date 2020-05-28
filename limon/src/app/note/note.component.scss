@@ -1,4 +1,5 @@
 $mobile: 665px;
+$large: 2400px;
 
 .note {
     display: flex;
@@ -8,6 +9,11 @@ $mobile: 665px;
     @media (max-width: $mobile){
         flex-direction: column;
         align-items: flex-start;
+    }
+    p{
+        @media (min-width: $large) {
+            font-size: 1.5rem;
+        }
     }
     &-select {
         display: flex;
