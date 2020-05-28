@@ -3,9 +3,9 @@ $large: 2400px;
 
 .cat{
     padding-left: 4rem;
-    margin-top: 4rem;
     @media (max-width: $mobile) {
         padding: 1rem;
+        margin-top: 4rem;
     }
 
     &-select{

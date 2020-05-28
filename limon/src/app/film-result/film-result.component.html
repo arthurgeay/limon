@@ -1,7 +1,7 @@
 <app-searchbar *ngIf="isMobile"></app-searchbar>
 <app-category></app-category>
-<h2 class="phrase-res">Résultats de votre recherche</h2>
-<section id="sorting">
+<h2 class="phrase-res" *ngIf="isSearch">Résultats de votre recherche</h2>
+<section id="sorting" *ngIf="isSearch">
     <button (click)="onAlph()" class="sort">
         <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isAlph">
         <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isAlph">
@@ -19,8 +19,27 @@
     </button>
 </section>
 
-<section id="results" *ngIf="!isEmpty">
+<section id="results" *ngIf="!isEmpty && isSearch">
     <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
 </section>
-<p class="empty" *ngIf="isEmpty">Auncun résultat</p>
+
+<section class="new">
+    <section class="new-new">
+        <h2>Nouveautés</h2>
+        <div class="new-row" (scroll)="onScroll1($event)" #scroll1>
+            <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
+        </div>
+        <button class="new-new-next start" *ngIf="scrollToLeft1" (click)="scroll1Start()"><span></span></button>
+        <button class="new-new-next" *ngIf="scrollToRight1" (click)="scroll1End()"><span></span></button>
+    </section>
+    <section class="new-popular">
+        <h2>Les plus populaires</h2>
+        <div class="new-row" (scroll)="onScroll2($event)" #scroll2>
+            <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
+        </div>
+        <button class="new-popular-next start" *ngIf="scrollToLeft2" (click)="scroll2Start()"><span></span></button>
+        <button class="new-popular-next" *ngIf="scrollToRight2" (click)="scroll2End()"><span></span></button>
+    </section>
+</section>
+<p class="empty" *ngIf="isEmpty && !isSearch">Auncun résultat</p>
 <app-rgpd *ngIf="isRGPD" [(isRGPD)]="isRGPD"></app-rgpd>
