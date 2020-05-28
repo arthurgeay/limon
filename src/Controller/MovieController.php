@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\Movie;
+use App\Entity\Productor;
+use App\Repository\CategoryRepository;
 use App\Repository\MovieRepository;
+use App\Repository\ProductorRepository;
 use App\Repository\PurchaseRepository;
 use App\Repository\RatingRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +18,7 @@ use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * @Route("/api/movie", name="movie_")
@@ -24,7 +30,7 @@ class MovieController extends AbstractController
      */
     public function all(Request $request, MovieRepository $movieRepository, RatingRepository $ratingRepository)
     {
-        $lastMovies = $movieRepository->findBy([], ['id' => 'desc'], 10);
+        $lastMovies = $movieRepository->findBy([], ['id' => 'desc'], 12);
         $mostRatingMovies = $ratingRepository->getMostRatingMovies();
 
         $result = ['last_movies' => $lastMovies, 'most_rating_movies' => $mostRatingMovies];
@@ -90,6 +96,67 @@ class MovieController extends AbstractController
         $file = new File($kernel->getProjectDir() . '/public/movies/movie.mp4');
 
         return $this->file($file);
+
+    }
+
+    /**
+     * @Route("/", name="add", methods={"POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function create(Request $request, EntityManagerInterface $em, CategoryRepository $categoryRepository, ProductorRepository $productorRepository, ValidatorInterface $validator)
+    {
+        $title = $request->request->get('title');
+        $date = $request->request->get('date');
+        $price = (float) $request->request->get('price');
+        $production = $request->request->get('production');
+        $heroImg = $request->request->get('hero_img');
+        $posterImg = $request->request->get('poster_img');
+        $category = $request->request->get('category');
+        $synopsis = $request->request->get('synopsis');
+
+        $movie = new Movie();
+        $movie->setTitle($title);
+        $movie->setSynopsis($synopsis);
+        $movie->setPrice($price);
+        $movie->setDownloadUrl('');
+        $movie->setReleaseDate(new \DateTime($date));
+        $movie->setHeroImg($heroImg);
+        $movie->setPosterImg($posterImg);
+
+        $productor = $productorRepository->findOneBy(['name' => $production]);
+
+        if(!$productor) {
+            $productor = new Productor();
+            $productor->setName($production);
+            $em->persist($productor);
+        }
+
+        $categoryItem = $categoryRepository->findOneBy(['name' => $category]);
+
+        if(!$categoryItem) {
+            $categoryItem = new Category();
+            $categoryItem->setName($category);
+            $em->persist($categoryItem);
+        }
+
+        $movie->setCategory($categoryItem);
+        $movie->setProductor($productor);
+
+        $errors = $validator->validate($movie);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
+
+        $em->persist($movie);
+        $em->flush();
+
+        return $this->json(['status' => 'Film ajouté', 'newItem' => $movie], 200, [], ['groups' => ['movie']]);
 
     }
 }
