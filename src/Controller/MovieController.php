@@ -24,7 +24,7 @@ class MovieController extends AbstractController
     public function all(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
         $page = $request->query->getInt('page', 1);
-        $movies = $movieRepository->findAll();
+        $movies = $movieRepository->findBy([], ['id' => 'desc']);
 
         $pagination = $paginator->paginate($movies, $page, 10);
 
