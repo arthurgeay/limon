@@ -217,4 +217,15 @@ class MovieController extends AbstractController
 
         return $this->json(['status' => 'Film mis à jour', 'editItem' => $movie], 200, [], ['groups' => ['movie']]);
     }
+
+    /**
+     * @Route("/{id}", name="delete", methods={"DELETE"})
+     */
+    public function delete(Movie $movie, EntityManagerInterface $em)
+    {
+        $em->remove($movie);
+        $em->flush();
+
+        return $this->json(['status' => 'Film supprimé'], 200);
+    }
 }
