@@ -17,43 +17,43 @@ class Movie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $poster_img;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $hero_img;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $price;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $release_date;
 
@@ -66,14 +66,14 @@ class Movie
     /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $productor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched", "history.purchased", "watchlist"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $category;
 

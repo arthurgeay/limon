@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Movie;
 use App\Repository\MovieRepository;
 use App\Repository\PurchaseRepository;
+use App\Repository\RatingRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,23 +22,14 @@ class MovieController extends AbstractController
     /**
      * @Route("/all", name="all", methods={"GET"})
      */
-    public function all(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
+    public function all(Request $request, MovieRepository $movieRepository, RatingRepository $ratingRepository)
     {
-        $page = $request->query->getInt('page', 1);
-        $movies = $movieRepository->findBy([], ['id' => 'desc']);
+        $lastMovies = $movieRepository->findBy([], ['id' => 'desc'], 10);
+        $mostRatingMovies = $ratingRepository->getMostRatingMovies();
 
-        $pagination = $paginator->paginate($movies, $page, 10);
+        $result = ['last_movies' => $lastMovies, 'most_rating_movies' => $mostRatingMovies];
 
-        if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé'], 404);
-        }
-
-        return $this->json([
-            'current_page' => $pagination->getCurrentPageNumber(),
-            'items_per_page' => $pagination->getItemNumberPerPage(),
-            'total_item_count' => $pagination->getTotalItemCount(),
-            'movies' => $movies
-        ], 200, [], ['groups' => ['movie']]);
+        return $this->json($result, 200, [], ['groups' => ['movie.all']]);
     }
 
     /**

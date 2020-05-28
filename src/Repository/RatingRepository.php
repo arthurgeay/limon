@@ -30,6 +30,20 @@ class RatingRepository extends ServiceEntityRepository
             ;
     }
 
+    public function getMostRatingMovies()
+    {
+        return $this->createQueryBuilder('r')
+            ->addSelect('AVG(r.score) AS avg')
+            ->innerJoin('r.movie', 'm')
+            ->addSelect('m')
+            ->groupBy('m.id')
+            ->orderBy('avg', 'desc')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Rating[] Returns an array of Rating objects
     //  */
