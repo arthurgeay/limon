@@ -159,4 +159,62 @@ class MovieController extends AbstractController
         return $this->json(['status' => 'Film ajouté', 'newItem' => $movie], 200, [], ['groups' => ['movie']]);
 
     }
+
+    /**
+     * @Route("/{id}", name="edit", methods={"PUT"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function edit(Movie $movie, Request $request, EntityManagerInterface $em, CategoryRepository $categoryRepository, ProductorRepository $productorRepository, ValidatorInterface $validator)
+    {
+        $title = $request->request->get('title');
+        $date = $request->request->get('date');
+        $price = (float) $request->request->get('price');
+        $production = $request->request->get('production');
+        $heroImg = $request->request->get('hero_img');
+        $posterImg = $request->request->get('poster_img');
+        $category = $request->request->get('category');
+        $synopsis = $request->request->get('synopsis');
+
+        $movie->setTitle($title);
+        $movie->setSynopsis($synopsis);
+        $movie->setPrice($price);
+        $movie->setDownloadUrl('');
+        $movie->setReleaseDate(new \DateTime($date));
+        $movie->setHeroImg($heroImg);
+        $movie->setPosterImg($posterImg);
+
+        $productor = $productorRepository->findOneBy(['name' => $production]);
+
+        if(!$productor) {
+            $productor = new Productor();
+            $productor->setName($production);
+            $em->persist($productor);
+        }
+
+        $categoryItem = $categoryRepository->findOneBy(['name' => $category]);
+
+        if(!$categoryItem) {
+            $categoryItem = new Category();
+            $categoryItem->setName($category);
+            $em->persist($categoryItem);
+        }
+
+        $movie->setCategory($categoryItem);
+        $movie->setProductor($productor);
+
+        $errors = $validator->validate($movie);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
+
+        $em->flush();
+
+        return $this->json(['status' => 'Film mis à jour', 'editItem' => $movie], 200, [], ['groups' => ['movie']]);
+    }
 }
