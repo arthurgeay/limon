@@ -17,6 +17,7 @@ export class CheckoutComponent implements OnInit {
   stripe;
   card;
   cardErrors;
+  loading = false;
 
   constructor(private router:Router) { }
 
@@ -52,7 +53,12 @@ export class CheckoutComponent implements OnInit {
     if (error) {
       const cardErrors = error.message;
     } else {
-      this.router.navigate(['complete'])
+      this.loading = true;
+      // this.router.navigate(['complete'])
+      setTimeout(() => {
+        this.loading = false;  
+      }, 2000);
+      
     }
   }
 

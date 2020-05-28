@@ -4,7 +4,7 @@
         <h3 class="result-infos-title">{{ card.title }}</h3>
         <div class="sub">
             <b class="sub-prod">{{ card.prod }}</b>
-            <p class="sub-price">{{ card.price }}</p>
+            <p class="sub-price">{{ card.price }} <span *ngIf="card.price !== '' && card.price !=='Gratuit'">€</span></p>
         </div>
     </div>
 </div>

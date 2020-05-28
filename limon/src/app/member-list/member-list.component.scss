@@ -1,7 +1,13 @@
 .manage-member {
     padding: 2rem;
+    min-height: calc(100vh - 15rem);
     @media (min-width: 665px) {
         padding: 4rem;
+    }
+        
+    @media (min-width: 1900px) {
+        font-size: 1.4rem;
+
     }
 }
 

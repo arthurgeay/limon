@@ -1,12 +1,17 @@
 $mobile: 665px;
+$large: 1900px;
 
 .edit {
     position: relative;
     display: flex;
     justify-content: center;
     padding: 2rem;
+    min-height: calc(100vh - 15rem);
     @media (min-width: $mobile) {
         padding: 4rem;
+    }
+    @media (min-width: $large) {
+        font-size: 2.2rem;
     }
     &-cont, form{
         display: grid;

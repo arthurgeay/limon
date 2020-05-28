@@ -14,7 +14,7 @@ export class FilmResultComponent implements OnInit {
   public isPrice = false;
   public isDate = false;
   public catalog: any[];
-  public isMobile: boolean;
+  public isMobile: boolean = false;
   public isRGPD:boolean;
 
   constructor(private movieService: MovieService,

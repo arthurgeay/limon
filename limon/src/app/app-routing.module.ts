@@ -29,7 +29,7 @@ const routes: Routes = [
   {path: 'watchlist', component: PlaylistComponent },
   {path: 'subscription', component: SubscribeComponent },
   {path: 'members', component: MemberListComponent },
-  {path: 'user/:id', component: DetailComponent },
+  {path: 'user/:id', component: ProfilComponent },
   {path: 'agreement', component: AgreementComponent },
   {path: 'privacy', component: AgreementComponent },
   {path: '**', component: FilmResultComponent }

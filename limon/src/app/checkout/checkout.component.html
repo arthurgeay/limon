@@ -20,4 +20,9 @@
             <button class="buy" type="submit">Payer {{ amount }} €</button>
         </div>
     </div>
+    <div class="notif" *ngIf="loading">
+        <span class="notif-loader"></span>
+        loading ...
+    </div>
 </form>
+

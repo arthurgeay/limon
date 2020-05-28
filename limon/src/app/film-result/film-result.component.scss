@@ -1,5 +1,12 @@
 $mobile: 665px;
 $tablet: 1080px;
+$large: 2400px;
+
+:host {
+    @media (min-width: $large) {
+        font-size: 2rem;
+    }
+}
 
 .phrase-res {
     font-size: 1rem;
@@ -34,19 +41,31 @@ $tablet: 1080px;
         @media (min-width:$mobile) {
             width: .9rem;
         }
+        @media (min-width: $large) {
+            width: 1.4rem;
+        }  
+        
     }
     p{
-        font-size: .85em;    
+        font-size: .85em;  
+        @media (min-width: $large) {
+            font-size: 1.6rem;
+        }  
     }
     @media (min-width:$mobile) {
         font-size: 1.2rem;
         width: 5rem;
         height: 2rem;
     }
+    @media (min-width: $large) {
+        width: 7rem;
+        height: 2.5rem;
+    }  
 }
 
 #results {
     display: grid;
+    min-height: calc(100vh - 21rem);
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     @media (min-width: $tablet) {
         grid-template-columns: repeat(auto-fit, 13rem);

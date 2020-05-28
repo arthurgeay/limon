@@ -1,8 +1,12 @@
 $mobile: 665px;
+$large: 1900px;
 
 .connect {
     height: calc(100vh - 11rem);
     position: relative;
+    @media (min-width: 1900px) {
+        font-size: 1.6rem;
+    }
     &-return {
         background-color: transparent;
         color: var(--rind-green);
@@ -15,7 +19,9 @@ $mobile: 665px;
             top: 4rem;
             bottom: initial;
             left: 6rem;
+            font-size: 1rem;
         }
+
     }
     form{
         height: 100%;
@@ -44,12 +50,13 @@ $mobile: 665px;
         .input-row {
             display: flex;
             justify-content: space-between;
+            align-items: row;
             width: 65%;
             max-width: 25rem;
             .input-cont {
                 display: flex;
                 flex-direction: column;
-                align-items: flex-start;
+                justify-content: space-between;
                 @media (max-width: $mobile) {
                     width: 100%;
                 }
@@ -71,6 +78,10 @@ $mobile: 665px;
         @media (min-width: $mobile){
             height: 2.7rem;
         }
+        @media (min-width: $large){
+            height: 3rem;
+            font-size: .8em;
+        }
     }
     &-birth, &-user{
         width: 50%;
@@ -82,11 +93,15 @@ $mobile: 665px;
     &-link {
         display: flex;
         flex-direction: column;
+        font-size: 1rem;
     }
     &-other {
         font-size: .7rem;
         margin-bottom: .5rem;
         font-weight: normal;
+        @media (min-width: $large){
+         font-size: 1.2em;
+        }
     }
     &-button {
         background-color: var(--acid-green);
@@ -94,6 +109,9 @@ $mobile: 665px;
         border-radius: 5px;
         color: var(--background);
         font-size: 1.2rem;
+        @media (min-width: $large){
+            font-size: 1.4rem;
+        }
     }
 }
 

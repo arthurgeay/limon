@@ -2,11 +2,14 @@ $mobile: 665px;
 
 .profil {
     margin: 3rem;
-    height: calc(100vh - 12rem);
+    min-height: calc(100vh - 12rem);
     position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     @media (min-width: $mobile){
         margin: 5rem 10rem;
-        height: calc(100vh - 18rem);
+        height: calc(100vh - 21rem);
     }
     &-main, &-sup, &-access {
         display: flex;

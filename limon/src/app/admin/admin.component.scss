@@ -1,10 +1,18 @@
 $mobile: 655px;
+$large: 1900px;
 
 .admin {
     padding: 0 4rem;
+    min-height: calc(100vh - 15rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     h1 {
         font-size: 1.7rem;
         margin: 2rem 0;
+    }
+    @media (min-width: $large) {
+        font-size: 1.5rem;
     }
 }
 .global, .week {
@@ -14,6 +22,7 @@ $mobile: 655px;
     h2 {
         margin-bottom: 2rem;
     }
+
 }
 
 .global{
@@ -35,7 +44,7 @@ $mobile: 655px;
         margin-bottom: 1rem;
     }
     &-content {
-        font-size: 3rem;
+        font-size: 3em;
     }
 }
 
