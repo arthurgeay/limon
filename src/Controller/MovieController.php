@@ -19,6 +19,28 @@ use Symfony\Component\Routing\Annotation\Route;
 class MovieController extends AbstractController
 {
     /**
+     * @Route("/all", name="all", methods={"GET"})
+     */
+    public function all(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
+    {
+        $page = $request->query->getInt('page', 1);
+        $movies = $movieRepository->findAll();
+
+        $pagination = $paginator->paginate($movies, $page, 10);
+
+        if(count($pagination) == 0) {
+            return $this->json(['status' => 'Aucun film trouvé'], 404);
+        }
+
+        return $this->json([
+            'current_page' => $pagination->getCurrentPageNumber(),
+            'items_per_page' => $pagination->getItemNumberPerPage(),
+            'total_item_count' => $pagination->getTotalItemCount(),
+            'movies' => $movies
+        ], 200, [], ['groups' => ['movie']]);
+    }
+
+    /**
      * @Route("/search", name="search", methods={"GET"})
      *
      */
