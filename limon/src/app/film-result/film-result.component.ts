@@ -62,29 +62,31 @@ export class FilmResultComponent implements OnInit {
   }
 
   onScroll1(event:Event) {
+    //@ts-ignore
     if (event.srcElement.scrollLeft >= 100) {
       this.scrollToLeft1 = true;
     }
     else {
       this.scrollToLeft1 = false;
     }
-
+    //@ts-ignore
     if (event.srcElement.scrollLeft >= this.scroll1.nativeElement.clientWidth / 10) {
       this.scrollToRight1 = false;
-    }
+    } 
     else {
       this.scrollToRight1 = true;
     }
-  }
+  } 
 
   onScroll2(event:Event) {
+    //@ts-ignore
     if (event.srcElement.scrollLeft >= 100) {
       this.scrollToLeft2 = true;
     }
     else {
       this.scrollToLeft2 = false;
     }
-
+  //@ts-ignore
     if (event.srcElement.scrollLeft >= this.scroll2.nativeElement.clientWidth / 10) {
       this.scrollToRight2 = false;
     }
