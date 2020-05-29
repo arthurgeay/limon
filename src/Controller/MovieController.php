@@ -12,13 +12,17 @@ use App\Repository\PurchaseRepository;
 use App\Repository\RatingRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
+use Nelmio\ApiDocBundle\Annotation\Areas;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Swagger\Annotations as SWG;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Swagger\Annotations\Swagger;
 
 /**
  * @Route("/api/movie", name="movie_")
@@ -40,7 +44,39 @@ class MovieController extends AbstractController
 
     /**
      * @Route("/search", name="search", methods={"GET"})
-     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retourne un film selon certains critères",
+     *     @SWG\Schema(
+     *          type="array",
+     *          @SWG\Items(ref=@Model(type=Movie::class, groups={"movie"}))
+     *     )
+     * )
+     * @SWG\Parameter(
+     *     name="query",
+     *     in="query",
+     *     type="string",
+     *     description="Nom du film ou de la catégorie d'un film"
+     * )
+     * @SWG\Parameter(
+     *     name="searchBy",
+     *     in="query",
+     *     type="string",
+     *     description="Chercher par nom ou catégorie"
+     * )
+     * @SWG\Parameter(
+     *     name="orderBy",
+     *     in="query",
+     *     type="string",
+     *     description="Trier les résultats dans l'ordre croissant ou décroissant"
+     * )
+     * @SWG\Parameter(
+     *     name="page",
+     *     in="query",
+     *     type="integer",
+     *     description="Retourne les résultats liés à la page demandé"
+     * )
+     * @SWG\Tag(name="movie")
      */
     public function search(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
@@ -68,6 +104,14 @@ class MovieController extends AbstractController
     /**
      * @Route("/{id}", name="show", requirements={"id"="\d+"}, methods={"GET"})
      * @throws \Doctrine\ORM\NonUniqueResultException
+     * @SWG\Response(
+     *     response=200,
+     *     description="Retourne un film selon son id",
+     *     @SWG\Schema(
+     *          @SWG\Items(ref=@Model(type=Movie::class, groups={"movie"}))
+     *     )
+     * )
+     * @SWG\Tag(name="movie")
      */
     public function show($id, MovieRepository $movieRepository)
     {
