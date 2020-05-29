@@ -1,5 +1,5 @@
 $mobile: 665px;
-$large: 1900px;
+$large: 2400px;
 
 .item {
     display: grid;
@@ -87,10 +87,18 @@ $large: 1900px;
         }
         &-bill {
             background-color: var(--acid-green)!important;
+            &:focus,
+            &:hover {
+                background-color: lighten(#A7E232, 20)!important;
+            }
             color: var(--dark-elements);
         }
         &-delete {
             background-color: red!important;
+            &:focus,
+            &:hover {
+                background-color: lighten(red, 20)!important;
+            }
         }
     }
 }

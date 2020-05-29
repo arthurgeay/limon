@@ -1,7 +1,7 @@
 <section class="item">
-    <div class="item-img">
+    <a class="item-img" routerLink="/detail/{{ item.id }}">
         <img src="{{ item.poster !== '' ? item.poster : 'assets/poster-notfound.png' }}" alt="poster">
-    </div>
+    </a>
     <div class="infos">
         <h2 class="infos-title">{{ item.title }}</h2>
         <b class="infos-prod">{{ item.prod}} <span *ngIf="item.date !== ''">-</span> {{ item.date }}</b>

@@ -32,9 +32,14 @@ $tablet: 1080px;
         right: 1rem;
         background-color: transparent;
         height: .8rem;
+        opacity: .4;
         img {
             width: .8rem;
             height: .8rem;
+        }
+        &:focus,
+        &:hover {
+            opacity: 1;
         }
         
     }
@@ -47,6 +52,10 @@ $tablet: 1080px;
         img{
             width: .99rem;
             height: .99rem;
+        }
+        &:focus,
+        &:hover {
+            background-color: var(--rind-green);
         }
     }
 

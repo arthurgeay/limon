@@ -7,7 +7,6 @@ $large: 2400px;
         padding: 1rem;
         margin-top: 4rem;
     }
-
     &-select{
         margin-bottom: 1rem;
         font-weight: normal;
@@ -31,6 +30,10 @@ $large: 2400px;
         @media (min-width: $large) {
             font-size: 1.2rem;
         }  
+        &:focus,
+        &:hover {
+            background-color: var(--dark-elements);
+        }
     }
     &::-webkit-scrollbar {
         display: none;

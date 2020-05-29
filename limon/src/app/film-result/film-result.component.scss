@@ -131,6 +131,10 @@ $large: 2400px;
     display: flex;
     justify-content: center;
     align-items: center;
+    @media (max-width: $mobile) {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 
 .start {
@@ -152,4 +156,8 @@ $large: 2400px;
     clip-path: polygon(75% 50%, 0 0, 0 100%);
     position: relative;
     left: .3rem;
+    @media (max-width: $mobile) {
+        width: 1rem;
+        height: 1rem;
+    }
 }

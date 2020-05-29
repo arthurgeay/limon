@@ -16,7 +16,7 @@
     <div class="checkout-row">
         <p class="checkout-pr">Montant: <span class="money">{{ amount }}€</span></p>
         <div class="checkout-row-button">
-            <div class="checkout-cancel" (click)="onClear()">Annuler</div>
+            <a class="checkout-cancel" (click)="onClear()" tabindex="0">Annuler</a>
             <button class="buy" type="submit">Payer {{ amount }} €</button>
         </div>
     </div>

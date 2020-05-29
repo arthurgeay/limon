@@ -5,12 +5,30 @@ $large: 2400px;
     width: 7.5rem;
     outline: none;
     cursor: pointer;
+    display: block;
+    padding-top: .7rem;
+    position: relative;
     @media (min-width: $tablet) {
         width: 12rem;
     }
     @media (min-width: $large) {
         font-size: 1.6rem;
     } 
+    &:focus,
+    &:hover {
+        ::after{
+            content: '';
+            display: block;
+            width: 20%;
+            height: 4px;
+            background-color: var(--rind-green);
+            position: absolute;
+            top: 0;
+            left: 0;
+            margin-left: .2rem;
+            border-radius: 15rem;
+        }
+    }
     &-poster {
         border-radius: 5px;
         width: 100%;
