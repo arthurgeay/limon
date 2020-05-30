@@ -101,6 +101,8 @@ $large: 2400px;
     &-row{
         display: flex;
         overflow-x: scroll;
+        -ms-overflow-style: none;
+        scrollbar-width:none;
         padding-bottom: 2rem;
         position: relative;
         scroll-behavior: smooth;
@@ -142,7 +144,8 @@ $large: 2400px;
     right: initial;
     z-index: 5;
     span{
-        clip-path: polygon(25% 50%, 100% 100%, 100% 0)!important;
+        -webkit-clip-path: polygon(25% 50%, 100% 100%, 100% 0)!important;
+                clip-path: polygon(25% 50%, 100% 100%, 100% 0)!important;
         position: relative;
         left: -.3rem!important;
     }

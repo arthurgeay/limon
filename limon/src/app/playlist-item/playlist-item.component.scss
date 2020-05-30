@@ -3,7 +3,9 @@ $large: 2400px;
 
 .item {
     display: grid;
-    grid-template: 50% 50% / 50% 50%;
+    -ms-grid-rows: 50% 50%;
+    -ms-grid-columns: 50% 50%;
+        grid-template: 50% 50% / 50% 50%;
     max-height: 14rem;
     background-color: var(--dark-elements);
     margin: 1rem 0;
@@ -83,6 +85,10 @@ $large: 2400px;
             }
             @media (max-width: $mobile) {
                 font-size: .6rem;
+            }
+            &:focus,
+            &:hover {
+                background-color: lighten(#28a601, 5);
             }
         }
         &-bill {

@@ -19,6 +19,8 @@ $large: 2400px;
 .category {
     display: flex;
     overflow-x: scroll;
+    -ms-overflow-style: none;
+    scrollbar-width:none;
     &-item {
         background-color: var(--rind-green);
         border-radius: 5px;
