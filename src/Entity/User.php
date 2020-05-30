@@ -42,6 +42,7 @@ class User implements UserInterface
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank(message="Le champ nom complet est requis")
      * @Groups({"movie", "profile"})
+     * @Assert\Length(max="20", maxMessage="Votre nom complet ne doit pas dépasser 20 caractères")
      */
     private $fullname;
 

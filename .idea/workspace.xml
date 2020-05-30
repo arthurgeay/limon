@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/packages/nelmio_api_doc.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_api_doc.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MovieController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Movie.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Movie.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/User.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -189,7 +189,7 @@
       <workItem from="1590675310233" duration="10199000" />
       <workItem from="1590751445493" duration="164000" />
       <workItem from="1590753979379" duration="6241000" />
-      <workItem from="1590849037768" duration="547000" />
+      <workItem from="1590849037768" duration="1785000" />
     </task>
     <servers />
   </component>
