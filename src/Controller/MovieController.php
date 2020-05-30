@@ -77,6 +77,7 @@ class MovieController extends AbstractController
      *     description="Retourne les résultats liés à la page demandé"
      * )
      * @SWG\Tag(name="movie")
+     * @Areas({"default"})
      */
     public function search(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
@@ -112,6 +113,7 @@ class MovieController extends AbstractController
      *     )
      * )
      * @SWG\Tag(name="movie")
+     * @Areas({"default"})
      */
     public function show($id, MovieRepository $movieRepository)
     {
