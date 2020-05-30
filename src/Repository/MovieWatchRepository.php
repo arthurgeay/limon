@@ -30,6 +30,7 @@ class MovieWatchRepository extends ServiceEntityRepository
             ->addSelect('p')
             ->innerJoin('m.category', 'c')
             ->addSelect('c')
+            ->orderBy('mv.date', 'DESC')
             ->getQuery()
             ->getResult()
             ;

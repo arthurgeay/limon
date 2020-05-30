@@ -26,8 +26,21 @@ class PurchaseRepository extends ServiceEntityRepository
             ->setParameter('user', $user)
             ->innerJoin('p.movie', 'm')
             ->addSelect('m')
+            ->orderBy('p.date', 'DESC')
             ->getQuery()
             ->getResult()
+            ;
+    }
+
+    public function isAlreadyBuy($movie, $user)
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.movie = :movie')
+            ->setParameter('movie', $movie)
+            ->andWhere('p.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getOneOrNullResult()
             ;
     }
 

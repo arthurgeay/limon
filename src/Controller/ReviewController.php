@@ -17,55 +17,9 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
  */
 class ReviewController extends AbstractController
 {
-    /**
-     * @Route("/{id}", name="add", methods={"PUT"})
-     * @IsGranted("ROLE_USER")
-     */
-    public function edit(Review $review, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
-    {
-        if($review->getUser() != $this->getUser()) {
-            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet avis.'], 401);
-        }
-
-        $message = $request->request->get('message') ?? '';
-
-        $review = $review->setContent($message);
-
-        $errors = $validator->validate($review);
-
-        if(count($errors)) {
-            $errorsMsg = [];
-            foreach($errors as $error) {
-                $errorsMsg[] = $error->getMessage();
-            }
-
-            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
-        }
-
-        $em->flush();
-
-        return $this->json(['status' => 'Avis mis à jour'], 200);
-
-    }
 
     /**
-     * @Route("/{id}", name="delete", methods={"DELETE"})
-     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
-     */
-    public function delete(Review $review, EntityManagerInterface $em)
-    {
-        if($this->getUser()->getRoles() == ['ROLE_USER'] && $review->getUser() != $this->getUser()) {
-            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet avis.'], 401);
-        }
-
-        $em->remove($review);
-        $em->flush();
-
-        return $this->json(['status' => 'Avis supprimé'], 200);
-    }
-
-    /**
-     * @Route("/{id}", name="add", methods={"POST"})
+     * @Route("/{id}", name="add", methods="POST")
      * @IsGranted("ROLE_USER")
      */
     public function add(Movie $movie, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
@@ -91,7 +45,54 @@ class ReviewController extends AbstractController
         $em->persist($review);
         $em->flush();
 
-        return $this->json(['status' => 'Votre avis pour le film '. $movie->getTitle() . ' a bien été enregistré'], 200);
+        return $this->json(['status' => 'Votre avis pour le film '. $movie->getTitle() . ' a bien été enregistré', 'newItem' => $review], 200, [], ['groups' => ['movie']]);
+    }
+
+    /**
+     * @Route("/{id}", name="edit", methods={"PUT"})
+     * @IsGranted("ROLE_USER")
+     */
+    public function edit(Review $review, Request $request, ValidatorInterface $validator, EntityManagerInterface $em)
+    {
+        if($review->getUser() != $this->getUser()) {
+            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet avis.'], 401);
+        }
+
+        $message = $request->request->get('message') ?? '';
+
+        $review = $review->setContent($message);
+
+        $errors = $validator->validate($review);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
+
+        $em->flush();
+
+        return $this->json(['status' => 'Avis mis à jour', 'editItem' => $review], 200, [], ['groups' => ['movie']]);
+
+    }
+
+    /**
+     * @Route("/{id}", name="delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
+     */
+    public function delete(Review $review, EntityManagerInterface $em)
+    {
+        if($this->getUser()->getRoles() == ['ROLE_USER'] && $review->getUser() != $this->getUser()) {
+            return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet avis.'], 401);
+        }
+
+        $em->remove($review);
+        $em->flush();
+
+        return $this->json(['status' => 'Avis supprimé'], 200);
     }
 
 

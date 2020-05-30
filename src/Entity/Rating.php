@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\RatingRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=RatingRepository::class)
@@ -34,6 +35,7 @@ class Rating
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="ratings")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("movie.all")
      */
     private $movie;
 

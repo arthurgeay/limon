@@ -93,6 +93,12 @@
     "doctrine/reflection": {
         "version": "1.2.1"
     },
+    "egulias/email-validator": {
+        "version": "2.1.17"
+    },
+    "exsyst/swagger": {
+        "version": "v0.4.1"
+    },
     "fzaninotto/faker": {
         "version": "v1.9.1"
     },
@@ -126,6 +132,31 @@
     "namshi/jose": {
         "version": "7.2.3"
     },
+    "nelmio/api-doc-bundle": {
+        "version": "3.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "3.0",
+            "ref": "c8e0c38e1a280ab9e37587a8fa32b251d5bc1c94"
+        },
+        "files": [
+            "config/packages/nelmio_api_doc.yaml",
+            "config/routes/nelmio_api_doc.yaml"
+        ]
+    },
+    "nelmio/cors-bundle": {
+        "version": "1.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.5",
+            "ref": "6388de23860284db9acce0a7a5d9d13153bcb571"
+        },
+        "files": [
+            "config/packages/nelmio_cors.yaml"
+        ]
+    },
     "nikic/php-parser": {
         "version": "v4.4.0"
     },
@@ -137,6 +168,15 @@
     },
     "php": {
         "version": "7.3"
+    },
+    "phpdocumentor/reflection-common": {
+        "version": "2.1.0"
+    },
+    "phpdocumentor/reflection-docblock": {
+        "version": "5.1.0"
+    },
+    "phpdocumentor/type-resolver": {
+        "version": "1.1.0"
     },
     "psr/cache": {
         "version": "1.0.1"
@@ -174,6 +214,9 @@
             "config/packages/security_checker.yaml"
         ]
     },
+    "spipu/html2pdf": {
+        "version": "v5.2.2"
+    },
     "stof/doctrine-extensions-bundle": {
         "version": "1.2",
         "recipe": {
@@ -186,6 +229,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "swiftmailer/swiftmailer": {
+        "version": "v6.2.3"
+    },
     "symfony/apache-pack": {
         "version": "1.0",
         "recipe": {
@@ -197,6 +243,9 @@
         "files": [
             "public/.htaccess"
         ]
+    },
+    "symfony/asset": {
+        "version": "v5.0.8"
     },
     "symfony/cache": {
         "version": "v5.0.8"
@@ -306,6 +355,9 @@
     "symfony/mime": {
         "version": "v5.0.8"
     },
+    "symfony/options-resolver": {
+        "version": "v5.0.8"
+    },
     "symfony/orm-pack": {
         "version": "v1.0.8"
     },
@@ -322,6 +374,9 @@
         "version": "v1.0.4"
     },
     "symfony/property-access": {
+        "version": "v5.0.8"
+    },
+    "symfony/property-info": {
         "version": "v5.0.8"
     },
     "symfony/routing": {
@@ -370,6 +425,20 @@
     },
     "symfony/stopwatch": {
         "version": "v5.0.8"
+    },
+    "symfony/swiftmailer-bundle": {
+        "version": "2.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "2.5",
+            "ref": "ae4d22af30bbd484506bc1817c5a3ef72c855b93"
+        },
+        "files": [
+            "config/packages/dev/swiftmailer.yaml",
+            "config/packages/swiftmailer.yaml",
+            "config/packages/test/swiftmailer.yaml"
+        ]
     },
     "symfony/translation": {
         "version": "3.3",
@@ -440,13 +509,22 @@
     "symfony/yaml": {
         "version": "v5.0.8"
     },
+    "tecnickcom/tcpdf": {
+        "version": "6.3.5"
+    },
     "twig/twig": {
         "version": "v3.0.3"
+    },
+    "webmozart/assert": {
+        "version": "1.8.0"
     },
     "zendframework/zend-code": {
         "version": "3.4.1"
     },
     "zendframework/zend-eventmanager": {
         "version": "3.2.1"
+    },
+    "zircote/swagger-php": {
+        "version": "2.0.16"
     }
 }

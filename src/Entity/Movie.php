@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=MovieRepository::class)
@@ -17,43 +18,50 @@ class Movie
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="Le champ de titre est requis")
+     * @Assert\Length(max="80", maxMessage="Le titre ne doit pas dépasser 80 caractères")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="Le synopsis est requis")
      */
     private $synopsis;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="L'image de poster est requis")
      */
     private $poster_img;
 
     /**
      * @ORM\Column(type="text")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="L'image hero est requise")
      */
     private $hero_img;
 
     /**
      * @ORM\Column(type="float")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="Le prix est requis")
      */
     private $price;
 
     /**
      * @ORM\Column(type="date")
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
+     * @Assert\NotBlank(message="La date est requise")
      */
     private $release_date;
 
@@ -66,14 +74,14 @@ class Movie
     /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $productor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
-     * @Groups({"movie", "history.watched", "history.purchased"})
+     * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      */
     private $category;
 

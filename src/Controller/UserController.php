@@ -12,6 +12,7 @@ use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,10 +38,21 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="edit", methods={"PUT"})
      * @throws \Exception
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
-    public function editProfile(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator)
+    public function editProfile(Request $request, EntityManagerInterface $entityManager, ValidatorInterface $validator, UserRepository $userRepository)
     {
         $user = $this->getUser();
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            $userId = $request->query->getInt('userId');
+            $user = $userRepository->find($userId);
+
+            if(!$user) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
+
         $user->setEmail($request->request->get('email'));
         $user->setFullname($request->request->get('fullname'));
         $user->setBirthday(new \DateTime(strval($request->request->get('birthday'))));
@@ -58,15 +70,26 @@ class UserController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->json(['status' => 'Profil mis à jour'], 200);
+        return $this->json(['status' => 'Profil mis à jour', 'editItem' => $user], 200, [], ['groups' => ['profile']]);
     }
 
     /**
      * @Route("/", name="delete", methods={"DELETE"})
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
-    public function deleteAccount(EntityManagerInterface $em)
+    public function deleteAccount(Request $request, EntityManagerInterface $em, UserRepository $userRepository)
     {
         $user = $this->getUser();
+
+        if($this->isGranted('ROLE_ADMIN')) {
+            $userId = $request->query->getInt('userId');
+            $user = $userRepository->find($userId);
+
+            if(!$user) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
+
         $em->remove($user);
         $em->flush();
 

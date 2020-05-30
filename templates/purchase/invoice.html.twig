@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Facture Limon{% endblock %}
+
+{% block body %}
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        td {
+            padding: 15px;
+            border: 1px solid grey;
+        }
+
+        tr:first-child, tr:last-child {
+            background: rgb(238, 238, 238);
+        }
+    </style>
+    <h1>Facture Limon - Achat du film {{ purchase.movie.title }}</h1>
+    <p>Date de paiement : <strong>{{ purchase.date|date("d/m/Y") }}</strong></p>
+
+    <h2>Informations client :</h2>
+    <p>{{ purchase.user.fullname }}</p>
+
+    <table>
+        <tr>
+            <td>Désignation</td>
+            <td>Sous-total</td>
+        </tr>
+        <tr>
+            <td>{{ purchase.movie.title }}</td>
+            <td>{{ purchase.movie.price }} €</td>
+        </tr>
+        <tr>
+            <td>Total</td>
+            <td>{{ purchase.movie.price }} €</td>
+        </tr>
+    </table>
+{% endblock %}

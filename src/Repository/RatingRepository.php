@@ -19,6 +19,31 @@ class RatingRepository extends ServiceEntityRepository
         parent::__construct($registry, Rating::class);
     }
 
+    public function getAvg($movie)
+    {
+        return $this->createQueryBuilder('r')
+            ->select('AVG(r.score) AS avg')
+            ->andWhere('r.movie = :movie')
+            ->setParameter('movie', $movie)
+            ->getQuery()
+            ->getOneOrNullResult()
+            ;
+    }
+
+    public function getMostRatingMovies()
+    {
+        return $this->createQueryBuilder('r')
+            ->addSelect('AVG(r.score) AS avg')
+            ->innerJoin('r.movie', 'm')
+            ->addSelect('m')
+            ->groupBy('m.id')
+            ->orderBy('avg', 'desc')
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getResult()
+            ;
+    }
+
     // /**
     //  * @return Rating[] Returns an array of Rating objects
     //  */
