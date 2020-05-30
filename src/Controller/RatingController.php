@@ -34,6 +34,17 @@ class RatingController extends AbstractController
         $rating->setScore($score);
         $rating->setUser($this->getUser());
 
+        $errors = $validator->validate($rating);
+
+        if(count($errors)) {
+            $errorsMsg = [];
+            foreach($errors as $error) {
+                $errorsMsg[] = $error->getMessage();
+            }
+
+            return $this->json(['status' => 'Validation failed', 'errorMessages' => $errorsMsg], 400);
+        }
+
 
         $em->persist($rating);
         $em->flush();

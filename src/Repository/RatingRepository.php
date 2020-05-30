@@ -38,7 +38,7 @@ class RatingRepository extends ServiceEntityRepository
             ->addSelect('m')
             ->groupBy('m.id')
             ->orderBy('avg', 'desc')
-            ->setMaxResults(10)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult()
             ;

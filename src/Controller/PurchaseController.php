@@ -64,7 +64,7 @@ class PurchaseController extends AbstractController
      */
     public function downloadInvoice(Purchase $purchase, HTMLPDF $HTMLPDF)
     {
-        if($purchase->getUser()->getUsername() != $this->getUser()->getUsername()) {
+        if($purchase->getUser()->getUsername() != $this->getUser()->getUsername() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
         }
 
