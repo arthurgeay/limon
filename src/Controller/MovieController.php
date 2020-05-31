@@ -88,7 +88,7 @@ class MovieController extends AbstractController
 
         $movies = $movieRepository->findByNameOrCategoryAndFilters($query, $searchBy, $orderBy);
 
-        $pagination = $paginator->paginate($movies, $page, 10);
+        $pagination = $paginator->paginate($movies, $page, 18);
 
         if(!$query || count($pagination) == 0) {
             return $this->json(['status' => 'Aucun film trouvé'], 404);
