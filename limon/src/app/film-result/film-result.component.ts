@@ -1,6 +1,9 @@
 import { Component, OnInit, HostListener, ViewChild, ElementRef } from '@angular/core';
 import { MovieService } from '../movie.service';
 import { MobileService } from '../mobile.service';
+import { Observable, Subscription } from 'rxjs';
+import { ActiveSearchService } from '../active-search.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-film-result',
@@ -14,7 +17,10 @@ export class FilmResultComponent implements OnInit {
   public isAlph = false;
   public isPrice = false;
   public isDate = false;
-  public catalog: any[];
+  public moviesSubscription: Subscription;
+  public movies: any;
+  public resMovies: any;
+
   public isMobile: boolean = false;
   public isRGPD:boolean;
   @ViewChild('scroll1', { read: ElementRef }) public scroll1: ElementRef<any>;
@@ -23,28 +29,148 @@ export class FilmResultComponent implements OnInit {
   scrollToRight1 = true;
   scrollToLeft2 = false;
   scrollToRight2 = true;
+  value: any;
 
 
-  constructor(private movieService: MovieService,
-    private mobileService:MobileService) { }
+  constructor(
+    private http:HttpClient,
+    private movieService: MovieService,
+    private mobileService:MobileService,
+    private activeSearchService:ActiveSearchService) { 
+      activeSearchService.onSearchEvent.subscribe(
+        (response)=>{
+          this.isSearch = response;
+        }
+      );
+      activeSearchService.DataIDEvent.subscribe(
+        (data)=>{
+          this.value = data;
+          this.onDisplayResult();
+        }
+      );
+      // activeSearchService.categoryEvent.subscribe(
+      //   (cat)=>{
+      //     const categ = cat;
+      //     this.onSearchCategroy(categ);
+      //   }
+      // );
+    }
 
   ngOnInit(): void {
     this.isRGPD = true;
-    this.catalog = this.movieService.catalog;
+
+    this.moviesSubscription = this.movieService.moviesSubject.subscribe(
+      (movie:any)=>{
+        this.movies = movie;
+      }
+    );
+    
+    this.movieService.getAllMovies();
+    this.movieService.EmitOnMovies();
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
   }
 
+  onDisplayResult() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}`)
+    .subscribe(
+      (data:any)=>{
+        this.resMovies = data.movies;       
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  onSearchCategroy(cat) {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${cat}&searchBy=category`)
+    .subscribe(
+      (data:any)=>{
+        this.resMovies = data.movies;       
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+
   onAlph() {
     return(this.isAlph = !this.isAlph)
+  }
+
+  onSortAlph() {
+    if (!this.isAlph) {
+      this.onDisplayResult();
+    } else {
+      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=desc`)
+      .subscribe(
+        (data:any)=>{
+          this.resMovies = data.movies;       
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }
   }
 
   onPrice() {
     return(this.isPrice = !this.isPrice)
   }
 
+  onSortPrice() {
+    if (!this.isPrice) {
+      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-asc`)
+      .subscribe(
+        (data:any)=>{
+          this.resMovies = data.movies;       
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    } else {
+      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-desc`)
+      .subscribe(
+        (data:any)=>{
+          this.resMovies = data.movies;       
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }
+  }
   onDate() {
     return(this.isDate = !this.isDate)
   }
+
+  onSortDate() {
+    if (!this.isDate) {
+      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-asc`)
+      .subscribe(
+        (data:any)=>{
+          this.resMovies = data.movies;       
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    } else {
+      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-desc`)
+      .subscribe(
+        (data:any)=>{
+          this.resMovies = data.movies;       
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )
+    }
+  }
+
+
   scroll1Start() {
     this.scroll1.nativeElement.scrollLeft -= this.scroll1.nativeElement.clientWidth;
   }

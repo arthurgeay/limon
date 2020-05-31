@@ -14,8 +14,7 @@ $large: 2400px;
     @media (min-width: $large) {
         font-size: 1.6rem;
     } 
-    &:focus,
-    &:hover {
+    &:focus {
         ::after{
             content: '';
             display: block;

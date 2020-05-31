@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { MobileService } from '../mobile.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ActiveSearchService } from '../active-search.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,7 +13,8 @@ export class MenuComponent implements OnInit {
   isSub:boolean = true;
   public isMobile = false;
   public isMenu = false;
-  constructor(private mobileService:MobileService) { }
+  constructor(private mobileService:MobileService,
+    private activeSearchService:ActiveSearchService) { }
 
   ngOnInit(): void {
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
@@ -23,6 +25,9 @@ export class MenuComponent implements OnInit {
   }
   onMenuOpen(){
     return(this.isMenu ? 'translateY(0rem)' : 'translateY(-15rem)')
+  }
+  onReset(){
+    this.activeSearchService.onSearchEvent.emit(false);
   }
 
   @HostListener('window:resize', ['$event'])

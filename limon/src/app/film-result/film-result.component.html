@@ -2,17 +2,17 @@
 <app-category></app-category>
 <h2 class="phrase-res" *ngIf="isSearch">Résultats de votre recherche</h2>
 <section id="sorting" *ngIf="isSearch">
-    <button (click)="onAlph()" class="sort">
+    <button (click)="onAlph();onSortAlph()" class="sort">
         <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isAlph">
         <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isAlph">
         <p>A-Z</p>
     </button>
-    <button (click)="onPrice()"class="sort">
+    <button (click)="onPrice();onSortPrice()"class="sort">
         <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isPrice">
         <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isPrice">
         <p>Prix</p>
     </button>
-    <button (click)="onDate()" class="sort">
+    <button (click)="onDate();onSortDate()" class="sort">
         <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isDate">
         <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isDate">
         <p>Date</p>
@@ -20,14 +20,14 @@
 </section>
 
 <section id="results" *ngIf="!isEmpty && isSearch">
-    <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
+    <app-film-card *ngFor="let card of resMovies" [card]="card"></app-film-card>
 </section>
 
-<section class="new">
+<section class="new" *ngIf="!isSearch">
     <section class="new-new">
         <h2>Nouveautés</h2>
         <div class="new-row" (scroll)="onScroll1($event)" #scroll1>
-            <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
+            <app-film-card *ngFor="let card of movies?.last_movies" [card]="card"></app-film-card>
         </div>
         <button class="new-new-next start" *ngIf="scrollToLeft1" (click)="scroll1Start()"><span></span></button>
         <button class="new-new-next" *ngIf="scrollToRight1" (click)="scroll1End()"><span></span></button>
@@ -35,7 +35,7 @@
     <section class="new-popular">
         <h2>Les plus populaires</h2>
         <div class="new-row" (scroll)="onScroll2($event)" #scroll2>
-            <app-film-card *ngFor="let card of catalog" [card]="card"></app-film-card>
+            <app-film-card *ngFor="let card of movies?.most_rating_movies" [card]='card[0].movie'></app-film-card>
         </div>
         <button class="new-popular-next start" *ngIf="scrollToLeft2" (click)="scroll2Start()"><span></span></button>
         <button class="new-popular-next" *ngIf="scrollToRight2" (click)="scroll2End()"><span></span></button>

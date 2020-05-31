@@ -6,7 +6,7 @@
     </div>
     
     <section class="logo proper-touch" *ngIf="!isMobile">
-        <a class="logo-container" routerLink="/">
+        <a class="logo-container" routerLink="/" (click)="onReset()">
             <img src="../../assets/logo.png" alt="logo">
         </a>
     </section>

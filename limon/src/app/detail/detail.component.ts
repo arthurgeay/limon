@@ -2,6 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { MobileService } from '../mobile.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-detail',
@@ -22,6 +23,8 @@ export class DetailComponent implements OnInit {
   public hero: string;
   public reviews: any[];
   public isCheck = false;
+  public movieSubscription: Subscription;
+  public movie: any;
   note: string;
   
   constructor(private movieService:MovieService,
@@ -31,18 +34,25 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];  // get id from url
-    // get information from service
-    this.title = this.movieService.getMovieById(+id).title;
-    this.prod = this.movieService.getMovieById(+id).prod;
-    this.category = this.movieService.getMovieById(+id).category;
-    this.date = this.movieService.getMovieById(+id).date;
-    this.description = this.movieService.getMovieById(+id).description;
-    this.price = this.movieService.getMovieById(+id).price;
-    this.poster = this.movieService.getMovieById(+id).poster;
-    this.hero = this.movieService.getMovieById(+id).hero;
-    this.note = this.movieService.getMovieById(+id).note;
-    this.reviews = this.movieService.getMovieById(+id).review;
-
+    this.movieService.getMovieById(+id);
+    this.movieService.EmitOnMovie();
+    
+    this.movieSubscription = this.movieService.moviesSubject.subscribe(
+      (movie:any)=>{
+        this.title = movie.title;
+        this.prod = movie.prod;
+        this.category = movie.category;
+        this.date = movie.date;
+        this.description = movie.description;
+        this.price = movie.price;
+        this.poster = movie.poster;
+        this.hero = movie.hero;
+        this.note = movie.note;
+        this.reviews = movie.review;
+        console.log(movie);
+        
+      }
+    );
     this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
   }
   onWatch() {

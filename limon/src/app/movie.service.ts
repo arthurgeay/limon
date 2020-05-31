@@ -1,9 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MovieService {
+
+  public moviesSubject = new Subject<any[]>();
+  public movieSubject = new Subject<any[]>();
+  public movies: any[];
+  public movie: any;
+
   public catalog = [
     {
       id: 1,
@@ -126,14 +134,41 @@ export class MovieService {
       hero: '../../assets/films/godzilla-hero.jpeg'
     }
   ]
-  constructor() { }
+  constructor(private http:HttpClient) { }
+
+  getAllMovies() {
+    this.http.get('https://api-limon.app-tricycle.com/api/movie/all')
+    .subscribe(
+      (data:any)=>{
+        this.movies = data;
+        this.EmitOnMovies();
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+
+  EmitOnMovies() {
+    this.moviesSubject.next(this.movies);
+  }
+
 
   getMovieById(id:number){
-    const movie = this.catalog.find(
-      (s) => {
-        return s.id === id;
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}`)
+    .subscribe(
+      (data:any)=>{
+        this.movie = data[0];
+        this.EmitOnMovie();
+      },
+      (error)=>{
+        console.log(error);
       }
-    );
-    return movie;
+    )
+  }
+
+  EmitOnMovie() {
+    this.movieSubject.next(this.movie);
   }
 }
