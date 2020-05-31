@@ -56,6 +56,6 @@ class SecurityController extends AbstractController
         $token = $JWT->create($user); // Generate token
 
 
-        return $this->json(['status' => 'User successfully registered', 'token' => $token], 200, [], ['groups' => ['profile']]);
+        return $this->json(['status' => 'User successfully registered', 'token' => $token, 'user' => $user], 200, [], ['groups' => ['profile']]);
     }
 }
