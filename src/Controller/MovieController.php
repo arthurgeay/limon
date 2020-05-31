@@ -81,16 +81,17 @@ class MovieController extends AbstractController
      */
     public function search(Request $request, MovieRepository $movieRepository, PaginatorInterface $paginator)
     {
-        $query = $request->query->get('query', null);
+        $query = $request->query->get('query');
         $searchBy = $request->query->get('searchBy', 'name');
+        $categoryName = $request->query->get('category_name');
         $orderBy = $request->query->get('orderBy');
         $page = $request->query->getInt('page', 1);
 
-        $movies = $movieRepository->findByNameOrCategoryAndFilters($query, $searchBy, $orderBy);
-
+        $movies = $movieRepository->findByNameOrCategoryAndFilters($query, $searchBy, $categoryName, $orderBy);
         $pagination = $paginator->paginate($movies, $page, 18);
 
-        if(!$query || count($pagination) == 0) {
+
+        if(count($pagination) == 0) {
             return $this->json(['status' => 'Aucun film trouvé'], 404);
         }
 
