@@ -1,9 +1,9 @@
 <a class="result" [routerLink]="['/detail', card.id]">
-    <img src="{{ card.poster || '../../assets/poster-notfound.png' }}" alt="poster" class="result-poster">
+    <img src="{{ card.poster_img || '../../assets/poster-notfound.png' }}" alt="poster" class="result-poster">
     <div class="result-infos">
         <h3 class="result-infos-title">{{ card.title }}</h3>
         <div class="sub">
-            <b class="sub-prod">{{ card.prod }}</b>
+            <b class="sub-prod">{{ card.productor.name }}</b>
             <p class="sub-price">{{ card.price }} <span *ngIf="card.price !== '' && card.price !=='Gratuit'">€</span></p>
         </div>
     </div>

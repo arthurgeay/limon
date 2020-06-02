@@ -22,7 +22,7 @@ export class CategoryComponent implements OnInit {
   //   'Historique',
   //   'Horreur',
   //   'Polar',
-  //   'Science Fiction',
+  //   'Science-Fiction',
   //   'Super-Héros',
   //   'Vie Quotidienne'];
   constructor(private http:HttpClient,
