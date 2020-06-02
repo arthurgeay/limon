@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterContentInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { MovieService } from '../movie.service';
 
 declare var Stripe;//: stripe.StripeStatic;
 
@@ -11,6 +12,7 @@ declare var Stripe;//: stripe.StripeStatic;
 export class CheckoutComponent implements OnInit {
 
   @Input() public amount:number;
+  @Input() public id:number;
   @Input() public isCheck: boolean;
   @Output() public isCheckChange = new EventEmitter<boolean>();
   @ViewChild('cardElement', {static: false}) cardElement: ElementRef;
@@ -19,7 +21,8 @@ export class CheckoutComponent implements OnInit {
   cardErrors;
   loading = false;
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private movieService:MovieService) { }
 
   ngOnInit(): void {
     this.stripe = Stripe('pk_test_DeZzMPNpBYMz6rr8P0noCD2n00RXOc7lTx');
@@ -56,7 +59,8 @@ export class CheckoutComponent implements OnInit {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;  
-        this.router.navigate(['complete'])
+        this.movieService.purchaseMovieById(+this.id)
+        this.router.navigate([`complete/${this.id}`])
       }, 2000);
       
     }

@@ -17,6 +17,7 @@ const routes: Routes = [
   {path: '', component: FilmResultComponent },
   {path: 'search', component: FilmResultComponent },
   {path: 'detail/:id', component: DetailComponent },
+  {path: 'complete/:id', component: DoneComponent },
   {path: 'complete', component: DoneComponent },
   {path: 'subscribed', component: DoneComponent },
   {path: 'login', component: ConnexionComponent },

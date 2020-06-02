@@ -23,6 +23,12 @@ $large: 1900px;
         }
 
     }
+    &-error {
+        background-color: red;
+        color: var(--white);
+        padding: .7rem 1rem;
+        border-radius: 5px;
+    }
     form{
         height: 100%;
         width: 100%;
