@@ -83,7 +83,7 @@ class MovieController extends AbstractController
     {
         $query = $request->query->get('query');
         $searchBy = $request->query->get('searchBy', 'name');
-        $categoryName = $request->query->get('category_name');
+        $categoryName = str_replace('-', ' ', $request->query->get('category_name'));
         $orderBy = $request->query->get('orderBy');
         $page = $request->query->getInt('page', 1);
 
