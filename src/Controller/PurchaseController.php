@@ -56,7 +56,7 @@ class PurchaseController extends AbstractController
             ['file' => $invoice, 'filename' => 'facture-limon.pdf', 'content-type' => 'application/pdf']
         );
 
-        return $this->json(['status' => 'Film acheté', 'movie' => $purchase->getMovie()]);
+        return $this->json(['status' => 'Film acheté', 'movie' => $purchase->getMovie()], 200, [], ['groups' => ['history.purchased']]);
     }
 
     /**
