@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MovieController.php" afterDir="false" />
-    </list>
+    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,8 +17,8 @@
       <file leaf-file-name="MovieController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/MovieController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="87" column="51" lean-forward="true" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
+            <state relative-caret-position="410">
+              <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
               <folding>
                 <element signature="e#34#58#0#PHP" expanded="true" />
               </folding>
@@ -29,11 +26,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".env" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.env">
+      <file leaf-file-name="PurchaseController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+            <state relative-caret-position="407">
+              <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
+              <folding>
+                <element signature="e#34#55#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -171,7 +171,7 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1173" />
+    <option name="x" value="1299" />
     <option name="y" value="23" />
     <option name="width" value="1261" />
     <option name="height" value="1334" />
@@ -268,13 +268,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="691000" />
+    <option name="totallyTimeSpent" value="2809000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1173" y="23" width="1261" height="1334" extended-state="0" />
+    <frame x="1299" y="23" width="1261" height="1334" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25512716" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25512716" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -283,7 +283,7 @@
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983023" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983023" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -362,6 +362,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="990">
           <caret line="66" column="84" lean-forward="true" selection-start-line="66" selection-start-column="84" selection-end-line="66" selection-end-column="84" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -404,6 +407,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="587">
           <caret line="53" column="12" selection-start-line="53" selection-start-column="12" selection-end-line="53" selection-end-column="104" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -533,16 +539,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="717">
-          <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
-          <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/nelmio/api-doc-bundle/ApiDocGenerator.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -617,14 +613,24 @@
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="405">
-          <caret line="27" column="36" selection-start-line="27" selection-start-column="36" selection-end-line="27" selection-end-column="36" />
+          <caret line="27" column="36" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="64" column="72" selection-start-line="64" selection-start-column="72" selection-end-line="64" selection-end-column="72" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Controller/MovieController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="87" column="51" lean-forward="true" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
+        <state relative-caret-position="410">
+          <caret line="140" column="9" lean-forward="true" selection-start-line="140" selection-start-column="9" selection-end-line="140" selection-end-column="9" />
           <folding>
             <element signature="e#34#58#0#PHP" expanded="true" />
           </folding>

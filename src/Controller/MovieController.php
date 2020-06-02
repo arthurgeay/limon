@@ -136,7 +136,7 @@ class MovieController extends AbstractController
     {
         $purchased = $purchaseRepository->findOneBy(['movie' => $id ]);
 
-        if($this->getUser()->getSubscription() || !$purchased) {
+        if(!$purchased) {
             return $this->json(['status' => 'Vous ne pouvez pas télécharger ce film'], 401);
         }
 
