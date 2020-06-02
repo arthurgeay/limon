@@ -48,12 +48,13 @@ export class FilmResultComponent implements OnInit {
           this.onDisplayResult();
         }
       );
-      // activeSearchService.categoryEvent.subscribe(
-      //   (cat)=>{
-      //     const categ = cat;
-      //     this.onSearchCategroy(categ);
-      //   }
-      // );
+      activeSearchService.categoryEvent.subscribe(
+        (cat)=>{
+          const categ = cat;
+          this.isSearch = true;
+          this.onSearchCategroy(categ);
+        }
+      );
     }
 
   ngOnInit(): void {
@@ -66,7 +67,6 @@ export class FilmResultComponent implements OnInit {
     );
     
     this.movieService.getAllMovies();
-    this.movieService.EmitOnMovies();
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
   }
 
@@ -83,7 +83,7 @@ export class FilmResultComponent implements OnInit {
   }
 
   onSearchCategroy(cat) {
-    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${cat}&searchBy=category`)
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=&searchBy=category&category_name=${cat}`)
     .subscribe(
       (data:any)=>{
         this.resMovies = data.movies;       

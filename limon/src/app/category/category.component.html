@@ -2,7 +2,7 @@
     <h2 class="opacity cat-select">Sélectionner une catégorie</h2>
     <div class="category">
         <button *ngFor="let category of categories" class="category-item" (click)="onSearch(category.name)">
-            {{ category.name }}
+            {{ category.name.replace('-',' ') }}
         </button>
     </div>
 </section>

@@ -1,20 +1,20 @@
 <section class="movie">
     <div class="movie-img">
-        <img src="{{ hero }}" alt="" class="movie-hero" *ngIf="!isMobile">
-        <img src="{{ poster || '../../assets/poster-notfound.png' }}" alt="" class="movie-poster" *ngIf="isMobile">
+        <img src="{{ movie?.hero_img }}" alt="" class="movie-hero" *ngIf="!isMobile">
+        <img src="{{ movie?.poster_img || '../../assets/poster-notfound.png' }}" alt="" class="movie-poster" *ngIf="isMobile">
     </div>
     <div class="detail">
-        <h1 class="detail-title">{{ title }}</h1>
+        <h1 class="detail-title">{{ movie?.title }}</h1>
         <div class="detail-line detail-subinfos">
-            <b class="detail-prod">{{ prod }} <span *ngIf="date !== ''">-</span> {{ date }}</b>
-            <button class="detail-category" *ngIf="category !== ''">{{ category }}</button>
+            <b class="detail-prod">{{ movie?.productor.name }} <span *ngIf="movie?.release_date !== ''">-</span> {{ movie?.release_date | date:'yyyy' }}</b>
+            <button class="detail-category" *ngIf="movie?.category.name !== ''">{{ movie?.category.name }}</button>
         </div>
-        <p class="detail-desc">{{ description || 'Aucun synopsis disponible' }}</p>
-        <div class="detail-line detail-pric" *ngIf="price !== ''">
-                <p>Prix</p><h2 class="detail-pricing">{{ price }} €</h2>
+        <p class="detail-desc">{{ movie?.synopsis || 'Aucun synopsis disponible' }}</p>
+        <div class="detail-line detail-pric" *ngIf="movie?.price !== ''">
+                <p>Prix</p><h2 class="detail-pricing">{{ movie?.price }} €</h2>
         </div>
         <div class="detail-line">
-            <button class="detail-buy" (click)="buy()" *ngIf="price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ price==='0.00 €'||price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
+            <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== ''"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ movie?.price==='0.00 €'|| movie?.price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
             <button class="detail-play" *ngIf="isAuth"> <img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-subscribe" *ngIf="!isAuth">S'abonner</button>
         </div>
@@ -28,7 +28,7 @@
         </svg>
     </button>
 </section>
-<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="price"></app-checkout>
+<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="movie?.price"></app-checkout>
 <section class="community">
     <section class="avis">
         <h1>Avis</h1>
