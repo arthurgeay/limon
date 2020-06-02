@@ -6,6 +6,7 @@ use App\Entity\User;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Faker\Provider\cs_CZ\DateTime;
+use Lexik\Bundle\JWTAuthenticationBundle\Encoder\JWTEncoderInterface;
 use Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTManager;
 use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
@@ -24,8 +25,9 @@ class SecurityController extends AbstractController
 {
     /**
      * @Route("/register", name="register", methods={"POST"})
+     * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException
      */
-    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $entityManager, ValidatorInterface $validator, JWTTokenManagerInterface $JWT)
+    public function register(Request $request, UserPasswordEncoderInterface $encoder, EntityManagerInterface $entityManager, ValidatorInterface $validator, JWTTokenManagerInterface $JWT, JWTEncoderInterface $JWTEncoder)
     {
         $email = $request->request->get('email');
         $password = $request->request->get('password');
@@ -54,8 +56,13 @@ class SecurityController extends AbstractController
         $entityManager->flush();
 
         $token = $JWT->create($user); // Generate token
+        $expires = $JWTEncoder->decode($token)['exp'];
+        $dateExp = new \DateTime();
+        $dateExp->setTimestamp($expires);
 
 
-        return $this->json(['status' => 'User successfully registered', 'token' => $token, 'user' => $user], 200, [], ['groups' => ['profile']]);
+        return $this->json(['status' => 'User successfully registered',
+                            'token' => $token, 'expires' => $dateExp,
+                            'user' => $user], 200, [], ['groups' => ['profile']]);
     }
 }
