@@ -34,6 +34,7 @@ class Movie
      * @ORM\Column(type="text")
      * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
      * @Assert\NotBlank(message="Le synopsis est requis")
+     * @Assert\Length(max="500", maxMessage="Le synopsis ne doit pas dépasser 500 caractères")
      */
     private $synopsis;
 

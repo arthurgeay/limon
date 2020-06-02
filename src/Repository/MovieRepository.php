@@ -25,7 +25,7 @@ class MovieRepository extends ServiceEntityRepository
      * @param $orderBy
      * @return \Doctrine\ORM\QueryBuilder
      */
-    public function findByNameOrCategoryAndFilters($query, $searchBy, $orderBy) {
+    public function findByNameOrCategoryAndFilters($query, $searchBy, $categoryName, $orderBy) {
         $result = $this->createQueryBuilder('m');
 
         // Search by name or category
@@ -34,8 +34,10 @@ class MovieRepository extends ServiceEntityRepository
                 $result
                     ->innerJoin('m.category', 'c')
                     ->addSelect('c')
+                    ->andWhere('m.title LIKE :title')
+                    ->setParameter('title', '%'.$query.'%')
                     ->andWhere('c.name = :val')
-                    ->setParameter('val', $query)
+                    ->setParameter('val', $categoryName)
                 ;
                 break;
             default:
@@ -50,7 +52,12 @@ class MovieRepository extends ServiceEntityRepository
         switch($orderBy) {
             case 'desc':
                 $result
-                    ->orderBy('m.id', $orderBy);
+                    ->orderBy('m.title', 'DESC');
+                break;
+            case 'alpha-asc':
+                $result
+                    ->orderBy('m.title', 'ASC')
+                ;
                 break;
             case 'date-asc':
                 $result
@@ -67,6 +74,11 @@ class MovieRepository extends ServiceEntityRepository
             case 'price-desc':
                 $result
                     ->orderBy('m.price', 'DESC');
+                break;
+            default:
+                $result
+                    ->orderBy('m.title', 'ASC')
+                ;
         }
 
         return $result;

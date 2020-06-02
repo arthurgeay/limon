@@ -27,12 +27,23 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="show", methods={"GET"})
      * @throws NonUniqueResultException
+     * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
-    public function show(UserRepository $userRepository)
+    public function show(Request $request, UserRepository $userRepository)
     {
-        $user = $userRepository->findEmailAndSubscription($this->getUser( )->getUsername());
+        $user = $this->getUser();
+        $userInfo = $userRepository->findEmailAndSubscription($this->getUser( )->getUsername());
 
-        return $this->json($user, 200, [], ['groups' => ['profile']]);
+        if($this->isGranted('ROLE_ADMIN')) {
+            $userId = $request->query->getInt('userId');
+            $userInfo = $userRepository->findEmailAndSubscription($userId);
+
+            if(!$user) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
+
+        return $this->json($userInfo, 200, [], ['groups' => ['profile']]);
     }
 
     /**
