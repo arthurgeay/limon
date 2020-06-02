@@ -49,7 +49,7 @@ export class ConnexionComponent implements OnInit {
    */
   onSubmitForm() {
     const formValue = this.userForm.value;
-    console.log(formValue);
+    // console.log(formValue);
     let user = null;
 
     if(this.isLogin) {

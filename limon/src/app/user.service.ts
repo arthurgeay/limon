@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -7,7 +8,9 @@ import { Subject } from 'rxjs';
 export class UserService {
 
   userSubject = new Subject<any>();
+  userActualSubject = new Subject<any>();
   user: any;
+  actualUser: any;
 
   users: any[] = [
     {
@@ -47,7 +50,21 @@ export class UserService {
     }
   ]
 
-  constructor() { }
+
+  constructor(private http:HttpClient) { }
+
+  getActualUser() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/`)
+      .subscribe(
+        (data:any)=>{
+          this.actualUser = data;
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )     
+  }
+
   getUserById(id:number){
     const user = this.users.find(
       (s) => {
@@ -57,8 +74,12 @@ export class UserService {
     return user;
   }
 
-  emitUserSubject() {
+  public emitUserSubject() {
     this.userSubject.next(this.user);
+  }
+
+  public emitActualUserSubject() {
+    this.userActualSubject.next(this.actualUser);
   }
 
 }

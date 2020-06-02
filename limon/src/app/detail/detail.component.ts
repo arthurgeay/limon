@@ -13,11 +13,13 @@ export class DetailComponent implements OnInit {
   public isAuth = true;
   public isMobile = false;
   public isMark = false;
+  public isPurchase = false;
   public reviews: any[];
   public isCheck = false;
   public movieSubscription: Subscription;
   public movie: any;
   note: string;
+  public movieID: number;
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
@@ -26,10 +28,12 @@ export class DetailComponent implements OnInit {
 
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];  // get id from url
+    this.movieID = Number(id);
         
     this.movieSubscription = this.movieService.movieSubject.subscribe(
       (movie:any)=>{
         this.movie = movie;
+        this.note = movie.note.substring(0,1);
       }
     );
     this.movieService.getMovieById(+id);
@@ -47,6 +51,10 @@ export class DetailComponent implements OnInit {
 
   buy() {
     this.isCheck = !this.isCheck ;
+  }
+
+  download() {
+    this.router.navigate([`complete/${this.movieID}`]);
   }
 
 }

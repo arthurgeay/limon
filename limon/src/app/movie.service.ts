@@ -7,10 +7,12 @@ import { Observable, Subject } from 'rxjs';
 })
 export class MovieService {
 
+  public DlSubject = new Subject<any[]>();
   public moviesSubject = new Subject<any[]>();
   public movieSubject = new Subject<any[]>();
   public movies: any[];
   public movie: any;
+  public downl: any;
 
   public catalog = [
     {
@@ -134,6 +136,7 @@ export class MovieService {
       hero: '../../assets/films/godzilla-hero.jpeg'
     }
   ]
+
   constructor(private http:HttpClient) { }
 
   getAllMovies() {
@@ -160,6 +163,9 @@ export class MovieService {
     .subscribe(
       (data:any)=>{
         this.movie = data[0];
+        this.movie.note = data.avg_score;
+        console.log(this.movie);
+        
         this.EmitOnMovie();
       },
       (error)=>{
@@ -171,4 +177,34 @@ export class MovieService {
   EmitOnMovie() {
     this.movieSubject.next(this.movie);
   }
+
+public downloadMovieById(id:number) {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}/download`)
+    .subscribe(
+      (data:any)=>{
+        this.downl = data;
+        this.EmitOnDl();
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  EmitOnDl() {
+    this.DlSubject.next(this.downl);
+  }
+
+  public purchaseMovieById(id:number) {
+    this.http.get(`https://api-limon.app-tricycle.com/api/purchase/${id}`)
+    .subscribe(
+      (data:any)=>{
+        console.log(data);        
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
 }

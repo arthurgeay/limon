@@ -1,8 +1,9 @@
 <section class="connect">
     <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
-        <button class="connect-return" routerLink="/">Revenir à l'accueil</button>
+        <button type="button" class="connect-return" routerLink="/">Revenir à l'accueil</button>
         <h1 class="connect-title">{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
         <div class="connect-inputs">
+            <p class="connect-error">Attention ça fume un max ici</p>
             <div class="input-row">
                 <div class="input-cont">
                     <label for="username" *ngIf="!isLogin">Nom d'utilisateur</label>
