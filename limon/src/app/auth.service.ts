@@ -21,15 +21,17 @@ export class AuthService {
    * Save in local storage
    * @param token 
    */
-  private saveInLocalStorage(token) {
+  private saveInLocalStorage(token, expires) {
     localStorage.setItem('token', token);
+    localStorage.setItem('expires', expires.date);
   }
 
   /**
    * Return if the user is auth 
    */
   isAuth() {
-    return localStorage.getItem('token') ? true : false;
+    const now = new Date();
+    return  now > new Date(localStorage.getItem('expires'));
   }
 
   /**
@@ -42,7 +44,7 @@ export class AuthService {
       password: user.password
     }).subscribe(
       (res: any) => {
-        this.saveInLocalStorage(res.token);
+        this.saveInLocalStorage(res.token, res.expires);
 
         this.userService.user = { ...res.data };
         this.userService.emitUserSubject();
@@ -73,7 +75,7 @@ export class AuthService {
 
     this.httpClient.post('https://api-limon.app-tricycle.com/api/register', formData).subscribe(
       (res: any) => {
-        this.saveInLocalStorage(res.token);
+        this.saveInLocalStorage(res.token, res.expires);
         
         this.userService.user = { ...res.user };
         this.userService.emitUserSubject();
@@ -96,6 +98,8 @@ export class AuthService {
    */
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('expires');
+
     this.userService.user = null;
     this.userService.emitUserSubject();
   }
