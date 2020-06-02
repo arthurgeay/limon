@@ -5,14 +5,18 @@ $large: 2400px;
     display: grid;
     -ms-grid-rows: 50% 50%;
     -ms-grid-columns: 50% 50%;
-        grid-template: 50% 50% / 50% 50%;
+        grid-template-rows: 50% 50%; 
+        grid-template-columns: 50% 50%;
     max-height: 14rem;
     background-color: var(--dark-elements);
     margin: 1rem 0;
     padding: 1rem;
     border-radius: 15px;
     @media (min-width: $mobile) {
-        grid-template: none / 9rem 1fr 10rem;
+        grid-template-columns: 9rem 1fr 9rem;
+        grid-template-rows: none;
+        -ms-grid-rows: none;
+        -ms-grid-columns: 9rem 1fr 9rem;
         margin: 2rem 0;
     }
     &-img {
