@@ -1,31 +1,32 @@
 <section class="connect">
-    <form>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
         <button class="connect-return" routerLink="/">Revenir à l'accueil</button>
         <h1 class="connect-title">{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
         <div class="connect-inputs">
             <div class="input-row">
                 <div class="input-cont">
                     <label for="username" *ngIf="!isLogin">Nom d'utilisateur</label>
-                    <input type="text" id="username" placeholder="Nom d'utilisateur" aria-label="Entrer un nom d'utilisateur" class="connect-user" *ngIf="!isLogin">
+                    <input type="text" id="username" placeholder="Nom d'utilisateur" formControlName="fullname" aria-label="Entrer un nom d'utilisateur" class="connect-user" *ngIf="!isLogin">
                 </div>
                 <div class="input-cont">
                     <label for="birthday" *ngIf="!isLogin">Date de naissance</label>
-                    <input type="date" id="birthday" aria-label="Entrer votre date de naissance" class="connect-birth" *ngIf="!isLogin">
+                    <input type="date" id="birthday" aria-label="Entrer votre date de naissance" formControlName="birthday" class="connect-birth" *ngIf="!isLogin">
                 </div>
             </div>
 
             <div class="input-cont">
                 <label for="mail">Adresse Mail</label>
-                <input type="mail" id="mail" placeholder="adresse@mail.com" aria-label="Entrer un identifiant" class="connect-id">
+                <input *ngIf="isLogin" type="mail" id="mail" placeholder="adresse@mail.com" formControlName="username"  aria-label="Entrer un identifiant" class="connect-id">
+                <input *ngIf="!isLogin" type="mail" id="mail" placeholder="adresse@mail.com" formControlName="email"  aria-label="Entrer un identifiant" class="connect-id">
             </div>
             <div class="input-cont">
                 <label for="pswd">Mot de passe</label>
-                <input type="password" id="pswd" placeholder="mot de passe" aria-label="Entrer un mot de passe" class="connect-pass">
+                <input type="password" id="pswd" placeholder="mot de passe" formControlName="password" aria-label="Entrer un mot de passe" class="connect-pass">
             </div>
         </div>
         <div class="connect-link">
             <a routerLink="{{ isLogin ? '/signin' : '/login' }}" class="connect-other" type="submit">{{ isLogin ? 'Vous n\'avez pas de compte ? Inscrivez-vous !' : 'Vous avez déjà un compte ?' }}</a>
-            <button class="connect-button" type="submit">{{ isLogin ? 'Se Connecter' : 'S\'Inscrire' }}</button>
+            <button class="connect-button" type="submit" [disabled]="userForm.invalid">{{ isLogin ? 'Se Connecter' : 'S\'Inscrire' }}</button>
         </div>
     </form>
 </section>

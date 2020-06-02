@@ -1,9 +1,13 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
+
+  userSubject = new Subject<any>();
+  user: any;
 
   users: any[] = [
     {
@@ -51,6 +55,10 @@ export class UserService {
       }
     );
     return user;
+  }
+
+  emitUserSubject() {
+    this.userSubject.next(this.user);
   }
 
 }
