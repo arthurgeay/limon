@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-playlist',
@@ -11,18 +12,76 @@ export class PlaylistComponent implements OnInit {
   isHistory: boolean;
   isWatch: boolean;
   isPurchase: boolean;
-  catalog: any[];
   isEmpty: boolean = false;
+  public catalog: any;
 
   constructor(private route:ActivatedRoute,
-    private movieService:MovieService) { }
+    private movieService:MovieService,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
     this.isHistory = route === 'history' ? true : false;
     this.isWatch = route === 'watchlist' ? true : false;
     this.isPurchase = route === 'purchase' ? true : false;
-    this.catalog = this.movieService.catalog;
+
+    if (this.isHistory) {
+      this.displayHistory();
+    } 
+    else if (this.isWatch) {
+      this.displayWatchlist();
+    }
+     else if (this.isPurchase) {
+      this.displayPurchase();
+    }
+      console.log(this.catalog);
+
+
+  }
+
+
+
+  displayHistory() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movies-watched`)
+    .subscribe(
+      (data:any)=>{
+        this.catalog = data;    
+        this.isEmpty = data.empty === true ? true : false;
+        // console.log(this.catalog);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+
+  displayWatchlist() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/watchlist/`)
+    .subscribe(
+      (data:any)=>{
+        this.catalog = data; 
+        this.isEmpty = data.empty === true ? true : false;
+        console.log(this.catalog);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  displayPurchase() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movies-purchased`)
+    .subscribe(
+      (data:any)=>{
+        this.catalog = data;       
+        this.isEmpty = data.empty === true ? true : false;
+        // console.log(this.catalog);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
 }

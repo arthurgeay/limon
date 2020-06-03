@@ -50,7 +50,7 @@ export class DetailComponent implements OnInit {
   }
 
   buy() {
-    this.isCheck = !this.isCheck ;
+    this.isCheck = !this.isCheck;
   }
 
   download() {

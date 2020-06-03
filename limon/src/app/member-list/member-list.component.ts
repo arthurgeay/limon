@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-member-list',
@@ -9,10 +10,19 @@ import { UserService } from '../user.service';
 export class MemberListComponent implements OnInit {
   users: any[];
 
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService,
+    private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.users = this.userService.users
+    this.http.get(`https://api-limon.app-tricycle.com/api/admin/users?page=1`)
+    .subscribe(
+      (data:any)=>{
+        this.users = data.users;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
 }

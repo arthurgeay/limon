@@ -1,11 +1,11 @@
 <section class="item">
     <a class="item-img" routerLink="/detail/{{ item.id }}">
-        <img src="{{ item.poster !== '' ? item.poster : 'assets/poster-notfound.png' }}" alt="poster">
+        <img src="{{ item.poster_img !== '' ? item.poster_img : 'assets/poster-notfound.png' }}" alt="poster">
     </a>
     <div class="infos">
         <h2 class="infos-title">{{ item.title }}</h2>
-        <b class="infos-prod">{{ item.prod}} <span *ngIf="item.date !== ''">-</span> {{ item.date }}</b>
-        <button class="infos-category">{{ item.category }}</button>
+        <b class="infos-prod">{{ item.productor.name }} <span *ngIf="item.release_date !== ''">-</span> {{ item.release_date | date:'yyyy' }}</b>
+        <button class="infos-category">{{ item.category.name }}</button>
     </div>
     <div class="item-command">
         <p class="item-command-date" *ngIf="isHistory">20:32 - 23 Mars</p>

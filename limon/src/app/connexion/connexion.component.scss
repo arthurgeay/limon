@@ -115,6 +115,7 @@ $large: 1900px;
         border-radius: 5px;
         color: var(--background);
         font-size: 1.2rem;
+        opacity: 1;
         @media (min-width: $large){
             font-size: 1.4rem;
         }
@@ -123,4 +124,8 @@ $large: 1900px;
 
 label {
     align-items: flex-start;
+}
+
+.disable {
+    opacity: .4;
 }

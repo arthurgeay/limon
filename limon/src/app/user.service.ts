@@ -12,43 +12,6 @@ export class UserService {
   user: any;
   actualUser: any;
 
-  users: any[] = [
-    {
-      id: 1,
-      image: '../../assets/profil-membres/pink-man.jpg',
-      name: 'Jean-Raoul'
-    },
-    {
-      id: 2,
-      image: '../../assets/profil-membres/pointing-man.jpg',
-      name: 'Corentin'
-    },
-    {
-      id: 3,
-      image: '../../assets/profil-membres/bear-girl.jpg',
-      name: 'JUL le sang'
-    },
-    {
-      id: 4,
-      image: '../../assets/profil-membres/hat-man.jpg',
-      name: 'Gégé'
-    },
-    {
-      id: 5,
-      image: '../../assets/profil-membres/stray-man.jpg',
-      name: 'the watcher'
-    },
-    {
-      id: 6,
-      image: '../../assets/profil-membres/suit-man.jpg',
-      name: 'tout les kilos sont dans l\'auto'
-    },
-    {
-      id: 7,
-      image: '../../assets/profil-membres/vegetable-man.jpg',
-      name: 'Netflux'
-    }
-  ]
 
 
   constructor(private http:HttpClient) { }
@@ -58,6 +21,7 @@ export class UserService {
       .subscribe(
         (data:any)=>{
           this.actualUser = data;
+          this.emitActualUserSubject();
         },
         (error)=>{
           console.log(error);
@@ -66,12 +30,16 @@ export class UserService {
   }
 
   getUserById(id:number){
-    const user = this.users.find(
-      (s) => {
-        return s.id === id;
-      }
-    );
-    return user;
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/?userId=${id}`)
+      .subscribe(
+        (data:any)=>{
+          this.user = data;
+          this.emitUserSubject();
+        },
+        (error)=>{
+          console.log(error);
+        }
+      )     
   }
 
   public emitUserSubject() {
