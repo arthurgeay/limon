@@ -15,7 +15,7 @@ export class AdminComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/admin/stats`)
     .subscribe(
       (data:any)=>{
-        this.stats = data;       
+        this.stats = data;             
       },
       (error)=>{
         console.log(error);

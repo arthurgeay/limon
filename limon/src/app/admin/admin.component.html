@@ -5,15 +5,15 @@
         <div class="nb-section">
             <div class="nb-container">
                 <p class="nb-container-title">Nombre de membres au total</p>
-                <b class="nb-container-content">3</b>
+                <b class="nb-container-content">{{ stats?.total_number_user }}</b>
             </div>
             <div class="nb-container">
                 <p class="nb-container-title">Nombre de ventes au total</p>
-                <b class="nb-container-content">12</b>
+                <b class="nb-container-content">{{ stats?.total_number_sales }}</b>
             </div>
             <div class="nb-container">
                 <p class="nb-container-title">Revenus totaux</p>
-                <b class="nb-container-content">5 132.48 €</b>
+                <b class="nb-container-content">{{ stats?.sum_sales }} €</b>
             </div>
         </div>  
     </section>
@@ -23,11 +23,11 @@
             <div class="nb-section">
                 <div class="nb-container">
                     <p class="nb-container-title">Nouvelles ventes</p>
-                    <b class="nb-container-content">3</b>
+                    <b class="nb-container-content">{{ stats?.total_sales_on_7day }}</b>
                 </div>
                 <div class="nb-container">
                     <p class="nb-container-title">Revenus récoltés</p>
-                    <b class="nb-container-content">53 €</b>
+                    <b class="nb-container-content">{{ stats?.sum_sales_on_7day }} €</b>
                 </div>
             </div>      
         </section>
