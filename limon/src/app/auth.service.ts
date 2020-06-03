@@ -31,7 +31,7 @@ export class AuthService {
    */
   isAuth() {
     const now = new Date();
-    return  now > new Date(localStorage.getItem('expires'));
+    return  now < new Date(localStorage.getItem('expires'));
   }
 
   /**
