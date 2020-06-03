@@ -30,6 +30,8 @@ class MovieWatchRepository extends ServiceEntityRepository
             ->addSelect('p')
             ->innerJoin('m.category', 'c')
             ->addSelect('c')
+            ->leftJoin('App\Entity\Purchase', 'pu', 'WITH', 'pu.movie = mv.movie')
+            ->addSelect('(CASE WHEN (pu.id IS NOT NULL) THEN true ELSE false END) AS already_buy')
             ->orderBy('mv.date', 'DESC')
             ->getQuery()
             ->getResult()
