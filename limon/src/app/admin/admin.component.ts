@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-admin',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminComponent implements OnInit {
 
-  constructor() { }
+  public stats: any;
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
+    this.http.get(`https://api-limon.app-tricycle.com/api/admin/stats`)
+    .subscribe(
+      (data:any)=>{
+        this.stats = data;       
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
 }
