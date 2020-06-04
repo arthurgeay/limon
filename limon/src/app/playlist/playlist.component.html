@@ -1,7 +1,13 @@
 <section class="playlist">
     <h1>{{ isHistory ? 'Historique' : isWatch ? 'Watchlist' : 'Achats' }}</h1>
-    <section class="list" *ngIf="!isEmpty">
+    <section class="list" *ngIf="!isEmpty && isWatch">
         <app-playlist-item *ngFor="let item of catalog" [item]="item[0].movie" [alr_buy]="item.already_buy" [isHistory]="isHistory" [isPurchase]="isPurchase" [isWatch]="isWatch"></app-playlist-item>
+    </section>
+    <section class="list" *ngIf="!isEmpty && isHistory">
+        <app-playlist-item *ngFor="let item of catalog" [item]="item.movie" [alr_buy]="item.already_buy" [isHistory]="isHistory" [isPurchase]="isPurchase" [isWatch]="isWatch"></app-playlist-item>
+    </section>
+    <section class="list" *ngIf="!isEmpty && isPurchase">
+        <app-playlist-item *ngFor="let item of catalog" [item]="item.movie" [alr_buy]="item.already_buy" [isHistory]="isHistory" [isPurchase]="isPurchase" [isWatch]="isWatch"></app-playlist-item>
     </section>
     <p class="empty" *ngIf="isEmpty && isWatch">Aucun film enregistré dans la watchlist</p>
     <p class="empty" *ngIf="isEmpty && isHistory">Vous n'avez pas encore regardé de film</p>

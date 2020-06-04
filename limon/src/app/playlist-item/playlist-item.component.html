@@ -12,6 +12,6 @@
         <button class="item-command-bill" (click)="onBill(item.id)" *ngIf="isPurchase"><img src="../../assets/icons/facture-icon.png" alt="">Facture</button>
         <button class="item-command-delete" (click)="onDelete(item.id)" *ngIf="isWatch"><img src="../../assets/icons/bin-icon.png" alt="">Supprimer</button>
         <button *ngIf="!isBuy && (isHistory || isWatch)"><img src="../../assets/icons/achat-icon.png" alt="">Acheter</button>
-        <button *ngIf="isBuy && (isHistory || isPurchase || isWatch)"><img src="../../assets/icons/download-icon.png" alt="">Télécharger</button>
+        <button *ngIf="isBuy || isPurchase && (isHistory || isPurchase || isWatch)"><img src="../../assets/icons/download-icon.png" alt="">Télécharger</button>
     </div>
 </section>

@@ -1,14 +1,16 @@
+
 <section class="profil">
+    <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
     <section class="profil-main">
         <img src="{{ '../../assets/profil-membres/pointing-man.jpg' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
             <h1 *ngIf="!isEdit">{{ user?.fullname }}</h1>
-            <input type="text" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
+            <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
             <div><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
         </div>
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
-            <a (click)="onEdit();onOpenSettings()">Modifier les informations</a>
+            <a (click)="onEdit();onOpenSettings();">Modifier les informations</a>
             <a (click)="onOpenSettings()">Supprimer le compte</a>
         </div>
     </section>
@@ -16,29 +18,32 @@
         <div>
             <h2>Adresse mail</h2>
             <p *ngIf="!isEdit">{{ user?.email }}</p>
-            <input type="text" value="{{ user?.email }}" *ngIf="isEdit">
+            <input type="text" formControlName="email" value="{{ user?.email }}" *ngIf="isEdit">
         </div>
         <div>
             <h2>Date de naissance</h2>
             <p *ngIf="!isEdit">{{ user?.birthday | date: 'MMMM d, y' }}</p>
-            <input type="text" value="{{ user?.birthday | date: 'yyyy' }}" *ngIf="isEdit">
+            <input type="text" formControlName="birthday" value="{{ user?.birthday | date: 'MMMM d, y' }}" *ngIf="isEdit">
         </div>
         <div class="sup-deconnect" *ngIf="!isEdit">
-            <button class="deconnect" (click)="logout()">Se déconnecter</button>
+            <button class="deconnect" (click)="logout()" type="button">Se déconnecter</button>
         </div>
     </section>
     <section class="profil-access">
-        <button routerLink="/history" *ngIf="!isEdit">
+        <button routerLink="/history" *ngIf="!isEdit" type="button">
             <img src="../../assets/icons/history-icon.png" alt=""> Consulter l'historique
         </button>
-        <button routerLink="/watchlist" *ngIf="!isEdit">
+        <button routerLink="/watchlist" *ngIf="!isEdit" type="button">
             <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
         </button>
-        <button routerLink="/purchase">
+        <button routerLink="/purchase" type="button">
             <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
         </button>
-        <button *ngIf="isEdit" (click)="onEdit()">
+
+        <button *ngIf="isEdit" type="submit">
             Enregistrer les modifications
         </button>
+
     </section>
+</form>
 </section>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Subscription, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { ActiveSearchService } from '../active-search.service';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-category',
@@ -12,32 +13,19 @@ export class CategoryComponent implements OnInit {
   public isCatChoose = false;
   public categoriesSubject = new Subject<any[]>();
   public categories: any;
-  // public categories = [
-  //   'Animation',
-  //   'Aventure',
-  //   'Comédie',
-  //   'Enquêtes',
-  //   'Fantaisie',
-  //   'Guerre',
-  //   'Historique',
-  //   'Horreur',
-  //   'Polar',
-  //   'Science-Fiction',
-  //   'Super-Héros',
-  //   'Vie Quotidienne'];
+  categorySubscription: Subscription;
+  
   constructor(private http:HttpClient,
-    private activeSearchService:ActiveSearchService) { }
+    private activeSearchService:ActiveSearchService,
+    private movieService:MovieService) { }
 
   ngOnInit(): void {
-    this.http.get(`https://api-limon.app-tricycle.com/api/category/all`)
-    .subscribe(
+    this.categorySubscription = this.movieService.categorySubject.subscribe(
       (data:any)=>{
         this.categories = data;
-      },
-      (error)=>{
-        console.log(error);
       }
-    )
+    );
+    this.movieService.getAllCategories();
   }
 
   onSearch(name) {

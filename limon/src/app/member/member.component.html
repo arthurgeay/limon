@@ -1,5 +1,5 @@
-<a class="member"  [routerLink]="['/user', user.id]">
+<a class="member" [routerLink]="['/user', user.id]">
     <img src="{{ user.image || 'assets/profil-notfound.png' }}" alt="" class="member-bg">
     <p class="member-name">{{ user.fullname }}</p>
-    <button class="member-delete"><img src="../../assets/icons/bin-icon.png" alt=""></button>
 </a>
+<button class="member-delete" (click)="onDelete()"><img src="../../assets/icons/bin-icon.png" alt=""></button>

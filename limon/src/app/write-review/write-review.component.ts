@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-write-review',
@@ -12,8 +14,10 @@ export class WriteReviewComponent implements OnInit {
 
   movieID: any;
   userForm: FormGroup;
+  reviewSubscription: Subscription;
+  contentEdit: any;
 
-  constructor(private http:HttpClient, private formBuilder: FormBuilder, private route:ActivatedRoute) { }
+  constructor(private http:HttpClient, private formBuilder: FormBuilder, private route:ActivatedRoute, private movieService:MovieService) { }
 
   ngOnInit(): void {
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
@@ -21,23 +25,24 @@ export class WriteReviewComponent implements OnInit {
   }
 
   initForm() {
-    this.userForm = this.formBuilder.group({
-      'review': ['', Validators.required]
-    });
-  }
-
-  onNote() {
-    const formData = new FormData();
-    formData.append('message', toString());
-    this.http.post(`https://api-limon.app-tricycle.com/api/rating/${this.movieID}`, formData)
-    .subscribe(
+    this.reviewSubscription = this.movieService.reviewSubject.subscribe(
       (data:any)=>{
-      },
-      (error)=>{
-        console.log(error);
+        this.contentEdit = data;
       }
     )
+    if (this.contentEdit !== ""){
+      this.userForm = this.formBuilder.group({
+        'review': [this.contentEdit, Validators.required]
+      });
+    }
+    else {
+      this.userForm = this.formBuilder.group({
+        'review': ['', Validators.required]
+      });
+    }
+
   }
+
 
   onSubmitForm() {
     const formValue = this.userForm.value['review'];
