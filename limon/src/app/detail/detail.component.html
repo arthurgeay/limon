@@ -17,6 +17,7 @@
             <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== '' && !isPurchase"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ movie?.price==='0.00 €'|| movie?.price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
             <button class="detail-play" *ngIf="isAuth"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-subscribe" (click)="download()" *ngIf="isPurchase">Télécharger</button>
+            <button class="detail-edit" (click)="onEdit()">Modifier</button>
         </div>
     </div>
     <button class="movie-watch" (click)="changeMark();onWatch();">

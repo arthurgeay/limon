@@ -21,7 +21,6 @@ export class DetailComponent implements OnInit {
   public movie: any;
   public note: string;
   public movieID: number;
-  http: any;
   catalog: any;
   isEmpty: boolean;
   
@@ -92,4 +91,7 @@ export class DetailComponent implements OnInit {
     this.router.navigate([`complete/${this.movieID}`]);
   }
 
+  onEdit() {
+    this.router.navigate([`edit/${this.movieID}`]);
+  }
 }
