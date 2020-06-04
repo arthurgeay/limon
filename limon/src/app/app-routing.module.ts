@@ -24,7 +24,7 @@ const routes: Routes = [
   {path: 'signin', component: ConnexionComponent },
   {path: 'profil', component: ProfilComponent },
   {path: 'admin', component: AdminComponent },
-  {path: 'edit', component: EditFilmComponent },
+  {path: 'create', component: EditFilmComponent },
   {path: 'edit/:id', component: EditFilmComponent },
   {path: 'history', component: PlaylistComponent },
   {path: 'purchase', component: PlaylistComponent },

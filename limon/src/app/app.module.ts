@@ -29,6 +29,7 @@ import { SearchbarComponent } from './searchbar/searchbar.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
   ],
   providers: [
     FormBuilder,
+    DatePipe,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}
   ],
   bootstrap: [AppComponent]

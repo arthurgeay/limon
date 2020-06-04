@@ -1,4 +1,5 @@
 $mobile: 665px;
+$tablet: 1100px;
 
 .profil {
     margin: 3rem;
@@ -49,6 +50,7 @@ $mobile: 665px;
             position: absolute;
             top: -1.5rem;
             right: -1rem;
+            cursor: pointer;
         }
         &-popup {
             background-color: var(--rind-green);
@@ -121,10 +123,13 @@ $mobile: 665px;
     background-color: var(--rind-green);
 }
 .input-name {
-    max-width: 9rem;
+    max-width: 10rem;
     font-size: 6vw;
-    @media (min-width: $mobile) {
+    @media (min-width: $mobile) and(max-width: $tablet) {
+        max-width: 15rem;
+    }
+    @media (min-width: $tablet) {
         font-size: 3rem;
-        max-width: 20rem;
+        min-width: min-content;
     }
 }

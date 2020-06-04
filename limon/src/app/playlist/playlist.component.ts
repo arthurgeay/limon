@@ -34,8 +34,6 @@ export class PlaylistComponent implements OnInit {
      else if (this.isPurchase) {
       this.displayPurchase();
     }
-      console.log(this.catalog);
-
 
   }
 
@@ -47,7 +45,6 @@ export class PlaylistComponent implements OnInit {
       (data:any)=>{
         this.catalog = data;    
         this.isEmpty = data.empty === true ? true : false;
-        console.log(data);
       },
       (error)=>{
         console.log(error);
@@ -62,7 +59,6 @@ export class PlaylistComponent implements OnInit {
       (data:any)=>{
         this.catalog = data; 
         this.isEmpty = data.empty === true ? true : false;
-        console.log(this.catalog);
       },
       (error)=>{
         console.log(error);
@@ -76,7 +72,6 @@ export class PlaylistComponent implements OnInit {
       (data:any)=>{
         this.catalog = data.movies_purchased;       
         this.isEmpty = data.empty === true ? true : false;
-        console.log(this.catalog);
       },
       (error)=>{
         console.log(error);

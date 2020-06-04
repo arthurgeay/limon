@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MovieService } from '../movie.service';
 
 @Component({
   selector: 'app-review',
@@ -13,7 +14,8 @@ export class ReviewComponent implements OnInit {
 
   constructor(private http: HttpClient,
     private route: ActivatedRoute,
-    private router: Router) { }
+    private router: Router,
+    private movieService:MovieService) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -32,6 +34,10 @@ export class ReviewComponent implements OnInit {
           console.log(error);
         }
       )
+  }
+
+  onEdit() {
+    this.movieService.EditReview(this.reviews.content);
   }
 
 }
