@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-film',
@@ -6,11 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-film.component.scss']
 })
 export class EditFilmComponent implements OnInit {
-
+  userForm: FormGroup;
   isEdit = false;
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  onSubmitForm() {
+    
+  }
 }

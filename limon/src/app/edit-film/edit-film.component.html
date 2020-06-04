@@ -1,5 +1,5 @@
 <section class="edit">
-    <form>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">>
         <h1>{{ isEdit ? 'Editer un film' : 'Ajouter un film'}}</h1>
         <div class="edit-cont"><label for="title">Nom du film</label>
         <input type="text" id="title"></div>
