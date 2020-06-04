@@ -165,7 +165,6 @@ class MovieController extends AbstractController
         $movie->setTitle($title);
         $movie->setSynopsis($synopsis);
         $movie->setPrice($price);
-        $movie->setDownloadUrl('');
         $movie->setReleaseDate(new \DateTime($date));
         $movie->setHeroImg($heroImg);
         $movie->setPosterImg($posterImg);
@@ -225,7 +224,6 @@ class MovieController extends AbstractController
         $movie->setTitle($title);
         $movie->setSynopsis($synopsis);
         $movie->setPrice($price);
-        $movie->setDownloadUrl('');
         $movie->setReleaseDate(new \DateTime($date));
         $movie->setHeroImg($heroImg);
         $movie->setPosterImg($posterImg);
