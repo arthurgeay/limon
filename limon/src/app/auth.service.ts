@@ -15,7 +15,7 @@ export class AuthService {
               private userService: UserService) { }
 
   errorSubject = new Subject<any[]>();
-  errors: [string];
+  errors = [];
   
   /**
    * Save in local storage
@@ -52,8 +52,8 @@ export class AuthService {
         this.router.navigate(['']);
       },
       (errors) => {
-        if(errors.error.message == 'Invalid credentials') {
-          this.errors.push('Identifiant invalide');
+        if(errors.error.message == 'Invalid credentials.') {
+          this.errors.push('Identifiants invalides');
         } else {
           this.errors.push("Une erreur s'est produite");
         }

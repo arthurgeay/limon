@@ -3,7 +3,9 @@
         <button type="button" class="connect-return" routerLink="/">Revenir à l'accueil</button>
         <h1 class="connect-title">{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
         <div class="connect-inputs">
-            <p class="connect-error">Attention ça fume un max ici</p>
+            <div *ngIf="errors.length > 0" class="connect-error">
+                <p *ngFor="let error of errors">{{ errors }}</p>
+            </div>
             <div class="input-row">
                 <div class="input-cont">
                     <label for="username" *ngIf="!isLogin">Nom d'utilisateur</label>

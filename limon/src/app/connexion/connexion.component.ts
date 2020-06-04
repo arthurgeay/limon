@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { User } from '../models/user.model';
 import { AuthService } from '../auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-connexion',
@@ -13,6 +14,8 @@ export class ConnexionComponent implements OnInit {
 
   public isLogin = false;
   userForm: FormGroup;
+  errorsSubscription: Subscription;
+  errors: any[];
 
   constructor(private route:ActivatedRoute, 
               private formBuilder: FormBuilder,
@@ -23,6 +26,13 @@ export class ConnexionComponent implements OnInit {
     this.isLogin = route === 'login' ? true : false;
 
     this.initForm();
+
+    this.authService.errors = []; // Reset errors
+    
+    this.errorsSubscription = this.authService.errorSubject.subscribe(
+      (errors) => this.errors = errors
+    );
+    this.authService.emitErrorSubject();
   }
 
   /**
@@ -48,8 +58,10 @@ export class ConnexionComponent implements OnInit {
    * Send data for login
    */
   onSubmitForm() {
+    this.authService.errors = [];
+    this.authService.emitErrorSubject();
     const formValue = this.userForm.value;
-    // console.log(formValue);
+
     let user = null;
 
     if(this.isLogin) {
