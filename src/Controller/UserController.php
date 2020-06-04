@@ -34,8 +34,9 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $userInfo = $userRepository->findEmailAndSubscription($this->getUser( )->getUsername());
 
-        if($this->isGranted('ROLE_ADMIN')) {
-            $userId = $request->query->getInt('userId');
+        $userId = $request->query->getInt('userId');
+
+        if($this->isGranted('ROLE_ADMIN') && $userId) {
             $userInfo = $userRepository->findEmailAndSubscription($userId);
 
             if(!$user) {

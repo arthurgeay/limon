@@ -75,4 +75,15 @@ class WatchListController extends AbstractController
 
         return $this->json(['status' => 'Film supprimé'], 200);
     }
+
+    /**
+     * @Route("/added/{id}", name="added", methods={"GET"})
+     */
+    public function added($id, WatchListRepository $watchListRepository) {
+        $movieAlreadyAdd = $watchListRepository->findByMovieAndUser($id, $this->getUser());
+        $result = $movieAlreadyAdd ? true : false;
+
+        return $this->json(['already_add' => $result]);
+
+    }
 }
