@@ -43,6 +43,20 @@ export class AuthService {
   }
 
   /**
+   * Return bool if is a normal user
+   */
+  isUser() {
+    return localStorage.getItem('roles') == 'ROLE_USER' ? true : false;
+  }
+
+  /**
+   * Return bool if is an admin user
+   */
+  isAdmin() {
+    return localStorage.getItem('roles') == 'ROLE_ADMIN' ? true : false;
+  }
+
+  /**
    * Login a user
    * @param user 
    */
