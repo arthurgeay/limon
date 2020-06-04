@@ -4,8 +4,7 @@
     <p class="payment-text" *ngIf="!isComplete">Toute l'équipe <span class="important">Limon</span> vous remercie pour nous avoir fait confiances et utiliser nos services. Vous pouvez dès à présent profiter de notre catalogue de film en illimité !</p>
     <h2 class="payment-text">Bon visionnage !</h2>
     <button class="payment-valid" *ngIf="isComplete" (click)="onDl()">Télécharger le film</button>
-    <button class="payment-valid" *ngIf="!isComplete">Voir le catalogue</button>
-
+    <button class="payment-valid" *ngIf="!isComplete" routerLink="/">Voir le catalogue</button>
     <img src="../../assets/icons/citrus.svg" alt="" class="deco1">
     <img src="../../assets/icons/citrus.svg" alt="" class="deco2">
 </section>

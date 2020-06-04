@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-profil',
@@ -18,7 +19,8 @@ export class ProfilComponent implements OnInit {
   public userSubscription: Subscription;
   public actualUserSubscription:  Subscription;
   constructor(private userService: UserService,
-    private route:ActivatedRoute) { }
+    private route:ActivatedRoute,
+    private authService: AuthService) { }
 
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
@@ -63,6 +65,10 @@ export class ProfilComponent implements OnInit {
       }
     );
     this.userService.getUserById(this.id);
+  }
+
+  logout() {
+    this.authService.logout();
   }
 
 }

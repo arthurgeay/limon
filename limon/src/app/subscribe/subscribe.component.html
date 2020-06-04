@@ -8,5 +8,5 @@
         <button class="subscribe-button-proceed" (click)="buy()" >S'abonner</button>
     </div>
 </section>
-<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="amount"></app-checkout>
+<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="amount" [direction]="direction"></app-checkout>
 

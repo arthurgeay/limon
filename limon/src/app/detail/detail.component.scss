@@ -120,18 +120,22 @@ $large: 2400px;
             margin-left: .5rem;
         }
     }
-    &-buy, &-play, &-subscribe {
+    &-buy, &-play, &-subscribe, &-edit,&-delete {
         border-radius: 5px;
         padding: .3rem .5rem;
         font-size: 1em;
+        margin-left: .5rem;
     }
     &-buy{
         background-color: var(--white);
         color: var(--rind-green);
         margin-right: 1rem;
     }
-    &-play,&-subscribe {
+    &-play,&-subscribe, &-edit {
         background-color: var(--rind-green);
+    }
+    &-delete {
+        background-color: red;
     }
     &-icon {
         width: .75em;

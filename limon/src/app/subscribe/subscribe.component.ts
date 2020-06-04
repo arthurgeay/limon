@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-subscribe',
@@ -10,13 +11,14 @@ export class SubscribeComponent implements OnInit {
 
   public isCheck: boolean = false;
   public amount:number = 5;
+  public direction:string = "sub";
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private http:HttpClient) { }
 
   ngOnInit(): void {
   }
 
   buy() {
-    this.isCheck = !this.isCheck ;
+    this.isCheck = !this.isCheck;
   }
 }

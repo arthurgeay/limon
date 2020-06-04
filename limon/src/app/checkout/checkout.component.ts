@@ -13,6 +13,7 @@ export class CheckoutComponent implements OnInit {
 
   @Input() public amount:number;
   @Input() public id:number;
+  @Input() public direction:string;
   @Input() public isCheck: boolean;
   @Output() public isCheckChange = new EventEmitter<boolean>();
   @ViewChild('cardElement', {static: false}) cardElement: ElementRef;
@@ -60,7 +61,12 @@ export class CheckoutComponent implements OnInit {
       setTimeout(() => {
         this.loading = false;  
         this.movieService.purchaseMovieById(+this.id)
-        this.router.navigate([`complete/${this.id}`])
+        if(this.direction == 'sub') {
+          this.router.navigate([`subscribed`])
+        }
+        else {
+          this.router.navigate([`complete/${this.id}`])
+        }
       }, 2000);
       
     }
