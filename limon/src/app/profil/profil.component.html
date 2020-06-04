@@ -20,11 +20,11 @@
         </div>
         <div>
             <h2>Date de naissance</h2>
-            <p *ngIf="!isEdit">{{ user?.birthday }}</p>
-            <input type="text" value="{{ user?.birthday }}" *ngIf="isEdit">
+            <p *ngIf="!isEdit">{{ user?.birthday | date: 'MMMM d, y' }}</p>
+            <input type="text" value="{{ user?.birthday | date: 'yyyy' }}" *ngIf="isEdit">
         </div>
         <div class="sup-deconnect" *ngIf="!isEdit">
-            <button class="deconnect" routerLink="/">Se déconnecter</button>
+            <button class="deconnect" (click)="logout()">Se déconnecter</button>
         </div>
     </section>
     <section class="profil-access">

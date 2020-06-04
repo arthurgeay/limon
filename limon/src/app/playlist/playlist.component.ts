@@ -42,12 +42,12 @@ export class PlaylistComponent implements OnInit {
 
 
   displayHistory() {
-    this.http.get(`https://api-limon.app-tricycle.com/api/movies-watched`)
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched?page=1`)
     .subscribe(
       (data:any)=>{
         this.catalog = data;    
         this.isEmpty = data.empty === true ? true : false;
-        // console.log(this.catalog);
+        console.log(data);
       },
       (error)=>{
         console.log(error);
@@ -71,12 +71,12 @@ export class PlaylistComponent implements OnInit {
   }
 
   displayPurchase() {
-    this.http.get(`https://api-limon.app-tricycle.com/api/movies-purchased`)
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?page=1`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data;       
+        this.catalog = data.movies_purchased;       
         this.isEmpty = data.empty === true ? true : false;
-        // console.log(this.catalog);
+        console.log(this.catalog);
       },
       (error)=>{
         console.log(error);

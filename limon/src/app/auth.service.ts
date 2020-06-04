@@ -102,6 +102,7 @@ export class AuthService {
 
     this.userService.user = null;
     this.userService.emitUserSubject();
+    this.router.navigate(['/'])
   }
 
   emitErrorSubject() {

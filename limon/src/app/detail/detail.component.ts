@@ -10,8 +10,10 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './detail.component.html',
   styleUrls: ['./detail.component.scss']
 })
+
 export class DetailComponent implements OnInit {
   public isAuth = true;
+  public isAdmin = true;
   public isMobile = false;
   public isMark = false;
   public isPurchase = false;
@@ -21,8 +23,10 @@ export class DetailComponent implements OnInit {
   public movie: any;
   public note: string;
   public movieID: number;
+  public direction:string = "buy";
   catalog: any;
   isEmpty: boolean;
+  isReviewEmpty: boolean = false;
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
@@ -37,15 +41,30 @@ export class DetailComponent implements OnInit {
     this.movieSubscription = this.movieService.movieSubject.subscribe(
       (movie:any)=>{
         this.movie = movie;
+        this.reviews = movie.reviews;
+        this.isReviewEmpty = this.reviews.length == 0 ? true : false;
         if (movie.note) {
           this.note = movie.note.substring(0,1);
         }
       }
     );
     this.movieService.getMovieById(+id);
-
+    this.isInsideWatchlist();
     this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
   }
+
+  isInsideWatchlist() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/watchlist/added/${this.movieID}`)
+    .subscribe(
+      (data:any)=>{
+        this.isMark = data.already_add;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
   onWatch() {
     if (this.isMark) {
       const formData = new FormData();
@@ -53,8 +72,7 @@ export class DetailComponent implements OnInit {
       this.http.post(`https://api-limon.app-tricycle.com/api/watchlist/`, formData)
       .subscribe(
         (data:any)=>{
-          console.log(data);
-          
+          // console.log(data);
         },
         (error)=>{
           console.log(error);
@@ -65,13 +83,25 @@ export class DetailComponent implements OnInit {
       this.http.delete(`https://api-limon.app-tricycle.com/api/watchlist/${this.movieID}`)
       .subscribe(
         (data:any)=>{
-          console.log(data);
+          // console.log(data);
         },
         (error)=>{
           console.log(error);
         }
       )
     }
+  }
+
+  onDelete() {
+    this.http.delete(`https://api-limon.app-tricycle.com/api/movie/${this.movieID}`)
+    .subscribe(
+      (data:any)=>{
+        this.router.navigate(['/'])
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 
   changeMark(){

@@ -1,19 +1,19 @@
 <div class="review">
     <div class="review-upper">
         <div class="review-user">
-            <img src="{{ review.pic }}" alt="image de profil de l'utilisateur">
+            <img src="{{ reviews.pic || 'assets/profil-notfound.png' }}" alt="image de profil de l'utilisateur">
             <div class="review-user-infos">
-                <h2>{{ review.name }}</h2>
-                <p class="review-user-infos-date">{{ review.date }}</p>
+                <h2>{{ reviews.user.fullname }}</h2>
+                <p class="review-user-infos-date">{{ reviews.created_at | date: 'yyyy' }}</p>
             </div>
         </div>
         <div class="review-button">
             <button class="review-button-edit"><img src="../../assets/icons/edit-icon.png" alt="éditer le commentaire"></button>
-            <button class="review-button-delete"><img src="../../assets/icons/bin-icon.png" alt="supprimer le commentaire"></button>
+            <button class="review-button-delete" (click)="onDelete(reviews.id)"><img src="../../assets/icons/bin-icon.png" alt="supprimer le commentaire"></button>
         </div>
     </div>
     <div class="review-lower">
-        <p>{{ review.content }}</p>
-        <b class="review-modified">Modified</b>
+        <p>{{ reviews.content }}</p>
+        <b class="review-modified" *ngIf="reviews.edited !== null">Modified</b>
     </div>
 </div>
