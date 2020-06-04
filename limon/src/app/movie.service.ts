@@ -108,7 +108,7 @@ public downloadMovieById(id:number) {
     this.categorySubject.next(this.categories);
   }
 
-  public EditReview(message: string) {
+  public EditReview(message:any) {
     this.review = message;
     this.EmitOnReview();
   }

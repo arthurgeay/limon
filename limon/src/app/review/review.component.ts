@@ -36,8 +36,12 @@ export class ReviewComponent implements OnInit {
       )
   }
 
-  onEdit() {
-    this.movieService.EditReview(this.reviews.content);
+  onEdit(id:number) {
+    this.movieService.EditReview(
+      {
+        "id": id,
+        "content": this.reviews.content
+      });
   }
 
 }
