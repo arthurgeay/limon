@@ -117,7 +117,7 @@ class UserController extends AbstractController
         $pagination = $paginator->paginate($movies, $page, 10);
 
         if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true], 404);
+            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
         return $this->json([
@@ -138,7 +138,7 @@ class UserController extends AbstractController
         $pagination = $paginator->paginate($moviesPurchased, $page, 10);
 
         if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true], 404);
+            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
         return $this->json([

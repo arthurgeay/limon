@@ -26,7 +26,7 @@ class WatchListController extends AbstractController
         $watchList = $watchListRepository->getAllMoviesByUser($this->getUser());
 
         if(!$watchList) {
-            return $this->json(['status' => 'Aucun film dans la watchlist', 'empty' => true], 404);
+            return $this->json(['status' => 'Aucun film dans la watchlist', 'empty' => true]);
         }
 
         return $this->json($watchList, 200, [], ['groups' => ['watchlist']]);
