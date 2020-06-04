@@ -143,7 +143,7 @@ class UserController extends AbstractController
 
         return $this->json([
             'current_page' => $pagination->getCurrentPageNumber(),
-            'movies-purchased' => $pagination,
+            'movies_purchased' => $pagination,
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
         ], 200, [], ['groups' => ['history.purchased']]);
