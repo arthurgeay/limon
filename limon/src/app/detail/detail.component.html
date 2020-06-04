@@ -15,11 +15,11 @@
         </div>
         <div class="detail-line">
             <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== '' && !isPurchase"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ movie?.price==='0.00 €'|| movie?.price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
-            <button class="detail-play" *ngIf="isAuth"> <img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
+            <button class="detail-play" *ngIf="isAuth"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-subscribe" (click)="download()" *ngIf="isPurchase">Télécharger</button>
         </div>
     </div>
-    <button class="movie-watch" (click)="onWatch()">
+    <button class="movie-watch" (click)="changeMark();onWatch();">
         <svg xmlns="http://www.w3.org/2000/svg" width="86.589" height="132.214" viewBox="0 0 86.589 132.214" *ngIf="!isMark">
             <path  data-name="Bookmark" d="M166.6,0H96.668a8.335,8.335,0,0,0-8.326,8.326V127.219a5,5,0,0,0,7.621,4.251l35.683-22.03,35.678,21.87a5,5,0,0,0,7.607-4.258V8.326A8.335,8.335,0,0,0,166.6,0ZM164.94,118.128,134.249,99.314a5,5,0,0,0-5.237.008L98.333,118.263V9.991H164.94Z" transform="translate(-88.342)"/>
         </svg>
