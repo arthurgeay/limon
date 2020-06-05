@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PurchaseController.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,11 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="PurchaseController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="PurchaseController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+            <state relative-caret-position="595">
+              <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
               <folding>
                 <element signature="e#34#55#0#PHP" expanded="true" />
               </folding>
@@ -28,20 +29,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Controller/UserController.php">
+      <file leaf-file-name="MovieController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Controller/MovieController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="549">
-              <caret line="140" column="81" selection-start-line="140" selection-start-column="81" selection-end-line="140" selection-end-column="81" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Purchase.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/Entity/Purchase.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="35" column="38" selection-start-line="35" selection-start-column="38" selection-end-line="35" selection-end-column="38" />
+            <state relative-caret-position="15">
+              <caret line="120" selection-start-line="120" selection-end-line="120" />
+              <folding>
+                <element signature="e#34#58#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -55,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="nelmio_cors.yaml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="nelmio_cors.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/packages/nelmio_cors.yaml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            <state relative-caret-position="120">
+              <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
             </state>
           </provider>
         </entry>
@@ -80,7 +75,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/Entity/Movie.php" />
-        <option value="$PROJECT_DIR$/src/Controller/PurchaseController.php" />
         <option value="$PROJECT_DIR$/src/EventListener/AuthenticationSuccessListener.php" />
         <option value="$PROJECT_DIR$/config/packages/doctrine.yaml" />
         <option value="$PROJECT_DIR$/src/Repository/MovieWatchRepository.php" />
@@ -102,6 +96,7 @@
         <option value="$PROJECT_DIR$/src/Controller/WatchListController.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/config/packages/nelmio_cors.yaml" />
+        <option value="$PROJECT_DIR$/src/Controller/PurchaseController.php" />
       </list>
     </option>
   </component>
@@ -246,12 +241,6 @@
             <path>
               <item name="limon" type="b2602c69:ProjectViewProjectNode" />
               <item name="limon" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="config" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="packages" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="limon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limon" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
@@ -259,12 +248,6 @@
               <item name="limon" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="limon" type="b2602c69:ProjectViewProjectNode" />
-              <item name="limon" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -333,18 +316,18 @@
       <workItem from="1591182724666" duration="11044000" />
       <workItem from="1591269521606" duration="14399000" />
       <workItem from="1591354082047" duration="158000" />
-      <workItem from="1591364009693" duration="1979000" />
+      <workItem from="1591364009693" duration="2506000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34291000" />
+    <option name="totallyTimeSpent" value="34818000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1244" y="23" width="1313" height="1334" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19984265" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.19984265" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
@@ -353,7 +336,7 @@
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983023" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32983023" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -710,13 +693,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/MovieController.php">
+    <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="120" selection-start-line="120" selection-end-line="120" />
-          <folding>
-            <element signature="e#34#58#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="660">
+          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/packages/nelmio_cors.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="10" lean-forward="true" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -734,27 +721,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
+    <entry file="file://$PROJECT_DIR$/src/Controller/MovieController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="62" column="29" selection-start-line="62" selection-start-column="29" selection-end-line="62" selection-end-column="29" />
+        <state relative-caret-position="15">
+          <caret line="120" selection-start-line="120" selection-end-line="120" />
           <folding>
-            <element signature="e#34#55#0#PHP" expanded="true" />
+            <element signature="e#34#58#0#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
+    <entry file="file://$PROJECT_DIR$/src/Controller/PurchaseController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="44" column="18" selection-start-line="44" selection-start-column="18" selection-end-line="44" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/packages/nelmio_cors.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="595">
+          <caret line="77" lean-forward="true" selection-start-line="77" selection-end-line="77" />
+          <folding>
+            <element signature="e#34#55#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

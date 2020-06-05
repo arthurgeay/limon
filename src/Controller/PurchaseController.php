@@ -75,7 +75,8 @@ class PurchaseController extends AbstractController
         ]);
         $invoice = $HTMLPDF->generatePdf($template, 'invoice');
 
-        return $invoice;
+
+        return $this->file($invoice);
 
     }
 
