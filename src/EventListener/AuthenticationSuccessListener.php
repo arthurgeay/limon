@@ -40,7 +40,7 @@ class AuthenticationSuccessListener
 
         $data['expires'] = $dateExp;
 
-        if($user-getSubscription()) {
+        if($user->getSubscription()) {
             $data['data']['subscription'] = [
                 'end_date' => $user->getSubscription()->getEndDate(),
                 'date_subscription' => $user->getSubscription()->getDateSubscription()
