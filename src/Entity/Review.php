@@ -37,7 +37,7 @@ class Review
 
     /**
      * @ORM\ManyToOne(targetEntity=User::class, inversedBy="reviews")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups("movie")
      */
     private $user;

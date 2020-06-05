@@ -51,6 +51,6 @@ class RatingController extends AbstractController
 
         $avg = $ratingRepository->getAvg($movie);
 
-        return $this->json(['status' => 'Note ajouté pour le film ' . $movie->getTitle(), 'avg' => $avg], 200);
+        return $this->json(['status' => 'Note ajouté pour le film ' . $movie->getTitle(), 'avg' => $avg['avg']], 200);
     }
 }

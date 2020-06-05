@@ -28,6 +28,8 @@ class WatchListRepository extends ServiceEntityRepository
             ->addSelect('p')
             ->innerJoin('m.category', 'c')
             ->addSelect('c')
+            ->leftJoin('App\Entity\Purchase', 'pu', 'WITH', 'pu.movie = w.movie')
+            ->addSelect('(CASE WHEN (pu.id IS NOT NULL) THEN true ELSE false END) AS already_buy')
             ->andWhere('w.user = :user')
             ->setParameter('user', $user)
             ->orderBy('w.id', 'DESC')

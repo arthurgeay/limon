@@ -67,12 +67,6 @@ class Movie
     private $release_date;
 
     /**
-     * @ORM\Column(type="text")
-     * @Groups("history.purchased")
-     */
-    private $download_url;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Productor::class, inversedBy="movies")
      * @ORM\JoinColumn(nullable=false)
      * @Groups({"movie", "movie.all", "history.watched", "history.purchased", "watchlist"})
@@ -182,18 +176,6 @@ class Movie
     public function setReleaseDate(\DateTimeInterface $release_date): self
     {
         $this->release_date = $release_date;
-
-        return $this;
-    }
-
-    public function getDownloadUrl(): ?string
-    {
-        return $this->download_url;
-    }
-
-    public function setDownloadUrl(string $download_url): self
-    {
-        $this->download_url = $download_url;
 
         return $this;
     }

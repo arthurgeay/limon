@@ -83,7 +83,7 @@ class MovieController extends AbstractController
     {
         $query = $request->query->get('query');
         $searchBy = $request->query->get('searchBy', 'name');
-        $categoryName = $request->query->get('category_name');
+        $categoryName = str_replace('-', ' ', $request->query->get('category_name'));
         $orderBy = $request->query->get('orderBy');
         $page = $request->query->getInt('page', 1);
 
@@ -136,7 +136,7 @@ class MovieController extends AbstractController
     {
         $purchased = $purchaseRepository->findOneBy(['movie' => $id ]);
 
-        if($this->getUser()->getSubscription() || !$purchased) {
+        if(!$purchased) {
             return $this->json(['status' => 'Vous ne pouvez pas télécharger ce film'], 401);
         }
 
@@ -165,7 +165,6 @@ class MovieController extends AbstractController
         $movie->setTitle($title);
         $movie->setSynopsis($synopsis);
         $movie->setPrice($price);
-        $movie->setDownloadUrl('');
         $movie->setReleaseDate(new \DateTime($date));
         $movie->setHeroImg($heroImg);
         $movie->setPosterImg($posterImg);
@@ -225,7 +224,6 @@ class MovieController extends AbstractController
         $movie->setTitle($title);
         $movie->setSynopsis($synopsis);
         $movie->setPrice($price);
-        $movie->setDownloadUrl('');
         $movie->setReleaseDate(new \DateTime($date));
         $movie->setHeroImg($heroImg);
         $movie->setPosterImg($posterImg);

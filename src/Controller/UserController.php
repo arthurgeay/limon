@@ -34,8 +34,9 @@ class UserController extends AbstractController
         $user = $this->getUser();
         $userInfo = $userRepository->findEmailAndSubscription($this->getUser( )->getUsername());
 
-        if($this->isGranted('ROLE_ADMIN')) {
-            $userId = $request->query->getInt('userId');
+        $userId = $request->query->getInt('userId');
+
+        if($this->isGranted('ROLE_ADMIN') && $userId) {
             $userInfo = $userRepository->findEmailAndSubscription($userId);
 
             if(!$user) {
@@ -116,7 +117,7 @@ class UserController extends AbstractController
         $pagination = $paginator->paginate($movies, $page, 10);
 
         if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé'], 404);
+            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
         return $this->json([
@@ -137,12 +138,12 @@ class UserController extends AbstractController
         $pagination = $paginator->paginate($moviesPurchased, $page, 10);
 
         if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé'], 404);
+            return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
         return $this->json([
             'current_page' => $pagination->getCurrentPageNumber(),
-            'movies-purchased' => $pagination,
+            'movies_purchased' => $pagination,
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
         ], 200, [], ['groups' => ['history.purchased']]);

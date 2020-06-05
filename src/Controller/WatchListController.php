@@ -26,7 +26,7 @@ class WatchListController extends AbstractController
         $watchList = $watchListRepository->getAllMoviesByUser($this->getUser());
 
         if(!$watchList) {
-            return $this->json(['status' => 'Aucun film dans la watchlist']);
+            return $this->json(['status' => 'Aucun film dans la watchlist', 'empty' => true]);
         }
 
         return $this->json($watchList, 200, [], ['groups' => ['watchlist']]);
@@ -74,5 +74,16 @@ class WatchListController extends AbstractController
         $em->flush();
 
         return $this->json(['status' => 'Film supprimé'], 200);
+    }
+
+    /**
+     * @Route("/added/{id}", name="added", methods={"GET"})
+     */
+    public function added($id, WatchListRepository $watchListRepository) {
+        $movieAlreadyAdd = $watchListRepository->findByMovieAndUser($id, $this->getUser());
+        $result = $movieAlreadyAdd ? true : false;
+
+        return $this->json(['already_add' => $result]);
+
     }
 }
