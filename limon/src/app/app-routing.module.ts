@@ -11,28 +11,29 @@ import { EditFilmComponent } from './edit-film/edit-film.component';
 import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
 import { DoneComponent } from './done/done.component';
+import { AuthGuard } from './auth.guard';
 
 
 const routes: Routes = [
   {path: '', component: FilmResultComponent },
   {path: 'search', component: FilmResultComponent },
   {path: 'detail/:id', component: DetailComponent },
-  {path: 'complete/:id', component: DoneComponent },
-  {path: 'complete', component: DoneComponent },
-  {path: 'subscribed', component: DoneComponent },
+  {path: 'complete/:id',canActivate: [AuthGuard], component: DoneComponent },
+  {path: 'complete',canActivate: [AuthGuard], component: DoneComponent },
+  {path: 'subscribed',canActivate: [AuthGuard], component: DoneComponent },
   {path: 'login', component: ConnexionComponent },
   {path: 'signin', component: ConnexionComponent },
   {path: 'register', component: ConnexionComponent },
-  {path: 'profil', component: ProfilComponent },
-  {path: 'admin', component: AdminComponent },
-  {path: 'create', component: EditFilmComponent },
-  {path: 'edit/:id', component: EditFilmComponent },
-  {path: 'history', component: PlaylistComponent },
-  {path: 'purchase', component: PlaylistComponent },
-  {path: 'watchlist', component: PlaylistComponent },
+  {path: 'profil',canActivate: [AuthGuard], component: ProfilComponent },
+  {path: 'admin',canActivate: [AuthGuard], component: AdminComponent },
+  {path: 'create',canActivate: [AuthGuard], component: EditFilmComponent },
+  {path: 'edit/:id',canActivate: [AuthGuard], component: EditFilmComponent },
+  {path: 'history',canActivate: [AuthGuard], component: PlaylistComponent },
+  {path: 'purchase',canActivate: [AuthGuard], component: PlaylistComponent },
+  {path: 'watchlist',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'subscription', component: SubscribeComponent },
-  {path: 'members', component: MemberListComponent },
-  {path: 'user/:id', component: ProfilComponent },
+  {path: 'members',canActivate: [AuthGuard], component: MemberListComponent },
+  {path: 'user/:id',canActivate: [AuthGuard], component: ProfilComponent },
   {path: 'agreement', component: AgreementComponent },
   {path: 'privacy', component: AgreementComponent },
   {path: '**', component: FilmResultComponent }
