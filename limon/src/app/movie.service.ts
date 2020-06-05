@@ -60,10 +60,14 @@ export class MovieService {
   }
 
 public downloadMovieById(id:number) {
+    let mediaType = 'application/mp4';
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}/download`, { responseType: 'blob' })
     .subscribe(
       (data:any)=>{
-        this.downl = data.blob();
+        this.downl = data;
+        let blob = new Blob([data], { type:mediaType})
+        console.log(blob);
+        
         this.EmitOnDl();
       },
       (error)=>{
