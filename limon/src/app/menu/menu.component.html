@@ -21,20 +21,20 @@
             </div>
         </div>
         <div *ngIf="isAuth">
-            <a class="nav-profil" routerLink="/profil">
+            <a class="nav-profil" routerLink="/profil" title="profil">
                 <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="nav-profil-pic">
                 <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge" *ngIf="isSub">
             </a>
         </div>
         <div *ngIf="!isMobile && isAuth">
-            <a class="nav-watchlist" routerLink="/watchlist">
+            <a class="nav-watchlist" routerLink="/watchlist" title="Watchlist">
                 <svg xmlns="http://www.w3.org/2000/svg" width="86.589" height="132.214" viewBox="0 0 86.589 132.214">
                     <path d="M166.6,0H96.668a8.335,8.335,0,0,0-8.326,8.326V127.219a5,5,0,0,0,7.621,4.251l35.683-22.03,35.678,21.87a5,5,0,0,0,7.607-4.258V8.326A8.335,8.335,0,0,0,166.6,0ZM164.94,118.128,134.249,99.314a5,5,0,0,0-5.237.008L98.333,118.263V9.991H164.94Z" transform="translate(-88.342)"/>
                 </svg>
             </a>
         </div>
         <div *ngIf="!isMobile && isAuth">
-            <a class="nav-history" routerLink="/history">
+            <a class="nav-history" routerLink="/history" title="Historique">
                 <svg xmlns="http://www.w3.org/2000/svg" width="101.503" height="87.002" viewBox="0 0 101.503 87.002">
                     <g data-name="history" transform="translate(-621.392 3746.521)">
                       <path data-name="out"  d="M234.667,138.667v29L259.492,182.4l4.176-7.047-20.3-12.035V138.667Z" transform="translate(437.476 -3864.665)"/>

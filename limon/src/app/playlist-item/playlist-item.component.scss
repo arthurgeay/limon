@@ -19,6 +19,7 @@ $large: 2400px;
         -ms-grid-columns: 9rem 1fr 9rem;
         margin: 2rem 0;
     }
+
     &-img {
         height: 10rem;
         max-width: 8rem;
@@ -131,6 +132,10 @@ $large: 2400px;
         font-size: .65em;
         opacity: .4;
         margin-bottom: .5rem;
+    }
+    &-price {
+        margin-top: .5rem;
+        font-size: 1.2rem;
     }
     &-category {
         background-color: var(--rind-green);

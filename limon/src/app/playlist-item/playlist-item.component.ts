@@ -17,7 +17,8 @@ export class PlaylistItemComponent implements OnInit {
   @Input() isPurchase: boolean;
   @Input() alr_buy:any;
   @Input() idBuy:any;
-
+  public direction:string = "buy";
+  public isCheck = false;
   public isBuy:boolean = false;
 
   constructor(
@@ -36,6 +37,10 @@ export class PlaylistItemComponent implements OnInit {
 
   onDl(id:number) {
     this.movieService.downloadMovieById(id,this.item.title);
+  }
+
+  buy() {
+    this.isCheck = !this.isCheck;
   }
 
 
