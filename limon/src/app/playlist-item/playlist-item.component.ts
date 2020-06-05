@@ -61,6 +61,16 @@ export class PlaylistItemComponent implements OnInit {
       (data:any)=>{
         let blob = new Blob([data], { type:mediaType})
         console.log(blob);
+        const filename = 'facture.pdf';
+        const url = window.URL.createObjectURL(blob);
+        const a:HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
       },
       (error)=>{
         console.log(error);

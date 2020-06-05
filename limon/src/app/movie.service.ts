@@ -67,6 +67,17 @@ public downloadMovieById(id:number) {
         this.downl = data;
         let blob = new Blob([data], { type:mediaType})
         console.log(blob);
+        const filename = 'film-limon.mp4';
+        const url = window.URL.createObjectURL(blob);
+        const a:HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
+
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
         
         this.EmitOnDl();
       },
