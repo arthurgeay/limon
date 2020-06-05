@@ -40,14 +40,19 @@ class AuthenticationSuccessListener
 
         $data['expires'] = $dateExp;
 
+        if($user-getSubscription()) {
+            $data['data']['subscription'] = [
+                'end_date' => $user->getSubscription()->getEndDate(),
+                'date_subscription' => $user->getSubscription()->getDateSubscription()
+            ];
+        } else {
+            $data['data']['subscription'] = null;
+        }
+
         $data['data'] = array(
             'email' => $user->getUsername(),
             'fullname' => $user->getFullname(),
             'birthday' => $user->getBirthday(),
-            'subscription' => [
-                'end_date' => $user->getSubscription()->getEndDate(),
-                'date_subscription' => $user->getSubscription()->getDateSubscription()
-            ],
             'roles' => $user->getRoles()
         );
 
