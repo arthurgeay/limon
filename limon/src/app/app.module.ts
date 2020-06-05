@@ -30,6 +30,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
+import { VideoComponent } from './video/video.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { DatePipe } from '@angular/common';
     RgpdComponent,
     FooterComponent,
     SearchbarComponent,
-    CheckoutComponent
+    CheckoutComponent,
+    VideoComponent
   ],
   imports: [
     BrowserModule,

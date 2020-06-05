@@ -1,6 +1,8 @@
 import { Component, OnInit, AfterContentInit, ViewChild, ElementRef, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { MovieService } from '../movie.service';
+import { UserService } from '../user.service';
+import { Subscription } from 'rxjs';
 
 declare var Stripe;//: stripe.StripeStatic;
 
@@ -10,24 +12,44 @@ declare var Stripe;//: stripe.StripeStatic;
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
-
   @Input() public amount:number;
+  @Input() public title:string;
   @Input() public id:number;
   @Input() public direction:string;
   @Input() public isCheck: boolean;
   @Output() public isCheckChange = new EventEmitter<boolean>();
   @ViewChild('cardElement', {static: false}) cardElement: ElementRef;
-  stripe;
-  card;
-  cardErrors;
+  public purchase:any;
+  public user:any;
+  stripe:any;
+  card:any;
+  cardErrors:any;
   loading = false;
+  userSubscription: Subscription;
 
   constructor(private router:Router,
-    private movieService:MovieService) { }
+    private movieService:MovieService,
+    private userService:UserService) { }
 
   ngOnInit(): void {
     this.stripe = Stripe('pk_test_DeZzMPNpBYMz6rr8P0noCD2n00RXOc7lTx');
     const elements = this.stripe.elements();
+
+    this.userSubscription = this.userService.userActualSubject.subscribe(
+      (data:any)=> {
+        this.user = data.fullname;
+        this.purchase = {
+          "customer": this.user,
+          "product": this.title
+        }
+        
+      }
+    );
+    this.userService.getActualUser();
+    this.purchase = {
+      "customer": this.user,
+      "product": this.title
+    }
 
     setTimeout(() => {
       this.card = elements.create('card', {

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PlaylistComponent } from '../playlist/playlist.component';
 import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MovieService } from '../movie.service';
 
 @Component({
@@ -35,7 +35,7 @@ export class PlaylistItemComponent implements OnInit {
   }
 
   onDl(id:number) {
-    this.movieService.downloadMovieById(id);
+    this.movieService.downloadMovieById(id,this.item.title);
   }
 
 
@@ -56,7 +56,16 @@ export class PlaylistItemComponent implements OnInit {
 
   onBill() {
     let mediaType = 'application/pdf';
-    this.http.get(`https://api-limon.app-tricycle.com/api/purchase/invoice/${this.idBuy}`)
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "text/plain",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": "true",
+        "Access-Control-Allow-Methods": "DELETE, POST, GET, OPTIONS",
+        "Access-Control-Allow-Headers": "Origin,Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
+      })
+    };
+    this.http.get(`https://api-limon.app-tricycle.com/api/purchase/invoice/${this.idBuy}`, httpOptions)
     .subscribe(
       (data:any)=>{
         let blob = new Blob([data], { type:mediaType})

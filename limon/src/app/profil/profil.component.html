@@ -2,7 +2,7 @@
 <section class="profil">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
     <section class="profil-main">
-        <img src="{{ '../../assets/profil-membres/pointing-man.jpg' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
+        <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
             <h1 *ngIf="!isEdit">{{ user?.fullname }}</h1>
             <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
@@ -11,7 +11,7 @@
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
             <a (click)="onEdit();onOpenSettings();">Modifier les informations</a>
-            <a (click)="onOpenSettings()">Supprimer le compte</a>
+            <a (click)="onDelete();onOpenSettings()">Supprimer le compte</a>
         </div>
     </section>
     <section class="profil-sup">

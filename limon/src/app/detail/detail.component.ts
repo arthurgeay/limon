@@ -17,6 +17,7 @@ export class DetailComponent implements OnInit {
   public isMobile = false;
   public isMark = false;
   public isPurchase = false;
+  public isView = false;
   public reviews: any[];
   public isCheck = false;
   public movieSubscription: Subscription;
@@ -63,6 +64,10 @@ export class DetailComponent implements OnInit {
         console.log(error);
       }
     )
+  }
+
+  onPlay() {
+    this.isView = !this.isView
   }
 
   onWatch() {

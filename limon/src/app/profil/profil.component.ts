@@ -6,6 +6,7 @@ import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpParams, HttpHeaders, HttpClient } from '@angular/common/http';
 import { DatePipe } from '@angular/common';
+import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
   selector: 'app-profil',
@@ -24,6 +25,7 @@ export class ProfilComponent implements OnInit {
   public actualUserSubscription:  Subscription;
   userForm: FormGroup;
   datePipeStr:string;
+  public mail: string;
 
   constructor(private userService: UserService,
     private route:ActivatedRoute,
@@ -32,7 +34,7 @@ export class ProfilComponent implements OnInit {
     private http:HttpClient,
     private datePipe:DatePipe,
     private router:Router) { }
-
+ 
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
     // @ts-ignore
@@ -57,10 +59,18 @@ export class ProfilComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
+  onDelete() {
+    this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.id);
+    this.router.navigate(['/'])
+  }
+
   displayActualUser() {
     this.actualUserSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=>{
         this.user = data;
+        const md5 = new Md5();
+        this.mail = md5.appendStr(data.email).end().toString();
+        console.log(data);
         this.initForm();
       }
     );
@@ -71,6 +81,10 @@ export class ProfilComponent implements OnInit {
     this.userSubscription = this.userService.userSubject.subscribe(
       (data:any)=>{
         this.user = data;
+        const md5 = new Md5();
+        this.mail = md5.appendStr(data.email).end().toString();
+        console.log(data);
+        
         this.initForm();
       }
     );

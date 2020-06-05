@@ -50,4 +50,30 @@ export class UserService {
     this.userActualSubject.next(this.actualUser);
   }
 
+  deleteUser(id:number) {
+    if(id !== 0) {
+      this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${id}`)
+      .subscribe(
+        (data:any)=>{
+          console.log(data);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      ) 
+    }
+    else {
+      this.http.delete(`https://api-limon.app-tricycle.com/api/user/`)
+      .subscribe(
+        (data:any)=>{
+          console.log(data);
+        },
+        (error)=>{
+          console.log(error);
+        }
+      ) 
+    }
+ 
+  }
+
 }

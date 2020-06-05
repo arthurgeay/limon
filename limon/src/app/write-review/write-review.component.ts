@@ -69,6 +69,9 @@ export class WriteReviewComponent implements OnInit {
       .subscribe(
         (data:any)=>{
           console.log(data);
+          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+            this.router.navigate([this.path]);
+          });
         },
         (error)=>{
           console.log(error);

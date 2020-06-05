@@ -15,7 +15,7 @@
         </div>
         <div class="detail-line">
             <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== '' && !isPurchase"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  {{ movie?.price==='0.00 €'|| movie?.price==='Gratuit' ? 'Télécharger' : 'Acheter'}}</button>
-            <button class="detail-play" *ngIf="isAuth"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
+            <button class="detail-play" *ngIf="isAuth" (click)="onPlay()"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-subscribe" (click)="download()" *ngIf="isPurchase">Télécharger</button>
             <button class="detail-edit" (click)="onEdit()" *ngIf="isAdmin">Modifier</button>
             <button class="detail-delete" (click)="onDelete()" *ngIf="isAdmin">Supprimer</button>
@@ -30,7 +30,7 @@
         </svg>
     </button>
 </section>
-<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="movie?.price" [id]="movieID" [direction]="direction"></app-checkout>
+<app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="movie?.price" [title]="movie?.title" [id]="movieID" [direction]="direction"></app-checkout>
 <section class="community">
     <section class="avis">
         <h1>Avis</h1>
@@ -42,3 +42,4 @@
         <section class="write"><app-write-review></app-write-review></section>
     </div>
 </section>
+<app-video *ngIf="isView" [(isView)]="isView"></app-video>

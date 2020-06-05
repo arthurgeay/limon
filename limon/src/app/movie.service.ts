@@ -59,7 +59,7 @@ export class MovieService {
     this.movieSubject.next(this.movie);
   }
 
-public downloadMovieById(id:number) {
+public downloadMovieById(id:number, name:string) {
     let mediaType = 'application/mp4';
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}/download`, { responseType: 'blob' })
     .subscribe(
@@ -67,7 +67,7 @@ public downloadMovieById(id:number) {
         this.downl = data;
         let blob = new Blob([data], { type:mediaType})
         console.log(blob);
-        const filename = 'film-limon.mp4';
+        const filename = `${name}-limon.mp4`;
         const url = window.URL.createObjectURL(blob);
         const a:HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
 

@@ -1,5 +1,5 @@
 <a class="member" [routerLink]="['/user', user.id]">
-    <img src="{{ user.image || 'assets/profil-notfound.png' }}" alt="" class="member-bg">
+    <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail.toString() + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' }}" alt="" class="member-bg">
     <p class="member-name">{{ user.fullname }}</p>
 </a>
 <button class="member-delete" (click)="onDelete()"><img src="../../assets/icons/bin-icon.png" alt=""></button>

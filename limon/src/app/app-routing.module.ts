@@ -22,6 +22,7 @@ const routes: Routes = [
   {path: 'subscribed', component: DoneComponent },
   {path: 'login', component: ConnexionComponent },
   {path: 'signin', component: ConnexionComponent },
+  {path: 'register', component: ConnexionComponent },
   {path: 'profil', component: ProfilComponent },
   {path: 'admin', component: AdminComponent },
   {path: 'create', component: EditFilmComponent },
