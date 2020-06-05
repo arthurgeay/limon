@@ -59,9 +59,10 @@ export class EditFilmComponent implements OnInit {
         'date': [this.movie.release_date.substring(0,4), Validators.required],
         'price': [this.movie.price, Validators.required],
         'prod': [this.movie.productor.name , Validators.required],
-        'img': [this.movie.poster_img, Validators.required],
+        'poster-img': [this.movie.poster_img, Validators.required],
         'cat': [this.movie.category.name, Validators.required],
         'desc': [this.movie.synopsis, Validators.required],
+        'hero-img': [this.movie.hero_img, Validators.required]
       });
     }
     else {
@@ -70,9 +71,10 @@ export class EditFilmComponent implements OnInit {
         'date': ['', Validators.required],
         'price': ['', Validators.required],
         'prod': ['', Validators.required],
-        'img': ['', Validators.required],
+        'poster-img': ['', Validators.required],
         'cat': ['', Validators.required],
         'desc': ['', Validators.required],
+        'hero-img': ['', Validators.required]
       });
     }
 
@@ -86,10 +88,10 @@ export class EditFilmComponent implements OnInit {
       formData.append('date', formValue['date']);
       formData.append('price', formValue['price']);
       formData.append('production', formValue['prod']);
-      formData.append('poster_img', formValue['img']);
+      formData.append('poster_img', formValue['poster-img']);
       formData.append('category', formValue['cat']);
       formData.append('synopsis', formValue['desc']);
-      formData.append('hero_img', 'fumez vous tous');
+      formData.append('hero_img', formValue['hero-img']);
       this.http.post(`https://api-limon.app-tricycle.com/api/movie/`, formData)
         .subscribe(
           (data:any)=>{
@@ -106,10 +108,10 @@ export class EditFilmComponent implements OnInit {
       .set('date', formValue['date'])
       .set('price', formValue['price'])
       .set('production', formValue['prod'])
-      .set('poster_img', formValue['img'])
+      .set('poster_img', formValue['poster-img'])
       .set('category', formValue['cat'])
       .set('synopsis', formValue['desc'])
-      .set('hero_img', 'fumer vous tous');
+      .set('hero_img', formValue['hero-img']);
 
       this.http.put(`https://api-limon.app-tricycle.com/api/movie/${this.movieID}`,
       body.toString(),

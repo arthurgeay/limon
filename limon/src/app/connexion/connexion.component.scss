@@ -1,10 +1,10 @@
 $mobile: 665px;
-$large: 1900px;
+$large: 2400px;
 
 .connect {
     height: calc(100vh - 11rem);
     position: relative;
-    @media (min-width: 1900px) {
+    @media (min-width: $large) {
         font-size: 1.6rem;
     }
     &-return {

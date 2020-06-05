@@ -1,28 +1,49 @@
 <section class="edit">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
         <h1>{{ isEdit ? 'Editer un film' : 'Ajouter un film'}}</h1>
-        <div class="edit-cont"><label for="title">Nom du film</label>
-        <input type="text" id="title" formControlName="title"></div>
+        <div class="edit-cont">
+            <label for="title">Nom du film</label>
+            <input type="text" id="title" formControlName="title">
+        </div>
 
-        <div class="edit-cont"><label for="year">Année de production</label>
-        <input type="text" id="year" formControlName="date"></div>
+        <div class="edit-cont">
+            <label for="year">Année de production</label>
+            <input type="text" id="year" formControlName="date">
+        </div>
 
-        <div class="edit-cont"><label for="price">Prix</label>
-        <input type="text" id="price" formControlName="price"></div>
+        <div class="edit-cont">
+            <label for="price">Prix</label>
+            <input type="text" id="price" formControlName="price">
+        </div>
 
-        <div class="edit-cont"><label for="prod">Société de production</label>
-        <input type="text" id="prod" formControlName="prod"></div>
 
-        <div class="edit-cont"><label for="img">Image du film</label>
-        <input type="text" id="img" formControlName="img"></div>
+
+        <div class="edit-cont">
+            <label for="poster-img">Poster du film</label>
+            <input type="text" id="poster-img" formControlName="poster-img">
+        </div>
+        
+
+        <div class="edit-cont">
+            <label for="prod">Société de production</label>
+            <input type="text" id="prod" formControlName="prod">
+        </div>
 
         <div class="edit-cont"><label for="category">Catégories</label>
-        <select id="category" formControlName="cat">
-            <option *ngFor="let cat of categories" value="{{ cat.name }}">{{ cat.name }}</option>
-        </select></div>
+            <select id="category" formControlName="cat">
+                <option *ngFor="let cat of categories" value="{{ cat.name }}">{{ cat.name }}</option>
+            </select>
+        </div>
 
-        <div class="edit-cont"><label for="desc">Description du film</label>
-        <textarea name="" id="desc" class="edit-description" maxlength="500" formControlName="desc"></textarea></div>
+        <div class="edit-cont">
+            <label for="hero-img">Grande Image du film (format paysage)</label>
+            <input type="text" id="hero-img" formControlName="hero-img">
+        </div>
+
+        <div class="edit-cont">
+            <label for="desc">Description du film</label>
+            <textarea name="" id="desc" class="edit-description" maxlength="500" formControlName="desc"></textarea>
+        </div>
 
         <div class="edit-buttons">
             <button class="edit-cancel" type="button" routerLink="/">Annuler</button>
