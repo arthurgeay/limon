@@ -25,7 +25,10 @@ class AuthenticationSuccessListener
             'email' => $user->getUsername(),
             'fullname' => $user->getFullname(),
             'birthday' => $user->getBirthday(),
-            'subscription' => $user->getSubscription(),
+            'subscription' => [
+                'end_date' => $user->getSubscription()->getEndDate(),
+                'date_subscription' => $user->getSubscription()->getDateSubscription()
+            ],
             'roles' => $user->getRoles()
         );
 
