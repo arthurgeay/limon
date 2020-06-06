@@ -54,7 +54,10 @@ export class AuthService {
    * Return bool if is an admin user
    */
   isAdmin() {
-    return localStorage.getItem('roles') == 'ROLE_ADMIN' ? true : false;
+    if(localStorage.getItem('roles')) {
+      return localStorage.getItem('roles').split(',').includes('ROLE_ADMIN');
+    }
+    return false;
   }
 
   /**
