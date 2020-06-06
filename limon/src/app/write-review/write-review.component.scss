@@ -29,4 +29,15 @@
         font-size: 1.1em;
         resize: none;
     }
+
+    :disabled {
+        opacity: .4;
+    }
+
+    .error {
+        background-color: red;
+        color: var(--white);
+        padding: .7rem 1rem;
+        border-radius: 5px;
+    }
 }

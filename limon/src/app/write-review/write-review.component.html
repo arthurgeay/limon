@@ -1,8 +1,11 @@
 <form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
     <section class="write">
+        <div *ngIf="errors.length > 0" class="error">
+            <p *ngFor="let error of errors">{{ error }}</p>
+        </div>
         <p class="write-cta">Donnez-nous votre avis sur ce film !</p>
         <h2 class="write-title">Écrire un avis</h2>
         <textarea class="write-text" formControlName="review"></textarea>
-        <button class="write-submit" type="submit">Publier</button>
+        <button class="write-submit" type="submit" [disabled]="userForm.invalid">Publier</button>
     </section>
 </form>
