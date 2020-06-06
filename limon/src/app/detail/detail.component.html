@@ -15,7 +15,7 @@
         </div>
         <div class="detail-line">
             <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  Acheter</button>
-            <button class="detail-buy" routerLink="/complete/{{movieID}}" *ngIf="movie?.price == '' || movie?.price == 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon"> Télécharger</button>
+            <button class="detail-buy" routerLink="/complete/{{movieID}}" *ngIf="movie?.price == 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon"> Télécharger</button>
             <button class="detail-play" *ngIf="isAuth && isPremium" (click)="onPlay()"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
             <button class="detail-play" *ngIf="isAuth && !isPremium" routerLink="/subscription">S'abonner pour le visionner</button>
             <button class="detail-play" *ngIf="!isAuth" routerLink="/register">S'abonner pour le visionner</button>

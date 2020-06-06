@@ -77,8 +77,6 @@ export class DetailComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movie-watch/${this.movieID}`)
     .subscribe(
       (data:any)=>{
-        console.log(data);
-        
       },
       (error)=>{
         console.log(error);

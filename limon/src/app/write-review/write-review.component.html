@@ -1,4 +1,4 @@
-<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+<form [formGroup]="userForm" (ngSubmit)="onSubmitForm()" *ngIf="isAuth">
     <section class="write">
         <div *ngIf="errors.length > 0" class="error">
             <p *ngFor="let error of errors">{{ error }}</p>
@@ -9,3 +9,4 @@
         <button class="write-submit" type="submit" [disabled]="userForm.invalid">Publier</button>
     </section>
 </form>
+<section *ngIf="!isAuth">Inscrivez-vous pour donner votre avis ou noter ce film ! 😊</section>

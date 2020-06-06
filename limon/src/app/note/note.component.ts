@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-note',
@@ -10,11 +11,13 @@ import { ActivatedRoute } from '@angular/router';
 export class NoteComponent implements OnInit {
   @Input() note:string;
   movieID: any;
+  isAuth:boolean;
 
-  constructor(private http:HttpClient, private route:ActivatedRoute) { }
+  constructor(private http:HttpClient, private route:ActivatedRoute, private authService:AuthService) { }
 
   ngOnInit(): void {
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
+    this.isAuth = this.authService.isAuth();
   }
 
   onNote(note:number) {

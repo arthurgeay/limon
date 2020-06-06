@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { MovieService } from '../movie.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-write-review',
@@ -19,18 +20,23 @@ export class WriteReviewComponent implements OnInit {
   isEdit:boolean = false;
   path:any;
   errors = [];
+  isAuth: boolean;
 
-  constructor(private http:HttpClient,
-     private formBuilder: FormBuilder,
+  constructor(
+      private http:HttpClient,
+      private formBuilder: FormBuilder,
       private route:ActivatedRoute,
       private router:Router,
-       private movieService:MovieService) { }
+      private authService:AuthService,
+      private movieService:MovieService
+      ) { }
 
   ngOnInit(): void {
     // @ts-ignore
     this.path = this.route.snapshot._routerState.url;
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
     this.contentEdit = { "id": 0,"content":''};
+    this.isAuth = this.authService.isAuth();
     //@ts-ignore
     this.reviewSubscription = this.movieService.reviewSubject.subscribe(
       (data:any)=>{
