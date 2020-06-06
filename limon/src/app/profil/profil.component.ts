@@ -135,7 +135,9 @@ export class ProfilComponent implements OnInit {
       },
       (error)=>{
         if(error.error.errorMessages) {
-          this.errors.push(error.error.errorMessages);
+          error.error.errorMessages.forEach(element => {
+            this.errors.push(element);
+          });
         } else {
           this.errors.push("Une erreur s'est produite");
         }

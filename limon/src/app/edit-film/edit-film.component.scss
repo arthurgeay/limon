@@ -82,3 +82,17 @@ $large: 1900px;
         }
     }
 }
+
+:disabled {
+    opacity: .4;
+}
+
+.error {
+    width: 80%;
+    margin: auto;
+    margin-top: 15px;
+    background-color: red;
+    color: var(--white);
+    padding: .7rem 1rem;
+    border-radius: 5px;
+}

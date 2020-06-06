@@ -78,7 +78,9 @@ export class WriteReviewComponent implements OnInit {
           if(error.error.message === "JWT Token not found") {
             this.errors.push('Vous devez être connecté pour écrire un avis');
           } else if(error.error.errorMessages) {
-            this.errors.push(error.error.errorMessages);
+            error.error.errorMessages.forEach(element => {
+              this.errors.push(element);
+            });
           } else {
             this.errors.push("Une erreur s'est produite");
           }
@@ -104,7 +106,9 @@ export class WriteReviewComponent implements OnInit {
         },
         (error)=>{
           if(error.error.errorMessages) {
-            this.errors.push(error.error.errorMessages);
+            error.error.errorMessages.forEach(element => {
+              this.errors.push(element);
+            });
           } else {
             this.errors.push("Une erreur s'est produite");
           }
