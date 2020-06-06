@@ -121,7 +121,8 @@ export class AuthService {
     }).subscribe(
       (res: any) => {
         this.saveInLocalStorage(res.token, res.expires.date, res.data.roles, res.data.subscription);
-
+        this.userService.getActualUser();
+        this.isPremium();
         this.router.navigate(['']);
       },
       (errors) => {
@@ -149,6 +150,8 @@ export class AuthService {
     this.httpClient.post('https://api-limon.app-tricycle.com/api/register', formData).subscribe(
       (res: any) => {
         this.saveInLocalStorage(res.token, res.expires, res.user.roles, null);
+        this.userService.getActualUser();
+        this.isPremium();
         this.router.navigate(['']);
       },
       (errors) => {

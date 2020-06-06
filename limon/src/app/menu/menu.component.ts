@@ -20,7 +20,7 @@ export class MenuComponent implements OnInit {
   public mail: string;
   authSubscription: Subscription;
   premiumSubscription: Subscription;
-  userSubscription: Subscription;
+  actualUserSubscription: Subscription;
 
 
   constructor(private mobileService:MobileService,
@@ -41,13 +41,17 @@ export class MenuComponent implements OnInit {
         this.isSub = data;
       }
     );
-    this.userSubscription = this.userService.userActualSubject.subscribe(
+
+
+    this.actualUserSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=>{
-        console.log(data);
         const md5 = new Md5();
         this.mail = md5.appendStr(data.email).end().toString();
+        console.log(data);
       }
     );
+    this.userService.getActualUser();
+
   }
 
   onAppear() {
