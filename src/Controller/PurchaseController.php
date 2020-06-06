@@ -69,22 +69,16 @@ class PurchaseController extends AbstractController
     /**
      * @Route("/invoice/{id}", name="invoice", methods={"GET"})
      */
-    public function downloadInvoice(Purchase $purchase, HTMLPDF $HTMLPDF)
+    public function downloadInvoice(Purchase $purchase, KernelInterface $kernel)
     {
         if($purchase->getUser()->getUsername() != $this->getUser()->getUsername() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
         }
 
-        // Generate PDF
-        $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
-        $template = $this->render('purchase/invoice.html.twig', [
-            'purchase' => $purchase,
-        ]);
-        $invoice = $HTMLPDF->generatePdf($template, 'invoice');
+        // Find invoice
+        $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
 
-
-        return $this->file($invoice);
-
+        return $this->file($file);
     }
 
 
