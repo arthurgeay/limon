@@ -16,6 +16,11 @@ export class AuthService {
 
   errorSubject = new Subject<any[]>();
   errors = [];
+
+  authSubject = new Subject<any[]>();
+  premiumSubject = new Subject<any[]>();
+  auth:any;
+  premium:any;
   
   /**
    * Save in local storage
@@ -40,14 +45,20 @@ export class AuthService {
    */
   isAuth() {
     const now = new Date();
-    return  now < new Date(localStorage.getItem('expires'));
+    this.auth =  now < new Date(localStorage.getItem('expires'));
+    this.EmitOnAuth();
+    return this.auth
   }
 
-  /**
-   * Return bool if is a normal user
+    /**
+   * Check the user account
    */
-  isUser() {
-    return localStorage.getItem('roles') == 'ROLE_USER' ? true : false;
+  isPremium() {
+    this.premium = JSON.parse(localStorage.getItem('subscription')) ? true : false;
+    console.log(this.premium);
+    
+    this.EmitOnPremium();
+    return this.premium
   }
 
   /**
@@ -57,24 +68,32 @@ export class AuthService {
     return localStorage.getItem('roles') == 'ROLE_ADMIN' ? true : false;
   }
 
-  /**
-   * Check the user account
-   */
-  isPremium() {
-    return JSON.parse(localStorage.getItem('subscription')) ? true : false;
+  EmitOnAuth() {
+    this.authSubject.next(this.auth);
   }
+
+  EmitOnPremium() {
+    this.premiumSubject.next(this.premium);
+  }
+
+  /**
+   * Return bool if is a normal user
+   */
+  // isUser() {
+  //   return localStorage.getItem('roles') == 'ROLE_USER' ? true : false;
+  // }
 
   /**
    * Check end of subcription date
    */
-  isPremiumActive() {
-    if(this.isPremium()) {
-      const now = new Date();
-      return now < new Date(JSON.parse(localStorage.getItem('subscription')).end_date.date);
-    } 
+  // isPremiumActive() {
+  //   if(this.isPremium()) {
+  //     const now = new Date();
+  //     return now < new Date(JSON.parse(localStorage.getItem('subscription')).end_date.date);
+  //   } 
 
-    return false;
-  }
+  //   return false;
+  // }
 
   /**
    * Login a user
@@ -144,9 +163,12 @@ export class AuthService {
     this.userService.user = null;
     this.userService.emitUserSubject();
     this.router.navigate(['/'])
+    this.EmitOnAuth();
+    this.EmitOnPremium();
   }
 
   emitErrorSubject() {
     this.errorSubject.next(this.errors);
   }
 }
+

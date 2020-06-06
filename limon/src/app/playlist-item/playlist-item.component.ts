@@ -60,7 +60,7 @@ export class PlaylistItemComponent implements OnInit {
   }
 
   onBill() {
-    let mediaType = 'application/pdf';
+    let mediaType = 'application/json';
     this.http.get(`https://api-limon.app-tricycle.com/api/purchase/invoice/${this.idBuy}`, { responseType: 'blob' })
     .subscribe(
       (data:any)=>{

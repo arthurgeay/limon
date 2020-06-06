@@ -52,22 +52,22 @@
         </div>
         <div *ngIf="!isMobile && !isAuth">
             <div class="nav-connect">
-                <button>Connexion</button>
+                <button routerLink="/login">Connexion</button>
             </div>
         </div>
         <div *ngIf="!isMobile && !isAuth">
             <div class="nav-sign">
-                <button>Inscription</button>
+                <button routerLink="/register">Inscription</button>
             </div>
         </div>
     </section>
 </header>
-<nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
+<!-- <nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
     <a routerLink="/search" (click)="onAppear()">Catalogue</a>
     <a routerLink="/history" (click)="onAppear()" *ngIf="isAuth">Historique</a>
     <a routerLink="/watchlist" (click)="onAppear()" *ngIf="isAuth">Watchlist</a>
     <a routerLink="/subscribed" (click)="onAppear()" class="subscribe" *ngIf="isAuth && !isSub">S'abonner</a>
     <a routerLink="/login" (click)="onAppear()" class="subscribe s2" *ngIf="!isAuth && !isSub">Connexion</a>
     <a routerLink="/signin" (click)="onAppear()" class="subscribe" *ngIf="!isAuth && !isSub">Inscription</a>
-</nav>
+</nav> -->
 
