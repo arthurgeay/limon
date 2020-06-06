@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Movie;
+use App\Entity\MovieWatch;
 use App\Repository\MovieWatchRepository;
 use App\Repository\PurchaseRepository;
 use App\Repository\UserRepository;
@@ -147,5 +149,21 @@ class UserController extends AbstractController
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
         ], 200, [], ['groups' => ['history.purchased']]);
+    }
+
+    /**
+     * @Route("/movie-watch/{id}", name="add_movie_in_history", methods={"GET"})
+     */
+    public function addMovieWatch(Movie $movie, EntityManagerInterface $entityManager)
+    {
+        $movieWatch = new MovieWatch();
+        $movieWatch->setMovie($movie);
+        $movieWatch->setUser($this->getUser());
+        $movieWatch->setDate(new \DateTime());
+
+        $entityManager->persist($movieWatch);
+        $entityManager->flush();
+
+        return $this->json(['status' => "Film ajouté à l'historique"], 200);
     }
 }
