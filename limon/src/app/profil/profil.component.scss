@@ -80,22 +80,30 @@ $tablet: 1100px;
                 margin-bottom: 1rem;
             }
         }
-        .sup-deconnect {
-            align-self: flex-end;
-            display: flex;
-            justify-content: flex-end;
-            flex-grow: 1;
-        }
-        .deconnect {
-            background-color: var(--rind-green);
-            color: var(--white);
-            padding: .5rem .7rem;
-            border-radius: 7px;
-        }
+
         @media (max-width: $mobile){
             flex-direction: column;
         }
 
+    }
+    .sup-deconnect {
+        align-self: flex-end;
+        display: flex;
+        justify-content: flex-end;
+        flex-grow: 1;
+        &.sup2 {
+            margin-right: 4rem;
+        }
+    }
+    .deconnect {
+        background-color: var(--rind-green);
+        color: var(--white);
+        padding: .5rem .7rem;
+        border-radius: 7px;
+        &.ad-light{
+            background-color: var(--acid-green);
+            color: black;
+        }
     }
     &-access {
         button{

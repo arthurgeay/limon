@@ -10,6 +10,9 @@
             <h1 *ngIf="!isEdit">{{ user?.fullname }}</h1>
             <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
             <div *ngIf="isPremium"><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
+        </div>  
+        <div class="sup-deconnect sup2" *ngIf="!isEdit && isAdmin">
+            <button class="deconnect ad-light" routerLink="/admin" type="button">Accéder à l'administration</button>
         </div>
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">

@@ -22,6 +22,7 @@ export class ProfilComponent implements OnInit {
   public isEdit = false;
   public isActual: boolean;
   public isPremium: boolean;
+  public isAdmin:boolean;
   public userSubscription: Subscription;
   public actualUserSubscription:  Subscription;
   userForm: FormGroup;
@@ -44,6 +45,7 @@ export class ProfilComponent implements OnInit {
     this.id = Number(this.route.snapshot.params['id']);  // get id from url
     this.isActual = route === 'profil' ? true : false;
     this.isPremium = this.authService.isPremium();
+    this.isAdmin = this.authService.isAdmin();
     
     if (this.isActual) {
       this.displayActualUser();
