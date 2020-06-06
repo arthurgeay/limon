@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MovieService } from '../movie.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -22,7 +22,8 @@ export class EditFilmComponent implements OnInit {
   constructor(private http:HttpClient,
      private formBuilder:FormBuilder,
      private movieService:MovieService,
-     private route:ActivatedRoute) { }
+     private route:ActivatedRoute,
+     private router:Router) { }
 
   ngOnInit(): void {
     this.isEdit = this.route.snapshot.routeConfig.path === 'create' ? false : true;
@@ -94,6 +95,7 @@ export class EditFilmComponent implements OnInit {
       this.http.post(`https://api-limon.app-tricycle.com/api/movie/`, formData)
         .subscribe(
           (data:any)=>{
+            this.router.navigate(['/']);
           },
           (error)=>{
             console.log(error);
@@ -118,6 +120,7 @@ export class EditFilmComponent implements OnInit {
       })
       .subscribe(
         (data:any)=>{
+          this.router.navigate(['/']);
         },
         (error)=>{
           console.log(error);

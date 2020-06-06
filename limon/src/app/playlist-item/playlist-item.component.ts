@@ -48,7 +48,6 @@ export class PlaylistItemComponent implements OnInit {
     this.http.delete(`https://api-limon.app-tricycle.com/api/watchlist/${id}`)
     .subscribe(
       (data:any)=>{
-        console.log(data);
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
           this.router.navigate(['watchlist']);
       }); 
@@ -65,11 +64,9 @@ export class PlaylistItemComponent implements OnInit {
     .subscribe(
       (data:any)=>{
         let blob = new Blob([data], { type:mediaType})
-        console.log(blob);
         const filename = 'facture.pdf';
         const url = window.URL.createObjectURL(blob);
         const a:HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);

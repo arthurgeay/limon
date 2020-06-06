@@ -34,7 +34,6 @@ export class WriteReviewComponent implements OnInit {
     this.reviewSubscription = this.movieService.reviewSubject.subscribe(
       (data:any)=>{
         this.contentEdit = data;
-        console.log(data);
         this.isEdit = true;
         this.initForm();
       }
@@ -68,7 +67,6 @@ export class WriteReviewComponent implements OnInit {
       this.http.post(`https://api-limon.app-tricycle.com/api/review/${this.movieID}`, formData)
       .subscribe(
         (data:any)=>{
-          console.log(data);
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             this.router.navigate([this.path]);
           });
@@ -81,8 +79,6 @@ export class WriteReviewComponent implements OnInit {
     else {
       const body = new HttpParams()
       .set('message', formValue);
-      console.log(formValue);
-      
       this.http.put(`https://api-limon.app-tricycle.com/api/review/${this.contentEdit.id}`,
       body.toString(),
       { 
@@ -90,7 +86,6 @@ export class WriteReviewComponent implements OnInit {
       })
       .subscribe(
         (data:any)=>{
-          console.log(data);
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             this.router.navigate([this.path]);
           });

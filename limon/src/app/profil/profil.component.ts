@@ -72,7 +72,6 @@ export class ProfilComponent implements OnInit {
         this.user = data;
         const md5 = new Md5();
         this.mail = md5.appendStr(data.email).end().toString();
-        console.log(data);
         this.initForm();
       }
     );
@@ -85,8 +84,6 @@ export class ProfilComponent implements OnInit {
         this.user = data;
         const md5 = new Md5();
         this.mail = md5.appendStr(data.email).end().toString();
-        console.log(data);
-        
         this.initForm();
       }
     );

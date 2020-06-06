@@ -55,7 +55,7 @@ export class UserService {
       this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${id}`)
       .subscribe(
         (data:any)=>{
-          console.log(data);
+          // console.log(data);
         },
         (error)=>{
           console.log(error);
@@ -66,7 +66,7 @@ export class UserService {
       this.http.delete(`https://api-limon.app-tricycle.com/api/user/`)
       .subscribe(
         (data:any)=>{
-          console.log(data);
+          // console.log(data);
         },
         (error)=>{
           console.log(error);

@@ -4,6 +4,7 @@ import { MovieService } from '../movie.service';
 import { MobileService } from '../mobile.service';
 import { Subscription } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-detail',
@@ -12,8 +13,9 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class DetailComponent implements OnInit {
-  public isAuth = true;
-  public isAdmin = true;
+  public isAuth:boolean;
+  public isAdmin:boolean;
+  public isPremium:boolean;
   public isMobile = false;
   public isMark = false;
   public isPurchase = false;
@@ -31,6 +33,7 @@ export class DetailComponent implements OnInit {
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
+              private authService:AuthService,
               private route: ActivatedRoute,
               private router:Router,
               private http:HttpClient) { }
@@ -38,7 +41,10 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];  // get id from url
     this.movieID = Number(id);
-        
+    this.isAuth = this.authService.isAuth();
+    this.isPremium = this.authService.isPremium();
+    this.isAdmin = this.authService.isAdmin();
+
     this.movieSubscription = this.movieService.movieSubject.subscribe(
       (movie:any)=>{
         this.movie = movie;
@@ -68,6 +74,17 @@ export class DetailComponent implements OnInit {
 
   onPlay() {
     this.isView = !this.isView
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movie-watch/${this.movieID}`)
+    .subscribe(
+      (data:any)=>{
+        console.log(data);
+        
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  
   }
 
   onWatch() {

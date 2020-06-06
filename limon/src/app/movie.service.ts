@@ -45,8 +45,6 @@ export class MovieService {
       (data:any)=>{
         this.movie = data[0];
         this.movie.note = data.avg_score;
-        console.log(this.movie);
-        
         this.EmitOnMovie();
       },
       (error)=>{
@@ -66,19 +64,15 @@ public downloadMovieById(id:number, name:string) {
       (data:any)=>{
         this.downl = data;
         let blob = new Blob([data], { type:mediaType})
-        console.log(blob);
         const filename = `${name}-limon.mp4`;
         const url = window.URL.createObjectURL(blob);
         const a:HTMLAnchorElement = document.createElement('a') as HTMLAnchorElement;
-
         a.href = url;
         a.download = filename;
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
         URL.revokeObjectURL(url);
-
-        
         this.EmitOnDl();
       },
       (error)=>{
@@ -95,7 +89,7 @@ public downloadMovieById(id:number, name:string) {
     this.http.get(`https://api-limon.app-tricycle.com/api/purchase/${id}`)
     .subscribe(
       (data:any)=>{
-        console.log(data);        
+        // console.log(data);        
       },
       (error)=>{
         console.log(error);
