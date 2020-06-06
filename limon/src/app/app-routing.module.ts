@@ -12,6 +12,7 @@ import { SubscribeComponent } from './subscribe/subscribe.component';
 import { AgreementComponent } from './agreement/agreement.component';
 import { DoneComponent } from './done/done.component';
 import { AuthGuard } from './auth.guard';
+import { AdminGuard } from './admin.guard';
 
 
 const routes: Routes = [
@@ -25,15 +26,15 @@ const routes: Routes = [
   {path: 'signin', component: ConnexionComponent },
   {path: 'register', component: ConnexionComponent },
   {path: 'profil',canActivate: [AuthGuard], component: ProfilComponent },
-  {path: 'admin',canActivate: [AuthGuard], component: AdminComponent },
-  {path: 'create',canActivate: [AuthGuard], component: EditFilmComponent },
-  {path: 'edit/:id',canActivate: [AuthGuard], component: EditFilmComponent },
+  {path: 'admin',canActivate: [AdminGuard], component: AdminComponent },
+  {path: 'create',canActivate: [AdminGuard], component: EditFilmComponent },
+  {path: 'edit/:id',canActivate: [AdminGuard], component: EditFilmComponent },
   {path: 'history',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'purchase',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'watchlist',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'subscription', component: SubscribeComponent },
-  {path: 'members',canActivate: [AuthGuard], component: MemberListComponent },
-  {path: 'user/:id',canActivate: [AuthGuard], component: ProfilComponent },
+  {path: 'members',canActivate: [AdminGuard], component: MemberListComponent },
+  {path: 'user/:id',canActivate: [AdminGuard], component: ProfilComponent },
   {path: 'agreement', component: AgreementComponent },
   {path: 'privacy', component: AgreementComponent },
   {path: '**', component: FilmResultComponent }

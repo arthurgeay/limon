@@ -42,12 +42,10 @@ export class MenuComponent implements OnInit {
       }
     );
 
-
     this.actualUserSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=>{
         const md5 = new Md5();
         this.mail = md5.appendStr(data.email).end().toString();
-        console.log(data);
       }
     );
     this.userService.getActualUser();

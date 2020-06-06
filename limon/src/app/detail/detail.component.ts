@@ -77,7 +77,6 @@ export class DetailComponent implements OnInit {
       this.http.post(`https://api-limon.app-tricycle.com/api/watchlist/`, formData)
       .subscribe(
         (data:any)=>{
-          // console.log(data);
         },
         (error)=>{
           console.log(error);
@@ -88,7 +87,6 @@ export class DetailComponent implements OnInit {
       this.http.delete(`https://api-limon.app-tricycle.com/api/watchlist/${this.movieID}`)
       .subscribe(
         (data:any)=>{
-          // console.log(data);
         },
         (error)=>{
           console.log(error);

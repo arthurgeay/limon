@@ -38,7 +38,6 @@ export class EditFilmComponent implements OnInit {
       this.movieSubscription = this.movieService.movieSubject.subscribe(
         (data:any)=>{
           this.movie = data;
-          console.log(data);
           this.initForm();
         }
       )
@@ -95,7 +94,6 @@ export class EditFilmComponent implements OnInit {
       this.http.post(`https://api-limon.app-tricycle.com/api/movie/`, formData)
         .subscribe(
           (data:any)=>{
-            console.log(data);
           },
           (error)=>{
             console.log(error);
@@ -120,7 +118,6 @@ export class EditFilmComponent implements OnInit {
       })
       .subscribe(
         (data:any)=>{
-          console.log(data);
         },
         (error)=>{
           console.log(error);
