@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-review',
@@ -13,6 +14,7 @@ export class ReviewComponent implements OnInit {
   public path: string;
 
   constructor(private http: HttpClient,
+    private userService:UserService,
     private route: ActivatedRoute,
     private router: Router,
     private movieService:MovieService) { }
@@ -20,6 +22,7 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.path = this.route.snapshot._routerState.url;
+
   }
   onDelete(id: number) {
     this.http.delete(`https://api-limon.app-tricycle.com/api/review/${id}`)

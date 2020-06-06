@@ -13,7 +13,7 @@
     <app-searchbar *ngIf="!isMobile"></app-searchbar>
     <section class="nav">
         <div *ngIf="!isMobile && isAuth && !isSub">
-            <button routerLink="/subscribed" class="nav-subscribe">S'abonner</button>
+            <button routerLink="/subscription" class="nav-subscribe">S'abonner</button>
         </div>
         <div *ngIf="!isMobile">
             <div class="nav-list">
@@ -66,7 +66,7 @@
     <a routerLink="/search" (click)="onAppear()">Catalogue</a>
     <a routerLink="/history" (click)="onAppear()" *ngIf="isAuth">Historique</a>
     <a routerLink="/watchlist" (click)="onAppear()" *ngIf="isAuth">Watchlist</a>
-    <a routerLink="/subscribed" (click)="onAppear()" class="subscribe" *ngIf="isAuth && !isSub">S'abonner</a>
+    <a routerLink="/subscription" (click)="onAppear()" class="subscribe" *ngIf="isAuth && !isSub">S'abonner</a>
     <a routerLink="/login" (click)="onAppear()" class="subscribe s2" *ngIf="!isAuth && !isSub">Connexion</a>
     <a routerLink="/signin" (click)="onAppear()" class="subscribe" *ngIf="!isAuth && !isSub">Inscription</a>
 </nav>

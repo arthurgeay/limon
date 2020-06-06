@@ -126,4 +126,22 @@ public downloadMovieById(id:number, name:string) {
     this.reviewSubject.next(this.review);
   }
 
+
+
+  /**
+   * subscribe
+   * 
+   */
+  public subscribeOnMovie() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/subscription`)
+    .subscribe(
+      (data:any)=>{
+        console.log(data);
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+    
+  }
 }

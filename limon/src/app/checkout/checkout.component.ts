@@ -82,12 +82,15 @@ export class CheckoutComponent implements OnInit {
       this.loading = true;
       setTimeout(() => {
         this.loading = false;  
-        this.movieService.purchaseMovieById(+this.id)
         if(this.direction == 'sub') {
+          this.movieService.subscribeOnMovie();
           this.router.navigate([`subscribed`])
+          console.warn('abonnement');
         }
         else {
+          this.movieService.purchaseMovieById(+this.id)
           this.router.navigate([`complete/${this.id}`])
+          console.warn('achat');
         }
       }, 2000);
       

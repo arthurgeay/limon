@@ -22,12 +22,14 @@ export class DoneComponent implements OnInit {
     this.id = this.route.snapshot.params['id'];  // get id from url
     this.isComplete = route.includes('complete');
 
-    this.movieSubscription = this.movieService.movieSubject.subscribe(
-      (movie:any)=>{
-        this.name = movie.title;
-      }
-    );
-    this.movieService.getMovieById(+this.id);
+    if (this.isComplete) {
+      this.movieSubscription = this.movieService.movieSubject.subscribe(
+        (movie:any)=>{
+          this.name = movie.title;
+        }
+      );
+      this.movieService.getMovieById(+this.id);
+    }
   }
 
   onDl() {
