@@ -21,10 +21,11 @@ export class AuthService {
    * Save in local storage
    * @param token 
    */
-  private saveInLocalStorage(token, expires, roles) {
+  private saveInLocalStorage(token, expires, roles, subscription) {
     localStorage.setItem('token', token);
     localStorage.setItem('expires', expires);
     localStorage.setItem('roles', roles);
+    localStorage.setItem('subscription', JSON.stringify(subscription));
   }
 
   /**
@@ -57,6 +58,25 @@ export class AuthService {
   }
 
   /**
+   * Check the user account
+   */
+  isPremium() {
+    return JSON.parse(localStorage.getItem('subscription')) ? true : false;
+  }
+
+  /**
+   * Check end of subcription date
+   */
+  isPremiumActive() {
+    if(this.isPremium()) {
+      const now = new Date();
+      return now < new Date(JSON.parse(localStorage.getItem('subscription')).end_date.date);
+    } 
+
+    return false;
+  }
+
+  /**
    * Login a user
    * @param user 
    */
@@ -66,7 +86,7 @@ export class AuthService {
       password: user.password
     }).subscribe(
       (res: any) => {
-        this.saveInLocalStorage(res.token, res.expires.date, res.data.roles);
+        this.saveInLocalStorage(res.token, res.expires.date, res.data.roles, res.data.subscription);
 
         this.userService.user = { ...res.data };
         this.userService.emitUserSubject();
@@ -97,7 +117,7 @@ export class AuthService {
 
     this.httpClient.post('https://api-limon.app-tricycle.com/api/register', formData).subscribe(
       (res: any) => {
-        this.saveInLocalStorage(res.token, res.expires, res.user.roles);
+        this.saveInLocalStorage(res.token, res.expires, res.user.roles, null);
         
         this.userService.user = { ...res.user };
         this.userService.emitUserSubject();
