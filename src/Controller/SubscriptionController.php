@@ -32,9 +32,9 @@ class SubscriptionController extends AbstractController
         $subscribe->setActivate(true);
         $subscribe->setDateSubscription(new \DateTime());
         $endDate = new \DateTime();
-        $endDate->modify('+1 month');
+        $endDate->modify('+1 year');
         $subscribe->setEndDate($endDate);
-        $subscribe->setPrice(5.0);
+        $subscribe->setPrice(60.0);
 
         $em->persist($subscribe);
         $em->flush();
