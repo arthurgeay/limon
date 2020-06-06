@@ -31,17 +31,13 @@ export class MenuComponent implements OnInit {
         
       }
     );
-    this.premiumSubscription = this.authService.premiumSubject.subscribe(
-      (data:any)=>{
-        this.isSub = data;
-        console.log(data);
-      }
-    );
+    // this.premiumSubscription = this.authService.premiumSubject.subscribe(
+    //   (data:any)=>{
+    //     this.isSub = data;
+    //     console.log(data);
+    //   }
+    // );
 
-    if(!this.isSub) {
-      this.isSub = this.authService.isAdmin();
-      console.log(this.authService.isAdmin());
-    }
   }
 
   onAppear() {

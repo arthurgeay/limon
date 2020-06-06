@@ -46,6 +46,10 @@ export class AuthService {
   isAuth() {
     const now = new Date();
     this.auth =  now < new Date(localStorage.getItem('expires'));
+    if(!this.auth) { 
+      this.premium = false;
+      this.EmitOnPremium();
+    }
     this.EmitOnAuth();
     return this.auth
   }
@@ -162,12 +166,10 @@ export class AuthService {
    */
   logout() {
     this.deleteInLocalStorage();
-
     this.userService.user = null;
     this.userService.emitUserSubject();
     this.router.navigate(['/'])
-    this.EmitOnAuth();
-    this.EmitOnPremium();
+    this.isAuth();
   }
 
   emitErrorSubject() {
