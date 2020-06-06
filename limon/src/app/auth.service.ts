@@ -54,14 +54,18 @@ export class AuthService {
     return this.auth
   }
 
-    /**
+  /**
    * Check the user account
-   */
+  */
   isPremium() {
-    this.premium = JSON.parse(localStorage.getItem('subscription')) ? true : false;
-    console.log(this.premium);
-    
-    this.EmitOnPremium();
+    if (this.isAdmin()) {
+      this.premium = true
+      this.EmitOnPremium();
+    }
+    else {
+      this.premium = JSON.parse(localStorage.getItem('subscription')) ? true : false;
+      this.EmitOnPremium();
+    }
     return this.premium
   }
 
@@ -70,7 +74,12 @@ export class AuthService {
    */
   isAdmin() {
     if(localStorage.getItem('roles')) {
-      return localStorage.getItem('roles').split(',').includes('ROLE_ADMIN');
+      let admin = localStorage.getItem('roles').split(',').includes('ROLE_ADMIN');
+      if (admin) {
+        this.premium = true
+        this.EmitOnPremium();
+      }
+      return admin
     }
     return false;
   }
@@ -93,14 +102,13 @@ export class AuthService {
   /**
    * Check end of subcription date
    */
-  // isPremiumActive() {
-  //   if(this.isPremium()) {
-  //     const now = new Date();
-  //     return now < new Date(JSON.parse(localStorage.getItem('subscription')).end_date.date);
-  //   } 
-
-  //   return false;
-  // }
+  isPremiumActive() {
+    if(this.isPremium()) {
+      const now = new Date();
+      return now < new Date(JSON.parse(localStorage.getItem('subscription')).end_date.date);
+    } 
+    return false;
+  }
 
   /**
    * Login a user
@@ -113,9 +121,6 @@ export class AuthService {
     }).subscribe(
       (res: any) => {
         this.saveInLocalStorage(res.token, res.expires.date, res.data.roles, res.data.subscription);
-
-        this.userService.user = { ...res.data };
-        this.userService.emitUserSubject();
 
         this.router.navigate(['']);
       },
@@ -144,10 +149,6 @@ export class AuthService {
     this.httpClient.post('https://api-limon.app-tricycle.com/api/register', formData).subscribe(
       (res: any) => {
         this.saveInLocalStorage(res.token, res.expires, res.user.roles, null);
-        
-        this.userService.user = { ...res.user };
-        this.userService.emitUserSubject();
-
         this.router.navigate(['']);
       },
       (errors) => {

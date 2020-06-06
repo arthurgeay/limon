@@ -6,7 +6,7 @@
         <div class="profil-main-infos">
             <h1 *ngIf="!isEdit">{{ user?.fullname }}</h1>
             <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
-            <div><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
+            <div *ngIf="isPremium"><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
         </div>
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">

@@ -22,7 +22,7 @@
         </div>
         <div *ngIf="isAuth">
             <a class="nav-profil" routerLink="/profil" title="profil">
-                <img src="../../assets/profil-membres/pointing-man.jpg" alt="Image de Profil" class="nav-profil-pic">
+                <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' || '../../assets/profil-notfound.png'}}" alt="Image de Profil" class="nav-profil-pic">
                 <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge" *ngIf="isSub">
             </a>
         </div>
@@ -62,12 +62,12 @@
         </div>
     </section>
 </header>
-<!-- <nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
+<nav *ngIf="isMobile" [style.transform]="onMenuOpen()">
     <a routerLink="/search" (click)="onAppear()">Catalogue</a>
     <a routerLink="/history" (click)="onAppear()" *ngIf="isAuth">Historique</a>
     <a routerLink="/watchlist" (click)="onAppear()" *ngIf="isAuth">Watchlist</a>
     <a routerLink="/subscribed" (click)="onAppear()" class="subscribe" *ngIf="isAuth && !isSub">S'abonner</a>
     <a routerLink="/login" (click)="onAppear()" class="subscribe s2" *ngIf="!isAuth && !isSub">Connexion</a>
     <a routerLink="/signin" (click)="onAppear()" class="subscribe" *ngIf="!isAuth && !isSub">Inscription</a>
-</nav> -->
+</nav>
 

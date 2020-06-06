@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ActiveSearchService } from '../active-search.service';
 import { AuthService } from '../auth.service';
 import { Subscription } from 'rxjs';
+import { UserService } from '../user.service';
+import { Md5 } from 'ts-md5';
 
 @Component({
   selector: 'app-menu',
@@ -15,11 +17,16 @@ export class MenuComponent implements OnInit {
   isSub:boolean;
   public isMobile = false;
   public isMenu = false;
+  public mail: string;
   authSubscription: Subscription;
   premiumSubscription: Subscription;
+  userSubscription: Subscription;
+
+
   constructor(private mobileService:MobileService,
     private activeSearchService:ActiveSearchService,
-    private authService:AuthService) { }
+    private authService:AuthService,
+    private userService:UserService) { }
 
   ngOnInit(): void {
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
@@ -27,17 +34,20 @@ export class MenuComponent implements OnInit {
     this.authSubscription = this.authService.authSubject.subscribe(
       (data:any)=>{
         this.isAuth = data;
-        console.log(data);
-        
       }
     );
-    // this.premiumSubscription = this.authService.premiumSubject.subscribe(
-    //   (data:any)=>{
-    //     this.isSub = data;
-    //     console.log(data);
-    //   }
-    // );
-
+    this.premiumSubscription = this.authService.premiumSubject.subscribe(
+      (data:any)=>{
+        this.isSub = data;
+      }
+    );
+    this.userSubscription = this.userService.userActualSubject.subscribe(
+      (data:any)=>{
+        console.log(data);
+        const md5 = new Md5();
+        this.mail = md5.appendStr(data.email).end().toString();
+      }
+    );
   }
 
   onAppear() {
