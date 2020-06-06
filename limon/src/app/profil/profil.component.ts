@@ -27,6 +27,7 @@ export class ProfilComponent implements OnInit {
   userForm: FormGroup;
   datePipeStr:string;
   public mail: string;
+  errors = [];
 
   constructor(private userService: UserService,
     private route:ActivatedRoute,
@@ -130,7 +131,13 @@ export class ProfilComponent implements OnInit {
         });
       },
       (error)=>{
-        console.log(error);
+        if(error.error.errorMessages) {
+          error.error.errorMessages.forEach(element => {
+            this.errors.push(element);
+          });
+        } else {
+          this.errors.push("Une erreur s'est produite");
+        }
       }
     )
   }

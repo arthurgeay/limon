@@ -18,6 +18,7 @@ export class WriteReviewComponent implements OnInit {
   contentEdit: any;
   isEdit:boolean = false;
   path:any;
+  errors = [];
 
   constructor(private http:HttpClient,
      private formBuilder: FormBuilder,
@@ -72,7 +73,15 @@ export class WriteReviewComponent implements OnInit {
           });
         },
         (error)=>{
-          console.log(error);
+          if(error.error.message === "JWT Token not found") {
+            this.errors.push('Vous devez être connecté pour écrire un avis');
+          } else if(error.error.errorMessages) {
+            error.error.errorMessages.forEach(element => {
+              this.errors.push(element);
+            });
+          } else {
+            this.errors.push("Une erreur s'est produite");
+          }
         }
       )
     }
@@ -91,7 +100,13 @@ export class WriteReviewComponent implements OnInit {
           });
         },
         (error)=>{
-          console.log(error);
+          if(error.error.errorMessages) {
+            error.error.errorMessages.forEach(element => {
+              this.errors.push(element);
+            });
+          } else {
+            this.errors.push("Une erreur s'est produite");
+          }
         }
       )
     }

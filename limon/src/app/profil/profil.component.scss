@@ -139,3 +139,15 @@ $tablet: 1100px;
         min-width: min-content;
     }
 }
+
+:disabled {
+    opacity: .4;
+}
+
+.error {
+    background-color: red;
+    color: var(--white);
+    padding: .7rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}

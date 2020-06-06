@@ -1,3 +1,6 @@
+<div *ngIf="errors.length > 0" class="error">
+    <p *ngFor="let error of errors">{{ error }}</p>
+</div>
 <section class="edit">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
         <h1>{{ isEdit ? 'Editer un film' : 'Ajouter un film'}}</h1>
@@ -47,7 +50,7 @@
 
         <div class="edit-buttons">
             <button class="edit-cancel" type="button" routerLink="/">Annuler</button>
-            <button class="edit-submit" type="submit">{{ isEdit ? 'Enregister les modifications' : 'Publier le film'}}</button>
+            <button class="edit-submit" type="submit" [disabled]="userForm.invalid">{{ isEdit ? 'Enregister les modifications' : 'Publier le film'}}</button>
         </div>
     </form>
 </section>

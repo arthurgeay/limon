@@ -1,6 +1,9 @@
 
 <section class="profil">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
+    <div *ngIf="errors.length > 0" class="error">
+        <p *ngFor="let error of errors">{{ error }}</p>
+    </div>
     <section class="profil-main">
         <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
@@ -40,7 +43,7 @@
             <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
         </button>
 
-        <button *ngIf="isEdit" type="submit">
+        <button *ngIf="isEdit" type="submit" [disabled]="userForm.invalid">
             Enregistrer les modifications
         </button>
 

@@ -18,6 +18,7 @@ export class EditFilmComponent implements OnInit {
   movie:any;
   movieID:number;
   movieSubscription: Subscription;
+  errors = [];
 
   constructor(private http:HttpClient,
      private formBuilder:FormBuilder,
@@ -98,7 +99,13 @@ export class EditFilmComponent implements OnInit {
             this.router.navigate(['/']);
           },
           (error)=>{
-            console.log(error);
+            if(error.error.errorMessages) {
+              error.error.errorMessages.forEach(element => {
+                this.errors.push(element);
+              });
+            } else {
+              this.errors.push("Une erreur s'est produite");
+            }
           }
         )
     }
@@ -123,7 +130,13 @@ export class EditFilmComponent implements OnInit {
           this.router.navigate(['/']);
         },
         (error)=>{
-          console.log(error);
+          if(error.error.errorMessages) {
+            error.error.errorMessages.forEach(element => {
+              this.errors.push(element);
+            });
+          } else {
+            this.errors.push("Une erreur s'est produite");
+          }
         }
       )
     }
