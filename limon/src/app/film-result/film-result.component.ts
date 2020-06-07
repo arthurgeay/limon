@@ -58,8 +58,11 @@ export class FilmResultComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.isRGPD = true;
-
+    if (localStorage.getItem('rgpd') === 'ok') {
+      this.isRGPD = false;
+    } else {
+      this.isRGPD = true;
+    }
     this.moviesSubscription = this.movieService.moviesSubject.subscribe(
       (movie:any)=>{
         this.movies = movie;
@@ -67,7 +70,8 @@ export class FilmResultComponent implements OnInit {
     );
     
     this.movieService.getAllMovies();
-    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
+    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service 
+
   }
 
   onDisplayResult() {
