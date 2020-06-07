@@ -43,15 +43,15 @@ export class MenuComponent implements OnInit {
         this.isSub = data;
       }
     );
-
     this.actualUserSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=>{
         const md5 = new Md5();
         this.mail = md5.appendStr(data.email).end().toString();
       }
     );
-    this.userService.getActualUser();
-
+    if (this.isAuth) {
+      this.userService.getActualUser();
+    }
   }
 
   onAppear() {
