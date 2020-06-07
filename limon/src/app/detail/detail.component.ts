@@ -57,7 +57,9 @@ export class DetailComponent implements OnInit {
       }
     );
     this.movieService.getMovieById(+id);
-    this.isInsideWatchlist();
+    if (this.isAuth) {
+      this.isInsideWatchlist();
+    }
     this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
   }
 
