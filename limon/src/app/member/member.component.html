@@ -1,5 +1,6 @@
+<app-modal *ngIf="isModal" [(isModal)]="isModal" [ID]="user.id" [subject]="'compte utilisateur'"></app-modal>
 <a class="member" [routerLink]="['/user', user.id]">
     <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail.toString() + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' }}" alt="" class="member-bg">
     <p class="member-name">{{ user.fullname }}</p>
 </a>
-<button class="member-delete" (click)="onDelete()"><img src="../../assets/icons/bin-icon.png" alt=""></button>
+<button class="member-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.png" alt=""></button>

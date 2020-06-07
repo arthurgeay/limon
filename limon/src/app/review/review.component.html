@@ -1,4 +1,4 @@
-<app-modal *ngIf="isModal" [(isModal)]="isModal" [movieID]="reviews.id" [path]="this.path" [subject]="'commentaire'"></app-modal>
+<app-modal *ngIf="isModal" [(isModal)]="isModal" [ID]="reviews.id" [path]="this.path" [subject]="'commentaire'"></app-modal>
 <div class="review">
     <div class="review-upper">
         <div class="review-user">
@@ -8,9 +8,9 @@
                 <p class="review-user-infos-date">{{ reviews.created_at | date: 'yyyy' }}</p>
             </div>
         </div>
-        <div class="review-button">
-            <button class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.png" alt="éditer le commentaire"></button>
-            <button class="review-button-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.png" alt="supprimer le commentaire"></button>
+        <div class="review-button" *ngIf="isAuth">
+            <button *ngIf="isAdmin || isActual" class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.png" alt="éditer le commentaire"></button>
+            <button *ngIf="isAdmin || isActual" class="review-button-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.png" alt="supprimer le commentaire"></button>
         </div>
     </div>
     <div class="review-lower">

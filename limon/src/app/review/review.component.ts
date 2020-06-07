@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-review',
@@ -12,10 +13,14 @@ import { UserService } from '../user.service';
 export class ReviewComponent implements OnInit {
   @Input() reviews;
   public path: string;
-  public isModal:boolean;
+  public isModal: boolean;
+  public isAuth: boolean;
+  public isAdmin: boolean;
+  public isActual:boolean;
 
   constructor(private http: HttpClient,
     private userService:UserService,
+    private authService:AuthService,
     private route: ActivatedRoute,
     private router: Router,
     private movieService:MovieService) { }
@@ -23,7 +28,9 @@ export class ReviewComponent implements OnInit {
   ngOnInit(): void {
     // @ts-ignore
     this.path = this.route.snapshot._routerState.url;
-
+    this.isAuth = this.authService.isAuth();
+    this.isAdmin = this.authService.isAdmin();
+    this.isActual = this.userService.actualUser.id === this.reviews.user.id ? true : false;
   }
 
 

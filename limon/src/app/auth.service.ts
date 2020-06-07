@@ -36,7 +36,7 @@ export class AuthService {
   /**
    * Delete all info in localStorage
    */
-  private deleteInLocalStorage() {
+  public deleteInLocalStorage() {
     localStorage.clear();
   }
 

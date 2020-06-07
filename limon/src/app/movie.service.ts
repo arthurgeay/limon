@@ -91,7 +91,6 @@ public downloadMovieById(id:number, name:string) {
     this.http.get(`https://api-limon.app-tricycle.com/api/purchase/${id}`)
     .subscribe(
       (data:any)=>{
-        // console.log(data);        
       },
       (error)=>{
         console.log(error);
@@ -138,7 +137,8 @@ public downloadMovieById(id:number, name:string) {
     this.http.get(`https://api-limon.app-tricycle.com/api/subscription`)
     .subscribe(
       (data:any)=>{
-        console.log(data);
+        localStorage.setItem('subscription', JSON.stringify(data.subscription));
+        this.authService.isPremium();
       },
       (error)=>{
         console.log(error);
