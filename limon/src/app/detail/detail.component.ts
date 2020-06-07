@@ -21,7 +21,8 @@ export class DetailComponent implements OnInit {
   public isPurchase = false;
   public isView = false;
   public reviews: any[];
-  public isCheck = false;
+  public isCheck:boolean = false;
+  public isModal:boolean;
   public movieSubscription: Subscription;
   public movie: any;
   public note: string;
@@ -110,17 +111,10 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  onDelete() {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/movie/${this.movieID}`)
-    .subscribe(
-      (data:any)=>{
-        this.router.navigate(['/'])
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+  swapModal() {
+    this.isModal = !this.isModal;
   }
+
 
   changeMark(){
     return(this.isMark = !this.isMark)

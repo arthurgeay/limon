@@ -44,7 +44,6 @@ export class PlaylistComponent implements OnInit {
     .subscribe(
       (data:any)=>{
         this.catalog = data.movies_watched;  
-        console.log(data);
         this.isEmpty = data.empty === true ? true : false;
       },
       (error)=>{

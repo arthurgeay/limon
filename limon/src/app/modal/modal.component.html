@@ -1,0 +1,10 @@
+<section>
+    <p>Voulez-vous vraiment supprimer ce {{ subject }} ?</p>
+    <div class="buttons">
+        <button class="exit" (click)="onExit()">Annuler</button>
+        <button class="delete" (click)="onMovieDelete()" *ngIf="subject == 'film'">Supprimer le film</button>
+        <button class="delete" (click)="onReviewDelete()" *ngIf="subject == 'commentaire'">Supprimer le commentaire</button>
+        <button class="delete" (click)="onUserDelete()" *ngIf="subject == 'utilisateur'">Supprimer l'utilisateur</button>
+    </div>
+</section>
+<div class="bg-exit" (click)="onExit()"></div>

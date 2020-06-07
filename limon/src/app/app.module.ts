@@ -31,6 +31,7 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { VideoComponent } from './video/video.component';
+import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { VideoComponent } from './video/video.component';
     FooterComponent,
     SearchbarComponent,
     CheckoutComponent,
-    VideoComponent
+    VideoComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,

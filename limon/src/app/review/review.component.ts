@@ -12,6 +12,7 @@ import { UserService } from '../user.service';
 export class ReviewComponent implements OnInit {
   @Input() reviews;
   public path: string;
+  public isModal:boolean;
 
   constructor(private http: HttpClient,
     private userService:UserService,
@@ -24,20 +25,7 @@ export class ReviewComponent implements OnInit {
     this.path = this.route.snapshot._routerState.url;
 
   }
-  onDelete(id: number) {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/review/${id}`)
-      .subscribe(
-        (data: any) => {
-          console.log(data);
-          this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-            this.router.navigate([this.path]);
-          });
-        },
-        (error) => {
-          console.log(error);
-        }
-      )
-  }
+
 
   onEdit(id:number) {
     this.movieService.EditReview(
@@ -45,6 +33,10 @@ export class ReviewComponent implements OnInit {
         "id": id,
         "content": this.reviews.content
       });
+  }
+
+  swapModal() {
+    this.isModal = !this.isModal;
   }
 
 }

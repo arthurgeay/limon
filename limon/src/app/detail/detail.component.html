@@ -1,3 +1,4 @@
+<app-modal *ngIf="isModal" [(isModal)]="isModal" [movieID]="movieID" [subject]="'film'"></app-modal>
 <section class="movie">
     <div class="movie-img">
         <img src="{{ movie?.hero_img }}" alt="" class="movie-hero" *ngIf="!isMobile">
@@ -21,7 +22,7 @@
             <button class="detail-play" *ngIf="!isAuth" routerLink="/register">S'abonner pour le visionner</button>
             <button class="detail-subscribe" (click)="download()" *ngIf="isPurchase">Télécharger</button>
             <button class="detail-edit" (click)="onEdit()" *ngIf="isAdmin">Modifier</button>
-            <button class="detail-delete" (click)="onDelete()" *ngIf="isAdmin">Supprimer</button>
+            <button class="detail-delete" (click)="swapModal()" *ngIf="isAdmin">Supprimer</button>
         </div>
     </div>
     <button class="movie-watch" (click)="changeMark();onWatch();" *ngIf="isAuth">

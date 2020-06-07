@@ -1,4 +1,4 @@
-
+<app-modal *ngIf="isModal" [(isModal)]="isModal" [isActual]="isActual" [movieID]="id" [subject]="'utilisateur'"></app-modal>
 <section class="profil">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
     <div *ngIf="errors.length > 0" class="error">
@@ -17,7 +17,7 @@
         <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
             <a (click)="onEdit();onOpenSettings();">Modifier les informations</a>
-            <a (click)="onDelete();onOpenSettings()">Supprimer le compte</a>
+            <a (click)="swapModal();onOpenSettings()">Supprimer le compte</a>
         </div>
     </section>
     <section class="profil-sup">

@@ -23,6 +23,7 @@ export class ProfilComponent implements OnInit {
   public isActual: boolean;
   public isPremium: boolean;
   public isAdmin:boolean;
+  public isModal:boolean;
   public userSubscription: Subscription;
   public actualUserSubscription:  Subscription;
   userForm: FormGroup;
@@ -64,10 +65,12 @@ export class ProfilComponent implements OnInit {
     this.isEdit = !this.isEdit;
   }
 
-  onDelete() {
-    this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.id);
-    this.router.navigate(['/'])
+
+
+  swapModal() {
+    this.isModal = !this.isModal;
   }
+
 
   displayActualUser() {
     this.actualUserSubscription = this.userService.userActualSubject.subscribe(

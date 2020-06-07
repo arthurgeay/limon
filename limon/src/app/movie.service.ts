@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
+import { UserService } from './user.service';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,7 @@ export class MovieService {
   public categories: any;
   public review:any;
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private userService:UserService, private authService:AuthService) { }
 
   getAllMovies() {
     this.http.get('https://api-limon.app-tricycle.com/api/movie/all')
