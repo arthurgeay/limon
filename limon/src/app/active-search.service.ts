@@ -7,5 +7,6 @@ export class ActiveSearchService {
   onSearchEvent = new EventEmitter();
   DataIDEvent = new EventEmitter();
   categoryEvent = new EventEmitter();
+  pageEvent = new EventEmitter();
   constructor() { }
 }

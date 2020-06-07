@@ -57,6 +57,12 @@ export class FilmResultComponent implements OnInit {
           this.onSearchCategroy(categ);
         }
       );
+      activeSearchService.pageEvent.subscribe(
+        (data)=>{
+          const page = data;
+          this.onDisplayResultPage(page);
+        }
+      );
     }
 
   ngOnInit(): void {
@@ -82,11 +88,23 @@ export class FilmResultComponent implements OnInit {
       (data:any)=>{
         this.resMovies = data.movies;  
         this.currentPage = data.current_page
+        this.totalPage = data.nb_pages;
         this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
-        console.group()
-        console.log(data);
-        console.log(this.currentPage);
-        console.groupEnd()
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  onDisplayResultPage(page) {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&page=${page}`)
+    .subscribe(
+      (data:any)=>{
+        this.resMovies = data.movies;  
+        this.currentPage = data.current_page
+        this.totalPage = data.nb_pages;
+        this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
       },
       (error)=>{
         console.log(error);
