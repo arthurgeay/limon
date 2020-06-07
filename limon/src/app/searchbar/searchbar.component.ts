@@ -29,7 +29,8 @@ export class SearchbarComponent implements OnInit {
 
   onCancelSearch() {
     this.isSearch = false;
-    this.search.nativeElement.value = ''
+    this.search.nativeElement.value = '';
+    this.activeSearchService.onSearchEvent.emit(false);
   }
 
 }
