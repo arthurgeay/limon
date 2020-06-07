@@ -26,7 +26,7 @@ export class ConnexionComponent implements OnInit {
     this.isLogin = route === 'login' ? true : false;
     this.initForm();
 
-    this.authService.errors = []; // Reset errors
+    this.authService.errors = []; // Reset errors:
 
     this.errorsSubscription = this.authService.errorSubject.subscribe(
       (errors) => this.errors = errors

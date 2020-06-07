@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service';
 import { Subscription } from 'rxjs';
+import { MenuComponent } from '../menu/menu.component';
 
 declare var Stripe;//: stripe.StripeStatic;
 
@@ -99,7 +100,6 @@ export class CheckoutComponent implements OnInit {
 
   onClear() {
     this.isCheckChange.emit(false);
-
   }
 
 

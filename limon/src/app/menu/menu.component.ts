@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, NgZone } from '@angular/core';
 import { MobileService } from '../mobile.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ActiveSearchService } from '../active-search.service';
@@ -26,11 +26,12 @@ export class MenuComponent implements OnInit {
   constructor(private mobileService:MobileService,
     private activeSearchService:ActiveSearchService,
     private authService:AuthService,
+    public zone:NgZone,
     private userService:UserService) { }
 
   ngOnInit(): void {
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
-
+    this.isSub = this.authService.isPremium();
     this.authSubscription = this.authService.authSubject.subscribe(
       (data:any)=>{
         this.isAuth = data;

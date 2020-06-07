@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class SubscribeComponent implements OnInit {
 
   public isCheck: boolean = false;
-  public amount:number = 36.99;
+  public amount:number = 46.99;
   public direction:string = "sub";
 
   constructor(private router:Router, private http:HttpClient) { }
