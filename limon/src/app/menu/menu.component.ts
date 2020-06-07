@@ -31,6 +31,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit(): void {
     this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service  
+    this.isAuth = this.authService.isAuth();
     this.isSub = this.authService.isPremium();
     this.authSubscription = this.authService.authSubject.subscribe(
       (data:any)=>{

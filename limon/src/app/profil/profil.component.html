@@ -1,4 +1,4 @@
-<app-modal *ngIf="isModal" [(isModal)]="isModal" [isActual]="isActual" [movieID]="id" [subject]="'utilisateur'"></app-modal>
+<app-modal *ngIf="isModal" [(isModal)]="isModal" [isActual]="isActual" [ID]="id" [subject]="'utilisateur'"></app-modal>
 <section class="profil">
     <form *ngIf="userForm" [formGroup]="userForm" (ngSubmit)="onSubmitForm()">
     <div *ngIf="errors.length > 0" class="error">

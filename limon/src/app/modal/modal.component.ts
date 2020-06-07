@@ -2,6 +2,7 @@ import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router, ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-modal',
@@ -12,7 +13,7 @@ export class ModalComponent implements OnInit {
 
   @Input() isModal:boolean;
   @Output() isModalChange = new EventEmitter<boolean>();
-  @Input() public movieID:any;
+  @Input() public ID:any;
   @Input() public subject:string;
   @Input() public path:any;
   @Input() public isActual:any;
@@ -21,6 +22,7 @@ export class ModalComponent implements OnInit {
     private http:HttpClient,
     private router:Router,
     private route:ActivatedRoute,
+    private authService:AuthService,
     private userService:UserService
   ) { }
 
@@ -32,7 +34,7 @@ export class ModalComponent implements OnInit {
     this.isModalChange.emit(false);
   }
   onMovieDelete() {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/movie/${this.movieID}`)
+    this.http.delete(`https://api-limon.app-tricycle.com/api/movie/${this.ID}`)
     .subscribe(
       (data:any)=>{
         this.router.navigate(['/'])
@@ -44,7 +46,7 @@ export class ModalComponent implements OnInit {
   }
 
   onReviewDelete() {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/review/${this.movieID}`)
+    this.http.delete(`https://api-limon.app-tricycle.com/api/review/${this.ID}`)
       .subscribe(
         (data: any) => {
           console.log(data);
@@ -59,7 +61,20 @@ export class ModalComponent implements OnInit {
   }
 
   onUserDelete() {
-    this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.movieID);
+    this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.ID);
+    this.authService.deleteInLocalStorage();
     this.router.navigate(['/register'])
+  }
+
+  onSpecificUserDelete() {
+    this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${this.ID}`)
+    .subscribe(
+      (data:any)=>{
+        window.location.reload();
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
   }
 }

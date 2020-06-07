@@ -5,6 +5,7 @@
         <button class="delete" (click)="onMovieDelete()" *ngIf="subject == 'film'">Supprimer le film</button>
         <button class="delete" (click)="onReviewDelete()" *ngIf="subject == 'commentaire'">Supprimer le commentaire</button>
         <button class="delete" (click)="onUserDelete()" *ngIf="subject == 'utilisateur'">Supprimer l'utilisateur</button>
+        <button class="delete" (click)="onSpecificUserDelete()" *ngIf="subject == 'compte utilisateur'">Supprimer cette utilisateur</button>
     </div>
 </section>
 <div class="bg-exit" (click)="onExit()"></div>

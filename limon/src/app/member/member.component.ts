@@ -14,6 +14,7 @@ export class MemberComponent implements OnInit {
   userID: any;
   mail: string | Int32Array;
   path:string;
+  public isModal:boolean;
 
 
   constructor(private http:HttpClient,private router:Router,private route:ActivatedRoute) { }
@@ -26,18 +27,8 @@ export class MemberComponent implements OnInit {
     this.mail = md5.appendStr(this.user.email).end();
   }
 
-
-  onDelete() {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${this.userID}`)
-    .subscribe(
-      (data:any)=>{
-        this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-          this.router.navigate([this.path]);
-        });
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+  swapModal() {
+    this.isModal = !this.isModal;
   }
+
 }
