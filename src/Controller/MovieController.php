@@ -95,8 +95,15 @@ class MovieController extends AbstractController
             return $this->json(['status' => 'Aucun film trouvé'], 404);
         }
 
+        if($pagination->getTotalItemCount() < 18)  {
+            $nbPages = 1;
+        } else {
+            $nbPages = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
+        }
+
         return $this->json([
             'current_page' => $pagination->getCurrentPageNumber(),
+            'nb_pages' => $nbPages,
             'movies' => $pagination,
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
