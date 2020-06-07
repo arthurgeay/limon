@@ -22,6 +22,9 @@
 <section id="results" *ngIf="!isEmpty && isSearch">
     <app-film-card *ngFor="let card of resMovies" [card]="card"></app-film-card>
 </section>
+<p class="empty" *ngIf="isEmpty">Aucun résultat</p>
+<app-page-selector *ngIf="isSearch" [current]="currentPage" [total]="totalPage"></app-page-selector>
+
 
 <section class="new" *ngIf="!isSearch">
     <section class="new-new">
@@ -41,5 +44,4 @@
         <button class="new-popular-next" *ngIf="scrollToRight2" (click)="scroll2End()"><span></span></button>
     </section>
 </section>
-<p class="empty" *ngIf="isEmpty && !isSearch">Auncun résultat</p>
 <app-rgpd *ngIf="isRGPD" [(isRGPD)]="isRGPD"></app-rgpd>

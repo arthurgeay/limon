@@ -1,0 +1,24 @@
+:host {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.previous, .next {
+    background-color: var(--acid-green);
+    border-radius: 5px;
+    padding: .5rem .7rem;
+    color: var(--dark-elements);
+    &:focus {
+        transform: none;
+        &:not(:active) {
+            border: 1px solid var(--rind-green);
+        }
+    }
+}
+
+
+.current {
+    padding: .5rem .7rem;
+    margin: 0 2rem;
+}

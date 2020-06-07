@@ -11,6 +11,7 @@ export class SearchbarComponent implements OnInit {
 
   @Input() isAuth:boolean;
   @ViewChild('search') search: ElementRef;
+  public isSearch:boolean = false;
   
   constructor(private http:HttpClient,
     private activeSearchService: ActiveSearchService) { }
@@ -20,9 +21,15 @@ export class SearchbarComponent implements OnInit {
   }
 
   OnSearch() {
+    this.isSearch = true;
     const value = this.search.nativeElement.value || 'a';
     this.activeSearchService.onSearchEvent.emit(true);
     this.activeSearchService.DataIDEvent.emit(value);
+  }
+
+  onCancelSearch() {
+    this.isSearch = false;
+    this.search.nativeElement.value = ''
   }
 
 }

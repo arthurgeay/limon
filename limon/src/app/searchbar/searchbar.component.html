@@ -1,8 +1,8 @@
 <section class="search">
     <div class="search-bar">
         <div class="search-bar-container">
-            <input type="text" placeholder="Rechercher un film" aria-label="rechercher un film" #search required>
-            <button class="search-cancel" aria-label="Annuler la saisie">
+            <input type="text" placeholder="Rechercher un film" aria-label="rechercher un film" (keyup.enter)="OnSearch()"  #search required>
+            <button class="search-cancel" aria-label="Annuler la saisie" (click)="onCancelSearch()" *ngIf="isSearch">
                 <img src="../../assets/icons/cancel-icon.png" alt="">
             </button>
         </div>

@@ -20,6 +20,8 @@ export class FilmResultComponent implements OnInit {
   public moviesSubscription: Subscription;
   public movies: any;
   public resMovies: any;
+  public currentPage:any;
+  public totalPage:any;
 
   public isMobile: boolean = false;
   public isRGPD:boolean;
@@ -78,7 +80,13 @@ export class FilmResultComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}`)
     .subscribe(
       (data:any)=>{
-        this.resMovies = data.movies;       
+        this.resMovies = data.movies;  
+        this.currentPage = data.current_page
+        this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
+        console.group()
+        console.log(data);
+        console.log(this.currentPage);
+        console.groupEnd()
       },
       (error)=>{
         console.log(error);

@@ -32,6 +32,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { DatePipe } from '@angular/common';
 import { VideoComponent } from './video/video.component';
 import { ModalComponent } from './modal/modal.component';
+import { PageSelectorComponent } from './page-selector/page-selector.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ModalComponent } from './modal/modal.component';
     SearchbarComponent,
     CheckoutComponent,
     VideoComponent,
-    ModalComponent
+    ModalComponent,
+    PageSelectorComponent
   ],
   imports: [
     BrowserModule,
