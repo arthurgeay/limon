@@ -30,7 +30,9 @@ export class ReviewComponent implements OnInit {
     this.path = this.route.snapshot._routerState.url;
     this.isAuth = this.authService.isAuth();
     this.isAdmin = this.authService.isAdmin();
-    this.isActual = this.userService.actualUser.id === this.reviews.user.id ? true : false;
+    if (this.isAuth) {
+      this.isActual = this.userService.actualUser.id === this.reviews.user.id ? true : false;
+    }
   }
 
 
