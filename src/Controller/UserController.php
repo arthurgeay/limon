@@ -113,42 +113,28 @@ class UserController extends AbstractController
     /**
      * @Route("/movies-watched", name="movies_watched", methods={"GET"})
      */
-    public function historyMoviesWatched(Request $request, MovieWatchRepository $movieWatchRepository, PaginatorInterface $paginator) {
-        $page = $request->query->getInt('page', 1);
+    public function historyMoviesWatched(MovieWatchRepository $movieWatchRepository) {
         $movies = $movieWatchRepository->findByHistory($this->getUser());
-        $pagination = $paginator->paginate($movies, $page, 10);
 
-        if(count($pagination) == 0) {
+        if(count($movies) == 0) {
             return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
-        return $this->json([
-            'current_page' => $pagination->getCurrentPageNumber(),
-            'movies_watched' => $pagination,
-            'items_per_page' => $pagination->getItemNumberPerPage(),
-            'total_item_count' => $pagination->getTotalItemCount()
-        ], 200, [], ['groups' => ['history.watched']]);
+        return $this->json($movies, 200, [], ['groups' => ['history.watched']]);
     }
 
     /**
      * @Route("/movies-purchased", name="movies_purchased", methods={"GET"})
      */
-    public function historyMoviePurchased(Request $request, PurchaseRepository $purchaseRepository, PaginatorInterface $paginator)
+    public function historyMoviePurchased(PurchaseRepository $purchaseRepository)
     {
-        $page = $request->query->getInt('page', 1);
         $moviesPurchased = $purchaseRepository->all($this->getUser());
-        $pagination = $paginator->paginate($moviesPurchased, $page, 10);
 
-        if(count($pagination) == 0) {
+        if(count($moviesPurchased) == 0) {
             return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
         }
 
-        return $this->json([
-            'current_page' => $pagination->getCurrentPageNumber(),
-            'movies_purchased' => $pagination,
-            'items_per_page' => $pagination->getItemNumberPerPage(),
-            'total_item_count' => $pagination->getTotalItemCount()
-        ], 200, [], ['groups' => ['history.purchased']]);
+        return $this->json($moviesPurchased, 200, [], ['groups' => ['history.purchased']]);
     }
 
     /**

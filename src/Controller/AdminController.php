@@ -40,11 +40,16 @@ class AdminController extends AbstractController
             return $this->json(['status' => 'Aucun utilisateur'], 404);
         }
 
-
+        if($pagination->getTotalItemCount() < 10)  {
+            $nbPages = 1;
+        } else {
+            $nbPages = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
+        }
 
         return $this->json([
             'users' => $users,
             'current_page' => $pagination->getCurrentPageNumber(),
+            'nb_pages' => $nbPages,
             'items_per_page' => $pagination->getItemNumberPerPage(),
             'total_item_count' => $pagination->getTotalItemCount()
         ], 200, [], ['groups' => ['profile']]);
