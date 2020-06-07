@@ -53,6 +53,15 @@ export class ConnexionComponent implements OnInit {
     }
   }
 
+
+  onErrors() {
+      if(this.userForm.get('password').errors) {
+        this.errors[0] = 'Le mot de passe doit contenir au minimum 4 caractères';
+      } else {
+        this.errors = [];
+      } 
+  } 
+
   /**
    * Send data for login
    */
