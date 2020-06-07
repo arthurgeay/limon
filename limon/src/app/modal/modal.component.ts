@@ -60,6 +60,6 @@ export class ModalComponent implements OnInit {
 
   onUserDelete() {
     this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.movieID);
-    this.router.navigate(['/'])
+    this.router.navigate(['/register'])
   }
 }

@@ -47,6 +47,7 @@ export class ProfilComponent implements OnInit {
     this.isActual = route === 'profil' ? true : false;
     this.isPremium = this.authService.isPremium();
     this.isAdmin = this.authService.isAdmin();
+    console.log(this.isPremium);
     
     if (this.isActual) {
       this.displayActualUser();
