@@ -55,6 +55,6 @@ class SubscriptionController extends AbstractController
             );
 
 
-        return $this->json(['status' => 'Abonnement effectué'], 200);
+        return $this->json(['status' => 'Abonnement effectué', 'subscription' => $subscribe], 200, [], ['groups' => ['profile']]);
     }
 }
