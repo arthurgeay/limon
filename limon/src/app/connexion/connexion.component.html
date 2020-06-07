@@ -24,7 +24,7 @@
             </div>
             <div class="input-cont">
                 <label for="pswd">Mot de passe</label>
-                <input type="password" id="pswd" placeholder="mot de passe" formControlName="password" aria-label="Entrer un mot de passe" class="connect-pass">
+                <input type="password" id="pswd" placeholder="mot de passe" formControlName="password" aria-label="Entrer un mot de passe" class="connect-pass" (keyup)="onErrors()">
             </div>
         </div>
         <div class="connect-link">
