@@ -17,14 +17,16 @@ export class RgpdComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClear(action) {
+  onClear() {
     this.isRGPDChange.emit(false);
+  }
 
-    if(action == 'valid') {
-      localStorage.setItem('rgpd', 'ok');
-    } else {
-      window.location.href = 'https://google.fr';
-    }
+  onValid() {
+    localStorage.setItem('rgpd', 'ok');
+  }
+
+  onDenied() {
+    window.location.href = 'https://google.fr';
   }
   
 }

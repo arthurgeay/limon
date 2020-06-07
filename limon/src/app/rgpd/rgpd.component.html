@@ -3,8 +3,8 @@
     <div class="rgpd-action">
         <a routerLink="/agreement" class="rgpd-link" tabindex="4">En savoir plus</a>
         <div class="rpgd-button">
-            <button tabindex="4" class="rgpd-denied" (click)="onClear('deny')">Refuser</button>
-            <button  tabindex="4" class="rgpd-valid" (click)="onClear('valid')">Accepter</button>
+            <button tabindex="4" class="rgpd-denied" (click)="onClear();onValid()">Refuser</button>
+            <button  tabindex="4" class="rgpd-valid" (click)="onClear();onDenied()">Accepter</button>
         </div>
     </div>
 </div>
