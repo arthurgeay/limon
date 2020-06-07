@@ -92,7 +92,7 @@ class MovieController extends AbstractController
 
 
         if(count($pagination) == 0) {
-            return $this->json(['status' => 'Aucun film trouvé'], 404);
+            return $this->json(['status' => 'Aucun film trouvé']);
         }
 
         if($pagination->getTotalItemCount() < 18)  {
