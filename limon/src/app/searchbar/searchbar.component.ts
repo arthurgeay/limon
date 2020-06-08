@@ -28,12 +28,10 @@ export class SearchbarComponent implements OnInit {
     this.router.navigate(['/']);
     this.activeSearchService.onSearchEvent.emit(true);
     this.activeSearchService.DataIDEvent.emit(value);
-    console.log('rififi');
     setTimeout(() => {
       this.activeSearchService.onSearchEvent.emit(true);
       this.activeSearchService.DataIDEvent.emit(value);
     }, 100);
-    
   }
 
   onCancelSearch() {

@@ -22,6 +22,8 @@ export class FilmResultComponent implements OnInit {
   public resMovies: any;
   public currentPage:any;
   public totalPage:any;
+  public isCateg:boolean;
+  public cat:any;
 
   public isMobile: boolean = false;
   public isRGPD:boolean;
@@ -52,9 +54,9 @@ export class FilmResultComponent implements OnInit {
       );
       activeSearchService.categoryEvent.subscribe(
         (cat)=>{
-          const categ = cat;
+          this.cat = cat;
           this.isSearch = true;
-          this.onSearchCategroy(categ);
+          this.onSearchCategroy();
         }
       );
       activeSearchService.pageEvent.subscribe(
@@ -66,7 +68,7 @@ export class FilmResultComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.isEmpty 
+    
     if (localStorage.getItem('rgpd') === 'ok') {
       this.isRGPD = false;
     } else {
@@ -99,6 +101,10 @@ export class FilmResultComponent implements OnInit {
   }
 
   onDisplayResultPage(page) {
+    if (this.isCateg) {
+      page = page + '&searchBy=category&category_name=' + this.cat;
+      this.value = ''
+    }
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&page=${page}`)
     .subscribe(
       (data:any)=>{
@@ -113,11 +119,14 @@ export class FilmResultComponent implements OnInit {
     )
   }
 
-  onSearchCategroy(cat) {
-    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=&searchBy=category&category_name=${cat}`)
+  onSearchCategroy() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=&searchBy=category&category_name=${this.cat}`)
     .subscribe(
       (data:any)=>{
-        this.resMovies = data.movies;       
+        this.resMovies = data.movies;  
+        this.currentPage = data.current_page
+        this.totalPage = data.nb_pages;
+        this.isCateg = true;
       },
       (error)=>{
         console.log(error);
