@@ -16,7 +16,7 @@ class CategoryController extends AbstractController
      */
     public function show(CategoryRepository $categoryRepository)
     {
-        $categories = $categoryRepository->findAll();
+        $categories = $categoryRepository->findBy([], ['name' => 'ASC']);
 
         return $this->json($categories, 200, [], ['groups' => ['movie']]);
     }
