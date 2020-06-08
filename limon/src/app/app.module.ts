@@ -33,6 +33,8 @@ import { DatePipe } from '@angular/common';
 import { VideoComponent } from './video/video.component';
 import { ModalComponent } from './modal/modal.component';
 import { PageSelectorComponent } from './page-selector/page-selector.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -68,7 +70,8 @@ import { PageSelectorComponent } from './page-selector/page-selector.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     FormBuilder,
