@@ -12,8 +12,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class FilmResultComponent implements OnInit {
 
-  public isEmpty: boolean = false;
-  public isSearch: boolean = false;
+  public isEmpty: boolean;
+  public isSearch: boolean;
   public isAlph = false;
   public isPrice = false;
   public isDate = false;
@@ -66,6 +66,7 @@ export class FilmResultComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    // this.isEmpty 
     if (localStorage.getItem('rgpd') === 'ok') {
       this.isRGPD = false;
     } else {
