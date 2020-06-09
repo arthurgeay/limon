@@ -65,7 +65,7 @@ $large: 2400px;
 
 .detail {
     position: absolute;
-    bottom: 0;
+    bottom: -4rem;
     left: 0;
     padding: 0 2rem;
     @media (min-width: $mobile) {
@@ -124,7 +124,10 @@ $large: 2400px;
         border-radius: 5px;
         padding: .3rem .5rem;
         font-size: 1em;
-        margin-left: .5rem;
+        margin-right: .5rem;
+        @media (max-width: $mobile) {
+            font-size: .8em;
+        }
     }
     &-buy{
         background-color: var(--white);
@@ -136,6 +139,7 @@ $large: 2400px;
     }
     &-delete {
         background-color: red;
+        margin-right: 0;
     }
     &-icon {
         width: .75em;
@@ -146,9 +150,10 @@ $large: 2400px;
 .community{
     display: grid;
     @media (max-width: $mobile) {
-        flex-direction: column;
+        display: flex;
+        flex-direction: column-reverse;
         padding: 0 2rem;
-        margin-top: 2rem;
+        margin-top: 6rem;
     }
     @media (min-width: $mobile) {
         grid-template-columns: 70% 30%; 

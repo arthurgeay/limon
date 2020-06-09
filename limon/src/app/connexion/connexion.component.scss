@@ -2,10 +2,13 @@ $mobile: 665px;
 $large: 2400px;
 
 .connect {
-    height: calc(100vh - 11rem);
+    min-height: calc(100vh - 5rem);
     position: relative;
+    display: flex;
+    align-items: center;
     @media (min-width: $large) {
         font-size: 1.6rem;
+        min-height: calc(100vh - 11rem);
     }
     &-return {
         background-color: transparent;

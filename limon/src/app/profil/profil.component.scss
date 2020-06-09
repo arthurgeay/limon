@@ -16,6 +16,9 @@ $tablet: 1100px;
         display: flex;
     }
     &-main{
+        @media (max-width: $mobile) {
+         flex-wrap: wrap;       
+        }
         &-pic{
             width: 30vw;
             height: 30vw;
@@ -23,6 +26,9 @@ $tablet: 1100px;
             max-height: 12rem;
             object-fit: cover;
             border-radius: 10px;
+            @media (max-width: $mobile) {
+                flex: 0 0 40%;
+            }
         }
         &-infos{
             margin: 0 1rem;
@@ -37,6 +43,9 @@ $tablet: 1100px;
                 color: var(--acid-green);
                 display: flex;
                 align-items: center;
+            }
+            @media (max-width: $mobile) {
+                flex: 0 0 40%;
             }
         }
         &-badge {
@@ -74,10 +83,13 @@ $tablet: 1100px;
         div{
             margin: 1rem 0;
             @media (min-width: $mobile){
-                margin: 2rem 4rem 2rem 0;
+                margin: 2rem 0 2rem 0;
             }
             h2 {
                 margin-bottom: 1rem;
+            }
+            &:not(.sup-deconnect) {
+                margin-right: 4rem;
             }
         }
 
@@ -89,10 +101,15 @@ $tablet: 1100px;
     .sup-deconnect {
         align-self: flex-end;
         display: flex;
-        justify-content: flex-end;
         flex-grow: 1;
         &.sup2 {
-            margin-right: 4rem;
+            @media (max-width: $mobile) {
+                flex: 1;
+                margin-top: 1rem;
+            }
+        }
+        @media (min-width: $mobile) {
+            justify-content: flex-end;
         }
     }
     .deconnect {
@@ -121,12 +138,16 @@ $tablet: 1100px;
             height: 1rem;
             margin-right: .5rem;
         }
+        & .save-edit {
+            background-color: var(--acid-green);
+            border-color: transparent;
+            color: var(--dark-elements);
+        }
         @media (max-width: $mobile){
             flex-direction: column;
         }
         @media (min-width: $mobile){
-            justify-content: space-around;
-            margin-top: 4rem;
+            justify-content: space-between;
         }
     }
 }
