@@ -10,6 +10,11 @@
             <img src="../../assets/logo.png" alt="logo">
         </a>
     </section>
+    <section class="maxi proper-touch" *ngIf="isMobile">
+        <a class="logo-container mobile-logo" routerLink="/" (click)="onReset()">
+            <img src="../../assets/shdow.png" alt="logo">
+        </a>
+    </section>
     <app-searchbar *ngIf="!isMobile"></app-searchbar>
     <section class="nav">
         <div *ngIf="!isMobile && isAuth && !isSub">

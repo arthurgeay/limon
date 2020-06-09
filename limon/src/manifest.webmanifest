@@ -1,7 +1,7 @@
 {
   "name": "Limon",
   "short_name": "limon",
-  "theme_color": "#A7E232",
+  "theme_color": "#28A601",
   "background_color": "#1F1F1F",
   "display": "standalone",
   "scope": "./",

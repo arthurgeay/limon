@@ -22,6 +22,7 @@ header{
     &-container {
         max-width: 10rem;
         align-self: flex-end;
+
     }
     img {
         width: 100%;
@@ -167,7 +168,7 @@ header{
 @media (max-width: $mobile) {
     header {
         background-color: var(--rind-green);
-        padding: 1.5rem 1.4rem;
+        padding: 2rem 1.4rem 1.5rem 1.4rem;
         align-items: center;
         position: relative;
         z-index: 3;
@@ -187,6 +188,17 @@ header{
         color: var(--acid-green);
         font-size: 2rem;
         font-weight: bold;
+    }
+    .maxi {
+        max-width: 9rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .mobile-logo {
+        & img {
+            width: 100%;
+        }
     }
     .nav > div {
         margin: 0 .5rem;

@@ -68,16 +68,21 @@ $tablet: 1080px;
         justify-content: center;
         margin-top: 2rem;
         width: 100%;
-        &-bar {
-            width: initial;
-        }
+
     }
 }
+
+@media (max-width: $tablet) and (min-width: $mobile) {
+        .search-bar {
+            width: initial;
+        }
+}
+
 @media (max-width: $mobile) {
     .search{
         position: absolute;
         left: 0;
-        top: 5rem;
+        top: 6rem;
         &-bar-container {
             min-width: 13rem;
             width: 100%;

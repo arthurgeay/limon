@@ -140,18 +140,46 @@ export class FilmResultComponent implements OnInit {
   }
 
   onSortAlph() {
-    if (!this.isAlph) {
-      this.onDisplayResult();
-    } else {
-      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=desc`)
-      .subscribe(
-        (data:any)=>{
-          this.resMovies = data.movies;       
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
+    if (this.value == undefined) {
+      this.value = '';
+    }
+    if (this.isCateg) {
+      if (!this.isAlph) {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=asc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies; 
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;     
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
+    }
+    else {
+      if (!this.isAlph) {
+        this.onDisplayResult();
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
     }
   }
 
@@ -160,53 +188,111 @@ export class FilmResultComponent implements OnInit {
   }
 
   onSortPrice() {
-    if (!this.isPrice) {
-      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-asc`)
-      .subscribe(
-        (data:any)=>{
-          this.resMovies = data.movies;       
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
-    } else {
-      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-desc`)
-      .subscribe(
-        (data:any)=>{
-          this.resMovies = data.movies;       
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
+    if (this.value == undefined) {
+      this.value = '';
+    }
+    if (this.isCateg) {
+      if (!this.isPrice) {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=price-asc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=price-desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
+    }
+    else {
+      if (!this.isPrice) {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-asc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=price-desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
     }
   }
+
+
   onDate() {
     return(this.isDate = !this.isDate)
   }
 
   onSortDate() {
-    if (!this.isDate) {
-      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-asc`)
-      .subscribe(
-        (data:any)=>{
-          this.resMovies = data.movies;       
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
-    } else {
-      this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-desc`)
-      .subscribe(
-        (data:any)=>{
-          this.resMovies = data.movies;       
-        },
-        (error)=>{
-          console.log(error);
-        }
-      )
+    if (this.value == undefined) {
+      this.value = '';
+    }
+    if (this.isCateg) {
+      if (!this.isDate) {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=date-asc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=date-desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
+    }
+    else {
+      if (!this.isDate) {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-asc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      } else {
+        this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&orderBy=date-desc`)
+        .subscribe(
+          (data:any)=>{
+            this.resMovies = data.movies;       
+          },
+          (error)=>{
+            console.log(error);
+          }
+        )
+      }
     }
   }
 
