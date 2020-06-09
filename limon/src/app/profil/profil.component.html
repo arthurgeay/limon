@@ -36,20 +36,27 @@
         </div>
     </section>
     <section class="profil-access">
-        <button routerLink="/history" *ngIf="!isEdit" type="button">
-            <img src="../../assets/icons/history-icon.png" alt=""> Consulter l'historique
-        </button>
-        <button routerLink="/watchlist" *ngIf="!isEdit" type="button">
-            <img src="../../assets/icons/watchlist-icon.png" alt=""> Consulter votre watchlist
-        </button>
-        <button routerLink="/purchase" type="button">
-            <img src="../../assets/icons/achat-icon.png" alt=""> Voir les Films achetés
-        </button>
-
+        <div class="profil-access-cont">
+            <button routerLink="/history" *ngIf="!isEdit" type="button">
+                <img src="../../assets/icons/history-icon.png" alt="">
+            </button>
+            <p>Consulter l'historique</p>
+        </div>
+        <div class="profil-access-cont">
+            <button routerLink="/watchlist" *ngIf="!isEdit" type="button">
+                <img src="../../assets/icons/watchlist-icon.png" class="history-icon" alt="">
+            </button>
+            <p>Consulter votre watchlist</p>
+        </div>
+        <div class="profil-access-cont">
+            <button routerLink="/purchase" type="button">
+                <img src="../../assets/icons/achat-icon.png" class="purchase-icon" alt="">
+            </button>
+            <p>Voir les Films achetés</p>
+        </div>
         <button class="save-edit" *ngIf="isEdit" type="submit" [disabled]="userForm.invalid">
             Enregistrer les modifications
         </button>
-
     </section>
 </form>
 </section>
