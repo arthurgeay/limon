@@ -6,5 +6,6 @@
         <a routerLink="/privacy">Politique de confidentialité</a>
         <a routerLink="/agreement">Mentions Légales</a>
         <a href="https://api-limon.app-tricycle.com/api/doc">API</a>
+        <a (click)="installApp()" aria-label="Télécharger l'app légère" *ngIf="showInstallButton">Télécharger l'app allégé</a>
     </div>
 </footer>

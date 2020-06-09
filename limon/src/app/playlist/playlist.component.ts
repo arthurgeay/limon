@@ -43,7 +43,7 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched?page=1`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data.movies_watched;  
+        this.catalog = data;  
         this.isEmpty = data.empty === true ? true : false;
       },
       (error)=>{
@@ -70,7 +70,7 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?page=1`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data.movies_purchased;      
+        this.catalog = data;      
         this.isEmpty = data.empty === true ? true : false;
       },
       (error)=>{

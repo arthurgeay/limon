@@ -4,7 +4,7 @@
 	right: 1rem;
 	background-color: var(--dark-elements);
 	width: 30vw;
-	min-width: 300px;
+	min-width: 350px;
 	padding: 1.5rem;
     z-index: 99;
     border-radius: 5px;
@@ -34,6 +34,9 @@
             text-decoration: underline;
         }
     }
+    &-button {
+        display: flex;
+    }
     & button {
         padding: .5rem 1rem; 
         margin-left: 1rem;
@@ -48,6 +51,9 @@
     &-denied {
         border: 2px solid var(--white);
         background-color: transparent;
+        @media (max-width: 665px) {
+           margin-left: 0!important;
+        }
     }
     &-valid {
         background-color: var(--rind-green);
