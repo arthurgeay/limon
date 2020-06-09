@@ -71,7 +71,7 @@ $tablet: 1100px;
             padding: .8rem 1rem;
             border-radius: 10px;
             a{
-                margin: .5rem 0;
+                padding: .7rem .4rem;
                 &:hover,
                 &:focus {
                     color: var(--dark-elements);
@@ -167,6 +167,13 @@ $tablet: 1100px;
             background-color: var(--acid-green);
             border-color: transparent;
             color: var(--dark-elements);
+            border-radius: 5px;
+            width: auto;
+            height: 3rem;
+            img {
+                margin: 0;
+                margin-right: .5rem;
+            }
         }
         @media (max-width: $mobile){
             flex-direction: column;

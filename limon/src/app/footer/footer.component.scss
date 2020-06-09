@@ -45,6 +45,9 @@ footer {
             align-items: center;
         }
     }
+    .pwa {
+        color: var(--acid-green);
+    }
     @media (max-width: 665px) {
         flex-direction: column;
         padding-bottom: 1rem;

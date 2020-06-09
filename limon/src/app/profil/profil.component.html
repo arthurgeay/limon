@@ -36,14 +36,14 @@
         </div>
     </section>
     <section class="profil-access">
-        <div class="profil-access-cont">
-            <button routerLink="/history" *ngIf="!isEdit" type="button">
+        <div class="profil-access-cont" *ngIf="!isEdit">
+            <button routerLink="/history" type="button">
                 <img src="../../assets/icons/history-icon.png" alt="">
             </button>
             <p>Consulter l'historique</p>
         </div>
-        <div class="profil-access-cont">
-            <button routerLink="/watchlist" *ngIf="!isEdit" type="button">
+        <div class="profil-access-cont"  *ngIf="!isEdit" >
+            <button routerLink="/watchlist"type="button">
                 <img src="../../assets/icons/watchlist-icon.png" class="history-icon" alt="">
             </button>
             <p>Consulter votre watchlist</p>
@@ -55,6 +55,7 @@
             <p>Voir les Films achetés</p>
         </div>
         <button class="save-edit" *ngIf="isEdit" type="submit" [disabled]="userForm.invalid">
+            <img src="assets/icons/save.svg" alt="">
             Enregistrer les modifications
         </button>
     </section>

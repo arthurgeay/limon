@@ -120,13 +120,15 @@ export class FilmResultComponent implements OnInit {
   }
 
   onSearchCategroy() {
-    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=&searchBy=category&category_name=${this.cat}`)
+    if (this.value == undefined) { this.value = '' }
+    this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}`)
     .subscribe(
       (data:any)=>{
         this.resMovies = data.movies;  
         this.currentPage = data.current_page
         this.totalPage = data.nb_pages;
         this.isCateg = true;
+        this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
       },
       (error)=>{
         console.log(error);
@@ -148,7 +150,7 @@ export class FilmResultComponent implements OnInit {
         this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}&orderBy=asc`)
         .subscribe(
           (data:any)=>{
-            this.resMovies = data.movies; 
+            this.resMovies = data.movies;
           },
           (error)=>{
             console.log(error);
