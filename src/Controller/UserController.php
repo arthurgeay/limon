@@ -133,10 +133,6 @@ class UserController extends AbstractController
 
         if($this->isGranted('ROLE_ADMIN') && $userId) {
             $moviesPurchased = $purchaseRepository->all($userId);
-
-            if(!$moviesPurchased) {
-                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
-            }
         }
 
         if(count($moviesPurchased) == 0) {
