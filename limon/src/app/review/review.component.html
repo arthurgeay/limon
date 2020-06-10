@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="review-button" *ngIf="isAuth">
-            <button *ngIf="isAdmin || isActual" class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.svg" alt="éditer le commentaire"></button>
+            <button *ngIf="!isAdmin || isActual" class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.svg" alt="éditer le commentaire"></button>
             <button *ngIf="isAdmin || isActual" class="review-button-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.svg" alt="supprimer le commentaire"></button>
         </div>
     </div>

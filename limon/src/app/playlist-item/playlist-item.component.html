@@ -9,7 +9,7 @@
         <p class="infos-price" *ngIf="!isBuy">{{ item.price }} €</p>
     </div>
     <div class="item-command">
-        <p class="item-command-date" *ngIf="isHistory">20:32 - 23 Mars</p>
+        <p class="item-command-date" *ngIf="isHistory">{{ date | date: 'HH:mm, dd MMMM':'UTC+2' }}</p>
         <button class="item-command-bill" (click)="onBill()" *ngIf="isPurchase"><img src="../../assets/icons/facture-icon.png" alt="">Facture</button>
         <button class="item-command-delete" (click)="onDelete(item.id)" *ngIf="isWatch"><img src="../../assets/icons/bin-icon.svg" alt="">Supprimer</button>
         <button *ngIf="!isBuy && (isHistory || isWatch)" (click)="buy()"><img src="../../assets/icons/achat-icon.svg" alt="">Acheter</button>

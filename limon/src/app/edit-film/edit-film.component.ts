@@ -39,7 +39,7 @@ export class EditFilmComponent implements OnInit {
     if (this.isEdit){
       this.movieSubscription = this.movieService.movieSubject.subscribe(
         (data:any)=>{
-          this.movie = data;
+          this.movie = data.movie[0];
           this.initForm();
         }
       )

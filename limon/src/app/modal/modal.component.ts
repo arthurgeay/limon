@@ -49,7 +49,6 @@ export class ModalComponent implements OnInit {
     this.http.delete(`https://api-limon.app-tricycle.com/api/review/${this.ID}`)
       .subscribe(
         (data: any) => {
-          console.log(data);
           this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
             this.router.navigate([this.path]);
           });

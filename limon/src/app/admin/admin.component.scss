@@ -31,7 +31,9 @@ $large: 2400px;
 .week {
     background-color: var(--acid-green);
     color: var(--background);
-    width: 50vw;
+    @media (min-width: $mobile) {
+     width: 50vw;
+    }
 }
 .nb-section, .other, .manage {
     display: flex;

@@ -3,9 +3,9 @@
         <button type="button" class="connect-return" routerLink="/">Revenir à l'accueil</button>
         <h1 class="connect-title">{{ isLogin ? 'Connexion' : 'Inscription' }}</h1>
         <div class="connect-inputs">
-            <div *ngIf="userForm.get('email').errors?.email  || userForm.get('password').errors?.minlength" class="connect-error">
-                <p *ngIf="userForm.get('email').errors?.email">Veuillez renseigner une adresse email valide</p>
-                <p *ngIf="userForm.get('password').errors?.minlength">Le mot de passe doit contenir au moins 4 caractères</p>
+            <div *ngIf="userForm.get('email')?.errors?.email  || userForm.get('password').errors?.minlength" class="connect-error">
+                <p *ngIf="userForm.get('email')?.errors?.email">Veuillez renseigner une adresse email valide</p>
+                <p *ngIf="userForm.get('password')?.errors?.minlength">Le mot de passe doit contenir au moins 4 caractères</p>
             </div>
             <div *ngIf="errors.length > 0" class="connect-error">
                 <p *ngFor="let error of errors">{{ errors }}</p>

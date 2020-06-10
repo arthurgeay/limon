@@ -17,6 +17,7 @@ export class PlaylistItemComponent implements OnInit {
   @Input() isPurchase: boolean;
   @Input() alr_buy:any;
   @Input() idBuy:any;
+  @Input() date:any;
   public direction:string = "buy";
   public isCheck = false;
   public isBuy:boolean = false;
@@ -28,6 +29,8 @@ export class PlaylistItemComponent implements OnInit {
     private movieService:MovieService) { }
 
   ngOnInit(): void {
+    console.log(this.date);
+    
     if (this.alr_buy == 1) {
       this.isBuy = true;
     }

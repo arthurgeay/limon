@@ -53,6 +53,8 @@ export class PlaylistComponent implements OnInit {
       (data:any)=>{
         this.catalog = data;  
         this.isEmpty = data.empty === true ? true : false;
+        console.log(data[0][0].date);
+        
       },
       (error)=>{
         console.log(error);
