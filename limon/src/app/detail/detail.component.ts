@@ -47,15 +47,23 @@ export class DetailComponent implements OnInit {
     this.isPremium = this.authService.isPremium();
     this.isAdmin = this.authService.isAdmin();
 
+
+
     this.movieSubscription = this.movieService.movieSubject.subscribe(
       (data:any)=>{
-        this.movie = data.movie[0];
-        this.reviews = data.movie[0].reviews;
-        this.isReviewEmpty = this.reviews.length == 0 ? true : false;
-        this.usrNote = data.user_note;
-        this.isPurchase = data.buy;
-        if (data.movie.avg_score != null) {
-          this.note = data.movie.avg_score.substring(0,1);
+        // if the movie doesn't exist in database
+        if (data == 'not found') {
+          this.router.navigate(['/']);
+        }
+        else {
+          this.movie = data.movie[0];
+          this.reviews = data.movie[0].reviews;
+          this.isReviewEmpty = this.reviews.length == 0 ? true : false;
+          this.usrNote = data.user_note;
+          this.isPurchase = data.buy;
+          if (data.movie.avg_score != null) {
+            this.note = data.movie.avg_score.substring(0,1);
+          }
         }
       }
     );

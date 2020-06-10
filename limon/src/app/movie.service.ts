@@ -50,6 +50,10 @@ export class MovieService {
       },
       (error)=>{
         console.log(error);
+        if (error.status == 404) {
+          this.movie = 'not found';
+          this.EmitOnMovie();
+        }
       }
     )
   }
