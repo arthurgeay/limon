@@ -132,7 +132,7 @@ class MovieController extends AbstractController
         if($this->getUser()) {
             $alreadyBuy = $purchaseRepository->findOneBy(['movie' => $id, 'user' => $this->getUser()]) ? true : false;
             $userNote = $ratingRepository->findOneBy(['movie' => $id, 'user' => $this->getUser()]);
-            $userNote = $userNote ?? $userNote->getScore();
+            $userNote = $userNote ? $userNote->getScore() : null;
         }
 
         if(!$movie || $movie[0] == null) {
