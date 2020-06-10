@@ -6,6 +6,7 @@ $large: 2400px;
     position: relative;
     display: flex;
     align-items: center;
+    margin: 2rem 0;
     @media (min-width: $large) {
         font-size: 1.6rem;
         min-height: calc(100vh - 11rem);

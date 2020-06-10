@@ -10,7 +10,7 @@
             <img src="../../assets/logo.svg" alt="logo">
         </a>
     </section>
-    <section class="maxi proper-touch" *ngIf="isMobile">
+    <section class="maxi proper-touch" *ngIf="isMobile" (click)="onHide()">
         <a class="logo-container mobile-logo" routerLink="/" (click)="onReset()">
             <img src="../../assets/shdow.svg" alt="logo">
         </a>
@@ -25,7 +25,7 @@
                 <a routerLink="/search">catalogue</a>
             </div>
         </div>
-        <div *ngIf="isAuth">
+        <div *ngIf="isAuth" (click)="onHide()">
             <a class="nav-profil" routerLink="/profil" title="profil">
                 <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' }}" alt="Image de Profil" class="nav-profil-pic">
                 <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge" *ngIf="isSub">
@@ -48,7 +48,7 @@
                 </svg>
             </a>
         </div>
-        <div *ngIf="isMobile" routerLink="/search" class="proper-touch">
+        <div *ngIf="isMobile" routerLink="/search" class="proper-touch" (click)="onHide()">
             <div class="nav-search">
                 <svg xmlns="http://www.w3.org/2000/svg" width="408.649" height="423.27" viewBox="0 0 408.649 423.27">
                     <path d="M403.419,385.532,302.681,280.758A170.345,170.345,0,0,0,342.774,170.9c0-94.23-76.665-170.9-170.9-170.9S.984,76.665.984,170.9s76.665,170.9,170.9,170.9a169.065,169.065,0,0,0,97.908-30.925l101.5,105.569a22.289,22.289,0,1,0,32.128-30.9ZM171.879,44.581A126.314,126.314,0,1,1,45.565,170.9,126.455,126.455,0,0,1,171.879,44.581Z" transform="translate(-0.984)"/>
@@ -76,3 +76,4 @@
     <a routerLink="/signin" (click)="onAppear()" class="subscribe" *ngIf="!isAuth && !isSub">Inscription</a>
 </nav>
 
+<div class="backdrop" *ngIf="isMobile && isMenu" (click)="onHide()"></div>

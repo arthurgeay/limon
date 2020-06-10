@@ -168,12 +168,22 @@ header{
 }
 
 @media (max-width: $mobile) {
+    .backdrop {
+        position: fixed;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
     header {
         background-color: var(--rind-green);
         padding: 2rem 1.4rem 1.5rem 1.4rem;
         align-items: center;
         position: relative;
         z-index: 3;
+
     }
     .burger-menu{
         display: block;
@@ -209,8 +219,7 @@ header{
         }
     }
     .nav-search {
-        &:hover,
-        &:focus {
+        &:active {
             background-color: var(--white);
             svg{
                 fill: var(--rind-green);

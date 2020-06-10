@@ -15,6 +15,9 @@ $large: 2400px;
             font-size: 1.5rem;
         }
     }
+    div {
+        margin-bottom: 1rem;
+    }
     &-select {
         display: flex;
         margin: 1rem 0;
@@ -87,3 +90,6 @@ $large: 2400px;
 }
 
 
+.hollow {
+    opacity: .2;
+}

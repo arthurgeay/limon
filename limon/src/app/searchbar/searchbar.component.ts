@@ -24,7 +24,7 @@ export class SearchbarComponent implements OnInit {
 
   OnSearch() {
     this.isSearch = true;
-    const value = this.search.nativeElement.value || 'a';
+    const value = this.search.nativeElement.value;
     this.router.navigate(['/']);
     this.activeSearchService.onSearchEvent.emit(true);
     this.activeSearchService.DataIDEvent.emit(value);

@@ -19,9 +19,9 @@ export class NoteComponent implements OnInit {
   ngOnInit(): void {
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
     this.isAuth = this.authService.isAuth();
-
     this.userNote = Number(this.userNote);
-    //force check n(this.userNote)
+    console.log(this.note);
+    
   }
 
   onNote(note:number) {

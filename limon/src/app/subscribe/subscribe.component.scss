@@ -11,9 +11,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 3rem;
+    margin-top: 5rem;
     padding: 0 5vw;
-    height: calc(100vh - 11rem);
+    min-height: calc(100vh - 11rem);
     max-width: 40rem;
     @media (min-width: 2400px) {
         font-size: 1.5rem;

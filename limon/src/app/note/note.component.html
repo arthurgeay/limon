@@ -16,6 +16,6 @@
     </div>
     <div class="note-medium">
         <p class="note-medium-label">Note moyenne</p>
-        <b class="note-medium-main"><span class="colored">{{note}}</span>/5</b>
+        <b class="note-medium-main"><span class="hollow" *ngIf="note == undefined">5</span><span class="colored">{{note}}</span>/5</b>
     </div>
 </section>

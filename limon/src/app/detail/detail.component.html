@@ -7,7 +7,7 @@
     <div class="detail">
         <h1 class="detail-title">{{ movie?.title }}</h1>
         <div class="detail-line detail-subinfos">
-            <b class="detail-prod">{{ movie?.productor.name }} <span *ngIf="movie?.release_date !== '' && movie?.productor.name != ''">-</span> {{ movie?.release_date | date:'yyyy' }}</b>
+            <b class="detail-prod">{{ movie?.productor.name }} <span *ngIf="movie?.release_date !== '' && movie?.productor.name != ' ' && movie?.productor.name != ''">-</span> {{ movie?.release_date | date:'yyyy' }}</b>
             <div class="detail-category" *ngIf="movie?.category.name !== ''">{{ movie?.category.name }}</div>
         </div>
         <p class="detail-desc">{{ movie?.synopsis || 'Aucun synopsis disponible' }}</p>

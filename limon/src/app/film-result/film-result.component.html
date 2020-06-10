@@ -31,6 +31,7 @@
         <h2>Nouveautés</h2>
         <div class="new-row" (scroll)="onScroll1($event)" #scroll1>
             <app-film-card *ngFor="let card of movies?.last_movies" [card]="card"></app-film-card>
+            <div class="dummy">|||</div>
         </div>
         <button class="new-new-next start" *ngIf="scrollToLeft1" (click)="scroll1Start()"><span></span></button>
         <button class="new-new-next" *ngIf="scrollToRight1" (click)="scroll1End()"><span></span></button>
@@ -39,6 +40,7 @@
         <h2>Les plus populaires</h2>
         <div class="new-row" (scroll)="onScroll2($event)" #scroll2>
             <app-film-card *ngFor="let card of movies?.most_rating_movies" [card]='card[0].movie'></app-film-card>
+            <div class="dummy">|||</div>
         </div>
         <button class="new-popular-next start" *ngIf="scrollToLeft2" (click)="scroll2Start()"><span></span></button>
         <button class="new-popular-next" *ngIf="scrollToRight2" (click)="scroll2End()"><span></span></button>

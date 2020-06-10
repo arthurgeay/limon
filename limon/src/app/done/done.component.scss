@@ -64,15 +64,21 @@
 }
 
 .deco1 {
-    top: 0;
+    top: -3rem;
     left: 0;
     transform: rotate(-40deg);
+    @media (min-width: 665px) {
+        top: 0;
+    }
 }
 
 .deco2 {
-    bottom: 0;
+    bottom: -5rem;
     right: 1rem;
     transform: rotate(230deg);
+    @media (min-width: 665px) {
+        bottom: 0;
+    }
 }
 
 .important {
