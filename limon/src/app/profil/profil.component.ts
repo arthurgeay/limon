@@ -105,7 +105,6 @@ export class ProfilComponent implements OnInit {
 
 
   initForm() {
-    this.user.birthday = this.datePipe.transform(this.user.birthday, 'MMMM d, y')
       this.userForm = this.formBuilder.group({
         'fullname': [this.user.fullname , Validators.required],
         'email': [this.user.email, Validators.required],

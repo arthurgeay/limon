@@ -13,8 +13,9 @@ export class AgreementComponent implements OnInit {
   constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-        const route = this.route.snapshot.routeConfig.path;
-        this.isAgreement = route === 'agreement' ? true : false;
+      //define the content of the page from the URL
+      const route = this.route.snapshot.routeConfig.path;
+      this.isAgreement = route === 'agreement' ? true : false;
   }
 
 }

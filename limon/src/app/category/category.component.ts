@@ -10,12 +10,12 @@ import { MovieService } from '../movie.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  public isCatChoose = false;
+
   public categoriesSubject = new Subject<any[]>();
   public categories: any;
-  categorySubscription: Subscription;
+  public categorySubscription: Subscription;
   
-  constructor(private http:HttpClient,
+  constructor(
     private activeSearchService:ActiveSearchService,
     private movieService:MovieService) { }
 
@@ -28,11 +28,12 @@ export class CategoryComponent implements OnInit {
     this.movieService.getAllCategories();
   }
 
+  /* 
+  * method: string
+  *   send the actual category to search
+  */
   onSearch(name) {
     this.activeSearchService.categoryEvent.emit(name);
   }
 
-  onCatChoose()  {
-    this.isCatChoose = !this.isCatChoose;
-  }
 }
