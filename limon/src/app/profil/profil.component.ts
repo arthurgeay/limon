@@ -117,6 +117,9 @@ export class ProfilComponent implements OnInit {
     this.onEdit();
     const formValue = this.userForm.value;
     this.userForm.reset();
+
+    formValue['birthday'] = new Date(formValue['birthday']).toLocaleDateString('en');
+    
     const body = new HttpParams()
     .set('fullname', formValue['fullname'])
     .set('email', formValue['email'])
