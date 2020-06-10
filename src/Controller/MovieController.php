@@ -123,16 +123,22 @@ class MovieController extends AbstractController
      * @SWG\Tag(name="movie")
      * @Areas({"default"})
      */
-    public function show($id, MovieRepository $movieRepository)
+    public function show($id, MovieRepository $movieRepository, PurchaseRepository $purchaseRepository, RatingRepository $ratingRepository)
     {
-
         $movie = $movieRepository->findWithRatingsAndReviews($id);
+        $alreadyBuy = false;
+        $userNote = null;
+
+        if($this->getUser()) {
+            $alreadyBuy = $purchaseRepository->findOneBy(['movie' => $id, 'user' => $this->getUser()]) ? true : false;
+            $userNote = $ratingRepository->findOneBy(['movie' => $id, 'user' => $this->getUser()]);
+        }
 
         if(!$movie || $movie[0] == null) {
             return $this->json(['status' => 'Aucun film trouvé'], 404);
         }
 
-        return $this->json($movie, 200, [], ['groups' => ['movie']]);
+        return $this->json(['movie' => $movie, 'buy' => $alreadyBuy, 'user_note' => $userNote], 200, [], ['groups' => ['movie']]);
     }
 
     /**
