@@ -2,6 +2,7 @@ $mobile: 665px;
 $large: 2400px;
 
 .cat{
+    margin-bottom: 2rem;
     @media (max-width: $mobile) {
         padding: 1rem 0;
         margin-top: 4rem;
@@ -13,9 +14,13 @@ $large: 2400px;
         @media (min-width: $large) {
             font-size: 1.2rem;
         } 
+
     }
     h2 {
         padding-left: 1rem;
+        @media (min-width: $mobile) {
+            padding-left: 4rem;
+        } 
     }
 }
 .category {
@@ -24,6 +29,9 @@ $large: 2400px;
     -ms-overflow-style: none;
     scrollbar-width:none;
     padding-left: 1rem;
+    @media (min-width: $mobile) {
+        padding-left: 4rem;
+    } 
     &-item {
         background-color: var(--rind-green);
         border-radius: 5px;

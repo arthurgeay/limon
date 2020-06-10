@@ -13,6 +13,7 @@ declare var Stripe;//: stripe.StripeStatic;
   styleUrls: ['./checkout.component.scss']
 })
 export class CheckoutComponent implements OnInit {
+
   @Input() public amount:number;
   @Input() public title:string;
   @Input() public id:number;
@@ -22,20 +23,22 @@ export class CheckoutComponent implements OnInit {
   @ViewChild('cardElement', {static: false}) cardElement: ElementRef;
   public purchase:any;
   public user:any;
-  stripe:any;
-  card:any;
-  cardErrors:any;
-  loading = false;
-  userSubscription: Subscription;
+  public stripe:any;
+  public card:any;
+  public cardErrors:any;
+  public loading = false;
+  public userSubscription: Subscription;
 
   constructor(private router:Router,
     private movieService:MovieService,
     private userService:UserService) { }
 
   ngOnInit(): void {
+    // settle stripe
     this.stripe = Stripe('pk_test_DeZzMPNpBYMz6rr8P0noCD2n00RXOc7lTx');
     const elements = this.stripe.elements();
 
+    // get user name and product name
     this.userSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=> {
         this.user = data.fullname;
@@ -43,15 +46,11 @@ export class CheckoutComponent implements OnInit {
           "customer": this.user,
           "product": this.title
         }
-        
       }
     );
-    this.userService.getActualUser();
-    this.purchase = {
-      "customer": this.user,
-      "product": this.title
-    }
+    this.userService.getActualUser();// fetch the API
 
+    // settle config for strip popup
     setTimeout(() => {
       this.card = elements.create('card', {
         style: {
@@ -66,39 +65,45 @@ export class CheckoutComponent implements OnInit {
       });
       this.card.mount(this.cardElement.nativeElement);
   
+      // manage errors
       this.card.addEventListener('change', ({ error }) => {
         this.cardErrors = error && error.message;
       });
-
     }, 500);
-
   }
 
+
+  // launch stripe with user interact
   async handleForm(e) {
     e.preventDefault();
     const { source, error } = await this.stripe.createSource(this.card);
     if (error) {
       const cardErrors = error.message;
     } else {
-      this.loading = true;
+      this.loading = true;  // start the loader
       setTimeout(() => {
-        this.loading = false;  
+        this.loading = false;  //end the loader
+
+        // if user subscribe
         if(this.direction == 'sub') {
           this.movieService.subscribeOnMovie();
           this.router.navigate([`subscribed`])
           console.warn('abonnement');
-        }
+        } // or if user purchase a movie
         else {
           this.movieService.purchaseMovieById(+this.id)
           this.router.navigate([`complete/${this.id}`])
           console.warn('achat');
         }
       }, 2000);
-      
     }
   }
 
-  onClear() {
+  /* 
+  * method:void
+  *   remove the popup
+  */
+  onClear():void {
     this.isCheckChange.emit(false);
   }
 

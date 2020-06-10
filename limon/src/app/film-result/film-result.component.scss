@@ -14,6 +14,7 @@ $large: 2400px;
     margin-top: 1rem;
     @media (min-width:$mobile) {
         margin-left: 4rem;
+        margin-top: 4rem;
         font-size: 1.7rem;
     }
 }
@@ -67,8 +68,9 @@ $large: 2400px;
     display: grid;
     min-height: calc(100vh - 21rem);
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+    justify-content: center;
     @media (min-width: $tablet) {
-        grid-template-columns: repeat(auto-fit, 13rem);
+        grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
     }
     @media (min-width: $mobile) {
         padding: 0 3rem;
@@ -91,7 +93,7 @@ $large: 2400px;
 
 
 .new {
-    margin-top: 6rem;
+    margin-top: 4rem;
     &-new{
         position: relative;
     }
@@ -104,6 +106,9 @@ $large: 2400px;
         position: relative;
         scroll-behavior: smooth;
         padding-left: 1.5rem;
+        @media (min-width: $mobile) {
+            padding-left: 3rem;
+        } 
         app-film-card {
             margin: 0 1rem;
         }
@@ -122,6 +127,9 @@ $large: 2400px;
     }
     h2{
         margin: 0 0 2rem 2rem;
+        @media (min-width: $mobile) {
+            margin-left: 4rem;
+        } 
     }
 }
 

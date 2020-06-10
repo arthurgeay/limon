@@ -22,6 +22,7 @@ export class ConnexionComponent implements OnInit {
               private authService: AuthService) { }
 
   ngOnInit(): void {
+     //define the content of the page from the URL
     const route = this.route.snapshot.routeConfig.path;
     this.isLogin = route === 'login' ? true : false;
     this.initForm();
@@ -35,9 +36,10 @@ export class ConnexionComponent implements OnInit {
   }
 
   /**
-   * Initialize form
+   * method: void
+   *    Initialize form
    */
-  initForm() {
+  initForm(): void {
     if(this.isLogin) {
       this.userForm = this.formBuilder.group({
         'username': ['', [Validators.required, Validators.email]],
@@ -53,7 +55,11 @@ export class ConnexionComponent implements OnInit {
     }
   }
 
-  onErrors() {
+  /**
+   * method: void
+   *  display errors
+   */
+  onErrors():void {
     if(this.userForm.get('email').errors) {
       this.errors[0] = 'Veuillez saisir une adresse e-mail valide';
     } 
@@ -64,21 +70,22 @@ export class ConnexionComponent implements OnInit {
   }
 
   /**
-   * Send data for login
+   * method: void
+   *    Send data for login
    */
-  onSubmitForm() {
+  onSubmitForm():void {
     this.authService.errors = [];
     this.authService.emitErrorSubject();
     const formValue = this.userForm.value;
 
-    let user = null;
+    let user = null;  //Reset user
 
+    // sending values depending is login or sign in
     if(this.isLogin) {
       user = new User(
         formValue['username'],
         formValue['password']
       );
-
       this.authService.login(user);
 
     } else {
@@ -88,7 +95,6 @@ export class ConnexionComponent implements OnInit {
         formValue['birthday'],
         formValue['fullname']
       );
-
       this.authService.register(user);
     }
 

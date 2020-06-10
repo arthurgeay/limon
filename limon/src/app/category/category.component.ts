@@ -20,6 +20,7 @@ export class CategoryComponent implements OnInit {
     private movieService:MovieService) { }
 
   ngOnInit(): void {
+    // retrieve all category names
     this.categorySubscription = this.movieService.categorySubject.subscribe(
       (data:any)=>{
         this.categories = data;
@@ -32,7 +33,7 @@ export class CategoryComponent implements OnInit {
   * method: string
   *   send the actual category to search
   */
-  onSearch(name) {
+  onSearch(name: string) {
     this.activeSearchService.categoryEvent.emit(name);
   }
 
