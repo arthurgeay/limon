@@ -41,7 +41,7 @@ class UserController extends AbstractController
         if($this->isGranted('ROLE_ADMIN') && $userId) {
             $userInfo = $userRepository->findEmailAndSubscription($userId);
 
-            if(!$user) {
+            if(!$userInfo) {
                 return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
             }
         }
@@ -126,9 +126,18 @@ class UserController extends AbstractController
     /**
      * @Route("/movies-purchased", name="movies_purchased", methods={"GET"})
      */
-    public function historyMoviePurchased(PurchaseRepository $purchaseRepository)
+    public function historyMoviePurchased(Request $request, PurchaseRepository $purchaseRepository)
     {
         $moviesPurchased = $purchaseRepository->all($this->getUser());
+        $userId = $request->query->getInt('userId');
+
+        if($this->isGranted('ROLE_ADMIN') && $userId) {
+            $moviesPurchased = $purchaseRepository->all($userId);
+
+            if(!$moviesPurchased) {
+                return $this->json(['status' => 'Cet utilisateur n\'existe pas !'], 400);
+            }
+        }
 
         if(count($moviesPurchased) == 0) {
             return $this->json(['status' => 'Aucun film trouvé', 'empty' => true]);
