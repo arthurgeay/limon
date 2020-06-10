@@ -8,13 +8,18 @@
         <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' || '../../assets/profil-notfound.png'}}" alt="Photo de profil" class="profil-main-pic">
         <div class="profil-main-infos">
             <h1 *ngIf="!isEdit">{{ user?.fullname }}</h1>
-            <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
-            <div *ngIf="isPremium"><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
+            <div *ngIf="user?.subscription?.activate"><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
         </div>  
+        <div class="modify-main">
+            <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
+            <a *ngIf="isEdit" href="https://fr.gravatar.com/" aria-label="Changer la photo de profil" target="_blank" class="gravatar">
+                <img src="assets/icons/gravatar.png" alt="">
+                Modifier votre photo de profil sur Gravatar</a>
+        </div>
         <div class="sup-deconnect sup2" *ngIf="!isEdit && isAdmin">
             <button class="deconnect ad-light" routerLink="/admin" type="button">Accéder à l'administration</button>
         </div>
-        <img src="../../assets/icons/settings-icon.png" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
+        <img src="../../assets/icons/settings-icon.svg" alt="Paramètres" class="profil-main-settings" (click)="onOpenSettings()">
         <div *ngIf="isSettings" class="profil-main-popup">
             <a (click)="onEdit();onOpenSettings();">Modifier les informations</a>
             <a (click)="swapModal();onOpenSettings()">Supprimer le compte</a>
@@ -36,21 +41,27 @@
         </div>
     </section>
     <section class="profil-access">
-        <div class="profil-access-cont" *ngIf="!isEdit">
+        <div class="profil-access-cont" *ngIf="!isEdit && isActual">
             <button routerLink="/history" type="button">
-                <img src="../../assets/icons/history-icon.png" alt="">
+                <img src="../../assets/icons/history-icon.svg" alt="">
             </button>
             <p>Consulter l'historique</p>
         </div>
-        <div class="profil-access-cont"  *ngIf="!isEdit" >
+        <div class="profil-access-cont"  *ngIf="!isEdit && isActual">
             <button routerLink="/watchlist"type="button">
-                <img src="../../assets/icons/watchlist-icon.png" class="history-icon" alt="">
+                <img src="../../assets/icons/watchlist-icon.svg" class="history-icon" alt="">
             </button>
             <p>Consulter votre watchlist</p>
         </div>
-        <div class="profil-access-cont">
+        <div class="profil-access-cont" *ngIf="isActual">
             <button routerLink="/purchase" type="button">
-                <img src="../../assets/icons/achat-icon.png" class="purchase-icon" alt="">
+                <img src="../../assets/icons/achat-icon.svg" class="purchase-icon" alt="">
+            </button>
+            <p>Voir les Films achetés</p>
+        </div>
+        <div class="profil-access-cont" *ngIf="!isActual">
+            <button [routerLink]="['/purchase']" [queryParams]="{userId:id}" type="button">
+                <img src="../../assets/icons/achat-icon.svg" class="purchase-icon" alt="">
             </button>
             <p>Voir les Films achetés</p>
         </div>

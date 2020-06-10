@@ -3,18 +3,18 @@
 <h2 class="phrase-res" *ngIf="isSearch">Résultats de votre recherche</h2>
 <section id="sorting" *ngIf="isSearch">
     <button (click)="onAlph();onSortAlph()" class="sort">
-        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isAlph">
-        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isAlph">
+        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isAlph">
+        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isAlph">
         <p>A-Z</p>
     </button>
     <button (click)="onPrice();onSortPrice()"class="sort">
-        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isPrice">
-        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isPrice">
+        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isPrice">
+        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isPrice">
         <p>Prix</p>
     </button>
     <button (click)="onDate();onSortDate()" class="sort">
-        <img src="../../assets/icons/croissant.png" alt="Croissant" *ngIf="isDate">
-        <img src="../../assets/icons/decroissant.png" alt="Décroissant" *ngIf="!isDate">
+        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isDate">
+        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isDate">
         <p>Date</p>
     </button>
 </section>

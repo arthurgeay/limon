@@ -2,15 +2,15 @@
 <div class="review">
     <div class="review-upper">
         <div class="review-user">
-            <img src="{{ reviews.pic || 'assets/profil-notfound.png' }}" alt="image de profil de l'utilisateur">
+            <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' }}" alt="image de profil de l'utilisateur">
             <div class="review-user-infos">
                 <h2>{{ reviews.user.fullname }}</h2>
                 <p class="review-user-infos-date">{{ reviews.created_at | date: 'yyyy' }}</p>
             </div>
         </div>
         <div class="review-button" *ngIf="isAuth">
-            <button *ngIf="isAdmin || isActual" class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.png" alt="éditer le commentaire"></button>
-            <button *ngIf="isAdmin || isActual" class="review-button-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.png" alt="supprimer le commentaire"></button>
+            <button *ngIf="isAdmin || isActual" class="review-button-edit" (click)="onEdit(reviews.id)"><img src="../../assets/icons/edit-icon.svg" alt="éditer le commentaire"></button>
+            <button *ngIf="isAdmin || isActual" class="review-button-delete" (click)="swapModal()"><img src="../../assets/icons/bin-icon.svg" alt="supprimer le commentaire"></button>
         </div>
     </div>
     <div class="review-lower">

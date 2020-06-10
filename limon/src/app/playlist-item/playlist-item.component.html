@@ -11,9 +11,9 @@
     <div class="item-command">
         <p class="item-command-date" *ngIf="isHistory">20:32 - 23 Mars</p>
         <button class="item-command-bill" (click)="onBill()" *ngIf="isPurchase"><img src="../../assets/icons/facture-icon.png" alt="">Facture</button>
-        <button class="item-command-delete" (click)="onDelete(item.id)" *ngIf="isWatch"><img src="../../assets/icons/bin-icon.png" alt="">Supprimer</button>
-        <button *ngIf="!isBuy && (isHistory || isWatch)" (click)="buy()"><img src="../../assets/icons/achat-icon.png" alt="">Acheter</button>
-        <button *ngIf="isBuy || isPurchase && (isHistory || isPurchase || isWatch)" (click)="onDl(item.id)"><img src="../../assets/icons/download-icon.png" alt="">Télécharger</button>
+        <button class="item-command-delete" (click)="onDelete(item.id)" *ngIf="isWatch"><img src="../../assets/icons/bin-icon.svg" alt="">Supprimer</button>
+        <button *ngIf="!isBuy && (isHistory || isWatch)" (click)="buy()"><img src="../../assets/icons/achat-icon.svg" alt="">Acheter</button>
+        <button *ngIf="isBuy || isPurchase && (isHistory || isPurchase || isWatch)" (click)="onDl(item.id)"><img src="../../assets/icons/download-icon.svg" alt="">Télécharger</button>
     </div>
 </section>
 <app-checkout *ngIf="isCheck" [(isCheck)]="isCheck" [amount]="item?.price" [title]="item?.title" [id]="item?.id" [direction]="direction"></app-checkout>

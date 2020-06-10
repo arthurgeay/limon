@@ -162,6 +162,9 @@ header{
         flex-basis: 100%;
         justify-content: center;
     }
+    .nav {
+        margin-left: auto;
+    }
 }
 
 @media (max-width: $mobile) {
@@ -199,8 +202,11 @@ header{
             width: 100%;
         }
     }
-    .nav > div {
-        margin: 0 .5rem;
+    .nav{
+        margin-left: 0;
+        &> div {
+            margin: 0 .5rem;
+        }
     }
     .nav-search {
         &:hover,

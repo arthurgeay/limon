@@ -31,6 +31,7 @@ const routes: Routes = [
   {path: 'edit/:id',canActivate: [AdminGuard], component: EditFilmComponent },
   {path: 'history',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'purchase',canActivate: [AuthGuard], component: PlaylistComponent },
+  {path: 'purchase/:id',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'watchlist',canActivate: [AuthGuard], component: PlaylistComponent },
   {path: 'subscription', component: SubscribeComponent },
   {path: 'members',canActivate: [AdminGuard], component: MemberListComponent },

@@ -32,7 +32,7 @@ $large: 2400px;
                 display: block;
             }
             &:hover ~ .note-select-item {
-                opacity: .7!important;
+                opacity: .4!important;
             }
             &:active {
                 transform: scale(1.02) rotate(90deg);
@@ -58,12 +58,12 @@ $large: 2400px;
                     left: .7rem;
                     font-size: .6rem;
                     outline: none;
-                    opacity: .7;
+                    opacity: .4;
                 }
             }
         }
         input:checked ~ label {
-            opacity: .7;
+            opacity: .4;
             outline: none;
         }
         input:checked + label {

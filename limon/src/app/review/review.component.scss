@@ -34,6 +34,11 @@ $large: 2400px;
         }
     }
     &-button {
+        @media (max-width: $mobile) {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;  
+        }
         button{
             border-radius: 5px;
             padding: .4rem;

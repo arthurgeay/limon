@@ -31,6 +31,7 @@ export class DetailComponent implements OnInit {
   catalog: any;
   isEmpty: boolean;
   isReviewEmpty: boolean = false;
+  public usrNote: any;
   
   constructor(private movieService:MovieService,
               private mobileService:MobileService,
@@ -47,12 +48,14 @@ export class DetailComponent implements OnInit {
     this.isAdmin = this.authService.isAdmin();
 
     this.movieSubscription = this.movieService.movieSubject.subscribe(
-      (movie:any)=>{
-        this.movie = movie;
-        this.reviews = movie.reviews;
+      (data:any)=>{
+        this.movie = data.movie[0];
+        this.reviews = data.movie[0].reviews;
         this.isReviewEmpty = this.reviews.length == 0 ? true : false;
-        if (movie.note) {
-          this.note = movie.note.substring(0,1);
+        this.usrNote = data.user_note;
+        this.isPurchase = data.buy;
+        if (data.movie.avg_score != null) {
+          this.note = data.movie.avg_score.substring(0,1);
         }
       }
     );

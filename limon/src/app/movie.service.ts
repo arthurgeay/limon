@@ -45,8 +45,7 @@ export class MovieService {
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}`)
     .subscribe(
       (data:any)=>{
-        this.movie = data[0];
-        this.movie.note = data.avg_score;
+        this.movie = data;
         this.EmitOnMovie();
       },
       (error)=>{

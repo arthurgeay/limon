@@ -54,6 +54,7 @@ export class ProfilComponent implements OnInit {
     else {
       this.displayParticularUser();
     }
+
   }
 
 
@@ -130,7 +131,6 @@ export class ProfilComponent implements OnInit {
     })
     .subscribe(
       (data:any)=>{
-        console.log(data);
         this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
           this.router.navigate([this.path]);
         });

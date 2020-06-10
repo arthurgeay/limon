@@ -7,12 +7,12 @@
     
     <section class="logo proper-touch" *ngIf="!isMobile">
         <a class="logo-container" routerLink="/" (click)="onReset()">
-            <img src="../../assets/logo.png" alt="logo">
+            <img src="../../assets/logo.svg" alt="logo">
         </a>
     </section>
     <section class="maxi proper-touch" *ngIf="isMobile">
         <a class="logo-container mobile-logo" routerLink="/" (click)="onReset()">
-            <img src="../../assets/shdow.png" alt="logo">
+            <img src="../../assets/shdow.svg" alt="logo">
         </a>
     </section>
     <app-searchbar *ngIf="!isMobile"></app-searchbar>
@@ -27,7 +27,7 @@
         </div>
         <div *ngIf="isAuth">
             <a class="nav-profil" routerLink="/profil" title="profil">
-                <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' || '../../assets/profil-notfound.png'}}" alt="Image de Profil" class="nav-profil-pic">
+                <img *ngIf="mail" src="{{ 'https://www.gravatar.com/avatar/' + mail + '?s=200&d=https%3A%2F%2Flimon.app-tricycle.com%2Fassets%2Fprofil-notfound.png' }}" alt="Image de Profil" class="nav-profil-pic">
                 <img src="../../assets/icons/badge.png" alt="badge" tabindex="-1" class="nav-profil-badge" *ngIf="isSub">
             </a>
         </div>

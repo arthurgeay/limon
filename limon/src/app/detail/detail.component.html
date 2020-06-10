@@ -2,7 +2,7 @@
 <section class="movie">
     <div class="movie-img">
         <img src="{{ movie?.hero_img }}" alt="" class="movie-hero" *ngIf="!isMobile">
-        <img src="{{ movie?.poster_img || '../../assets/poster-notfound.png' }}" alt="" class="movie-poster" *ngIf="isMobile">
+        <img src="{{ movie?.poster_img || '../../assets/poster-notfound.webp' }}" alt="" class="movie-poster" *ngIf="isMobile">
     </div>
     <div class="detail">
         <h1 class="detail-title">{{ movie?.title }}</h1>
@@ -15,10 +15,10 @@
                 <p>Prix</p><h2 class="detail-pricing">{{ movie?.price }} €</h2>
         </div>
         <div class="detail-line">
-            <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon">  Acheter</button>
-            <button class="detail-buy" routerLink="/complete/{{movieID}}" *ngIf="movie?.price == 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.png" alt="" class="detail-icon"> Télécharger</button>
-            <button class="detail-play" *ngIf="isAuth && isPremium" (click)="onPlay()"><img src="../../assets/icons/play-icon.png" alt="" class="detail-icon"> Lecture</button>
-            <button class="detail-play" *ngIf="isAuth && !isPremium" routerLink="/subscription">S'abonner pour le visionner</button>
+            <button class="detail-buy" (click)="buy()" *ngIf="movie?.price !== 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.svg" alt="" class="detail-icon">  Acheter</button>
+            <button class="detail-buy" routerLink="/complete/{{movieID}}" *ngIf="movie?.price == 0 && !isPurchase && isAuth && !isAdmin"><img src="../../assets/icons/achat-icon-color.svg" alt="" class="detail-icon"> Télécharger</button>
+            <button class="detail-play" *ngIf="isAuth && isPremium || isPurchase" (click)="onPlay()"><img src="../../assets/icons/play-icon.svg" alt="" class="detail-icon"> Lecture</button>
+            <button class="detail-play" *ngIf="isAuth && !isPremium && !isPurchase" routerLink="/subscription">S'abonner pour le visionner</button>
             <button class="detail-play" *ngIf="!isAuth" routerLink="/register">S'abonner pour le visionner</button>
             <button class="detail-subscribe" (click)="download()" *ngIf="isPurchase">Télécharger</button>
             <button class="detail-edit" (click)="onEdit()" *ngIf="isAdmin">Modifier</button>
@@ -42,7 +42,7 @@
         <p *ngIf="isReviewEmpty" class="community-empty">Soyez le premier à donner votre avis sur le film 😄</p>
     </section>
     <div class="wrap-func">
-        <section class="note"><app-note [note]="note"></app-note></section>
+        <section class="note"><app-note [note]="note" [userNote]="usrNote"></app-note></section>
         <section class="write"><app-write-review></app-write-review></section>
     </div>
 </section>

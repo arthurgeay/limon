@@ -4,6 +4,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';
+import { Md5 } from 'ts-md5';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-review',
@@ -17,6 +19,8 @@ export class ReviewComponent implements OnInit {
   public isAuth: boolean;
   public isAdmin: boolean;
   public isActual:boolean;
+  actualUserSubscription: Subscription;
+  mail: string;
 
   constructor(private http: HttpClient,
     private userService:UserService,
@@ -33,6 +37,8 @@ export class ReviewComponent implements OnInit {
     if (this.isAuth) {
       this.isActual = this.userService.actualUser.id === this.reviews.user.id ? true : false;
     }
+    const md5 = new Md5();
+    this.mail = md5.appendStr(this.reviews.user.email).end().toString();
   }
 
 

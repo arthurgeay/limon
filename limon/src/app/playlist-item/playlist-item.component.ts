@@ -28,11 +28,9 @@ export class PlaylistItemComponent implements OnInit {
     private movieService:MovieService) { }
 
   ngOnInit(): void {
-    console.log(this.alr_buy);
     if (this.alr_buy == 1) {
       this.isBuy = true;
     }
-    console.log(this.item);
   }
 
   onDl(id:number) {

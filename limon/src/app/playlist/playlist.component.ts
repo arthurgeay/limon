@@ -14,6 +14,7 @@ export class PlaylistComponent implements OnInit {
   isPurchase: boolean;
   isEmpty: boolean = false;
   public catalog: any;
+  id: number;
 
   constructor(private route:ActivatedRoute,
     private movieService:MovieService,
@@ -21,9 +22,11 @@ export class PlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
+    // @ts-ignore
+    this.id = this.route.queryParams._value.userId == undefined ? 0 : Number(this.route.queryParams._value.userId);
     this.isHistory = route === 'history' ? true : false;
     this.isWatch = route === 'watchlist' ? true : false;
-    this.isPurchase = route === 'purchase' ? true : false;
+    this.isPurchase = route.includes('purchase') ? true : false;
 
     if (this.isHistory) {
       this.displayHistory();
@@ -31,8 +34,13 @@ export class PlaylistComponent implements OnInit {
     else if (this.isWatch) {
       this.displayWatchlist();
     }
-     else if (this.isPurchase) {
-      this.displayPurchase();
+    else if (this.isPurchase) {
+      if (this.id == 0) {
+        this.displayPurchase();
+      }
+      else {
+        this.displaySpecificPurchase();
+      }
     }
 
   }
@@ -40,7 +48,7 @@ export class PlaylistComponent implements OnInit {
 
 
   displayHistory() {
-    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched?page=1`)
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched`)
     .subscribe(
       (data:any)=>{
         this.catalog = data;  
@@ -67,7 +75,20 @@ export class PlaylistComponent implements OnInit {
   }
 
   displayPurchase() {
-    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?page=1`)
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased`)
+    .subscribe(
+      (data:any)=>{
+        this.catalog = data;      
+        this.isEmpty = data.empty === true ? true : false;
+      },
+      (error)=>{
+        console.log(error);
+      }
+    )
+  }
+
+  displaySpecificPurchase() {
+    this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?userId=${this.id}`)
     .subscribe(
       (data:any)=>{
         this.catalog = data;      

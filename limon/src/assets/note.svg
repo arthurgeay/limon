@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="909.21" height="907" viewBox="0 0 909.21 907">
+  <g id="note" transform="translate(10021 1179)">
+    <g id="Groupe_455" data-name="Groupe 455" transform="translate(-7277 -2418)">
+      <g id="Groupe_128" data-name="Groupe 128" transform="translate(-2743.842 1239.234)">
+        <ellipse id="Ellipse_5" data-name="Ellipse 5" cx="453" cy="453.5" rx="453" ry="453.5" transform="translate(-0.158 -0.234)" fill="#28a601"/>
+        <line id="Ligne_33" data-name="Ligne 33" y2="900.42" transform="translate(455.382 2.93)" fill="none" opacity="0"/>
+        <line id="Ligne_34" data-name="Ligne 34" y2="900.42" transform="translate(905.592 453.14) rotate(90)" fill="none" opacity="0"/>
+      </g>
+      <g id="Groupe_129" data-name="Groupe 129" transform="translate(-2698.528 1284.548)">
+        <ellipse id="Ellipse_5-2" data-name="Ellipse 5" cx="408" cy="407.5" rx="408" ry="407.5" transform="translate(-0.472 0.452)" fill="#e1f3be"/>
+        <line id="Ligne_33-2" data-name="Ligne 33" y2="811.809" transform="translate(409.845 1.921)" fill="none" opacity="0"/>
+        <line id="Ligne_34-2" data-name="Ligne 34" y2="811.809" transform="translate(815.75 407.826) rotate(90)" fill="none" opacity="0"/>
+      </g>
+      <path id="Intersection_18" data-name="Intersection 18" d="M189,379.5c-.619,0-1.245,0-1.867,0A371.1,371.1,0,0,1,0,329.157L187.132,0,374.268,329.159A371.04,371.04,0,0,1,189,379.5v0Z" transform="translate(-2475.947 1692.373)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+      <path id="Intersection_19" data-name="Intersection 19" d="M189,0c-.619,0-1.245,0-1.867,0A371.1,371.1,0,0,0,0,50.348L187.132,379.506,374.268,50.347A371.041,371.041,0,0,0,189,0V0Z" transform="translate(-2475.947 1310.98)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+      <path id="Intersection_21" data-name="Intersection 21" d="M189,379.5c-.619,0-1.245,0-1.867,0A371.1,371.1,0,0,1,0,329.157L187.132,0,374.268,329.159A371.04,371.04,0,0,1,189,379.5v0Z" transform="translate(-2193.29 1531.727) rotate(120)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+      <g id="Groupe_134" data-name="Groupe 134" transform="translate(-1766.698 1560.995) rotate(120)">
+        <line id="Ligne_68" data-name="Ligne 68" y1="751.428" transform="translate(1.869 379.505) rotate(-90)" fill="#9be232" stroke="#e1f3be" stroke-width="6"/>
+      </g>
+      <path id="Intersection_23" data-name="Intersection 23" d="M0,50.348a372.935,372.935,0,0,1,374.265,0L187.134,379.506Z" transform="translate(-2521.952 2048.437) rotate(-120)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+      <path id="Intersection_24" data-name="Intersection 24" d="M189,0c-.619,0-1.245,0-1.867,0A371.1,371.1,0,0,0,0,50.348L187.132,379.506,374.268,50.347A371.04,371.04,0,0,0,189,0V0Z" transform="translate(-2047.423 1338.974) rotate(60)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+      <path id="Intersection_25" data-name="Intersection 25" d="M0,329.158a372.935,372.935,0,0,0,374.265,0L187.134,0Z" transform="translate(-2376.085 1855.684) rotate(-60)" fill="#a7e232" stroke="#e1f3be" stroke-width="33"/>
+    </g>
+  </g>
+</svg>

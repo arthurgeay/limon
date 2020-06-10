@@ -9,15 +9,19 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
-  @Input() note:string;
+  @Input() note: string;
+  @Input() userNote: any;
   movieID: any;
-  isAuth:boolean;
+  isAuth: boolean;
 
   constructor(private http:HttpClient, private route:ActivatedRoute, private authService:AuthService) { }
 
   ngOnInit(): void {
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
     this.isAuth = this.authService.isAuth();
+
+    this.userNote = Number(this.userNote);
+    //force check n(this.userNote)
   }
 
   onNote(note:number) {
