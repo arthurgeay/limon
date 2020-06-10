@@ -2,9 +2,8 @@ $mobile: 665px;
 $large: 2400px;
 
 .cat{
-    padding-left: 4rem;
     @media (max-width: $mobile) {
-        padding: 1rem;
+        padding: 1rem 0;
         margin-top: 4rem;
     }
     &-select{
@@ -15,12 +14,16 @@ $large: 2400px;
             font-size: 1.2rem;
         } 
     }
+    h2 {
+        padding-left: 1rem;
+    }
 }
 .category {
     display: flex;
     overflow-x: scroll;
     -ms-overflow-style: none;
     scrollbar-width:none;
+    padding-left: 1rem;
     &-item {
         background-color: var(--rind-green);
         border-radius: 5px;

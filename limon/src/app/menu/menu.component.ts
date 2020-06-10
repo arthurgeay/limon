@@ -57,6 +57,11 @@ export class MenuComponent implements OnInit {
   onAppear() {
     this.isMenu = !this.isMenu;
   }
+
+  onHide() {
+    this.isMenu = false;
+  }
+
   onMenuOpen(){
     return(this.isMenu ? 'translateY(0rem)' : 'translateY(-15rem)')
   }

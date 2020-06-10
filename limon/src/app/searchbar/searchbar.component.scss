@@ -83,9 +83,13 @@ $tablet: 1080px;
         position: absolute;
         left: 0;
         top: 6rem;
+        padding: 0 1rem;
         &-bar-container {
             min-width: 13rem;
             width: 100%;
         }
+    }
+    #search {
+        margin-right: .5rem;
     }
 }

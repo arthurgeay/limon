@@ -7,14 +7,12 @@ $large: 1900px;
     justify-content: center;
     padding: 2rem;
     min-height: calc(100vh - 15rem);
+    font-size: 1.7rem;
     h1 {
         margin-bottom: 2rem;
     }
     @media (min-width: $mobile) {
         padding: 4rem;
-    }
-    @media (min-width: $large) {
-        font-size: 2.2rem;
     }
     &-cont, form{
         display: grid;
