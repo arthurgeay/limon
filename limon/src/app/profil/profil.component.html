@@ -33,8 +33,8 @@
         </div>
         <div>
             <h2>Date de naissance</h2>
-            <p *ngIf="!isEdit">{{ user?.birthday }}</p>
-            <input type="text" formControlName="birthday" value="{{ user?.birthday }}" *ngIf="isEdit">
+            <p *ngIf="!isEdit">{{ user?.birthday | date}}</p>
+            <input type="date" formControlName="birthday" [ngModel]="user?.birthday | date:'yyyy-MM-dd' " *ngIf="isEdit">
         </div>
         <div class="sup-deconnect" *ngIf="!isEdit">
             <button class="deconnect" (click)="logout()" type="button">Se déconnecter</button>

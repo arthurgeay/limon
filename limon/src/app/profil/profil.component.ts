@@ -105,7 +105,6 @@ export class ProfilComponent implements OnInit {
 
 
   initForm() {
-    this.user.birthday = this.datePipe.transform(this.user.birthday, 'MMMM d, y')
       this.userForm = this.formBuilder.group({
         'fullname': [this.user.fullname , Validators.required],
         'email': [this.user.email, Validators.required],
@@ -118,6 +117,9 @@ export class ProfilComponent implements OnInit {
     this.onEdit();
     const formValue = this.userForm.value;
     this.userForm.reset();
+
+    formValue['birthday'] = new Date(formValue['birthday']).toLocaleDateString('en');
+    
     const body = new HttpParams()
     .set('fullname', formValue['fullname'])
     .set('email', formValue['email'])
