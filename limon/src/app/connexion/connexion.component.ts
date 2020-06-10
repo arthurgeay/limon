@@ -45,22 +45,23 @@ export class ConnexionComponent implements OnInit {
       });
     } else {
       this.userForm = this.formBuilder.group({
-        'email': ['', [Validators.required, Validators.email]],
-        'password': ['', [Validators.required, Validators.minLength(4)]],
+        'email': ['', { validators: [Validators.required, Validators.email], updateOn: 'change'}],
+        'password': ['', { validators: [Validators.required, Validators.minLength(4)], updateOn: 'change'}],
         'fullname': ['', Validators.required],
         'birthday': ['', Validators.required]
       });
     }
   }
 
-
   onErrors() {
-      if(this.userForm.get('password').errors) {
-        this.errors[0] = 'Le mot de passe doit contenir au minimum 4 caractères';
-      } else {
-        this.errors = [];
-      } 
-  } 
+    if(this.userForm.get('email').errors) {
+      this.errors[0] = 'Veuillez saisir une adresse e-mail valide';
+    } 
+
+    if(this.userForm.get('password').errors) {
+      this.errors[1] = 'Le mot de passe doit contenir au minimum 4 caractères';
+    } 
+  }
 
   /**
    * Send data for login
