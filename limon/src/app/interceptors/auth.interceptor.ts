@@ -13,6 +13,11 @@ export class AuthInterceptor implements HttpInterceptor {
 
   constructor(private authService: AuthService) {}
 
+  /**
+   * Intercept each request and inject the token of user if is logged
+   * @param request 
+   * @param next 
+   */
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = localStorage.getItem('token');
 
