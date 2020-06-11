@@ -13,11 +13,10 @@ export class SubscribeComponent implements OnInit {
   public amount:number = 46.99;
   public direction:string = "sub";
 
-  constructor(private router:Router, private http:HttpClient) { }
+  constructor() { }
 
   ngOnInit(): void {
   }
-
   
   /**
    * method: void
