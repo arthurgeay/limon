@@ -29,7 +29,12 @@ class RatingController extends AbstractController
             return $this->json(['status' => 'La note d\'un film doit être comprise entre 1 et 5'], 400);
         }
 
-        $rating = new Rating();
+        $rating = $ratingRepository->findOneBy(['user' => $this->getUser(), 'movie' => $movie]);
+
+        if(!$rating) {
+            $rating = new Rating();
+        }
+
         $rating->setMovie($movie);
         $rating->setScore($score);
         $rating->setUser($this->getUser());
