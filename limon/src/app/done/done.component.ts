@@ -25,7 +25,7 @@ export class DoneComponent implements OnInit {
     if (this.isComplete) {
       this.movieSubscription = this.movieService.movieSubject.subscribe(
         (movie:any)=>{
-          this.name = movie.title;
+          this.name = movie.movie[0].title;
         }
       );
       this.movieService.getMovieById(+this.id);
