@@ -33,7 +33,7 @@ class Purchase
 
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="purchases")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups("history.purchased")
      */
     private $movie;
