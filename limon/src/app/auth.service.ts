@@ -38,6 +38,7 @@ export class AuthService {
    */
   public deleteInLocalStorage() {
     localStorage.clear();
+    this.isAuth();
   }
 
   /**

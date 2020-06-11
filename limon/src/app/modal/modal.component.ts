@@ -89,7 +89,8 @@ export class ModalComponent implements OnInit {
    */
   onSpecificUserDelete():void {
     this.userService.deleteUser(this.ID);
-    this.authService.deleteInLocalStorage();
-    this.router.navigate(['/register'])
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
+      this.router.navigate(['/members']);
+    });
   }
 }

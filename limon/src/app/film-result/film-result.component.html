@@ -19,7 +19,7 @@
     </button>
 </section>
 
-<section id="results" *ngIf="!isEmpty && isSearch">
+<section id="results" *ngIf="!isEmpty && isSearch" [style.gridTemplateColumns]="onCenter()">
     <app-film-card *ngFor="let card of resMovies" [card]="card"></app-film-card>
 </section>
 <p class="empty" *ngIf="isEmpty">Aucun résultat</p>

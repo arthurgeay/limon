@@ -418,6 +418,16 @@ export class FilmResultComponent implements OnInit {
     }
   }
 
+    /**
+   * method
+   *  center results when more than 6
+   */
+  onCenter(){
+    return(this.resMovies?.length > 6 ? 'repeat(auto-fit, minmax(13rem, 1fr))' : 'repeat(auto-fit, 13rem)')
+  }
+
+
+
   /**
    * method:void
    *    see if the app is running on mobile

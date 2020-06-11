@@ -68,7 +68,6 @@ $large: 2400px;
     display: grid;
     min-height: calc(100vh - 21rem);
     grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
-    justify-content: center;
     @media (min-width: $tablet) {
         grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
     }
