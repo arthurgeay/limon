@@ -77,10 +77,7 @@ class PurchaseController extends AbstractController
             return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
         }
 
-        // Find invoice
-        $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
-
-        if(!$file) {
+        if(!file_exists($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf')) {
             // Generate PDF
             $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
             $template = $this->render('purchase/invoice.html.twig', [
@@ -93,9 +90,10 @@ class PurchaseController extends AbstractController
             $directory = $kernel->getProjectDir() . '/public/invoices/';
             $invoiceFilePath = $directory . 'facture-'.$purchase->getId().'.pdf';
             file_put_contents($invoiceFilePath, $invoice);
-
-            $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
         }
+
+        // Find invoice
+        $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
 
         return $this->file($file);
     }
