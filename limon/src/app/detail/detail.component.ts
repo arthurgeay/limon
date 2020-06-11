@@ -13,6 +13,7 @@ import { AuthService } from '../auth.service';
 })
 
 export class DetailComponent implements OnInit {
+  
   public isAuth:boolean;
   public isAdmin:boolean;
   public isPremium:boolean;
@@ -28,9 +29,9 @@ export class DetailComponent implements OnInit {
   public note: string;
   public movieID: number;
   public direction:string = "buy";
-  catalog: any;
-  isEmpty: boolean;
-  isReviewEmpty: boolean = false;
+  public catalog: any;
+  public isEmpty: boolean;
+  public isReviewEmpty: boolean = false;
   public usrNote: any;
   
   constructor(private movieService:MovieService,
@@ -43,12 +44,14 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.params['id'];  // get id from url
     this.movieID = Number(id);
+
+    // determine type of user
     this.isAuth = this.authService.isAuth();
     this.isPremium = this.authService.isPremium();
     this.isAdmin = this.authService.isAdmin();
 
 
-
+    // get movie information
     this.movieSubscription = this.movieService.movieSubject.subscribe(
       (data:any)=>{
         // if the movie doesn't exist in database
@@ -68,13 +71,21 @@ export class DetailComponent implements OnInit {
       }
     );
     this.movieService.getMovieById(+id);
+
+    // check if the movie is inside the watchlist
     if (this.isAuth) {
       this.isInsideWatchlist();
     }
     this.isMobile = this.mobileService.getIsMobile(); //Detect if mobile device at start
   }
 
-  isInsideWatchlist() {
+
+  /**
+   * method: void
+   *    check if the movie is in the watchlist to adapt the button
+   */
+
+  isInsideWatchlist():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/watchlist/added/${this.movieID}`)
     .subscribe(
       (data:any)=>{
@@ -86,7 +97,12 @@ export class DetailComponent implements OnInit {
     )
   }
 
-  onPlay() {
+
+  /**
+   * method: void
+   *    play the movie and add it to history
+   */
+  onPlay():void {
     this.isView = !this.isView
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movie-watch/${this.movieID}`)
     .subscribe(
@@ -96,10 +112,14 @@ export class DetailComponent implements OnInit {
         console.log(error);
       }
     )
-  
   }
 
-  onWatch() {
+
+  /**
+   * method: void
+   *    add/remove the movie to the watchlist
+   */
+  onWatch():void {
     if (this.isMark) {
       const formData = new FormData();
       formData.append('movie', this.movieID.toString())
@@ -124,29 +144,53 @@ export class DetailComponent implements OnInit {
     }
   }
 
-  swapModal() {
+  /**
+   * method: void
+   *    display/hide the delete popup
+   */
+  swapModal():void {
     this.isModal = !this.isModal;
   }
 
 
-  changeMark(){
+  /**
+   * method: boolean
+   *  change the state of the "add to watchlist button
+   */
+  changeMark():boolean {
     return(this.isMark = !this.isMark)
   }
 
+  /**
+   * method: void
+   *    see if the app is running on mobile
+   */
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize():void {
     this.isMobile = this.mobileService.getIsMobile(); //detect changes of viewport
   }
 
-  buy() {
+  /**
+   * method: void
+   *    display/hide the checkout popup
+   */
+  buy():void {
     this.isCheck = !this.isCheck;
   }
 
-  download() {
+  /**
+   * method: void
+   *    redirect to download page
+   */
+  download():void {
     this.router.navigate([`complete/${this.movieID}`]);
   }
 
-  onEdit() {
+  /**
+   * method: void
+   *    redirect to edit page
+   */
+  onEdit():void {
     this.router.navigate([`edit/${this.movieID}`]);
   }
 }

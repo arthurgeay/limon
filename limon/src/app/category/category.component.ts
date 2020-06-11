@@ -30,10 +30,10 @@ export class CategoryComponent implements OnInit {
   }
 
   /* 
-  * method: string
+  * method: void / params: string
   *   send the actual category to search
   */
-  onSearch(name: string) {
+  onSearch(name: string):void {
     this.activeSearchService.categoryEvent.emit(name);
   }
 
