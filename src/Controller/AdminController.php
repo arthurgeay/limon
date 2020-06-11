@@ -31,29 +31,14 @@ class AdminController extends AbstractController
      * Get all users
      * @Route("/users", name="show_users", methods={"GET"})
      */
-    public function allUsers(Request $request, UserRepository $userRepository, PaginatorInterface $paginator)
+    public function allUsers(Request $request, UserRepository $userRepository)
     {
-        $page = $request->query->getInt('page', 1);
-
         $users = $userRepository->findAll();
-        $pagination = $paginator->paginate($users, $page, 10);
 
-        if(count($pagination) == 0) {
+        if(!$users) {
             return $this->json(['status' => 'Aucun utilisateur'], 404);
         }
 
-        if($pagination->getTotalItemCount() < 10)  {
-            $nbPages = 1;
-        } else {
-            $nbPages = ceil($pagination->getTotalItemCount() / $pagination->getItemNumberPerPage());
-        }
-
-        return $this->json([
-            'users' => $users,
-            'current_page' => $pagination->getCurrentPageNumber(),
-            'nb_pages' => $nbPages,
-            'items_per_page' => $pagination->getItemNumberPerPage(),
-            'total_item_count' => $pagination->getTotalItemCount()
-        ], 200, [], ['groups' => ['profile']]);
+        return $this->json($users, 200, [], ['groups' => ['profile']]);
     }
 }
