@@ -13,23 +13,21 @@ import { AuthService } from '../auth.service';
 })
 export class WriteReviewComponent implements OnInit {
 
-  movieID: any;
-  userForm: FormGroup;
-  reviewSubscription: Subscription;
-  contentEdit: any;
-  isEdit:boolean = false;
-  path:any;
-  errors = [];
-  isAuth: boolean;
+  public movieID: any;
+  public userForm: FormGroup;
+  public reviewSubscription: Subscription;
+  public contentEdit: any;
+  public isEdit:boolean = false;
+  public path:any;
+  public errors = [];
+  public isAuth: boolean;
 
-  constructor(
-      private http:HttpClient,
-      private formBuilder: FormBuilder,
-      private route:ActivatedRoute,
-      private router:Router,
-      private authService:AuthService,
-      private movieService:MovieService
-      ) { }
+  constructor(private http:HttpClient,
+              private formBuilder: FormBuilder,
+              private route:ActivatedRoute,
+              private router:Router,
+              private authService:AuthService,
+              private movieService:MovieService) { }
 
   ngOnInit(): void {
     // @ts-ignore
@@ -48,6 +46,11 @@ export class WriteReviewComponent implements OnInit {
     this.initForm();
   }
 
+
+  /**
+   * method: void
+   *    initialize the form
+   */
   initForm() {
     if (this.contentEdit.content !== ""){
       this.userForm = this.formBuilder.group({
@@ -62,7 +65,10 @@ export class WriteReviewComponent implements OnInit {
 
   }
 
-
+  /**
+   * method: void
+   *    send data to server (create review or edit review)
+   */
   onSubmitForm() {
     const formValue = this.userForm.value['review'];
     this.userForm.reset();

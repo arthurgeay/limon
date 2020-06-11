@@ -14,15 +14,20 @@ export class SearchbarComponent implements OnInit {
   @ViewChild('search') search: ElementRef;
   public isSearch:boolean = false;
   
-  constructor(private http:HttpClient,
-    private router:Router,
-    private activeSearchService: ActiveSearchService) { }
+  constructor(private router:Router,
+              private activeSearchService: ActiveSearchService) { }
 
   ngOnInit(): void {
   
   }
 
-  OnSearch() {
+
+  
+  /**
+   * method: void
+   *    send the value of the searchbar
+   */
+  OnSearch():void {
     this.isSearch = true;
     const value = this.search.nativeElement.value;
     this.router.navigate(['/']);
@@ -34,7 +39,13 @@ export class SearchbarComponent implements OnInit {
     }, 100);
   }
 
-  onCancelSearch() {
+
+
+  /**
+   * method: void
+   *    delete the value of the searchbar and reset
+   */
+  onCancelSearch():void {
     this.isSearch = false;
     this.search.nativeElement.value = '';
     this.activeSearchService.onSearchEvent.emit(false);

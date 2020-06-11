@@ -20,9 +20,16 @@ export class MovieService {
   public categories: any;
   public review:any;
 
-  constructor(private http:HttpClient,private userService:UserService, private authService:AuthService) { }
+  constructor(private http:HttpClient,
+              private userService:UserService,
+              private authService:AuthService) { }
 
-  getAllMovies() {
+
+  /**
+   * method: void
+   *    get  movie for first page (new and popular)
+   */
+  getAllMovies():void {
     this.http.get('https://api-limon.app-tricycle.com/api/movie/all')
     .subscribe(
       (data:any)=>{
@@ -35,13 +42,16 @@ export class MovieService {
     )
   }
 
-
-  EmitOnMovies() {
+  //emit to subscription
+  EmitOnMovies():void {
     this.moviesSubject.next(this.movies);
   }
 
-
-  getMovieById(id:number){
+  /**
+   * method: void / params: number
+   *    get specific movie by id
+   */
+  getMovieById(id:number):void{
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}`)
     .subscribe(
       (data:any)=>{
@@ -57,12 +67,17 @@ export class MovieService {
       }
     )
   }
-
-  EmitOnMovie() {
+  //emit to subscription
+  EmitOnMovie():void {
     this.movieSubject.next(this.movie);
   }
 
-public downloadMovieById(id:number, name:string) {
+
+/**
+ * method: void / params: number, string
+ *    doawnload a specific movie
+ */
+public downloadMovieById(id:number, name:string):void {
     let mediaType = 'application/mp4';
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/${id}/download`, { responseType: 'blob' })
     .subscribe(
@@ -86,11 +101,16 @@ public downloadMovieById(id:number, name:string) {
     )
   }
 
-  EmitOnDl() {
+    //emit to subscription
+  EmitOnDl():void {
     this.DlSubject.next(this.downl);
   }
 
-  public purchaseMovieById(id:number) {
+  /**
+   * method: void / params: number
+   *    purchase a specific movie
+   */
+  public purchaseMovieById(id:number):void {
     this.http.get(`https://api-limon.app-tricycle.com/api/purchase/${id}`)
     .subscribe(
       (data:any)=>{
@@ -101,10 +121,12 @@ public downloadMovieById(id:number, name:string) {
     )
   }
 
+
   /**
-   * getAllCategories
+   * method: void
+   *    edit a review
    */
-  public getAllCategories() {
+  public getAllCategories():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/category/all`)
     .subscribe(
       (data:any)=>{
@@ -116,27 +138,32 @@ public downloadMovieById(id:number, name:string) {
       }
     )
   }
-
-  EmitOnCat() {
+  //emit to subscription
+  EmitOnCat():void {
     this.categorySubject.next(this.categories);
   }
 
-  public EditReview(message:any) {
+  /**
+   * method: void
+   *    edit a review
+   */
+  public EditReview(message:any):void {
     this.review = message;
     this.EmitOnReview();
   }
 
-  EmitOnReview() {
+  //emit to subscription
+  EmitOnReview():void {
     this.reviewSubject.next(this.review);
   }
 
 
 
   /**
-   * subscribe
-   * 
+   * method: void
+   *    subscribe to a premium plan
    */
-  public subscribeOnMovie() {
+  public subscribeOnMovie():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/subscription`)
     .subscribe(
       (data:any)=>{

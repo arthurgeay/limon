@@ -16,7 +16,11 @@ export class VideoComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onExit() {
+  /**
+   * method: void
+   *    quit the movie
+   */
+  onExit():void {
     this.isViewChange.emit(false);
   }
 }

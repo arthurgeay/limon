@@ -24,68 +24,79 @@ export class FilmResultComponent implements OnInit {
   public totalPage:any;
   public isCateg:boolean;
   public cat:any;
-
   public isMobile: boolean = false;
   public isRGPD:boolean;
   @ViewChild('scroll1', { read: ElementRef }) public scroll1: ElementRef<any>;
   @ViewChild('scroll2', { read: ElementRef }) public scroll2: ElementRef<any>;
-  scrollToLeft1 = false;
-  scrollToRight1 = true;
-  scrollToLeft2 = false;
-  scrollToRight2 = true;
-  value: any;
+  public scrollToLeft1 = false;
+  public scrollToRight1 = true;
+  public scrollToLeft2 = false;
+  public scrollToRight2 = true;
+  public value: any;
 
 
-  constructor(
-    private http:HttpClient,
-    private movieService: MovieService,
-    private mobileService:MobileService,
-    private activeSearchService:ActiveSearchService) { 
-      activeSearchService.onSearchEvent.subscribe(
-        (response)=>{
-          this.isSearch = response;
-        }
-      );
-      activeSearchService.DataIDEvent.subscribe(
-        (data)=>{
-          this.value = data;
-          this.onDisplayResult();
-        }
-      );
-      activeSearchService.categoryEvent.subscribe(
-        (cat)=>{
-          this.cat = cat;
-          this.isSearch = true;
-          this.onSearchCategroy();
-        }
-      );
-      activeSearchService.pageEvent.subscribe(
-        (data)=>{
-          const page = data;
-          this.onDisplayResultPage(page);
-        }
-      );
+  constructor(private activeSearchService:ActiveSearchService,
+              private movieService: MovieService,
+              private mobileService:MobileService,
+              private http:HttpClient,) { 
+        // get if user search or not
+        activeSearchService.onSearchEvent.subscribe(
+          (response)=>{
+            this.isSearch = response;
+          }
+        );
+
+        // get the value write in the searchbar
+        activeSearchService.DataIDEvent.subscribe(
+          (data)=>{
+            this.value = data;
+            this.onDisplayResult();
+          }
+        );
+
+        // get the category choosen
+        activeSearchService.categoryEvent.subscribe(
+          (cat)=>{
+            this.cat = cat;
+            this.isSearch = true;
+            this.onSearchCategroy();
+          }
+        );
+
+        // get the current page number
+        activeSearchService.pageEvent.subscribe(
+          (data)=>{
+            const page = data.toString();
+            this.onDisplayResultPage(page);
+          }
+        );
     }
 
   ngOnInit(): void {
-    
+    // display/hide RGPD popup if the user already answer
     if (localStorage.getItem('rgpd') === 'ok') {
       this.isRGPD = false;
     } else {
       this.isRGPD = true;
     }
+
+    // get movies for first page (new and popular sections)
     this.moviesSubscription = this.movieService.moviesSubject.subscribe(
       (movie:any)=>{
         this.movies = movie;
       }
     );
-    
     this.movieService.getAllMovies();
-    this.isMobile = this.mobileService.isMobile;//prendre le ismobile du service 
 
+    this.isMobile = this.mobileService.isMobile; //know if app is in mobile mode
   }
 
-  onDisplayResult() {
+
+  /**
+   * method:void
+   *    display result of a simple search with only the value in the searchbar
+   */
+  onDisplayResult():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}`)
     .subscribe(
       (data:any)=>{
@@ -100,7 +111,12 @@ export class FilmResultComponent implements OnInit {
     )
   }
 
-  onDisplayResultPage(page) {
+
+  /**
+   * method:void / params: string
+   *    display result of a search with a page in the query
+   */
+  onDisplayResultPage(page:string):void {
     if (this.isCateg) {
       page = page + '&searchBy=category&category_name=' + this.cat;
       this.value = ''
@@ -119,7 +135,12 @@ export class FilmResultComponent implements OnInit {
     )
   }
 
-  onSearchCategroy() {
+
+  /**
+   * method:void
+   *         display result of a simple search with only the value in the searchbar and the choosen category
+   */
+  onSearchCategroy():void {
     if (this.value == undefined) { this.value = '' }
     this.http.get(`https://api-limon.app-tricycle.com/api/movie/search?query=${this.value}&searchBy=category&category_name=${this.cat}`)
     .subscribe(
@@ -137,11 +158,20 @@ export class FilmResultComponent implements OnInit {
   }
 
 
-  onAlph() {
+  /**
+   * method:boolean
+   *    change between ascendent and descendent in alphabetical order
+   */
+  onAlph():boolean {
     return(this.isAlph = !this.isAlph)
   }
 
-  onSortAlph() {
+
+  /**
+   * method:void
+   *    sorting result by alphabetical order
+   */
+  onSortAlph():void {
     if (this.value == undefined) {
       this.value = '';
     }
@@ -185,11 +215,21 @@ export class FilmResultComponent implements OnInit {
     }
   }
 
-  onPrice() {
+
+  /**
+   * method:boolean
+   *    change between ascendent and descendent, sort by price
+   */
+  onPrice():boolean {
     return(this.isPrice = !this.isPrice)
   }
 
-  onSortPrice() {
+
+  /**
+   * method:void
+   *    sorting result by price
+   */
+  onSortPrice():void {
     if (this.value == undefined) {
       this.value = '';
     }
@@ -242,10 +282,19 @@ export class FilmResultComponent implements OnInit {
   }
 
 
-  onDate() {
+  /**
+   * method:boolean
+   *    change between ascendent and descendent depending of the release date
+   */
+  onDate():boolean {
     return(this.isDate = !this.isDate)
   }
 
+
+  /**
+   * method:void
+   *    sorting result by relese date
+   */
   onSortDate() {
     if (this.value == undefined) {
       this.value = '';
@@ -298,24 +347,39 @@ export class FilmResultComponent implements OnInit {
     }
   }
 
-
-  scroll1Start() {
+/**
+ * method: void
+ *      bring at the start of the container
+ */
+  scroll1Start():void {
     this.scroll1.nativeElement.scrollLeft -= this.scroll1.nativeElement.clientWidth;
   }
 
-  scroll2Start() {
+  scroll2Start():void {
     this.scroll2.nativeElement.scrollLeft -= this.scroll2.nativeElement.clientWidth;
   }
 
-  scroll1End() {
+
+
+  /**
+   * method: void
+   *      bring at the end of the container
+   */
+  scroll1End():void {
     this.scroll1.nativeElement.scrollLeft += this.scroll1.nativeElement.clientWidth;
   }
 
-  scroll2End() {
+  scroll2End():void {
     this.scroll2.nativeElement.scrollLeft += this.scroll2.nativeElement.clientWidth;
   }
 
-  onScroll1(event:Event) {
+
+
+  /**
+   * method: void / params: Event
+   *      change states of booleans to manage moving inside containers
+   */
+  onScroll1(event:Event):void {
     //@ts-ignore
     if (event.srcElement.scrollLeft >= 100) {
       this.scrollToLeft1 = true;
@@ -332,7 +396,12 @@ export class FilmResultComponent implements OnInit {
     }
   } 
 
-  onScroll2(event:Event) {
+
+  /**
+   * method: void / params: Event
+   *      change states of booleans to manage moving inside containers
+   */
+  onScroll2(event:Event):void {
     //@ts-ignore
     if (event.srcElement.scrollLeft >= 100) {
       this.scrollToLeft2 = true;
@@ -349,8 +418,12 @@ export class FilmResultComponent implements OnInit {
     }
   }
 
+  /**
+   * method:void
+   *    see if the app is running on mobile
+   */
   @HostListener('window:resize', ['$event'])
-  onResize() {
+  onResize():void {
     this.isMobile = this.mobileService.getIsMobile(); //detect changes of viewport
   }
 }

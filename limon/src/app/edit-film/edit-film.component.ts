@@ -11,24 +11,26 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./edit-film.component.scss']
 })
 export class EditFilmComponent implements OnInit {
-  userForm: FormGroup;
+  public userForm: FormGroup;
   public isEdit:boolean;
-  categories: any[];
-  categorySubscription: Subscription;
-  movie:any;
-  movieID:number;
-  movieSubscription: Subscription;
-  errors = [];
+  public categories: any[];
+  public categorySubscription: Subscription;
+  public movie:any;
+  public movieID:number;
+  public movieSubscription: Subscription;
+  public errors = [];
 
   constructor(private http:HttpClient,
-     private formBuilder:FormBuilder,
-     private movieService:MovieService,
-     private route:ActivatedRoute,
-     private router:Router) { }
+              private formBuilder:FormBuilder,
+              private movieService:MovieService,
+              private route:ActivatedRoute,
+              private router:Router) { }
 
   ngOnInit(): void {
-    this.isEdit = this.route.snapshot.routeConfig.path === 'create' ? false : true;
-    this.movieID = this.route.snapshot.params['id'];
+    this.isEdit = this.route.snapshot.routeConfig.path === 'create' ? false : true; //compenent is for creation or edition
+    this.movieID = this.route.snapshot.params['id']; //get the id of the movie
+
+    // get list of all categories
     this.categorySubscription = this.movieService.categorySubject.subscribe(
       (data:any)=>{
         this.categories = data;
@@ -36,6 +38,7 @@ export class EditFilmComponent implements OnInit {
     );
     this.movieService.getAllCategories();
 
+    // if in edition mode get movie's information
     if (this.isEdit){
       this.movieSubscription = this.movieService.movieSubject.subscribe(
         (data:any)=>{
@@ -46,14 +49,17 @@ export class EditFilmComponent implements OnInit {
       this.movieService.getMovieById(this.movieID);
     }
     else {
-      this.initForm();
+      this.initForm(); // if in creation mode, init the form
     }
-
-
-
   }
 
-  initForm() {
+
+
+  /**
+   * method:void
+   *    Initialize the form
+   */
+  initForm():void {
     if (this.isEdit) {
       this.userForm = this.formBuilder.group({
         'title': [this.movie.title , Validators.required],
@@ -78,9 +84,14 @@ export class EditFilmComponent implements OnInit {
         'hero-img': ['', Validators.required]
       });
     }
-
   }
-  onSubmitForm() {
+
+
+  /**
+   * method:void
+   *      send data to create or edit movie
+   */
+  onSubmitForm():void {
     const formValue = this.userForm.value;
     this.userForm.reset();
     if (!this.isEdit) {

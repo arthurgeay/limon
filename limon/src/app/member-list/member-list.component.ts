@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../user.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,16 +7,18 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./member-list.component.scss']
 })
 export class MemberListComponent implements OnInit {
-  users: any[];
 
-  constructor(private userService:UserService,
-    private http:HttpClient) { }
+  public users: any[];
+
+  constructor(private http:HttpClient) { }
 
   ngOnInit(): void {
-    this.http.get(`https://api-limon.app-tricycle.com/api/admin/users?page=1`)
+
+    // get all users
+    this.http.get(`https://api-limon.app-tricycle.com/api/admin/users`)
     .subscribe(
       (data:any)=>{
-        this.users = data.users;
+        this.users = data;
       },
       (error)=>{
         console.log(error);

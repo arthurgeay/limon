@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router, ActivatedRoute } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { Md5 } from 'ts-md5';
 
 @Component({
@@ -11,23 +10,31 @@ import { Md5 } from 'ts-md5';
 export class MemberComponent implements OnInit {
 
   @Input() user;
-  userID: any;
-  mail: string | Int32Array;
-  path:string;
+  public userID: any;
+  public mail: string | Int32Array;
+  public path:string;
   public isModal:boolean;
 
 
-  constructor(private http:HttpClient,private router:Router,private route:ActivatedRoute) { }
+  constructor(private route:ActivatedRoute) { }
 
   ngOnInit(): void {
     // @ts-ignore
     this.path = this.route.snapshot._routerState.url;
     this.userID = this.user.id;
+
+    //transform user's mail in Md5 to use with gravatar
     const md5 = new Md5();
     this.mail = md5.appendStr(this.user.email).end();
   }
 
-  swapModal() {
+
+
+  /**
+   * method: void
+   *    display/hide the delete popup
+   */
+  swapModal():void {
     this.isModal = !this.isModal;
   }
 

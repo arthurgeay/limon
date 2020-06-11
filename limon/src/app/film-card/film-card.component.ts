@@ -6,6 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./film-card.component.scss']
 })
 export class FilmCardComponent implements OnInit {
+  
   @Input() card: any;
 
   constructor() { }

@@ -6,30 +6,37 @@ import { Component, OnInit, HostListener } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent implements OnInit {
-  showInstallButton: boolean;
-  deferredPrompt: any;
+
+  public showInstallButton: boolean;
+  public deferredPrompt: any;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  installApp() {
+  /**
+   * method:void
+   *    install PWA on the device
+   */
+  installApp():void {
     this.deferredPrompt.prompt(); //display prompt
     this.deferredPrompt.userChoice //user choice
     .then((choiceResult) => {
       if (choiceResult.outcome === 'accepted') {
-        console.log('Youpi, notre appli est installée');
       } else {
-        console.log('Arg, il en veut pas !');
         this.showInstallButton = false;
       }
       this.deferredPrompt = null;
       });
   }
 
-  @HostListener('window:beforeinstallprompt', ['$event'])
 
+  /**
+   * method:void
+   *    detect if the user already have PWA installed and show popup if not
+   */
+  @HostListener('window:beforeinstallprompt', ['$event'])
     onBeforeinstallprompt(ev) {
       ev.preventDefault();
       // display install button

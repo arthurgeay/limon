@@ -17,12 +17,21 @@ export class PageSelectorComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  next() {
+  /**
+   * method:void
+   *    increment by 1 the page number
+   */
+  next():void {
     this.newPage = Number(this.current) + 1;
     this.activeService.pageEvent.emit(this.newPage);
   }
 
-  previous() {
+
+  /**
+   * method:void
+   *    decrement by 1 the page number
+   */
+  previous():void {
     this.newPage = Number(this.current) - 1;
     this.activeService.pageEvent.emit(this.newPage);
   }

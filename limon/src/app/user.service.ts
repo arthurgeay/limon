@@ -7,16 +7,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class UserService {
 
-  userSubject = new Subject<any>();
-  userActualSubject = new Subject<any>();
-  user: any;
-  actualUser: any;
-
-
+  public userSubject = new Subject<any>();
+  public userActualSubject = new Subject<any>();
+  public user: any;
+  public actualUser: any;
 
   constructor(private http:HttpClient) { }
 
-  getActualUser() {
+  /**
+   * method: void
+   *    get information from the actual user
+   */
+  getActualUser():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/`)
       .subscribe(
         (data:any)=>{
@@ -29,7 +31,12 @@ export class UserService {
       )     
   }
 
-  getUserById(id:number){
+
+  /**
+   * method: void / params:number
+   *    get information from a specific user
+   */
+  getUserById(id:number):void {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/?userId=${id}`)
       .subscribe(
         (data:any)=>{
@@ -42,20 +49,33 @@ export class UserService {
       )     
   }
 
-  public emitUserSubject() {
+  /**
+   * method: void
+   *    emit info to subscription
+   */
+  public emitUserSubject():void {
     this.userSubject.next(this.user);
   }
 
-  public emitActualUserSubject() {
+
+  /**
+   * method: void
+   *    emit info to subscription
+   */
+  public emitActualUserSubject():void {
     this.userActualSubject.next(this.actualUser);
   }
 
-  deleteUser(id:number) {
+  
+  /**
+   * method: void / params:number
+   *    delete a specific user or the actual user
+   */
+  deleteUser(id:number):void {
     if(id !== 0) {
       this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${id}`)
       .subscribe(
         (data:any)=>{
-          // console.log(data);
         },
         (error)=>{
           console.log(error);
@@ -66,7 +86,6 @@ export class UserService {
       this.http.delete(`https://api-limon.app-tricycle.com/api/user/`)
       .subscribe(
         (data:any)=>{
-          // console.log(data);
         },
         (error)=>{
           console.log(error);

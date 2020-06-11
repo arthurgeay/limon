@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MovieService } from '../movie.service';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,25 +8,28 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./playlist.component.scss']
 })
 export class PlaylistComponent implements OnInit {
-  isHistory: boolean;
-  isWatch: boolean;
-  isPurchase: boolean;
-  isEmpty: boolean = false;
+  
+  public isHistory: boolean;
+  public isWatch: boolean;
+  public isPurchase: boolean;
+  public isEmpty: boolean = false;
   public catalog: any;
-  id: number;
+  public id: number;
 
   constructor(private route:ActivatedRoute,
-    private movieService:MovieService,
-    private http:HttpClient) { }
+              private http:HttpClient) { }
 
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
     // @ts-ignore
     this.id = this.route.queryParams._value.userId == undefined ? 0 : Number(this.route.queryParams._value.userId);
+    
+    // determines which page is asked
     this.isHistory = route === 'history' ? true : false;
     this.isWatch = route === 'watchlist' ? true : false;
     this.isPurchase = route.includes('purchase') ? true : false;
 
+    //display information depending of the route
     if (this.isHistory) {
       this.displayHistory();
     } 
@@ -35,6 +37,7 @@ export class PlaylistComponent implements OnInit {
       this.displayWatchlist();
     }
     else if (this.isPurchase) {
+      //if it's a specific user purchase list
       if (this.id == 0) {
         this.displayPurchase();
       }
@@ -46,8 +49,11 @@ export class PlaylistComponent implements OnInit {
   }
 
 
-
-  displayHistory() {
+/**
+ * method:void
+ *    display history of the user
+ */
+  displayHistory():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched`)
     .subscribe(
       (data:any)=>{
@@ -60,8 +66,11 @@ export class PlaylistComponent implements OnInit {
     )
   }
 
-
-  displayWatchlist() {
+/**
+ * method:void
+ *    display the watchlist of the user
+ */
+  displayWatchlist():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/watchlist/`)
     .subscribe(
       (data:any)=>{
@@ -74,7 +83,11 @@ export class PlaylistComponent implements OnInit {
     )
   }
 
-  displayPurchase() {
+  /**
+ * method:void
+ *    display purchase list of the actual user
+ */
+  displayPurchase():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased`)
     .subscribe(
       (data:any)=>{
@@ -87,14 +100,17 @@ export class PlaylistComponent implements OnInit {
     )
   }
 
-  displaySpecificPurchase() {
+
+/**
+ * method:void
+ *    display purchase list of a specific user
+ */
+  displaySpecificPurchase():void {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?userId=${this.id}`)
     .subscribe(
       (data:any)=>{
         this.catalog = data;      
         this.isEmpty = data.empty === true ? true : false;
-        console.log(data);
-        
       },
       (error)=>{
         console.log(error);

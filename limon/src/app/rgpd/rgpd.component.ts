@@ -17,15 +17,29 @@ export class RgpdComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClear() {
+  /**
+   * method: void
+   *    hide the popup
+   */
+  onClear():void {
     this.isRGPDChange.emit(false);
   }
 
-  onValid() {
+  
+  /**
+   * method: void
+   *    store the answer of the user
+   */
+  onValid():void {
     localStorage.setItem('rgpd', 'ok');
   }
 
-  onDenied() {
+  
+  /**
+   * method: void
+   *    go to google if user decline
+   */
+  onDenied():void {
     window.location.href = 'https://google.fr';
   }
   

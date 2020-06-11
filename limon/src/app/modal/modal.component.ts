@@ -18,22 +18,29 @@ export class ModalComponent implements OnInit {
   @Input() public path:any;
   @Input() public isActual:any;
 
-  constructor(
-    private http:HttpClient,
-    private router:Router,
-    private route:ActivatedRoute,
-    private authService:AuthService,
-    private userService:UserService
-  ) { }
+  constructor(private http:HttpClient,
+              private router:Router,
+              private route:ActivatedRoute,
+              private authService:AuthService,
+              private userService:UserService) { }
 
   ngOnInit(): void {
-
   }
 
-  onExit() {
+  /**
+   * method:void
+   *    hide the popup
+   */
+  onExit():void {
     this.isModalChange.emit(false);
   }
-  onMovieDelete() {
+
+  /**
+   * method:void
+   *    delete a specific movie
+   */
+
+  onMovieDelete():void {
     this.http.delete(`https://api-limon.app-tricycle.com/api/movie/${this.ID}`)
     .subscribe(
       (data:any)=>{
@@ -45,7 +52,12 @@ export class ModalComponent implements OnInit {
     )
   }
 
-  onReviewDelete() {
+
+  /**
+   * method:void
+   *      delete a review
+   */
+  onReviewDelete():void {
     this.http.delete(`https://api-limon.app-tricycle.com/api/review/${this.ID}`)
       .subscribe(
         (data: any) => {
@@ -59,21 +71,25 @@ export class ModalComponent implements OnInit {
       )
   }
 
-  onUserDelete() {
+
+  /**
+   * method:void
+   *    delete the actual user or a specific user
+   */
+  onUserDelete():void {
     this.isActual ? this.userService.deleteUser(0) : this.userService.deleteUser(this.ID);
     this.authService.deleteInLocalStorage();
     this.router.navigate(['/register'])
   }
 
-  onSpecificUserDelete() {
-    this.http.delete(`https://api-limon.app-tricycle.com/api/user/?userId=${this.ID}`)
-    .subscribe(
-      (data:any)=>{
-        window.location.reload();
-      },
-      (error)=>{
-        console.log(error);
-      }
-    )
+
+  /**
+   * method:void
+   *   delete only a specific user   
+   */
+  onSpecificUserDelete():void {
+    this.userService.deleteUser(this.ID);
+    this.authService.deleteInLocalStorage();
+    this.router.navigate(['/register'])
   }
 }

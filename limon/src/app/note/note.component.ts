@@ -9,22 +9,27 @@ import { AuthService } from '../auth.service';
   styleUrls: ['./note.component.scss']
 })
 export class NoteComponent implements OnInit {
+
   @Input() note: string;
   @Input() userNote: any;
-  movieID: any;
-  isAuth: boolean;
+  public movieID: any;
+  public isAuth: boolean;
 
-  constructor(private http:HttpClient, private route:ActivatedRoute, private authService:AuthService) { }
+  constructor(private http:HttpClient,
+              private route:ActivatedRoute,
+              private authService:AuthService) { }
 
   ngOnInit(): void {
     this.movieID = Number(this.route.snapshot.params['id']);  // get id from url
     this.isAuth = this.authService.isAuth();
-    this.userNote = Number(this.userNote);
-    console.log(this.note);
-    
+    this.userNote = Number(this.userNote); 
   }
 
-  onNote(note:number) {
+  /**
+   * method:void / params: number
+   *    send the note of the user to the server
+   */
+  onNote(note:number):void {
     const formData = new FormData();
     formData.append('score', note.toString());
     this.http.post(`https://api-limon.app-tricycle.com/api/rating/${this.movieID}`, formData)

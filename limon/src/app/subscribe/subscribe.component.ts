@@ -18,7 +18,12 @@ export class SubscribeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  buy() {
+  
+  /**
+   * method: void
+   *    display/hide the popup
+   */
+  buy():void {
     this.isCheck = !this.isCheck;
   }
 }

@@ -5,7 +5,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { HttpParams, HttpHeaders, HttpClient } from '@angular/common/http';
-import { DatePipe } from '@angular/common';
 import { Md5 } from 'ts-md5/dist/md5';
 
 @Component({
@@ -26,28 +25,30 @@ export class ProfilComponent implements OnInit {
   public isModal:boolean;
   public userSubscription: Subscription;
   public actualUserSubscription:  Subscription;
-  userForm: FormGroup;
-  datePipeStr:string;
+  public userForm: FormGroup;
+  public datePipeStr:string;
   public mail: string;
-  errors = [];
+  public errors = [];
 
   constructor(private userService: UserService,
-    private route:ActivatedRoute,
-    private authService: AuthService,
-    private formBuilder:FormBuilder,
-    private http:HttpClient,
-    private datePipe:DatePipe,
-    private router:Router) { }
+              private route:ActivatedRoute,
+              private authService: AuthService,
+              private formBuilder:FormBuilder,
+              private http:HttpClient,
+              private router:Router) { }
  
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
     // @ts-ignore
     this.path = this.route.snapshot._routerState.url;
     this.id = Number(this.route.snapshot.params['id']);  // get id from url
+
+    // determines which type of user
     this.isActual = route === 'profil' ? true : false;
     this.isPremium = this.authService.isPremium();
     this.isAdmin = this.authService.isAdmin();
     
+    //display information for actual user or a specific user
     if (this.isActual) {
       this.displayActualUser();
     }
@@ -58,22 +59,36 @@ export class ProfilComponent implements OnInit {
   }
 
 
-  onOpenSettings() {
+  /**
+   * method:void
+   *    open or hide settings menu
+   */
+  onOpenSettings():void {
     this.isSettings = !this.isSettings;
   }
 
-  onEdit() {
+
+  /**
+   * method:void
+   *    pass to edit mode
+   */
+  onEdit():void {
     this.isEdit = !this.isEdit;
   }
 
-
-
+  /**
+   * method: void
+   *    display/hide the delete popup
+   */
   swapModal() {
     this.isModal = !this.isModal;
   }
 
-
-  displayActualUser() {
+/**
+ * method:void
+ *    display info from actual user
+ */
+  displayActualUser():void {
     this.actualUserSubscription = this.userService.userActualSubject.subscribe(
       (data:any)=>{
         this.user = data;
@@ -85,7 +100,12 @@ export class ProfilComponent implements OnInit {
     this.userService.getActualUser();
   }
 
-  displayParticularUser() {
+
+  /**
+   * method:void
+   *    display info from a specific user
+   */
+  displayParticularUser():void {
     this.userSubscription = this.userService.userSubject.subscribe(
       (data:any)=>{
         this.user = data;
@@ -97,14 +117,21 @@ export class ProfilComponent implements OnInit {
     this.userService.getUserById(this.id);
   }
 
-  logout() {
+  /**
+   * method:void
+   *      logout
+   */
+  logout():void {
     this.authService.logout();
   }
 
 
 
-
-  initForm() {
+  /**
+   * method:void
+   *      initialize the from
+   */
+  initForm():void {
       this.userForm = this.formBuilder.group({
         'fullname': [this.user.fullname , Validators.required],
         'email': [this.user.email, Validators.required],
@@ -112,7 +139,10 @@ export class ProfilComponent implements OnInit {
       });
   }
 
-
+  /**
+   * method:void
+   *      send modifications of user profil to the server
+   */
   onSubmitForm() {
     this.onEdit();
     const formValue = this.userForm.value;
