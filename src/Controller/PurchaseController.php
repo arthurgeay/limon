@@ -71,7 +71,7 @@ class PurchaseController extends AbstractController
      * Download an invoice
      * @Route("/invoice/{id}", name="invoice", methods={"GET"})
      */
-    public function downloadInvoice(Purchase $purchase, KernelInterface $kernel)
+    public function downloadInvoice(Purchase $purchase, KernelInterface $kernel, HTMLPDF $HTMLPDF)
     {
         if($purchase->getUser()->getUsername() != $this->getUser()->getUsername() && !$this->isGranted('ROLE_ADMIN')) {
             return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
@@ -79,6 +79,23 @@ class PurchaseController extends AbstractController
 
         // Find invoice
         $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
+
+        if(!$file) {
+            // Generate PDF
+            $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
+            $template = $this->render('purchase/invoice.html.twig', [
+                'purchase' => $purchase,
+            ]);
+
+            $invoice = $HTMLPDF->generatePdf($template, 'facture-limon', 'S');
+
+            // Save invoice as a file and store the file on server
+            $directory = $kernel->getProjectDir() . '/public/invoices/';
+            $invoiceFilePath = $directory . 'facture-'.$purchase->getId().'.pdf';
+            file_put_contents($invoiceFilePath, $invoice);
+
+            $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
+        }
 
         return $this->file($file);
     }

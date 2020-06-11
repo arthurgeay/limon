@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/invoices/facture-59.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/CategoryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/CategoryController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/MovieController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/MovieController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/PurchaseController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PurchaseController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/RatingController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/RatingController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/ReviewController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/ReviewController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SecurityController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SecurityController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/SubscriptionController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/SubscriptionController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/WatchListController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/WatchListController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MovieRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MovieRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/MovieWatchRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/MovieWatchRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/PurchaseRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/PurchaseRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/RatingRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/RatingRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/UserRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/UserRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/WatchListRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/WatchListRepository.php" afterDir="false" />
-    </list>
+    <list default="true" id="3247b6bb-c337-4795-aa15-a77b592bd284" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -211,7 +192,7 @@
       <workItem from="1591631412438" duration="2862000" />
       <workItem from="1591723014774" duration="1485000" />
       <workItem from="1591792569539" duration="4135000" />
-      <workItem from="1591875606592" duration="4601000" />
+      <workItem from="1591875606592" duration="4889000" />
     </task>
     <servers />
   </component>
