@@ -20,6 +20,7 @@ class MovieRepository extends ServiceEntityRepository
     }
 
     /**
+     * Get a movie by name or by category and order by criteria
      * @param $query
      * @param $searchBy
      * @param $orderBy
@@ -86,6 +87,7 @@ class MovieRepository extends ServiceEntityRepository
     }
 
     /**
+     * Get a movie with ratings and reviews associated
      * @param $movieId
      * @return mixed
      * @throws \Doctrine\ORM\NonUniqueResultException

@@ -27,6 +27,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class UserController extends AbstractController
 {
     /**
+     * Show a user profile
      * @Route("/", name="show", methods={"GET"})
      * @throws NonUniqueResultException
      * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
@@ -50,6 +51,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * Edit information of user
      * @Route("/", name="edit", methods={"PUT"})
      * @throws \Exception
      * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
@@ -88,6 +90,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * Delete a user account
      * @Route("/", name="delete", methods={"DELETE"})
      * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */
@@ -111,6 +114,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * Get list of movies watched by a user
      * @Route("/movies-watched", name="movies_watched", methods={"GET"})
      */
     public function historyMoviesWatched(MovieWatchRepository $movieWatchRepository) {
@@ -124,6 +128,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * Get a list of movies purchased by a user
      * @Route("/movies-purchased", name="movies_purchased", methods={"GET"})
      */
     public function historyMoviePurchased(Request $request, PurchaseRepository $purchaseRepository)
@@ -143,6 +148,7 @@ class UserController extends AbstractController
     }
 
     /**
+     * Add a movie in history of movies watched
      * @Route("/movie-watch/{id}", name="add_movie_in_history", methods={"GET"})
      */
     public function addMovieWatch(Movie $movie, EntityManagerInterface $entityManager)

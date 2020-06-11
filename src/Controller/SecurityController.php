@@ -24,6 +24,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class SecurityController extends AbstractController
 {
     /**
+     * Register a new user
      * @Route("/register", name="register", methods={"POST"})
      * @throws \Lexik\Bundle\JWTAuthenticationBundle\Exception\JWTDecodeFailureException
      */
@@ -55,7 +56,8 @@ class SecurityController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        $token = $JWT->create($user); // Generate token
+        // Generate token for the new user
+        $token = $JWT->create($user);
         $expires = $JWTEncoder->decode($token)['exp'];
         $dateExp = new \DateTime();
         $dateExp->setTimestamp($expires);

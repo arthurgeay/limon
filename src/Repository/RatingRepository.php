@@ -19,6 +19,12 @@ class RatingRepository extends ServiceEntityRepository
         parent::__construct($registry, Rating::class);
     }
 
+    /**
+     * Get average of rating for a movie
+     * @param $movie
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function getAvg($movie)
     {
         return $this->createQueryBuilder('r')
@@ -30,6 +36,10 @@ class RatingRepository extends ServiceEntityRepository
             ;
     }
 
+    /**
+     * Get a list of top rated movies by users
+     * @return mixed
+     */
     public function getMostRatingMovies()
     {
         return $this->createQueryBuilder('r')

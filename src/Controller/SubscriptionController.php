@@ -19,6 +19,7 @@ class SubscriptionController extends AbstractController
 {
 
     /**
+     * Subscribe to limon offer
      * @Route("/", name="subscribe", methods={"GET"})
      */
     public function subscribeToOffer(EntityManagerInterface $em, HTMLPDF $HTMLPDF, Mail $mail)

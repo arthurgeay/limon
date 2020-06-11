@@ -19,6 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class WatchListController extends AbstractController
 {
     /**
+     * Get all movies in watchlist
      * @Route("/", name="show", methods={"GET"})
      */
     public function show(WatchListRepository $watchListRepository)
@@ -33,6 +34,7 @@ class WatchListController extends AbstractController
     }
 
     /**
+     * Add a new movie in watchlist
      * @Route("/", name="add", methods={"POST"})
      */
     public function add(Request $request, MovieRepository $movieRepository, WatchListRepository $watchListRepository, EntityManagerInterface $em)
@@ -60,6 +62,7 @@ class WatchListController extends AbstractController
     }
 
     /**
+     * Delete a movie in watchlist by a movie id
      * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Movie $movie, WatchListRepository $watchListRepository, EntityManagerInterface $em)
@@ -77,6 +80,7 @@ class WatchListController extends AbstractController
     }
 
     /**
+     * Check if the movie is already add in watchlist
      * @Route("/added/{id}", name="added", methods={"GET"})
      */
     public function added($id, WatchListRepository $watchListRepository) {

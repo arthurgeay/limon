@@ -19,6 +19,11 @@ class MovieWatchRepository extends ServiceEntityRepository
         parent::__construct($registry, MovieWatch::class);
     }
 
+    /**
+     * Find all movies watched by a user
+     * @param $user
+     * @return mixed
+     */
     public function findByHistory($user)
     {
         return $this->createQueryBuilder('mv')

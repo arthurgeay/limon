@@ -19,6 +19,7 @@ class ReviewController extends AbstractController
 {
 
     /**
+     * Add a review to a movie
      * @Route("/{id}", name="add", methods="POST")
      * @IsGranted("ROLE_USER")
      */
@@ -49,6 +50,7 @@ class ReviewController extends AbstractController
     }
 
     /**
+     * Edit a review to a movie
      * @Route("/{id}", name="edit", methods={"PUT"})
      * @IsGranted("ROLE_USER")
      */
@@ -61,7 +63,6 @@ class ReviewController extends AbstractController
         $message = $request->request->get('message') ?? '';
 
         $review = $review->setContent($message);
-
         $errors = $validator->validate($review);
 
         if(count($errors)) {
@@ -80,6 +81,7 @@ class ReviewController extends AbstractController
     }
 
     /**
+     * Delete a review
      * @Route("/{id}", name="delete", methods={"DELETE"})
      * @Security("is_granted('ROLE_USER') or is_granted('ROLE_ADMIN')")
      */

@@ -19,6 +19,11 @@ class WatchListRepository extends ServiceEntityRepository
         parent::__construct($registry, WatchList::class);
     }
 
+    /**
+     * Find all movies in watchlist by a user
+     * @param $user
+     * @return mixed
+     */
     public function getAllMoviesByUser($user)
     {
         return $this->createQueryBuilder('w')
@@ -38,6 +43,13 @@ class WatchListRepository extends ServiceEntityRepository
             ;
     }
 
+    /**
+     * Check if the movie is already add in the watchlist of user
+     * @param $movieId
+     * @param $user
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findByMovieAndUser($movieId, $user)
     {
         return $this->createQueryBuilder('w')

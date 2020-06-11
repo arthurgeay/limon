@@ -22,6 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PurchaseController extends AbstractController
 {
     /**
+     * Buy a movie by id
      * @Route("/{id}", name="movie", methods={"GET"})
      */
     public function buy(Movie $movie, PurchaseRepository $purchaseRepository, EntityManagerInterface $em, HTMLPDF $HTMLPDF, Mail $mail, KernelInterface $kernel)
@@ -48,7 +49,7 @@ class PurchaseController extends AbstractController
 
         $invoice = $HTMLPDF->generatePdf($template, 'facture-limon', 'S');
 
-        // Save invoice as a file
+        // Save invoice as a file and store the file on server
         $directory = $kernel->getProjectDir() . '/public/invoices/';
         $invoiceFilePath = $directory . 'facture-'.$purchase->getId().'.pdf';
         file_put_contents($invoiceFilePath, $invoice);
@@ -67,6 +68,7 @@ class PurchaseController extends AbstractController
     }
 
     /**
+     * Download an invoice
      * @Route("/invoice/{id}", name="invoice", methods={"GET"})
      */
     public function downloadInvoice(Purchase $purchase, KernelInterface $kernel)

@@ -19,6 +19,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 class RatingController extends AbstractController
 {
     /**
+     * Rate a movie
      * @Route("/{id}", methods={"POST"})
      */
     public function rateAMovie(Movie $movie, Request $request, RatingRepository $ratingRepository, EntityManagerInterface $em, ValidatorInterface $validator)

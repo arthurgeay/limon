@@ -39,6 +39,7 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
     /**
+     * Get users informations
      * @param $email
      * @return mixed
      * @throws NonUniqueResultException
@@ -64,6 +65,11 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
            ;
     }
 
+    /**
+     * Query for get all stats
+     * @return mixed
+     * @throws \Doctrine\DBAL\DBALException
+     */
     public function getStats()
     {
         $conn = $this->getEntityManager()->getConnection();

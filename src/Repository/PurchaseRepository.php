@@ -19,6 +19,11 @@ class PurchaseRepository extends ServiceEntityRepository
         parent::__construct($registry, Purchase::class);
     }
 
+    /**
+     * Get all purchased movies by a user
+     * @param $user
+     * @return mixed
+     */
     public function all($user)
     {
         return $this->createQueryBuilder('p')
@@ -32,6 +37,13 @@ class PurchaseRepository extends ServiceEntityRepository
             ;
     }
 
+    /**
+     * Check if the user has already buy the movie
+     * @param $movie
+     * @param $user
+     * @return mixed
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function isAlreadyBuy($movie, $user)
     {
         return $this->createQueryBuilder('p')

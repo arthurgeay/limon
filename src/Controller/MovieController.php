@@ -30,6 +30,7 @@ use Swagger\Annotations\Swagger;
 class MovieController extends AbstractController
 {
     /**
+     * Get all movies
      * @Route("/all", name="all", methods={"GET"})
      */
     public function all(Request $request, MovieRepository $movieRepository, RatingRepository $ratingRepository)
@@ -43,6 +44,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Search a movie by name or by category and filters
      * @Route("/search", name="search", methods={"GET"})
      * @SWG\Response(
      *     response=200,
@@ -90,7 +92,6 @@ class MovieController extends AbstractController
         $movies = $movieRepository->findByNameOrCategoryAndFilters($query, $searchBy, $categoryName, $orderBy);
         $pagination = $paginator->paginate($movies, $page, 18);
 
-
         if(count($pagination) == 0) {
             return $this->json(['status' => 'Aucun film trouvé']);
         }
@@ -111,6 +112,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Show a movie by id
      * @Route("/{id}", name="show", requirements={"id"="\d+"}, methods={"GET"})
      * @throws \Doctrine\ORM\NonUniqueResultException
      * @SWG\Response(
@@ -143,6 +145,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Download a movie by id
      * @Route("/{id}/download", name="download", methods={"GET"})
      * @IsGranted("ROLE_USER")
      */
@@ -161,6 +164,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Create a movie
      * @Route("/", name="add", methods={"POST"})
      * @IsGranted("ROLE_ADMIN")
      */
@@ -221,6 +225,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Edit a movie by id
      * @Route("/{id}", name="edit", methods={"PUT"})
      * @IsGranted("ROLE_ADMIN")
      */
@@ -278,6 +283,7 @@ class MovieController extends AbstractController
     }
 
     /**
+     * Delete a movie by id
      * @Route("/{id}", name="delete", methods={"DELETE"})
      */
     public function delete(Movie $movie, EntityManagerInterface $em)

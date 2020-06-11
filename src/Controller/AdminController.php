@@ -18,6 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     /**
+     * Get stats for admin user
      * @Route("/stats", name="stats", methods={"GET"})
      */
     public function stats(UserRepository $userRepository)
@@ -27,6 +28,7 @@ class AdminController extends AbstractController
     }
 
     /**
+     * Get all users
      * @Route("/users", name="show_users", methods={"GET"})
      */
     public function allUsers(Request $request, UserRepository $userRepository, PaginatorInterface $paginator)
