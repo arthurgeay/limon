@@ -29,6 +29,7 @@ export class ConnexionComponent implements OnInit {
 
     this.authService.errors = []; // Reset errors:
 
+    // Subscribe to errors subject emit by auth and register method
     this.errorsSubscription = this.authService.errorSubject.subscribe(
       (errors) => this.errors = errors
     );
