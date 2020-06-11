@@ -77,21 +77,6 @@ class PurchaseController extends AbstractController
             return $this->json(['status' => 'Vous n\'êtes pas l\'auteur de cet achat']);
         }
 
-        if(!file_exists($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf')) {
-            // Generate PDF
-            $HTMLPDF->create('P', 'A4', 'fr', true, 'UTF-8', array(10, 15, 10, 15));
-            $template = $this->render('purchase/invoice.html.twig', [
-                'purchase' => $purchase,
-            ]);
-
-            $invoice = $HTMLPDF->generatePdf($template, 'facture-limon', 'S');
-
-            // Save invoice as a file and store the file on server
-            $directory = $kernel->getProjectDir() . '/public/invoices/';
-            $invoiceFilePath = $directory . 'facture-'.$purchase->getId().'.pdf';
-            file_put_contents($invoiceFilePath, $invoice);
-        }
-
         // Find invoice
         $file = new File($kernel->getProjectDir().'/public/invoices/facture-'.$purchase->getId().'.pdf');
 
