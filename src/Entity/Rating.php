@@ -34,7 +34,7 @@ class Rating
 
     /**
      * @ORM\ManyToOne(targetEntity=Movie::class, inversedBy="ratings")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, onDelete="CASCADE")
      * @Groups("movie.all")
      */
     private $movie;
