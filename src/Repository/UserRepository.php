@@ -77,9 +77,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $sql = '
             SELECT COUNT(user.id) AS total_number_user, 
             (SELECT COUNT(purchase.id) FROM purchase) AS total_number_sales, 
-            (SELECT SUM(movie.price) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id) AS sum_sales,
+            (SELECT CAST(SUM(movie.price) AS DECIMAL(10, 2)) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id) AS sum_sales,
             (SELECT COUNT(purchase.id) FROM purchase WHERE purchase.date BETWEEN adddate(now(),-7) AND NOW() ) AS total_sales_on_7day,
-            (SELECT SUM(movie.price) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id WHERE purchase.date BETWEEN adddate(now(),-7) AND NOW()) AS sum_sales_on_7day
+            (SELECT CAST(SUM(movie.price) AS DECIMAL(10, 2)) FROM purchase INNER JOIN movie ON movie.id = purchase.movie_id WHERE purchase.date BETWEEN adddate(now(),-7) AND NOW()) AS sum_sales_on_7day
             FROM user
         ';
 
