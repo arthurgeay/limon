@@ -205,7 +205,7 @@ Pagination :
 => Retourne le film
 
 
-🔐 Authentification et inscription
+🔐 - Authentification et inscription
 -
 
 **Les endpoints doivent être accessible par tous**
@@ -235,7 +235,7 @@ Données à envoyer :
  
  ---
 
-👨‍🎨 Profil utilisateur 
+👨‍🎨 - Profil utilisateur 
 -
 
 **Endpoint accessible uniquement au personne connecté. 
@@ -303,7 +303,7 @@ Paramètre page par défaut à 1
 - Ajouter un film à l'historique des films visionnés : [Méthode GET] : **/api/user/movie-watch/{id}** (id du film)
 
 
-📝 Avis & Score
+📝 - Avis & Score
 -
 
 **Endpoint accessible uniquement au personne connecté. 
@@ -338,7 +338,7 @@ Données à envoyer :
 
 ----
 
-💰 Abonnement
+💰 - Abonnement
 -
 
 **Endpoint accessible uniquement au personne connecté. 
@@ -347,7 +347,7 @@ Envoi du token dans l'entête de la requête**
 - S'abonner à la formule [Méthode GET] : **/api/subscription**
 
 
-💵 Achat
+💵 - Achat
 -
 
 **Endpoint accessible uniquement au personne connecté. 
@@ -357,7 +357,7 @@ Envoi du token dans l'entête de la requête**
 - Téléchargement d'une facture [Méthode GET] : **/api/purchase/invoice/{id de l'achat}**
 
 
-🕵️‍♂️ Watchlist
+🕵️‍♂️ - Watchlist
 -
 
 **Endpoint accessible uniquement au personne connecté. 
@@ -375,7 +375,7 @@ Données à envoyer (id du film):
 - Vérifier si un film existe déjà dans la watchlist : [Méthode GET] **/api/watchlist/added/{id}**
 
 
-👮‍♀️ Administration
+👮‍♀️ - Administration
 -
 
 **Endpoint accessible uniquement au personne connecté (ADMIN). 
