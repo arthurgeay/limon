@@ -105,7 +105,7 @@ Cette API fonctionne grâce au framework **Symfony** avec une base de données *
 - **spipu/html2pdf** : Générer des documents PDF depuis un template HTML
 
 
-🎬  Films
+🎬 - Films
 - 
 
 **Endpoints accessible à tous sans token**
