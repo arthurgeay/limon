@@ -92,7 +92,7 @@ La page d'achats *(accessible depuis le profil)*  permet de consulter les films 
 L'administration possède un tableau de bord pour voir les revenues générer sur le site, le nombre de membres et de ventes au global et sur les 7 derniers jours.
 
 
-## API
+# API
 
 Au niveau backend, nous avons choisi de mettre en place une API. 
 Cette API fonctionne grâce au framework **Symfony** avec une base de données **MySQL**.
@@ -105,7 +105,7 @@ Cette API fonctionne grâce au framework **Symfony** avec une base de données *
 - **spipu/html2pdf** : Générer des documents PDF depuis un template HTML
 
 
-🎬 Films
+🎬  Films
 - 
 
 **Endpoints accessible à tous sans token**
