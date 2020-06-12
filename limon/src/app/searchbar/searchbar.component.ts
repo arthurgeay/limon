@@ -49,7 +49,7 @@ export class SearchbarComponent implements OnInit {
     this.isSearch = false;
     this.search.nativeElement.value = '';
     this.activeSearchService.onSearchEvent.emit(false);
-
+    this.activeSearchService.DataIDEvent.emit('');
   }
 
 }
