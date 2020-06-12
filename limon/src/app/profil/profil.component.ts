@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserService } from '../user.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Md5 } from 'ts-md5/dist/md5';
   templateUrl: './profil.component.html',
   styleUrls: ['./profil.component.scss']
 })
-export class ProfilComponent implements OnInit {
+export class ProfilComponent implements OnInit, OnDestroy {
 
   public id:number;
   public path:any;
@@ -36,6 +36,7 @@ export class ProfilComponent implements OnInit {
               private formBuilder:FormBuilder,
               private http:HttpClient,
               private router:Router) { }
+
  
   ngOnInit(): void {
     const route = this.route.snapshot.routeConfig.path;
@@ -57,6 +58,25 @@ export class ProfilComponent implements OnInit {
     }
 
   }
+
+  /**
+   * method:void
+   *    destroy data
+   */
+
+  ngOnDestroy(): void {
+    if(this.actualUserSubscription) {
+      this.actualUserSubscription.unsubscribe();
+     }
+
+    if (this.userSubscription) {
+      this.userSubscription.unsubscribe();
+    }
+    
+  }
+
+
+
 
 
   /**

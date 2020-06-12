@@ -95,6 +95,7 @@ export class MenuComponent implements OnInit {
    */
   onReset():void{
     this.activeSearchService.onSearchEvent.emit(false);
+    this.activeSearchService.DataIDEvent.emit('');
   }
 
   /**
