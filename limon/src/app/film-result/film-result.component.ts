@@ -418,21 +418,6 @@ export class FilmResultComponent implements OnInit {
     }
   }
 
-    /**
-   * method
-   *  center results when more than 6
-   */
-  onCenter(){
-    if (this.isMobile) {
-      return(this.resMovies?.length > 6 ? 'repeat(auto-fit, minmax(8rem, 1fr))' : 'repeat(auto-fit, 8rem)')
-    }
-    else {
-      return(this.resMovies?.length > 6 ? 'repeat(auto-fit, minmax(13rem, 1fr))' : 'repeat(auto-fit, 13rem)')
-    }
-
-  }
-
-
 
   /**
    * method:void
