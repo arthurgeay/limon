@@ -2,21 +2,52 @@
 <app-category></app-category>
 <h2 class="phrase-res" *ngIf="isSearch">Résultats de votre recherche</h2>
 <section id="sorting" *ngIf="isSearch">
-    <button (click)="onAlph();onSortAlph()" class="sort">
-        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isAlph">
-        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isAlph">
-        <p>A-Z</p>
+    <button class="sort">
+        <label for="alph-check" class="check"  (click)="onAlph();onSortAlph()"></label>
+        <input type="checkbox" id="alph-check">
+        <div class="btn alph-btn">
+            <div class="front face">
+                <img src="../../assets/icons/sort.svg" alt="Croissant" *ngIf="!isAlph">
+                <p *ngIf="!isAlph">A-Z</p>
+            </div>
+            <div class="mid face"></div>
+            <div class="back face">
+                <img src="../../assets/icons/sort.svg" alt="Décroissant" *ngIf="isAlph">
+                <p *ngIf="isAlph">A-Z</p>
+            </div>
+        </div>
     </button>
-    <button (click)="onPrice();onSortPrice()"class="sort">
-        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isPrice">
-        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isPrice">
-        <p>Prix</p>
+    <button class="sort">
+        <label for="price-check" class="check"  (click)="onPrice();onSortPrice()"></label>
+        <input type="checkbox" id="price-check">
+        <div class="btn price-btn">
+            <div class="front face">
+                <img src="../../assets/icons/sort.svg" alt="Croissant" *ngIf="!isPrice">
+                <p *ngIf="!isPrice">Prix</p>
+            </div>
+            <div class="mid face"></div>
+            <div class="back face">
+                <img src="../../assets/icons/sort.svg" alt="Décroissant" *ngIf="isPrice">
+                <p *ngIf="isPrice">Prix</p>
+            </div>
+        </div>
     </button>
-    <button (click)="onDate();onSortDate()" class="sort">
-        <img src="../../assets/icons/croissant.svg" alt="Croissant" *ngIf="isDate">
-        <img src="../../assets/icons/decroissant.svg" alt="Décroissant" *ngIf="!isDate">
-        <p>Date</p>
+    <button class="sort">
+        <label for="date-check" class="check" (click)="onDate();onSortDate()"></label>
+        <input type="checkbox" id="date-check">
+        <div class="btn date-btn">
+            <div class="front face">
+                <img src="../../assets/icons/sort.svg" alt="Croissant" *ngIf="!isDate">
+                <p *ngIf="!isDate">Date</p>
+            </div>
+            <div class="mid face"></div>
+            <div class="back face">
+                <img src="../../assets/icons/sort.svg" alt="Décroissant" *ngIf="isDate">
+                <p *ngIf="isDate">Date</p>
+            </div>
+        </div>
     </button>
+
 </section>
 
 <section id="results" *ngIf="!isEmpty && isSearch">

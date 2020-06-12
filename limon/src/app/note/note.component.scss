@@ -40,6 +40,7 @@ $large: 2400px;
             &:active {
                 transform: scale(1.02) rotate(90deg);
                 transform-origin: 1.28rem 1.24rem;
+                animation: pulp 1s;
             }
 
         }
@@ -92,4 +93,15 @@ $large: 2400px;
 
 .hollow {
     opacity: .2;
+}
+
+
+@keyframes pulp{
+    from {
+
+    }
+    to {
+
+    }
+
 }
