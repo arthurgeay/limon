@@ -13,7 +13,7 @@ export class PlaylistComponent implements OnInit {
   public isWatch: boolean;
   public isPurchase: boolean;
   public isEmpty: boolean = false;
-  public catalog: any;
+  public catalog: any[];
   public id: number;
 
   constructor(private route:ActivatedRoute,
@@ -57,8 +57,14 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-watched`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data;  
-        this.isEmpty = data.empty === true ? true : false;
+        if (data.empty === true) {
+          this.isEmpty = true;
+        }
+        else {
+          this.isEmpty = false;
+          this.catalog = data;  
+        }
+        console.log(data);
       },
       (error)=>{
         console.log(error);
@@ -74,8 +80,14 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/watchlist/`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data; 
-        this.isEmpty = data.empty === true ? true : false;
+        if (data.empty === true) {
+          this.isEmpty = true;
+        }
+        else {
+          this.isEmpty = false;
+          this.catalog = data;  
+        }
+        console.log(data);
       },
       (error)=>{
         console.log(error);
@@ -91,8 +103,14 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data;      
-        this.isEmpty = data.empty === true ? true : false;
+        if (data.empty === true) {
+          this.isEmpty = true;
+        }
+        else {
+          this.isEmpty = false;
+          this.catalog = data;  
+        }
+        console.log(data);
       },
       (error)=>{
         console.log(error);
@@ -109,8 +127,14 @@ export class PlaylistComponent implements OnInit {
     this.http.get(`https://api-limon.app-tricycle.com/api/user/movies-purchased?userId=${this.id}`)
     .subscribe(
       (data:any)=>{
-        this.catalog = data;      
-        this.isEmpty = data.empty === true ? true : false;
+        if (data.empty === true) {
+          this.isEmpty = true;
+        }
+        else {
+          this.isEmpty = false;
+          this.catalog = data;  
+        }
+        console.log(data);
       },
       (error)=>{
         console.log(error);
