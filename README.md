@@ -10,21 +10,21 @@ Le lien vers le site [Limon](https://limon.app-tricycle.com/)
 Le site est géré par **Angular** et échange des données avec une **API** qui fonctionne en **Symfony** permet d'échanger les données utilisateurs de gérer les films, les **factures** et le **téléchargement** des films.
 
 Le site possède **15** pages:
-	-	La page **catalogue** permet de rechercher un film.
-	-	La page de **profil** consulter son profil.
-	-	La tableau de bord d'**administration** permet de voir les statistiques du site.
-	-	La page de **connexion** permet de se connecter à son compte.
-	-	La page d'**inscription** permet de créer un compte sur le site.
-	-	La page de **historique** permet de consulter l'historique des films.
-	-	La page de **watchlist** permet de regrouper les films que l'on souhaite regarder plus tard.
-	-	La page d'**achat** permet de voir les films achetés sur le site.
-	-	La page d'**abonnement** permet de s'abonner au Premium pour voir des films.
-	-	La page de **téléchargement d'un film** permet de télécharger un film que l'on a acheté.
-	-	La page de **création/édition d'un film** permet d’ajouter ou modifier un film.
-	-	La page de **liste des membres** permet de gérer tout les membres du site
-	-	La page de **politique de confidentialité** 
-	-	La page de **mentions légales** 
-	-	La page de **documentation de l'API** permet aux développeurs d'accéder à notre catalogue
+	- La page **catalogue** permet de rechercher un film.
+	- La page de **profil** consulter son profil.
+	- La tableau de bord d'**administration** permet de voir les statistiques du site.
+	- La page de **connexion** permet de se connecter à son compte.
+	- La page d'**inscription** permet de créer un compte sur le site.
+	- La page de **historique** permet de consulter l'historique des films.
+	- La page de **watchlist** permet de regrouper les films que l'on souhaite regarder plus tard.
+	- La page d'**achat** permet de voir les films achetés sur le site.
+	- La page d'**abonnement** permet de s'abonner au Premium pour voir des films.
+	- La page de **téléchargement d'un film** permet de télécharger un film que l'on a acheté.
+	- La page de **création/édition d'un film** permet d’ajouter ou modifier un film.
+	- La page de **liste des membres** permet de gérer tout les membres du site
+	- La page de **politique de confidentialité** 
+	- La page de **mentions légales** 
+	- La page de **documentation de l'API** permet aux développeurs d'accéder à notre catalogue
 
 
 ## Technologies utilisées
@@ -67,7 +67,7 @@ Plus bas dans la page, on peut lire les **commentaires** des utilisateurs, d'y a
 
 ### Page de profil
 ![enter image description here](https://cloud-image-dlcn.netlify.com/limon/profil.png)
-La page de **profil** permet de consulter ses informations **personnelles** et d'accéder à différentes pages liées à sont compte (historique, watchlist et liste des achats.
+La page de **profil** permet de consulter ses informations **personnelles** et d'accéder à différentes pages liées à son compte (historique, watchlist et liste des achats).
 
 On peut aussi modifier les informations de son compte ou le supprimer en cliquant sur l'icône ⚙ *(Paramètres)*  ainsi que se déconnecter de son compte.
 
