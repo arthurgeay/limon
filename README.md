@@ -10,6 +10,7 @@ Le lien vers le site [Limon](https://limon.app-tricycle.com/)
 Le site est géré par **Angular** et échange des données avec une **API** qui fonctionne en **Symfony** permet d'échanger les données utilisateurs de gérer les films, les **factures** et le **téléchargement** des films.
 
 Le site possède **15** pages:
+
 	- La page **catalogue** permet de rechercher un film.
 	- La page de **profil** consulter son profil.
 	- La tableau de bord d'**administration** permet de voir les statistiques du site.
