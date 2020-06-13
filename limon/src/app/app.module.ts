@@ -37,6 +37,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { ConfirmationComponent } from './confirmation/confirmation.component';
 
 // the second parameter 'fr-FR' is optional
 registerLocaleData(localeFr, 'fr-FR');
@@ -69,7 +70,8 @@ registerLocaleData(localeFr, 'fr-FR');
     CheckoutComponent,
     VideoComponent,
     ModalComponent,
-    PageSelectorComponent
+    PageSelectorComponent,
+    ConfirmationComponent
   ],
   imports: [
     BrowserModule,

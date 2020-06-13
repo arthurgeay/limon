@@ -14,6 +14,7 @@ export class DoneComponent implements OnInit {
   public id: number;
   public name: string;
   public movieSubscription: Subscription;
+  public isConfirm: boolean = false;
 
   constructor(private route:ActivatedRoute,
               private movieService: MovieService) { }
@@ -32,6 +33,11 @@ export class DoneComponent implements OnInit {
       );
       this.movieService.getMovieById(+this.id);
     }
+
+    this.isConfirm = true;
+    setTimeout(() => {
+      this.isConfirm = false;
+    }, 2500);
   }
 
   /**

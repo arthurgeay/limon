@@ -14,6 +14,7 @@ export class NoteComponent implements OnInit {
   @Input() userNote: any;
   public movieID: any;
   public isAuth: boolean;
+  public isConfirm: boolean = false;
 
   constructor(private http:HttpClient,
               private route:ActivatedRoute,
@@ -41,5 +42,9 @@ export class NoteComponent implements OnInit {
         console.log(error);
       }
     )
+    this.isConfirm = true;
+    setTimeout(() => {
+      this.isConfirm = false;
+    }, 2500);
   }
 }

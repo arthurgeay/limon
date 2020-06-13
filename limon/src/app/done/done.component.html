@@ -8,5 +8,6 @@
     <img src="../../assets/icons/citrus.svg" alt="" class="deco1">
     <img src="../../assets/icons/citrus.svg" alt="" class="deco2">
 </section>
-
+<app-confirmation *ngIf="isConfirm && !isComplete" [input]="'sub'"></app-confirmation>
+<app-confirmation *ngIf="isConfirm && isComplete" [input]="'purchase'"></app-confirmation>
 

@@ -19,3 +19,4 @@
         <b class="note-medium-main"><span class="hollow" *ngIf="note == undefined">5</span><span class="colored">{{note}}</span>/5</b>
     </div>
 </section>
+<app-confirmation *ngIf="isConfirm" [input]="'note'"></app-confirmation>
