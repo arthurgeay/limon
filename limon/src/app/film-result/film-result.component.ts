@@ -106,7 +106,7 @@ export class FilmResultComponent implements OnInit {
         this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -130,7 +130,7 @@ export class FilmResultComponent implements OnInit {
         this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -152,7 +152,7 @@ export class FilmResultComponent implements OnInit {
         this.isEmpty = data.status === 'Aucun film trouvé' ? true : false;
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -183,7 +183,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       } else {
@@ -193,7 +193,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;     
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }
@@ -208,7 +208,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }
@@ -241,7 +241,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       } else {
@@ -251,7 +251,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }
@@ -264,7 +264,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       } else {
@@ -274,7 +274,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }
@@ -307,7 +307,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       } else {
@@ -317,7 +317,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }
@@ -330,7 +330,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       } else {
@@ -340,7 +340,7 @@ export class FilmResultComponent implements OnInit {
             this.resMovies = data.movies;       
           },
           (error)=>{
-            console.log(error);
+            // console.log(error);
           }
         )
       }

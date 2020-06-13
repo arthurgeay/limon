@@ -88,12 +88,10 @@ export class CheckoutComponent implements OnInit {
         if(this.direction == 'sub') {
           this.movieService.subscribeOnMovie();
           this.router.navigate([`subscribed`])
-          console.warn('abonnement');
         } // or if user purchase a movie
         else {
           this.movieService.purchaseMovieById(+this.id)
           this.router.navigate([`complete/${this.id}`])
-          console.warn('achat');
         }
       }, 2000);
     }

@@ -66,7 +66,7 @@ export class PlaylistComponent implements OnInit {
         }
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -88,7 +88,7 @@ export class PlaylistComponent implements OnInit {
         }
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -110,7 +110,7 @@ export class PlaylistComponent implements OnInit {
         }
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -131,10 +131,9 @@ export class PlaylistComponent implements OnInit {
           this.isEmpty = false;
           this.catalog = data;  
         }
-        console.log(data);
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }

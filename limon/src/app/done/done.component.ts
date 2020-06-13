@@ -33,10 +33,9 @@ export class DoneComponent implements OnInit {
       );
       this.movieService.getMovieById(+this.id);
     }
-
     this.isConfirm = true;
     setTimeout(() => {
-      this.isConfirm = false;
+      this.isConfirm = false; //hide animation
     }, 2500);
   }
 

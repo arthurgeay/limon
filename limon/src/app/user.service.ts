@@ -26,7 +26,7 @@ export class UserService {
           this.emitActualUserSubject();
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       )     
   }
@@ -44,7 +44,7 @@ export class UserService {
           this.emitUserSubject();
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       )     
   }
@@ -78,7 +78,7 @@ export class UserService {
         (data:any)=>{
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       ) 
     }
@@ -88,7 +88,7 @@ export class UserService {
         (data:any)=>{
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       ) 
     }

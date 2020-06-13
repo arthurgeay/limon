@@ -20,8 +20,6 @@ export class SearchbarComponent implements OnInit {
   ngOnInit(): void {
   
   }
-
-
   
   /**
    * method: void
@@ -38,7 +36,6 @@ export class SearchbarComponent implements OnInit {
       this.activeSearchService.DataIDEvent.emit(value);
     }, 100);
   }
-
 
 
   /**

@@ -19,7 +19,7 @@ export class AdminComponent implements OnInit {
         this.stats = data;             
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }

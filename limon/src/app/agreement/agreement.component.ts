@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AgreementComponent implements OnInit {
 
-  isAgreement:boolean = false;
+  public isAgreement:boolean = false;
 
   constructor(private route:ActivatedRoute) { }
 

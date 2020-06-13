@@ -39,7 +39,7 @@ export class NoteComponent implements OnInit {
         this.note = data.avg.substring(0,1);
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
     this.isConfirm = true;

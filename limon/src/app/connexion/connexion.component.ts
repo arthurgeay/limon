@@ -13,9 +13,9 @@ import { Subscription } from 'rxjs';
 export class ConnexionComponent implements OnInit {
 
   public isLogin = false;
-  userForm: FormGroup;
-  errorsSubscription: Subscription;
-  errors: any[];
+  public userForm: FormGroup;
+  public errorsSubscription: Subscription;
+  public errors: any[];
 
   constructor(private route:ActivatedRoute, 
               private formBuilder: FormBuilder,
@@ -27,7 +27,7 @@ export class ConnexionComponent implements OnInit {
     this.isLogin = route === 'login' ? true : false;
     this.initForm();
 
-    this.authService.errors = []; // Reset errors:
+    this.authService.errors = []; // Reset errors
 
     // Subscribe to errors subject emit by auth and register method
     this.errorsSubscription = this.authService.errorSubject.subscribe(

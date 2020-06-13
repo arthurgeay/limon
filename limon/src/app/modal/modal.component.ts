@@ -47,7 +47,7 @@ export class ModalComponent implements OnInit {
         this.router.navigate(['/'])
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -66,7 +66,7 @@ export class ModalComponent implements OnInit {
           });
         },
         (error) => {
-          console.log(error);
+          // console.log(error);
         }
       )
   }

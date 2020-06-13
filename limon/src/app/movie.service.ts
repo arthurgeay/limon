@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import { UserService } from './user.service';
 import { AuthService } from './auth.service';
 
 @Injectable({
@@ -21,7 +20,6 @@ export class MovieService {
   public review:any;
 
   constructor(private http:HttpClient,
-              private userService:UserService,
               private authService:AuthService) { }
 
 
@@ -37,7 +35,7 @@ export class MovieService {
         this.EmitOnMovies();
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -59,7 +57,7 @@ export class MovieService {
         this.EmitOnMovie();
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
         if (error.status == 404) {
           this.movie = 'not found';
           this.EmitOnMovie();
@@ -96,7 +94,7 @@ public downloadMovieById(id:number, name:string):void {
         this.EmitOnDl();
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -116,7 +114,7 @@ public downloadMovieById(id:number, name:string):void {
       (data:any)=>{
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -134,7 +132,7 @@ public downloadMovieById(id:number, name:string):void {
         this.EmitOnCat();
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -171,7 +169,7 @@ public downloadMovieById(id:number, name:string):void {
         this.authService.isPremium();
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
     

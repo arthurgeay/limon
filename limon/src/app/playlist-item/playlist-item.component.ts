@@ -65,7 +65,7 @@ export class PlaylistItemComponent implements OnInit {
       }); 
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -92,7 +92,7 @@ export class PlaylistItemComponent implements OnInit {
         URL.revokeObjectURL(url);
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }

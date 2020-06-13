@@ -92,7 +92,7 @@ export class DetailComponent implements OnInit {
         this.isMark = data.already_add;
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -109,7 +109,7 @@ export class DetailComponent implements OnInit {
       (data:any)=>{
       },
       (error)=>{
-        console.log(error);
+        // console.log(error);
       }
     )
   }
@@ -128,7 +128,7 @@ export class DetailComponent implements OnInit {
         (data:any)=>{
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       )
     }
@@ -138,7 +138,7 @@ export class DetailComponent implements OnInit {
         (data:any)=>{
         },
         (error)=>{
-          console.log(error);
+          // console.log(error);
         }
       )
     }

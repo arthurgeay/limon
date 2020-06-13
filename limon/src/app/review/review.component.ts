@@ -1,6 +1,5 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { MovieService } from '../movie.service';
 import { UserService } from '../user.service';
 import { AuthService } from '../auth.service';

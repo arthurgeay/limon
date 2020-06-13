@@ -13,14 +13,14 @@ import { Md5 } from 'ts-md5';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit {
-  isAuth:boolean;
-  isSub:boolean;
+  public isAuth:boolean;
+  public isSub:boolean;
   public isMobile = false;
   public isMenu = false;
   public mail: string;
-  authSubscription: Subscription;
-  premiumSubscription: Subscription;
-  actualUserSubscription: Subscription;
+  public authSubscription: Subscription;
+  public premiumSubscription: Subscription;
+  public actualUserSubscription: Subscription;
 
 
   constructor(private mobileService:MobileService,
