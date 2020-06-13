@@ -11,7 +11,7 @@
             <div *ngIf="user?.subscription?.activate"><img src="../../assets/icons/badge.png" alt="Compte premium" class="profil-main-badge">Premium</div>
         </div>  
         <div class="modify-main">
-            <input type="text" formControlName="fullname" class="input-name" value="{{ user?.fullname }}" *ngIf="isEdit">
+            <input type="text" formControlName="fullname" class="input-name" [ngModel]="user?.fullname" *ngIf="isEdit">
             <a *ngIf="isEdit" href="https://fr.gravatar.com/" aria-label="Changer la photo de profil" target="_blank" class="gravatar">
                 <img src="assets/icons/gravatar.png" alt="">
                 Modifier votre photo de profil sur Gravatar</a>
@@ -29,7 +29,7 @@
         <div>
             <h2>Adresse mail</h2>
             <p *ngIf="!isEdit">{{ user?.email }}</p>
-            <input type="text" formControlName="email" value="{{ user?.email }}" *ngIf="isEdit">
+            <input type="text" formControlName="email" [ngModel]="user?.email" *ngIf="isEdit">
         </div>
         <div>
             <h2>Date de naissance</h2>
